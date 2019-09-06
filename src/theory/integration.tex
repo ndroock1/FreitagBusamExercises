@@ -1,7 +1,15 @@
+\section{Complex Integration}
 
-\begin{definition}
+\begin{definition}[Contour Integral]
     \label{sec:Alice}
-    Aap Noot Mies.
+    Let
+    $$\alpha : [a, b] \rightarrow \mathbb{C}$$
+    be a smooth curve and
+    $$f: D \rightarrow \mathbb{C}, D \subset \mathbb{C},$$
+    a continuous funtion, whose domain of definition contains the image of the curve $\alpha$,
+    i.e. $D \supset \alpha([a,b]).$ Then one defines
+    $$ \int_\alpha f:= \int_\alpha f(\zeta) d\zeta := \int_a^b f(\alpha(t))\alpha'(t)dt,$$
+    and calls this complex number the line integral or \textbf{contour integral} of $f$ along $\alpha$.
 \end{definition}
 
 %\questionBox{
