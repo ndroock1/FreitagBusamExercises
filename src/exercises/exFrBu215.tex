@@ -11,5 +11,20 @@ where
 }
 
 \answerBox{
+Calculation of the integral along $\alpha(t)=(1+i)t$:
+\begin{alignat*}{2}
+    \int_{\alpha} z e^{z^2} dz &= \int_{0}^{1} (1+i)e^{((1+i)t)^2} dt &\qquad\hyperref[sec:ContourIntegral]{(1)} \\
+    & = \int_{0}^{1} 2it e^{2it^2} dt & \\
+    & = \left[ \frac{1}{2}e^{2it^2} \right]_0^1 & \\
+    & = \frac{1}{2}(e^{2i}-1) &
+\end{alignat*}
+
+Calculation of the integral along $\alpha(t)=t+it^2$:
+\begin{alignat*}{2}
+    \int_{\alpha} z e^{z^2} dz &= \int_{0}^{1} (t+it^2)e^{(t+it^2)^2} dt &\qquad\hyperref[sec:ContourIntegral]{(1)} \\
+    & = \int_{0}^{1} (-2t^3+3it^2+t) e^{-t^4+2it^3+t^2} dt & \\
+    & = \left[ \frac{1}{2}e^{-t^4+2it^3+t^2} \right]_0^1 & \\
+    & = \frac{1}{2}(e^{2i}-1) &
+\end{alignat*}
 
 }
