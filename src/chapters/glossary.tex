@@ -1,0 +1,81 @@
+\chapter{Glossary}
+
+
+\begin{definition}[Curve (II.1.1)]
+    \label{sec:Curve}
+    A \textbf{curve} is a continuous map
+    $$\alpha: [a,b] \rightarrow \mathbb{C}, a < b$$
+    from a compact real interval into the complex plane. We call $\alpha(a)$ the starting point,
+    and $\alpha(b)$ the end point of $\alpha$.
+\end{definition}
+
+
+\begin{definition}[Smooth Curve (II.1.2)]
+    \label{sec:SmoothCurve}
+    A \hyperref[sec:Curve]{curve} is called \textbf{smooth}, if it is continuously differentiable.
+\end{definition}
+
+
+\begin{definition}[Piecewise Smooth Curve (II.1.3)]
+    \label{sec:PiecewiseSmoothCurve}
+    Let\\
+    TBD II.1.3
+\end{definition}
+
+
+\begin{definition}[Contour Integral (II.1.4)]
+    \label{sec:ContourIntegral}
+    Let
+    $$\alpha : [a, b] \rightarrow \mathbb{C}$$
+    be \hyperref[sec:SmoothCurve]{a smooth curve} and
+    $$f: D \rightarrow \mathbb{C}, D \subset \mathbb{C},$$
+    a continuous funtion, whose domain of definition contains the image of the curve $\alpha$,
+    i.e. $D \supset \alpha([a,b]).$ Then one defines
+    $$ \int_\alpha f:= \int_\alpha f(\zeta) d\zeta := \int_a^b f(\alpha(t))\alpha'(t)dt,$$
+    and calls this complex number the line integral or \textbf{contour integral} of $f$ along $\alpha$.
+    By the arc length of a smooth curve we mean
+    $$l(\alpha):=\int_a^b |\alpha'(t)|dt.$$
+\end{definition}
+
+
+\begin{definition}[Properties Contour Integral (II.1.5)]
+    \label{sec:PropContourIntegral}
+    Let\\
+    TBD
+\end{definition}
+
+
+\begin{definition}[Arcwise Connected Set (II.2.1)]
+    \label{sec:ArcwiseConnected}
+    Let\\
+    TBD
+\end{definition}
+
+
+\begin{definition}[Domain (II.2.3)]
+    \label{sec:Domain}
+    By a \textbf{domain} we understand an \hyperref[sec:ArcwiseConnected]{arcwise connected} non-empty open set $D \subset \mathbb{C}$.
+\end{definition}
+
+
+\begin{definition}[A Star-shaped Domain (II.2.6)]
+    \label{sec:StarDomain}
+    A \textbf{star-shaped domain} is an open set $D \subset \mathbb{C}$ with the following property:
+    There is a point $z_\star \in D$ such that for each point $z \in D$ the whole line segment joining $z_\star$ and $z$ is
+    contained in $D$:
+    $$\{ z_\star + t(z - z_\star) ; t \in [0, 1] \} \subset D .$$
+    The point $z_\star$ is not uniquely determined, and is called a (possible) star center.
+\end{definition}
+
+
+\begin{definition}[Elementary Domain (II.2.8)]
+    \label{sec:ElemDomain}
+    A domain $D \subset \mathbb{C}$ is called an \textbf{elementary domain}, if
+    any analytic function defined on $D$ has a primitive in $D$.
+\end{definition}
+
+
+\begin{definition}[Entire Function (II.3.6)]
+    \label{sec:EntireFunction}
+    An analytic function $f : \mathbb{C} \rightarrow \mathbb{C}$ is said to be \textbf{entire}.
+\end{definition}
