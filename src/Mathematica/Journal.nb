@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     22753,        524]
-NotebookOptionsPosition[     18758,        440]
-NotebookOutlinePosition[     19410,        461]
-CellTagsIndexPosition[     19367,        458]
+NotebookDataLength[     31290,        743]
+NotebookOptionsPosition[     26745,        650]
+NotebookOutlinePosition[     27397,        671]
+CellTagsIndexPosition[     27354,        668]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
@@ -422,17 +422,227 @@ Cell[TextData[StyleBox["Daily Journal",
 
 Cell["\<\
 Why did I quit the journal after only a few days? Can\[CloseCurlyQuote]t \
-remember. My first notes and thoughts actually did inspired me and had a \
-healing effect. Covid-19 or the Corona virus helped me also. The all over \
-\[OpenCurlyDoubleQuote]quiet-mode\[CloseCurlyDoubleQuote] in society helped \
-me to relax and concentrate, so I have been quite productive.
+remember. My first notes and thoughts actually did inspire me and had a \
+healing effect. Covid-19 or the Corona virus measurements helped me also. The \
+all over \[OpenCurlyDoubleQuote]quiet-mode\[CloseCurlyDoubleQuote] in society \
+helped me to relax and concentrate, so I have been quite productive.
 Working on Apostol\[CloseCurlyQuote]s ANT mostly. Should/(want to) do more \
 Riemann explorations and MMa programming projects.\
 \>", "Text",
  CellChangeTimes->{{3.798814448751232*^9, 3.798814646260793*^9}, {
-  3.7988179645398674`*^9, 
-  3.798818028356275*^9}},ExpressionUUID->"bd15186b-a3e8-4123-8cde-\
+  3.7988179645398674`*^9, 3.798818028356275*^9}, {3.798862225458502*^9, 
+  3.798862234130339*^9}},ExpressionUUID->"bd15186b-a3e8-4123-8cde-\
 99edbf37d5e5"]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["19/5-\[OpenCurlyQuote]20", "Section",
+ CellChangeTimes->{{3.7832737703729143`*^9, 3.7832737842442713`*^9}, {
+  3.7832739024677706`*^9, 3.7832739104188433`*^9}, {3.7832739717708426`*^9, 
+  3.783273973717634*^9}, {3.7853374065365705`*^9, 3.7853374175281563`*^9}, {
+  3.7988143847915077`*^9, 3.798814389944234*^9}, {3.7988622548577547`*^9, 
+  3.798862255217588*^9}},ExpressionUUID->"c300db28-ed6f-4ee0-a54b-\
+0c3a73b0fa70"],
+
+Cell[CellGroupData[{
+
+Cell[TextData[StyleBox["Daily Journal",
+ FontWeight->"Bold"]], "Subsection",
+ CellChangeTimes->{{3.7826654768540397`*^9, 3.782665485158893*^9}, 
+   3.782715887476343*^9, {3.782716848474037*^9, 3.782716871121205*^9}, {
+   3.7827173361574907`*^9, 3.7827173415799327`*^9}, {3.7828031783556767`*^9, 
+   3.78280318145585*^9}, {3.7828034538688183`*^9, 3.7828034574366493`*^9}, {
+   3.7833530768548527`*^9, 3.7833530903994584`*^9}, {3.783358080038978*^9, 
+   3.7833580879180937`*^9}, {3.7853375280890074`*^9, 
+   3.7853375294890585`*^9}, {3.7853376919671907`*^9, 3.785337694982155*^9}, {
+   3.7854227377175193`*^9, 3.7854227498539877`*^9}, {3.7855084475717373`*^9, 
+   3.785508447747633*^9}, {3.785582161416625*^9, 3.7855821630487275`*^9}, {
+   3.7855826904353905`*^9, 3.7855826953712454`*^9}},
+ FontColor->GrayLevel[
+  0],ExpressionUUID->"9d1855d9-d475-4ae6-aa6f-99bbd1358a11"],
+
+Cell["\<\
+Thinking about making a \[OpenCurlyDoubleQuote]Relation Visualizer\
+\[CloseCurlyDoubleQuote] in MMa. Starting with getting back into Manipulate. \
+Must think about how to implement a matrix of checkboxes or buttons.\
+\>", "Text",
+ CellChangeTimes->{{3.798814448751232*^9, 3.798814646260793*^9}, {
+  3.7988179645398674`*^9, 3.798818028356275*^9}, {3.798862225458502*^9, 
+  3.798862307017396*^9}, {3.7988626599174843`*^9, 
+  3.798862687316636*^9}},ExpressionUUID->"6f57d81d-5fb4-4e87-981b-\
+7e32f372540e"],
+
+Cell[BoxData[
+ RowBox[{"Manipulate", "[", "\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{"ParametricPlot", "[", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"a1", " ", 
+        RowBox[{"Sin", "[", 
+         RowBox[{"n1", " ", 
+          RowBox[{"(", 
+           RowBox[{"x", "+", "p1"}], ")"}]}], "]"}]}], ",", 
+       RowBox[{"a2", " ", 
+        RowBox[{"Cos", "[", 
+         RowBox[{"n2", " ", 
+          RowBox[{"(", 
+           RowBox[{"x", "+", "p2"}], ")"}]}], "]"}]}]}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"x", ",", "0", ",", 
+       RowBox[{"20", "Pi"}]}], "}"}], ",", 
+     RowBox[{"PlotRange", "\[Rule]", "1"}], ",", 
+     RowBox[{"PerformanceGoal", "\[Rule]", "\"\<Quality\>\""}]}], "]"}], ",", 
+   "\[IndentingNewLine]", 
+   RowBox[{"Style", "[", 
+    RowBox[{"\"\<Horizontal\>\"", ",", "12", ",", "Bold"}], "]"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"n1", ",", "1", ",", "\"\<Frequency\>\""}], "}"}], ",", "1", 
+     ",", "4"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"a1", ",", "1", ",", "\"\<Amplitude\>\""}], "}"}], ",", "0", 
+     ",", "1"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"p1", ",", "0", ",", "\"\<Phase\>\""}], "}"}], ",", "0", ",", 
+     RowBox[{"2", "Pi"}]}], "}"}], ",", "\[IndentingNewLine]", "Delimiter", 
+   ",", 
+   RowBox[{"Style", "[", 
+    RowBox[{"\"\<Vertical\>\"", ",", "12", ",", "Bold"}], "]"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"n2", ",", 
+       RowBox[{"5", "/", "4"}], ",", "\"\<Frequency\>\""}], "}"}], ",", "1", 
+     ",", "4"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"a2", ",", "1", ",", "\"\<Amplitude\>\""}], "}"}], ",", "0", 
+     ",", "1"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"p2", ",", "0", ",", "\"\<Phase\>\""}], "}"}], ",", "0", ",", 
+     RowBox[{"2", "Pi"}]}], "}"}], ",", " ", 
+   RowBox[{"ControlPlacement", "\[Rule]", "Left"}]}], "]"}]], "Input",
+ CellChangeTimes->{{3.798810773033477*^9, 3.7988107757116547`*^9}, 
+   3.7988179408615584`*^9, {3.798861584648848*^9, 3.7988615888024235`*^9}},
+ CellLabel->
+  "In[4623]:=",ExpressionUUID->"0a91421f-dab2-472f-868f-5b52df266564"],
+
+Cell[BoxData[
+ RowBox[{"Manipulate", "[", 
+  RowBox[{
+   RowBox[{"ParametricPlot", "[", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"a1", " ", 
+        RowBox[{"Sin", "[", 
+         RowBox[{"n1", " ", 
+          RowBox[{"(", 
+           RowBox[{"x", "+", "p1"}], ")"}]}], "]"}]}], ",", 
+       RowBox[{"a2", " ", 
+        RowBox[{"Cos", "[", 
+         RowBox[{"n2", " ", 
+          RowBox[{"(", 
+           RowBox[{"x", "+", "p2"}], ")"}]}], "]"}]}]}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"x", ",", "0", ",", 
+       RowBox[{"20", "Pi"}]}], "}"}], ",", 
+     RowBox[{"PlotRange", "\[Rule]", "1.1"}], ",", 
+     RowBox[{"PerformanceGoal", "\[Rule]", "\"\<Quality\>\""}], ",", 
+     RowBox[{"Axes", " ", "\[Rule]", " ", "axes"}], ",", 
+     RowBox[{"ImageSize", " ", "\[Rule]", " ", "size"}]}], "]"}], ",", 
+   "\[IndentingNewLine]", 
+   RowBox[{"OpenerView", "[", 
+    RowBox[{"{", 
+     RowBox[{"\"\<Horizontal\>\"", ",", 
+      RowBox[{"Column", "[", 
+       RowBox[{
+        RowBox[{"{", 
+         RowBox[{
+          RowBox[{"Control", "[", 
+           RowBox[{"{", 
+            RowBox[{
+             RowBox[{"{", 
+              RowBox[{"n1", ",", "1", ",", "\"\<Frequency\>\""}], "}"}], ",", 
+             "1", ",", "4"}], "}"}], "]"}], ",", 
+          RowBox[{"Control", "[", 
+           RowBox[{"{", 
+            RowBox[{
+             RowBox[{"{", 
+              RowBox[{"a1", ",", "1", ",", "\"\<Amplitude\>\""}], "}"}], ",", 
+             "0", ",", "1"}], "}"}], "]"}], ",", 
+          RowBox[{"Control", "[", 
+           RowBox[{"{", 
+            RowBox[{
+             RowBox[{"{", 
+              RowBox[{"p1", ",", "0", ",", "\"\<Phase\>\""}], "}"}], ",", "0",
+              ",", 
+             RowBox[{"2", "Pi"}]}], "}"}], "]"}]}], "}"}], ",", "Right"}], 
+       "]"}]}], "}"}], "]"}], ",", 
+   RowBox[{"OpenerView", "[", 
+    RowBox[{"{", 
+     RowBox[{"\"\<Vertical\>\"", ",", 
+      RowBox[{"Column", "[", 
+       RowBox[{
+        RowBox[{"{", 
+         RowBox[{
+          RowBox[{"Control", "[", 
+           RowBox[{"{", 
+            RowBox[{
+             RowBox[{"{", 
+              RowBox[{"n2", ",", 
+               RowBox[{"5", "/", "4"}], ",", "\"\<Frequency\>\""}], "}"}], 
+             ",", "1", ",", "4"}], "}"}], "]"}], ",", 
+          RowBox[{"Control", "[", 
+           RowBox[{"{", 
+            RowBox[{
+             RowBox[{"{", 
+              RowBox[{"a2", ",", "1", ",", "\"\<Amplitude\>\""}], "}"}], ",", 
+             "0", ",", "1"}], "}"}], "]"}], ",", 
+          RowBox[{"Control", "[", 
+           RowBox[{"{", 
+            RowBox[{
+             RowBox[{"{", 
+              RowBox[{"p2", ",", "0", ",", "\"\<Phase\>\""}], "}"}], ",", "0",
+              ",", 
+             RowBox[{"2", "Pi"}]}], "}"}], "]"}]}], "}"}], ",", "Right"}], 
+       "]"}]}], "}"}], "]"}], ",", 
+   RowBox[{"OpenerView", "[", 
+    RowBox[{"{", 
+     RowBox[{"\"\<Plot options\>\"", ",", 
+      RowBox[{"Row", "[", 
+       RowBox[{
+        RowBox[{"{", 
+         RowBox[{
+          RowBox[{"Control", "[", 
+           RowBox[{"{", 
+            RowBox[{"axes", ",", 
+             RowBox[{"{", 
+              RowBox[{"True", ",", "False"}], "}"}]}], "}"}], "]"}], ",", 
+          RowBox[{"Control", "[", 
+           RowBox[{"{", 
+            RowBox[{
+             RowBox[{"{", 
+              RowBox[{"size", ",", "Medium"}], "}"}], ",", 
+             RowBox[{"{", 
+              RowBox[{"Small", ",", "Medium", ",", "Large"}], "}"}]}], "}"}], 
+           "]"}]}], "}"}], ",", 
+        RowBox[{"Spacer", "[", "20", "]"}]}], "]"}]}], "}"}], "]"}], ",", " ", 
+   RowBox[{"ControlPlacement", "\[Rule]", "Bottom"}]}], "]"}]], "Input",
+ CellLabel->
+  "In[4625]:=",ExpressionUUID->"374ec9da-213d-4bce-88eb-9b3e24c22de8"]
 }, Open  ]]
 }, Open  ]]
 }, Open  ]]
@@ -521,7 +731,16 @@ Cell[CellGroupData[{
 Cell[16735, 397, 378, 6, 67, "Section",ExpressionUUID->"9b00350c-37db-4a4a-b821-02ddba4796f3"],
 Cell[CellGroupData[{
 Cell[17138, 407, 871, 13, 53, "Subsection",ExpressionUUID->"37f2f253-d318-42d3-8dfe-c218d669d6cc"],
-Cell[18012, 422, 694, 12, 100, "Text",ExpressionUUID->"bd15186b-a3e8-4123-8cde-99edbf37d5e5"]
+Cell[18012, 422, 752, 12, 100, "Text",ExpressionUUID->"bd15186b-a3e8-4123-8cde-99edbf37d5e5"]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[18813, 440, 426, 6, 67, "Section",ExpressionUUID->"c300db28-ed6f-4ee0-a54b-0c3a73b0fa70"],
+Cell[CellGroupData[{
+Cell[19264, 450, 871, 13, 53, "Subsection",ExpressionUUID->"9d1855d9-d475-4ae6-aa6f-99bbd1358a11"],
+Cell[20138, 465, 513, 9, 56, "Text",ExpressionUUID->"6f57d81d-5fb4-4e87-981b-7e32f372540e"],
+Cell[20654, 476, 2288, 63, 105, "Input",ExpressionUUID->"0a91421f-dab2-472f-868f-5b52df266564"],
+Cell[22945, 541, 3748, 103, 219, "Input",ExpressionUUID->"374ec9da-213d-4bce-88eb-9b3e24c22de8"]
 }, Open  ]]
 }, Open  ]]
 }, Open  ]]
