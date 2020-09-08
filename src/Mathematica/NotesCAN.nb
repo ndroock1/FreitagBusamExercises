@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[   1557884,      27235]
-NotebookOptionsPosition[   1548214,      27054]
-NotebookOutlinePosition[   1548863,      27075]
-CellTagsIndexPosition[   1548820,      27072]
+NotebookDataLength[   1574807,      27628]
+NotebookOptionsPosition[   1564441,      27435]
+NotebookOutlinePosition[   1565090,      27456]
+CellTagsIndexPosition[   1565047,      27453]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
@@ -27046,6 +27046,387 @@ Gq1ou3i2LOIPc7s++w==
    3.808473061770364*^9}, {3.808473193778962*^9, 3.8084733599888935`*^9}},
  CellLabel->
   "Out[156]=",ExpressionUUID->"e28de796-cdb6-44d7-aecc-aacd1e19900e"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  SuperscriptBox["7", "2"], "+", 
+  SuperscriptBox["3", "2"]}]], "Input",
+ CellChangeTimes->{{3.808555930406805*^9, 3.808555935637373*^9}},
+ CellLabel->
+  "In[157]:=",ExpressionUUID->"8e1dcf14-9064-4847-8f25-5d8641f167fc"],
+
+Cell[BoxData["58"], "Output",
+ CellChangeTimes->{3.8085559471061707`*^9},
+ CellLabel->
+  "Out[157]=",ExpressionUUID->"cc209880-a522-4fcf-8234-b63703366931"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Mod", "[", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"ModularInverse", "[", 
+     RowBox[{"7", ",", "58"}], "]"}], "3"}], ",", "58"}], "]"}]], "Input",
+ CellChangeTimes->{{3.8085559539034624`*^9, 3.8085559907397957`*^9}, {
+  3.8085560319632387`*^9, 3.8085560470671186`*^9}, {3.8085561310270586`*^9, 
+  3.808556147219847*^9}, {3.808556183281579*^9, 3.808556188562564*^9}, {
+  3.8085562527308073`*^9, 
+  3.8085562653382297`*^9}},ExpressionUUID->"2659177b-d4db-4057-a124-\
+6a186390e421"],
+
+Cell[BoxData["22"], "Output",
+ CellChangeTimes->{
+  3.8085561892426395`*^9, {3.808556253989922*^9, 3.80855626180511*^9}},
+ CellLabel->
+  "Out[161]=",ExpressionUUID->"33d225fe-4a87-4f35-88fe-4a9348a42de6"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"?", "PowerMod"}]], "Input",
+ CellChangeTimes->{{3.808556055911521*^9, 3.808556060509877*^9}},
+ CellLabel->
+  "In[158]:=",ExpressionUUID->"32cac8a9-7621-4e6e-b692-f0ad05a9be8a"],
+
+Cell[BoxData[
+ InterpretationBox[
+  StyleBox[
+   FrameBox[
+    DynamicModuleBox[{System`InformationDump`open$$ = False, 
+     System`InformationDump`mouseOver$$ = False}, 
+     PaneSelectorBox[{True->
+      TagBox[GridBox[{
+         {
+          ItemBox[
+           PaneBox[
+            StyleBox["\<\" Symbol\"\>", "InformationTitleText",
+             StripOnInput->False,
+             BaseStyle -> None],
+            FrameMargins->{{4, 0}, {-1, 1}}],
+           BaseStyle->"InformationTitleBackground",
+           StripOnInput->False], 
+          ItemBox[
+           PaneBox[
+            TooltipBox[
+             ButtonBox[
+              PaneSelectorBox[{False->
+               
+               DynamicBox[FEPrivate`FrontEndResource[
+                "FEBitmaps", "InformationHelpIcon"]], True->
+               
+               DynamicBox[FEPrivate`FrontEndResource[
+                "FEBitmaps", "InformationHelpIconHot"]]}, Dynamic[
+                CurrentValue["MouseOver"]]],
+              Appearance->None,
+              BaseStyle->"Link",
+              ButtonData->"paclet:ref/PowerMod",
+              ButtonNote->"paclet:ref/PowerMod"],
+             "\"paclet:ref/PowerMod\""],
+            FrameMargins->{{0, 4}, {0, 2}}],
+           BaseStyle->"InformationTitleBackground",
+           StripOnInput->False]},
+         {
+          ItemBox[
+           PaneBox[
+            
+            StyleBox["\<\"\\!\\(\\*RowBox[{\\\"PowerMod\\\", \\\"[\\\", \
+RowBox[{StyleBox[\\\"a\\\", \\\"TI\\\"], \\\",\\\", StyleBox[\\\"b\\\", \
+\\\"TI\\\"], \\\",\\\", StyleBox[\\\"m\\\", \\\"TI\\\"]}], \\\"]\\\"}]\\) \
+gives \\!\\(\\*RowBox[{SuperscriptBox[StyleBox[\\\"a\\\", \\\"TI\\\"], \
+StyleBox[\\\"b\\\", \\\"TI\\\"]], \\\" \\\", \\\"mod\\\", \\\" \\\", \
+StyleBox[\\\"m\\\", \\\"TI\\\"]}]\\). \\n\\!\\(\\*RowBox[{\\\"PowerMod\\\", \
+\\\"[\\\", RowBox[{StyleBox[\\\"a\\\", \\\"TI\\\"], \\\",\\\", \
+RowBox[{\\\"-\\\", \\\"1\\\"}], \\\",\\\", StyleBox[\\\"m\\\", \\\"TI\\\"]}], \
+\\\"]\\\"}]\\) finds the modular inverse of \\!\\(\\*StyleBox[\\\"a\\\", \
+\\\"TI\\\"]\\) modulo \\!\\(\\*StyleBox[\\\"m\\\", \
+\\\"TI\\\"]\\).\\n\\!\\(\\*RowBox[{\\\"PowerMod\\\", \\\"[\\\", \
+RowBox[{StyleBox[\\\"a\\\", \\\"TI\\\"], \\\",\\\", RowBox[{\\\"1\\\", \
+\\\"/\\\", StyleBox[\\\"r\\\", \\\"TI\\\"]}], \\\",\\\", StyleBox[\\\"m\\\", \
+\\\"TI\\\"]}], \\\"]\\\"}]\\) finds a modular \\!\\(\\*StyleBox[\\\"r\\\", \\\
+\"TI\\\"]\\)\\!\\(\\*SuperscriptBox[\\\"\[Null]\\\", \\\"th\\\"]\\) root of \
+\\!\\(\\*StyleBox[\\\"a\\\", \\\"TI\\\"]\\).\"\>", "InformationUsageText",
+             StripOnInput->False,
+             LineSpacing->{1.5, 1.5, 3.}],
+            FrameMargins->{{10, 10}, {8, 10}}],
+           BaseStyle->"InformationUsageSubtitleBackground",
+           StripOnInput->False], 
+          ItemBox["\<\"\"\>",
+           BaseStyle->"InformationUsageSubtitleBackground",
+           StripOnInput->False]},
+         {
+          PaneBox[GridBox[{
+             {
+              
+              DynamicModuleBox[{System`InformationDump`open$$ = {
+               False, False, False, False, False, False, False, False, False, 
+                False, False, False}}, 
+               StyleBox[GridBox[{
+                  {
+                   TagBox[
+                    TooltipBox[
+                    StyleBox["\<\" Documentation\"\>", "InformationRowLabel",
+                    StripOnInput->False],
+                    "\"Documentation\"",
+                    TooltipStyle->"TextStyling"],
+                    Annotation[#, "Documentation", "Tooltip"]& ], 
+                   TemplateBox[{
+                    
+                    TemplateBox[{
+                    "\"Local \[RightGuillemet]\"", "paclet:ref/PowerMod", 
+                    "paclet:ref/PowerMod", "Link", {
+                    RGBColor[0.9686274509803922, 0.4666666666666667, 0.]}, 
+                    BaseStyle -> {
+                    RGBColor[0.0784313725490196, 0.1568627450980392, 0.6]}}, 
+                    "HyperlinkTemplate"], "\"  \"", 
+                    StyleBox[
+                    "\"|\"", "InformationRowLabel", StripOnInput -> False], 
+                    "\"  \"", 
+                    TemplateBox[{"\"Web \[RightGuillemet]\"", {
+                    URL[
+                    "http://reference.wolfram.com/language/ref/PowerMod.html"]\
+, None}, "http://reference.wolfram.com/language/ref/PowerMod.html", 
+                    "Hyperlink", {
+                    RGBColor[0.9686274509803922, 0.4666666666666667, 0.]}, 
+                    BaseStyle -> {
+                    RGBColor[0.0784313725490196, 0.1568627450980392, 0.6]}}, 
+                    "HyperlinkTemplate"]},
+                    "RowDefault"]},
+                  {
+                   TagBox[
+                    TooltipBox[
+                    StyleBox["\<\" Attributes\"\>", "InformationRowLabel",
+                    StripOnInput->False],
+                    "\"Attributes\"",
+                    TooltipStyle->"TextStyling"],
+                    Annotation[#, "Attributes", "Tooltip"]& ], 
+                   RowBox[{"{", 
+                    RowBox[{
+                    "Listable", ",", "Protected", ",", "ReadProtected"}], 
+                    "}"}]},
+                  {
+                   TagBox[
+                    TooltipBox[
+                    StyleBox["\<\" Full Name\"\>", "InformationRowLabel",
+                    StripOnInput->False],
+                    "\"FullName\"",
+                    TooltipStyle->"TextStyling"],
+                    
+                    Annotation[#, "FullName", 
+                    "Tooltip"]& ], "\<\"System`PowerMod\"\>"}
+                 },
+                 AutoDelete->False,
+                 GridBoxAlignment->{"Columns" -> {Right, Left}},
+                 GridBoxDividers->None,
+                 GridBoxItemSize->{"Columns" -> {Automatic, Automatic}},
+                 GridBoxSpacings->{"Columns" -> {
+                    Offset[0.27999999999999997`], {
+                    Offset[0.5599999999999999]}, 
+                    Offset[0.27999999999999997`]}, "Rows" -> {
+                    Offset[0.2], {
+                    Offset[0.8]}, 
+                    Offset[0.2]}}], "DialogStyle",
+                StripOnInput->False],
+               DynamicModuleValues:>{}]}
+            },
+            DefaultBaseStyle->"Column",
+            GridBoxAlignment->{"Columns" -> {{Left}}},
+            GridBoxDividers->{"Columns" -> {{False}}, "Rows" -> {{False}}},
+            
+            GridBoxItemSize->{
+             "Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}},
+            GridBoxSpacings->{"Columns" -> {
+                Offset[0.27999999999999997`], {
+                 Offset[0.5599999999999999]}, 
+                Offset[0.27999999999999997`]}, "Rows" -> {
+                Offset[0.2], {
+                 Offset[3.6]}, 
+                Offset[0.2]}}],
+           FrameMargins->6], ""},
+         {
+          ItemBox[
+           TagBox[
+            ButtonBox[
+             PaneSelectorBox[{False->
+              
+              DynamicBox[FEPrivate`FrontEndResource[
+               "FEBitmaps", "UpPointerOpener"]], True->
+              
+              DynamicBox[FEPrivate`FrontEndResource[
+               "FEBitmaps", "UpPointerOpenerHot"]]}, Dynamic[
+              System`InformationDump`mouseOver$$]],
+             Alignment->Left,
+             Appearance->{"Default" -> None},
+             
+             ButtonFunction:>FEPrivate`Set[
+              System`InformationDump`open$$, False],
+             Evaluator->Automatic,
+             FrameMargins->{{9, 0}, {0, 0}},
+             ImageMargins->0,
+             ImageSize->Full,
+             Method->"Preemptive"],
+            
+            EventHandlerTag[{
+             "MouseEntered" :> 
+              FEPrivate`Set[System`InformationDump`mouseOver$$, True], 
+              "MouseExited" :> 
+              FEPrivate`Set[System`InformationDump`mouseOver$$, False], 
+              Method -> "Preemptive", PassEventsDown -> Automatic, 
+              PassEventsUp -> True}]],
+           BaseStyle->"InformationTitleBackground",
+           StripOnInput->False], "\[SpanFromLeft]"}
+        },
+        AutoDelete->False,
+        FrameStyle->Directive[
+          GrayLevel[0.8], 
+          Thickness[Tiny]],
+        GridBoxAlignment->{"Columns" -> {Left, Right}, "Rows" -> {{Center}}},
+        GridBoxDividers->{
+         "Columns" -> {{None}}, "Rows" -> {False, {True}, False}},
+        GridBoxItemSize->{
+         "Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}}],
+       "Grid"], False->
+      TagBox[GridBox[{
+         {
+          ItemBox[
+           PaneBox[
+            StyleBox["\<\" Symbol\"\>", "InformationTitleText",
+             StripOnInput->False],
+            FrameMargins->{{4, 0}, {-1, 1}}],
+           BaseStyle->"InformationTitleBackground",
+           StripOnInput->False], 
+          ItemBox[
+           PaneBox[
+            TooltipBox[
+             ButtonBox[
+              PaneSelectorBox[{False->
+               
+               DynamicBox[FEPrivate`FrontEndResource[
+                "FEBitmaps", "InformationHelpIcon"],
+                ImageSizeCache->{13., {4., 9.}}], True->
+               
+               DynamicBox[FEPrivate`FrontEndResource[
+                "FEBitmaps", "InformationHelpIconHot"],
+                ImageSizeCache->{13., {4., 9.}}]}, Dynamic[
+                CurrentValue["MouseOver"]]],
+              Appearance->None,
+              BaseStyle->"Link",
+              ButtonData->"paclet:ref/PowerMod",
+              ButtonNote->"paclet:ref/PowerMod"],
+             "\"paclet:ref/PowerMod\""],
+            FrameMargins->{{0, 4}, {0, 2}}],
+           BaseStyle->"InformationTitleBackground",
+           StripOnInput->False]},
+         {
+          ItemBox[
+           PaneBox[
+            
+            StyleBox["\<\"\\!\\(\\*RowBox[{\\\"PowerMod\\\", \\\"[\\\", \
+RowBox[{StyleBox[\\\"a\\\", \\\"TI\\\"], \\\",\\\", StyleBox[\\\"b\\\", \
+\\\"TI\\\"], \\\",\\\", StyleBox[\\\"m\\\", \\\"TI\\\"]}], \\\"]\\\"}]\\) \
+gives \\!\\(\\*RowBox[{SuperscriptBox[StyleBox[\\\"a\\\", \\\"TI\\\"], \
+StyleBox[\\\"b\\\", \\\"TI\\\"]], \\\" \\\", \\\"mod\\\", \\\" \\\", \
+StyleBox[\\\"m\\\", \\\"TI\\\"]}]\\). \\n\\!\\(\\*RowBox[{\\\"PowerMod\\\", \
+\\\"[\\\", RowBox[{StyleBox[\\\"a\\\", \\\"TI\\\"], \\\",\\\", \
+RowBox[{\\\"-\\\", \\\"1\\\"}], \\\",\\\", StyleBox[\\\"m\\\", \\\"TI\\\"]}], \
+\\\"]\\\"}]\\) finds the modular inverse of \\!\\(\\*StyleBox[\\\"a\\\", \
+\\\"TI\\\"]\\) modulo \\!\\(\\*StyleBox[\\\"m\\\", \
+\\\"TI\\\"]\\).\\n\\!\\(\\*RowBox[{\\\"PowerMod\\\", \\\"[\\\", \
+RowBox[{StyleBox[\\\"a\\\", \\\"TI\\\"], \\\",\\\", RowBox[{\\\"1\\\", \
+\\\"/\\\", StyleBox[\\\"r\\\", \\\"TI\\\"]}], \\\",\\\", StyleBox[\\\"m\\\", \
+\\\"TI\\\"]}], \\\"]\\\"}]\\) finds a modular \\!\\(\\*StyleBox[\\\"r\\\", \\\
+\"TI\\\"]\\)\\!\\(\\*SuperscriptBox[\\\"\[Null]\\\", \\\"th\\\"]\\) root of \
+\\!\\(\\*StyleBox[\\\"a\\\", \\\"TI\\\"]\\).\"\>", "InformationUsageText",
+             StripOnInput->False,
+             LineSpacing->{1.5, 1.5, 3.}],
+            FrameMargins->{{10, 10}, {8, 10}}],
+           BaseStyle->"InformationUsageSubtitleBackground",
+           StripOnInput->False], 
+          ItemBox["\<\"\"\>",
+           BaseStyle->"InformationUsageSubtitleBackground",
+           StripOnInput->False]},
+         {
+          ItemBox[
+           TagBox[
+            ButtonBox[
+             PaneSelectorBox[{False->
+              
+              DynamicBox[FEPrivate`FrontEndResource[
+               "FEBitmaps", "DownPointerOpener"],
+               ImageSizeCache->{10., {3., 7.}}], True->
+              
+              DynamicBox[FEPrivate`FrontEndResource[
+               "FEBitmaps", "DownPointerOpenerHot"],
+               ImageSizeCache->{10., {3., 7.}}]}, Dynamic[
+              System`InformationDump`mouseOver$$]],
+             Alignment->Left,
+             Appearance->{"Default" -> None},
+             
+             ButtonFunction:>FEPrivate`Set[
+              System`InformationDump`open$$, True],
+             Evaluator->Automatic,
+             FrameMargins->{{9, 0}, {0, 0}},
+             ImageMargins->0,
+             ImageSize->Full,
+             Method->"Preemptive"],
+            
+            EventHandlerTag[{
+             "MouseEntered" :> 
+              FEPrivate`Set[System`InformationDump`mouseOver$$, True], 
+              "MouseExited" :> 
+              FEPrivate`Set[System`InformationDump`mouseOver$$, False], 
+              Method -> "Preemptive", PassEventsDown -> Automatic, 
+              PassEventsUp -> True}]],
+           BaseStyle->"InformationTitleBackground",
+           StripOnInput->False], "\[SpanFromLeft]"}
+        },
+        AutoDelete->False,
+        FrameStyle->Directive[
+          GrayLevel[0.8], 
+          Thickness[Tiny]],
+        GridBoxAlignment->{"Columns" -> {Left, Right}, "Rows" -> {{Center}}},
+        GridBoxDividers->{
+         "Columns" -> {{None}}, "Rows" -> {False, {True}, False}},
+        GridBoxItemSize->{
+         "Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}}],
+       "Grid"]}, Dynamic[System`InformationDump`open$$],
+      BaselinePosition->Baseline,
+      FrameMargins->0,
+      ImageSize->Automatic],
+     DynamicModuleValues:>{}],
+    BaseStyle->"InformationGridFrame",
+    StripOnInput->False], "InformationGridPlain",
+   StripOnInput->False],
+  InformationData[
+   Association[
+   "ObjectType" -> "Symbol", "Usage" -> 
+    "\!\(\*RowBox[{\"PowerMod\", \"[\", RowBox[{StyleBox[\"a\", \"TI\"], \
+\",\", StyleBox[\"b\", \"TI\"], \",\", StyleBox[\"m\", \"TI\"]}], \"]\"}]\) \
+gives \!\(\*RowBox[{SuperscriptBox[StyleBox[\"a\", \"TI\"], StyleBox[\"b\", \
+\"TI\"]], \" \", \"mod\", \" \", StyleBox[\"m\", \"TI\"]}]\). \n\
+\!\(\*RowBox[{\"PowerMod\", \"[\", RowBox[{StyleBox[\"a\", \"TI\"], \",\", \
+RowBox[{\"-\", \"1\"}], \",\", StyleBox[\"m\", \"TI\"]}], \"]\"}]\) finds the \
+modular inverse of \!\(\*StyleBox[\"a\", \"TI\"]\) modulo \
+\!\(\*StyleBox[\"m\", \"TI\"]\).\n\!\(\*RowBox[{\"PowerMod\", \"[\", \
+RowBox[{StyleBox[\"a\", \"TI\"], \",\", RowBox[{\"1\", \"/\", StyleBox[\"r\", \
+\"TI\"]}], \",\", StyleBox[\"m\", \"TI\"]}], \"]\"}]\) finds a modular \
+\!\(\*StyleBox[\"r\", \"TI\"]\)\!\(\*SuperscriptBox[\"\[Null]\", \"th\"]\) \
+root of \!\(\*StyleBox[\"a\", \"TI\"]\).", "Documentation" -> 
+    Association[
+     "Local" -> "paclet:ref/PowerMod", "Web" -> 
+      "http://reference.wolfram.com/language/ref/PowerMod.html"], "OwnValues" -> 
+    None, "UpValues" -> None, "DownValues" -> None, "SubValues" -> None, 
+    "DefaultValues" -> None, "NValues" -> None, "FormatValues" -> None, 
+    "Options" -> None, "Attributes" -> {Listable, Protected, ReadProtected}, 
+    "FullName" -> "System`PowerMod"], False]]], "Output",
+ CellChangeTimes->{3.8085560652313757`*^9},
+ CellLabel->
+  "Out[158]=",ExpressionUUID->"496f7a83-2fd3-4771-a26d-b46595b8108b"]
 }, Open  ]]
 }, Open  ]]
 }, Open  ]]
@@ -27232,6 +27613,18 @@ Cell[1158135, 20169, 691, 22, 28, "Input",ExpressionUUID->"4175b6f1-b23f-4bc5-b7
 Cell[CellGroupData[{
 Cell[1158851, 20195, 2682, 69, 181, "Input",ExpressionUUID->"0adc1e83-388f-4b7d-b816-1a1af526ca71"],
 Cell[1161536, 20266, 386614, 6781, 471, "Output",ExpressionUUID->"e28de796-cdb6-44d7-aecc-aacd1e19900e"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[1548187, 27052, 246, 6, 28, "Input",ExpressionUUID->"8e1dcf14-9064-4847-8f25-5d8641f167fc"],
+Cell[1548436, 27060, 156, 3, 32, "Output",ExpressionUUID->"cc209880-a522-4fcf-8234-b63703366931"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[1548629, 27068, 502, 11, 28, "Input",ExpressionUUID->"2659177b-d4db-4057-a124-6a186390e421"],
+Cell[1549134, 27081, 204, 4, 32, "Output",ExpressionUUID->"33d225fe-4a87-4f35-88fe-4a9348a42de6"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[1549375, 27090, 200, 4, 28, "Input",ExpressionUUID->"32cac8a9-7621-4e6e-b692-f0ad05a9be8a"],
+Cell[1549578, 27096, 14799, 332, 141, "Output",ExpressionUUID->"496f7a83-2fd3-4771-a26d-b46595b8108b"]
 }, Open  ]]
 }, Open  ]]
 }, Open  ]]
