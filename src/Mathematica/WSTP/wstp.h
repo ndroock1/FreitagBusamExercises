@@ -4,6 +4,10 @@
         All rights reserved
 
 *************************************************************************/
+/*
+ Added for gcc compatibility 6/nov-'20
+*/
+#define __int64 long long
 
 #ifndef _WSTP_H
 #define _WSTP_H

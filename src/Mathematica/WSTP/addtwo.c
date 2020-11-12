@@ -9,8 +9,11 @@
  * Then, from within Mathematica use:
  *   In[1]:= link = Install["portname", LinkMode->Connect]
  */
-
+#include <windows.h> 
+#include<stdio.h>
 #include "wstp.h"
+#include "pari/pari.h"
+
 
 extern int WSMain(int, char **);
 
@@ -21,11 +24,15 @@ int addtwo( int i, int j)
 	return i+j;
 }
 
+int multwo( int i, int j)
+{
+	return i * j;
+}
 
 
 #if WINDOWS_WSTP
 
-#include <windows.h>
+/*#include <windows.h>*/
 extern HWND WSInitializeIcon( HINSTANCE hinstCurrent, int nCmdShow);
 
 int PASCAL WinMain( HINSTANCE hinstCurrent, HINSTANCE hinstPrevious, LPSTR lpszCmdLine, int nCmdShow)
