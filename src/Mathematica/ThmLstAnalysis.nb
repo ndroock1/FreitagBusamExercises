@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[    823747,      17004]
-NotebookOptionsPosition[    798835,      16568]
-NotebookOutlinePosition[    799567,      16590]
-CellTagsIndexPosition[    799524,      16587]
+NotebookDataLength[    825570,      17055]
+NotebookOptionsPosition[    800202,      16611]
+NotebookOutlinePosition[    800933,      16633]
+CellTagsIndexPosition[    800890,      16630]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
@@ -16562,13 +16562,56 @@ Cell[BoxData[
    RowBox[{"2", " ", "\[Pi]"}]]}]], "Output",
  CellChangeTimes->{3.823363640987985*^9},
  CellLabel->"Out[5]=",ExpressionUUID->"8911ecb2-4abd-4914-afad-b4098ea2a9a4"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Sum", "[", 
+  RowBox[{
+   RowBox[{"Log", "[", 
+    RowBox[{"1", "+", 
+     RowBox[{"1", "/", 
+      SuperscriptBox["n", "2"]}]}], "]"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"n", ",", "1", ",", "Infinity"}], "}"}]}], "]"}]], "Input",
+ CellChangeTimes->{{3.823400860532283*^9, 3.823400902566659*^9}},
+ CellLabel->"In[9]:=",ExpressionUUID->"953a81a0-1b33-485a-a938-5b8878058778"],
+
+Cell[BoxData[
+ RowBox[{
+  UnderoverscriptBox["\[Sum]", 
+   RowBox[{"n", "=", "1"}], "\[Infinity]"], 
+  RowBox[{"Log", "[", 
+   RowBox[{"1", "+", 
+    FractionBox["1", 
+     SuperscriptBox["n", "2"]]}], "]"}]}]], "Output",
+ CellChangeTimes->{3.8234009543994*^9, 3.823401043053074*^9},
+ CellLabel->"Out[9]=",ExpressionUUID->"26e74a93-8e12-4f72-8830-a527575c4155"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"SumConvergence", "[", 
+  RowBox[{
+   RowBox[{"Log", "[", 
+    RowBox[{"1", "+", 
+     RowBox[{"1", "/", 
+      SuperscriptBox["n", "2"]}]}], "]"}], ",", "n"}], "]"}]], "Input",
+ CellChangeTimes->{{3.8234009615689993`*^9, 3.8234009738581996`*^9}},
+ CellLabel->"In[8]:=",ExpressionUUID->"e9464bb4-7e96-4168-9f55-c49a43622b5a"],
+
+Cell[BoxData["True"], "Output",
+ CellChangeTimes->{{3.8234009670301447`*^9, 3.8234009755502777`*^9}},
+ CellLabel->"Out[8]=",ExpressionUUID->"5ff735aa-3746-4805-b1f2-0fc720cc8fe2"]
 }, Open  ]]
 }, Open  ]]
 }, Open  ]]
 },
 WindowToolbars->{"RulerBar", "EditBar"},
 WindowSize->{1258, 867},
-WindowMargins->{{103, Automatic}, {Automatic, 21}},
+WindowMargins->{{Automatic, 61}, {Automatic, 41}},
 FrontEndVersion->"12.1 for Microsoft Windows (64-bit) (June 9, 2020)",
 StyleDefinitions->Notebook[{
    Cell[
@@ -17002,7 +17045,15 @@ Cell[797141, 16503, 953, 36, 279, "Output",ExpressionUUID->"5135ba1d-a071-44e9-b
 }, Open  ]],
 Cell[CellGroupData[{
 Cell[798131, 16544, 265, 6, 46, "Input",ExpressionUUID->"c4c70c6a-18ee-4239-8ee8-a95a37a0a9b0"],
-Cell[798399, 16552, 396, 11, 72, "Output",ExpressionUUID->"8911ecb2-4abd-4914-afad-b4098ea2a9a4"]
+Cell[798399, 16552, 396, 11, 51, "Output",ExpressionUUID->"8911ecb2-4abd-4914-afad-b4098ea2a9a4"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[798832, 16568, 399, 10, 32, "Input",ExpressionUUID->"953a81a0-1b33-485a-a938-5b8878058778"],
+Cell[799234, 16580, 361, 9, 59, "Output",ExpressionUUID->"26e74a93-8e12-4f72-8830-a527575c4155"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[799632, 16594, 348, 8, 32, "Input",ExpressionUUID->"e9464bb4-7e96-4168-9f55-c49a43622b5a"],
+Cell[799983, 16604, 179, 2, 53, "Output",ExpressionUUID->"5ff735aa-3746-4805-b1f2-0fc720cc8fe2"]
 }, Open  ]]
 }, Open  ]]
 }, Open  ]]
