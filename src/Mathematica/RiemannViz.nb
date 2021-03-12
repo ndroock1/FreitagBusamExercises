@@ -1,0 +1,4737 @@
+(***********************************************************************
+
+                    Mathematica-Compatible Notebook
+
+This notebook can be used on any computer system with Mathematica 3.0,
+MathReader 3.0, or any compatible application. The data for the notebook 
+starts with the line of stars above.
+
+To get the notebook into a Mathematica-compatible application, do one of 
+the following:
+
+* Save the data starting with the line of stars above into a file
+  with a name ending in .nb, then open the file inside the application;
+
+* Copy the data starting with the line of stars above to the
+  clipboard, then use the Paste menu command inside the application.
+
+Data for notebooks contains only printable 7-bit ASCII and can be
+sent directly in email or through ftp in text mode.  Newlines can be
+CR, LF or CRLF (Unix, Macintosh or MS-DOS style).
+
+NOTE: If you modify the data for this notebook not in a Mathematica-
+compatible application, you must delete the line below containing the 
+word CacheID, otherwise Mathematica-compatible applications may try to 
+use invalid cache data.
+
+For more information on notebooks and Mathematica-compatible 
+applications, contact Wolfram Research:
+  web: http://www.wolfram.com
+  email: info@wolfram.com
+  phone: +1-217-398-0700 (U.S.)
+
+Notebook reader applications are available free of charge from 
+Wolfram Research.
+***********************************************************************)
+
+(*CacheID: 232*)
+
+
+(*NotebookFileLineBreakTest
+NotebookFileLineBreakTest*)
+(*NotebookOptionsPosition[    121766,       3294]*)
+(*NotebookOutlinePosition[    152932,       4241]*)
+(*  CellTagsIndexPosition[    149701,       4112]*)
+(*WindowFrame->Normal*)
+
+
+
+Notebook[{
+
+Cell[CellGroupData[{
+Cell["Visualization of Riemann Surfaces of Algebraic Functions", "Title",
+  CellTags->"0.1"],
+
+Cell[TextData[{
+  "The author brings the symbolic, numeric and graphic capabilities of ",
+  StyleBox["Mathematica", "SBO"],
+  " to bear on Riemann surfaces. The result is an illuminating catalog \
+ranging from simple to extremely complicated images."
+}], "Subtitle",
+  CellTags->{"S0.0.1", "1.1"}],
+
+Cell["by Michael Trott", "Subsubtitle",
+  CellTags->{"S0.0.1", "1.2"}],
+
+Cell[TextData[{
+  "We begin by considering an analytic function ",
+  Cell[BoxData[
+      \(TraditionalForm\`z \((w)\)\)], "InlineFormula",
+    CellTags->"S0.0.1"],
+  " such ",
+  Cell[BoxData[
+      \(TraditionalForm\`z \((w\_\(\ 1\))\) = z \((w\_\(\ 2\))\)\)], 
+    "InlineFormula",
+    CellTags->"S0.0.1"],
+  " for ",
+  Cell[BoxData[
+      \(TraditionalForm\`w\_\(\ 1\) \[NotEqual] w\_\(\ 2\)\)], 
+    "InlineFormula",
+    CellTags->"S0.0.1"],
+  ". (Think of ",
+  Cell[BoxData[
+      \(TraditionalForm\`z \((w)\) = w\^\(\ 2\)\)], "InlineFormula",
+    CellTags->"S0.0.1"],
+  " as a very simple example where ",
+  Cell[BoxData[
+      \(TraditionalForm\`z \((1)\) = z \((\(-1\))\)\)], "InlineFormula",
+    CellTags->"S0.0.1"],
+  ".) The inverse function ",
+  Cell[BoxData[
+      \(TraditionalForm\`w \((z)\)\)], "InlineFormula",
+    CellTags->"S0.0.1"],
+  " must be a multivalued function. Properly glueing together copies of the \
+complex ",
+  Cell[BoxData[
+      \(TraditionalForm\`z\)], "InlineFormula",
+    CellTags->"S0.0.1"],
+  "\[Hyphen]plane for all values of ",
+  Cell[BoxData[
+      \(TraditionalForm\`\(w\_\(\ i\)\) \((z)\)\)], "InlineFormula",
+    CellTags->"S0.0.1"],
+  " at points where we have degenerate solutions, we get the Riemann surface \
+of the function. Riemann surfaces of analytic functions are very interesting \
+and useful and have been investigated for more than 100 years. In many \
+mathematics departments one finds plaster or wood models of them (for a nice \
+collection of photographs of such surfaces see [Fischer 1986]). With ",
+  StyleBox["Mathematica", "TI"],
+  "'s symbolic and numeric capabilities, it is possible to recreate Riemann \
+surfaces that are sketched in most textbooks on the theory of functions of \
+one complex variable and related books [Brill 1925; Jung 1923; Mathews and \
+Howell 1977; Monna 1975; Osgood 1923] as well as to visualize much more \
+complicated ones. In this article we will focus on the visualization of \
+Riemann surfaces of algebraic functions. (For the more mathematical side of \
+Riemann surfaces of algebraic functions, such as the genus of a Riemann \
+surface or the Riemann\[Hyphen]Roch theorem see [Rauch and Lebowitz 1973]. \
+For information concerning the visualization near branch points see [Shihara \
+and Sasaki 1996].) Given an (irreducible) polynomial ",
+  Cell[BoxData[
+      \(TraditionalForm\`p\)], "InlineFormula",
+    CellTags->"S0.0.1"],
+  " in two variables ",
+  Cell[BoxData[
+      \(TraditionalForm
+      \`p = \[Sum]\_\(j, \(k\ \) \( = \ \) 0\)\%n a\_\(i  j\)\ \(z\^\(\ j\)\) 
+        w\^\(\ k\)\)], "InlineFormula",
+    CellTags->"S0.0.1"],
+  ", the equation ",
+  Cell[BoxData[
+      \(TraditionalForm\`p = 0\)], "InlineFormula",
+    CellTags->"S0.0.1"],
+  " defines ",
+  Cell[BoxData[
+      \(TraditionalForm\`w \((z)\)\)], "InlineFormula",
+    CellTags->"S0.0.1"],
+  " implicitly as a generically multivalued function. In fact this class of \
+functions exhausts all algebraic functions, including elliptic and \
+hyperelliptic ones. Graphing the real or imaginary part of ",
+  Cell[BoxData[
+      \(TraditionalForm\`w \((z)\)\)], "InlineFormula",
+    CellTags->"S0.0.1"],
+  " creates a faithful representation of the Riemann surface of ",
+  Cell[BoxData[
+      \(TraditionalForm\`w \((z)\)\)], "InlineFormula",
+    CellTags->"S0.0.1"],
+  ". \nThe semi\[Hyphen]numerical algorithm for the construction of the \
+Riemann surface given below will be used to visualize the Riemann surfaces of \
+a variety of algebraic functions. \nAs a warm\[Hyphen]up before dealing with \
+the general case, let us look at some simple Riemann surfaces. "
+}], "Text",
+  CellTags->{"S0.0.2", "1.3"}],
+
+Cell[CellGroupData[{
+
+Cell["Some simple examples", "Section",
+  CellTags->{"S0.0.2", "2.1"}],
+
+Cell[TextData[{
+  "Lets us start with some simple examples of the form ",
+  Cell[BoxData[
+      \(TraditionalForm\`w = f \((z)\)\)], "InlineFormula",
+    CellTags->"S0.0.2"],
+  " where ",
+  Cell[BoxData[
+      \(TraditionalForm\`f\)], "InlineFormula",
+    CellTags->"S0.0.2"],
+  " is a function with branch points and branch cuts that are easy to find \
+and easy to exclude in graphic output. \nBecause we are here interested in \
+the ",
+  StyleBox[
+  "visualization of the Riemann surfaces, from time to time in the following \
+discussion we will explicitly exclude branch points, branch cuts and poles \
+and start an ", "TI"],
+  Cell[BoxData[
+      \(TraditionalForm\`\[CurlyEpsilon]\)], "InlineFormula",
+    CellTags->"S0.0.2"],
+  StyleBox["(", "TI"],
+  Cell[BoxData[
+      \(TraditionalForm\`\[CurlyEpsilon] > 0\)], "InlineFormula",
+    CellTags->"S0.0.2"],
+  StyleBox[
+  ") away from such points with the polygons of the surface. \nOur first \
+example will be the simplest possible of all, that is ", "TI"],
+  Cell[BoxData[
+      \(TraditionalForm\`w\^2 - z = 0\)], "InlineFormula",
+    CellTags->"S0.0.2"],
+  StyleBox[" or ", "TI"],
+  Cell[BoxData[
+      \(TraditionalForm\`w \((z)\) = \@z\)], "InlineFormula",
+    CellTags->"S0.0.2"],
+  StyleBox[". The only branch point is ", "TI"],
+  Cell[BoxData[
+      \(TraditionalForm\`z = 0\)], "InlineFormula",
+    CellTags->"S0.0.2"],
+  StyleBox[
+  ", and the branch cut is usually chosen to extend along the negative real \
+axis. (Here and in the following we refer to branch points in the finite part \
+of the complex ", "TI"],
+  Cell[BoxData[
+      \(TraditionalForm\`z\)], "InlineFormula",
+    CellTags->"S0.0.2"],
+  StyleBox["\[Hyphen]plane. Possible branch points at ", "TI"],
+  Cell[BoxData[
+      \(TraditionalForm\`\[Infinity]\)], "InlineFormula",
+    CellTags->"S0.0.2"],
+  StyleBox[" will be discussed in the last section.) ", "TI"]
+}], "Text",
+  CellTags->{"S0.0.2", "2.2"}],
+
+Cell[BoxData[
+    \(\(Plot3D[Im[\@\(x + I\ y\)], {x, \(-2\), 2}, {y, \(-2\), 2}, 
+      PlotPoints \[Rule] 30]; \)\)], "Input",
+  CellTags->"S0.0.2"],
+
+Cell[TextData[{
+  StyleBox["We choose the imaginary part of ", "TI"],
+  Cell[BoxData[
+      \(TraditionalForm\`\@z\)], "InlineFormula",
+    CellTags->"S0.0.2"],
+  StyleBox[" as a representation of the Riemann surface. Rewriting ", "TI"],
+  Cell[BoxData[
+      \(TraditionalForm\`z\)], "InlineFormula",
+    CellTags->"S0.0.2"],
+  StyleBox[" in polar form as ", "TI"],
+  Cell[BoxData[
+      \(TraditionalForm\`r  \[ExponentialE]\^\[ImaginaryI]\[CurlyPhi]\)], 
+    "InlineFormula",
+    CellTags->"S0.0.2"],
+  StyleBox[" we have the parametric representation ", "TI"],
+  Cell[BoxData[
+      \(TraditionalForm
+      \`{r, \[CurlyPhi]} \[Rule] {r\ cos \((\[CurlyPhi])\), r\ sin 
+        \((\[CurlyPhi])\), \@r\ sin \((\[CurlyPhi]\/2)\)}\)], 
+    "InlineFormula",
+    CellTags->"S0.0.2"],
+  StyleBox[": ", "TI"]
+}], "Text",
+  CellTags->{"S0.0.2", "2.3"}],
+
+Cell[BoxData[
+    \(\(ParametricPlot3D[{r\ Cos[\[CurlyPhi]], r\ Sin[\[CurlyPhi]], 
+        \@r\ Sin[\[CurlyPhi]\/2], 
+        SurfaceColor[Hue[\[CurlyPhi]\/\(4\ \[Pi]\)]]}, {r, 0, 1}, {
+        \[CurlyPhi], 0, 4\ \[Pi]}, PlotPoints \[Rule] {20, 60}, 
+      Boxed \[Rule] False, Axes \[Rule] False]; \)\)], "Input",
+  CellTags->"S0.0.2"],
+
+Cell[TextData[{
+  StyleBox["Looking at the cross section ", "TI"],
+  Cell[BoxData[
+      \(TraditionalForm\`y = 0\)], "InlineFormula",
+    CellTags->"S0.0.2"],
+  StyleBox[
+  " we see the typical branching behaviour of a second order branch point. ", 
+    "TI"]
+}], "Text",
+  CellTags->{"S0.0.2", "2.4"}],
+
+Cell[BoxData[
+    \(\(ParametricPlot[
+      Evaluate[\(({r\ Cos[#1], \@r\ Sin[#1\/2]}&)\)/@{0, \[Pi], 2\ \[Pi], 
+            3\ \[Pi], 4\ \[Pi]}], {r, 0, 1}, Frame \[Rule] True, 
+      Axes \[Rule] False]; \)\)], "Input",
+  CellTags->"S0.0.2"],
+
+Cell[TextData[{
+  StyleBox[
+  "A more algebraic way to generate the surface of the imaginary part would \
+be the following: \nWe write ", "TI"],
+  Cell[BoxData[
+      \(TraditionalForm\`z = x + \[ImaginaryI]  y\)], "InlineFormula",
+    CellTags->"S0.0.2"],
+  StyleBox[", ", "TI"],
+  Cell[BoxData[
+      \(TraditionalForm\`w = u + \[ImaginaryI]  v\)], "InlineFormula",
+    CellTags->"S0.0.2"],
+  StyleBox[", where ", "TI"],
+  Cell[BoxData[
+      \(TraditionalForm\`x\)], "InlineFormula",
+    CellTags->"S0.0.2"],
+  StyleBox[", ", "TI"],
+  Cell[BoxData[
+      \(TraditionalForm\`y\)], "InlineFormula",
+    CellTags->"S0.0.2"],
+  StyleBox[", ", "TI"],
+  Cell[BoxData[
+      \(TraditionalForm\`u\)], "InlineFormula",
+    CellTags->"S0.0.2"],
+  StyleBox[" and ", "TI"],
+  Cell[BoxData[
+      \(TraditionalForm\`v\)], "InlineFormula",
+    CellTags->"S0.0.2"],
+  StyleBox[
+  " are purely real quantities. \nThen we solve the pair of equations \n      \
+      ", "TI"],
+  Cell[BoxData[
+      \(TraditionalForm
+      \`\[GothicCapitalR](z) = 
+        \(\[GothicCapitalR](w\^2) = \(x = u\^2 - v\^2\)\)\)]],
+  "\n            ",
+  Cell[BoxData[
+      \(TraditionalForm
+      \`\[GothicCapitalI](z) = 
+        \(\[GothicCapitalI](w\^2) = \(y = 2  u\ v\)\)\)]],
+  "\n",
+  StyleBox["for ", "TI"],
+  Cell[BoxData[
+      \(TraditionalForm\`v\)], "InlineFormula",
+    CellTags->"S0.0.2"],
+  StyleBox[", eliminate ", "TI"],
+  Cell[BoxData[
+      \(TraditionalForm\`u\)], "InlineFormula",
+    CellTags->"S0.0.2"],
+  StyleBox[" and then display ", "TI"],
+  Cell[BoxData[
+      \(TraditionalForm\`v = v(x, y)\)], "InlineFormula",
+    CellTags->"S0.0.2"],
+  StyleBox[". (We will come back to this approach later.) ", "TI"]
+}], "Text",
+  CellTags->{"S0.0.2", "2.5"}],
+
+Cell[BoxData[
+    \(Simplify[Solve[{x == u\^2 - v\^2, y == 2\ u\ v}, {v}, {u}]]\)], "Input",\
+
+  CellTags->"S0.0.2"],
+
+Cell[TextData[{
+  StyleBox["The two real solutions for ", "TI"],
+  Cell[BoxData[
+      \(TraditionalForm\`v\)], "InlineFormula",
+    CellTags->"S0.0.2"],
+  StyleBox[" for real ", "TI"],
+  Cell[BoxData[
+      \(TraditionalForm\`x\)], "InlineFormula",
+    CellTags->"S0.0.2"],
+  StyleBox[" and ", "TI"],
+  Cell[BoxData[
+      \(TraditionalForm\`y\)], "InlineFormula",
+    CellTags->"S0.0.2"],
+  StyleBox[" then yield the same surface as above. (The real part ", "TI"],
+  Cell[BoxData[
+      \(TraditionalForm\`u \((x, y)\)\)], "InlineFormula",
+    CellTags->"S0.0.2"],
+  StyleBox[" is used for the coloring.) ", "TI"]
+}], "Text",
+  CellTags->{"S0.0.2", "2.7"}],
+
+Cell[BoxData[
+    \(\(Show[
+      \((Plot3D[{#1, Hue[Abs[y\/#1]]}, {x, \(-2\), 2}, {y, \(-2\), 2}, 
+              DisplayFunction \[Rule] Identity, PlotPoints \[Rule] 38]&)\)/@{
+          \@\(\@\(x\^2 + y\^2\) - x\)\/\@2, 
+          \(-\(\@\(\@\(x\^2 + y\^2\) - x\)\/\@2\)\)}, 
+      DisplayFunction \[Rule] $DisplayFunction, BoxRatios \[Rule] {1, 1, 1}]; 
+    \)\)], "Input",
+  CellTags->"S0.0.2"],
+
+Cell[TextData[{
+  StyleBox["Our second example is ", "TI"],
+  Cell[BoxData[
+      \(TraditionalForm\`w\^3 - z = 0\)], "InlineFormula",
+    CellTags->"S0.0.2"],
+  StyleBox[" or ", "TI"],
+  Cell[BoxData[
+      \(TraditionalForm\`w(z) = \@z\%3\)], "InlineFormula",
+    CellTags->"S0.0.2"],
+  StyleBox[". The only branch point is ", "TI"],
+  Cell[BoxData[
+      \(TraditionalForm\`z = 0\)], "InlineFormula",
+    CellTags->"S0.0.2"],
+  StyleBox[
+  " and the branch cut is typically chosen again to extend along the negative \
+real axis. We use again the imaginary part as a faithful representation of \
+the Riemann surface. The following graphic shows the principle sheet\
+\[LongDash]the branch cut along the negative real axis is clearly visible. ", 
+    "TI"]
+}], "Text",
+  CellTags->{"S0.0.2", "2.8"}],
+
+Cell[BoxData[
+    \(\(Plot3D[Im[\((x + I\ y)\)\^\(1/3\)], {x, \(-2\), 2}, {y, \(-2\), 2}, 
+      PlotPoints \[Rule] 30]; \)\)], "Input",
+  CellTags->"S0.0.2"],
+
+Cell[TextData[{
+  StyleBox["Rewriting ", "TI"],
+  Cell[BoxData[
+      \(TraditionalForm\`z\)], "InlineFormula",
+    CellTags->"S0.0.2"],
+  StyleBox[" again in polar form as ", "TI"],
+  Cell[BoxData[
+      \(TraditionalForm\`r  \[ExponentialE]\^\[ImaginaryI]\[CurlyPhi]\)], 
+    "InlineFormula",
+    CellTags->"S0.0.2"],
+  StyleBox[" we have the parametric representation ", "TI"],
+  Cell[BoxData[
+      \(TraditionalForm
+      \`{r, \[CurlyPhi]} 
+        \[Rule] {r\ \(cos(\[CurlyPhi])\), r\ \(sin(\[CurlyPhi])\), \)], 
+    "InlineFormula",
+    CellTags->"S0.0.2"],
+  StyleBox[" ", "TI"],
+  Cell[BoxData[
+      \(TraditionalForm\`\@r\%3\)]],
+  Cell[BoxData[
+      RowBox[{
+        FormBox[\(sin(\[CurlyPhi]\/3)\),
+          "TraditionalForm"], "}"}]], "InlineFormula",
+    CellTags->"S0.0.2"],
+  StyleBox[": ", "TI"]
+}], "Text",
+  CellTags->{"S0.0.2", "2.9"}],
+
+Cell[TextData[
+"ParametricPlot3D[{r*Cos[\\CurlyPhi]], r*Sin[\[CurlyPhi]], r^(1/3)*Sin[\
+\[CurlyPhi]/3],\n    SurfaceColor[Hue[\\CurlyPhi]/(6*Pi)]]}, {r, 0, 1}, {\
+\[CurlyPhi], 0, 6*Pi},\n   PlotPoints -> {20, 90}, Boxed -> False, Axes -> \
+False];"], "Input",
+  CellTags->"S0.0.2"],
+
+Cell[TextData[{
+  StyleBox["In a similar way one can treat ", "TI"],
+  Cell[BoxData[
+      \(TraditionalForm\`w\^\(\ 6\) - z\)], "InlineFormula",
+    CellTags->"S0.0.2"],
+  StyleBox[", or equivalently ", "TI"],
+  Cell[BoxData[
+      \(TraditionalForm\`w(z) = \@z\%6\)], "InlineFormula",
+    CellTags->"S0.0.2"],
+  StyleBox[". Now we have a Riemann surface with six sheets. ", "TI"]
+}], "Text",
+  CellTags->{"S0.0.2", "2.10"}],
+
+Cell[BoxData[
+    \(\(ParametricPlot3D[{r\ Cos[\[CurlyPhi]], r\ Sin[\[CurlyPhi]], 
+        r\^\(1/6\)\ Sin[\[CurlyPhi]\/6], {
+          SurfaceColor[RGBColor[\[CurlyPhi]\/\(12\ \[Pi]\), 0, 0], 
+            RGBColor[\[CurlyPhi]\/\(12\ \[Pi]\), 0, 0], 1.45], 
+          EdgeForm[{Thickness[0.0001], 
+              RGBColor[0, 1 - \[CurlyPhi]\/\(12\ \[Pi]\), 0]}]}}, {r, 0, 
+        0.6}, {\[CurlyPhi], 0, 12\ \[Pi]}, PlotPoints \[Rule] {20, 180}, 
+      Boxed \[Rule] False, Axes \[Rule] False]; \)\)], "Input",
+  CellTags->"S0.0.2"],
+
+Cell[TextData[{
+  StyleBox["The form of the Riemann surface for ", "TI"],
+  Cell[BoxData[
+      \(TraditionalForm\`w(z) = \@z\%n\)], "InlineFormula",
+    CellTags->"S0.0.2"],
+  StyleBox[" is now obvious. Next let us look at the function ", "TI"],
+  Cell[BoxData[
+      \(TraditionalForm\`w\^2 + z\^2 - 1 = 0\)], "InlineFormula",
+    CellTags->"S0.0.2"],
+  StyleBox[" which can be solved with respect to ", "TI"],
+  Cell[BoxData[
+      \(TraditionalForm\`w\)], "InlineFormula",
+    CellTags->"S0.0.2"],
+  StyleBox[" in the form ", "TI"],
+  Cell[BoxData[
+      \(TraditionalForm\`w(z) = \@\(1 - z\^2\)\)], "InlineFormula",
+    CellTags->"S0.0.2"],
+  StyleBox[". This function has two branch points at ", "TI"],
+  Cell[BoxData[
+      \(TraditionalForm\`\[PlusMinus]\)], "InlineFormula",
+    CellTags->"S0.0.2"],
+  StyleBox[
+  "1. In the literature the branch cut is usually chosen to extend along the \
+real axis, starting from the branch points and going to ", "TI"],
+  Cell[BoxData[
+      \(TraditionalForm\`\(\[PlusMinus]\[Infinity]\)\)], "InlineFormula",
+    CellTags->"S0.0.2"],
+  StyleBox[
+  ". Here the real and imaginary parts of the principle sheet are shown: ", 
+    "TI"]
+}], "Text",
+  CellTags->{"S0.0.2", "2.11"}],
+
+Cell[BoxData[
+    \(\(Show[
+      GraphicsArray[
+        \((Plot3D[#1[\@\(1 - \((x + I\ y)\)\^2\)], {x, \(-2\), 2}, {y, 
+                  \(-2\), 2}, PlotPoints \[Rule] 37, 
+                DisplayFunction \[Rule] Identity]&)\)/@{Re, Im}]]; \)\)], 
+  "Input",
+  CellTags->"S0.0.2"],
+
+Cell[TextData[StyleBox[
+"Here both sheets of the real and of the imaginary parts are shown: ", 
+  "TI"]], "Text",
+  CellTags->{"S0.0.2", "2.12"}],
+
+Cell[BoxData[
+    \(\(With[{\[CurlyEpsilon] = 1\/10\^12}, 
+      Show[GraphicsArray[
+          Function[reIm, 
+              Show[Function[f, 
+                    Apply[Plot3D[reIm[f], {x, \(-2\), 2}, {y, ##1}, 
+                          PlotPoints \[Rule] {37, 27}, 
+                          DisplayFunction \[Rule] Identity]&, {{
+                          \[CurlyEpsilon], 2}, {\(-\[CurlyEpsilon]\), 
+                          \(-2\)}}, {1}]]/@{\@\(1 - \((x + I\ y)\)\^2\), 
+                    \(-\@\(1 - \((x + I\ y)\)\^2\)\)}, 
+                BoxRatios \[Rule] {1, 1, 1}, 
+                ViewPoint \[Rule] {4, \(-2\), 0.7}]]/@{Re, Im}]]]; \)\)], 
+  "Input",
+  CellTags->"S0.0.2"],
+
+Cell[TextData[{
+  StyleBox["The next function we will treat is ", "TI"],
+  Cell[BoxData[
+      \(TraditionalForm\`w\^2 + z\^4 - 1 = 0\)], "InlineFormula",
+    CellTags->"S0.0.2"],
+  StyleBox[" which can be solved with respect to ", "TI"],
+  Cell[BoxData[
+      \(TraditionalForm\`w\)], "InlineFormula",
+    CellTags->"S0.0.2"],
+  StyleBox[" in the form ", "TI"],
+  Cell[BoxData[
+      \(TraditionalForm\`w \((z)\) = \@\(1 - z\^4\)\)], "InlineFormula",
+    CellTags->"S0.0.2"],
+  StyleBox[". This function has four branch points at ", "TI"],
+  Cell[BoxData[
+      \(TraditionalForm\`\(\[PlusMinus]1\)\)], "InlineFormula",
+    CellTags->"S0.0.2"],
+  StyleBox[" and ", "TI"],
+  Cell[BoxData[
+      \(TraditionalForm\`\(\[PlusMinus]\[ImaginaryI]\)\)], "InlineFormula",
+    CellTags->"S0.0.2"],
+  StyleBox[
+  ", and the branch cuts start at the branch points and extend radially \
+outwards. Here the real and imaginary parts of the principle sheet are shown: \
+", "TI"]
+}], "Text",
+  CellTags->{"S0.0.2", "2.13"}],
+
+Cell[BoxData[
+    \(\(Show[
+      GraphicsArray[
+        \((Plot3D[#1[\@\(1 - \((x + I\ y)\)\^2\)], {x, \(-2\), 2}, {y, 
+                  \(-2\), 2}, PlotPoints \[Rule] 37, 
+                DisplayFunction \[Rule] Identity]&)\)/@{Re, Im}]]; \)\)], 
+  "Input",
+  CellTags->"S0.0.2"],
+
+Cell[TextData[{
+  StyleBox[
+  "The following picture shows all four sheets of the imaginary part (we omit \
+the polygons from the third quadrant to have a better look at the inner \
+parts) of the function ", "TI"],
+  Cell[BoxData[
+      \(TraditionalForm\`w\^4 = 1 - z\^4\)], "InlineFormula",
+    CellTags->"S0.0.2"],
+  StyleBox[". ", "TI"]
+}], "Text",
+  CellTags->{"S0.0.2", "2.14"}],
+
+Cell[BoxData[
+    \(\(rsf = 
+      With[{\[CurlyEpsilon] = 1\/10\^12}, 
+        Show[Function[f, 
+              Apply[Plot3D[Re[f], {x, #1, #2}, {y, #3, #4}, 
+                    PlotPoints \[Rule] 17, 
+                    DisplayFunction \[Rule] Identity]&, {{\[CurlyEpsilon], 2, 
+                    \[CurlyEpsilon], 2}, {\(-\[CurlyEpsilon]\), \(-2\), 
+                    \[CurlyEpsilon], 2}, {\(-\[CurlyEpsilon]\), \(-2\), 
+                    \(-\[CurlyEpsilon]\), \(-2\)}}, {1}]]/@{
+              \@\(1 - \((x + I\ y)\)\^4\), \(-\@\(1 - \((x + I\ y)\)\^4\)\), 
+              I\ \@\(1 - \((x + I\ y)\)\^4\), 
+              \(-I\)\ \@\(1 - \((x + I\ y)\)\^4\)}, 
+          DisplayFunction \[Rule] $DisplayFunction, 
+          BoxRatios \[Rule] {1, 1, 1}, ViewPoint \[Rule] {4, \(-2\), 1.7}]]; 
+    \)\)], "Input",
+  CellTags->"S0.0.2"],
+
+Cell[TextData[{
+  StyleBox[
+  "For Riemann surfaces with more than two or three sheets we typically \
+encounter the problem that it is hard to look 'inside'. To have a better look \
+in the inner parts of the surface we define a function ", "TI"],
+  StyleBox["holePolygon", "MR",
+    FontFamily->"Courier",
+    FontWeight->"Bold"],
+  StyleBox[" which cuts a hole of 'size' f in a polygon. ", "TI"]
+}], "Text",
+  CellTags->{"S0.0.2", "2.15"}],
+
+Cell[BoxData[
+    \(holePolygon[Polygon[l_], f_] := 
+      Module[{m = Plus@@l\/Length[l], innerPoints}, 
+        innerPoints = \((m + f\ \((#1 - m)\)&)\)/@l; {
+          MapThread[
+            Polygon[Join[#1, Reverse[#2]]]&, {
+              Partition[\((Append[#1, First[#1]]&)\)[l], 2, 1], 
+              Partition[\((Append[#1, First[#1]]&)\)[innerPoints], 2, 1]}], 
+          \((Line[Append[#1, First[#1]]]&)\)[innerPoints]}]\)], "Input",
+  CellTags->"S0.0.2"],
+
+Cell[TextData[StyleBox[
+"The following picture shows the previous Riemann surface with 'holed \
+polygons'. ", "TI"]], "Text",
+  CellTags->{"S0.0.2", "2.16"}],
+
+Cell[BoxData[
+    \(\(Show[
+      Graphics3D[{EdgeForm[], Thickness[0.0001], 
+          SurfaceColor[Hue[0.8199999999999999], Hue[0.22], 
+            1.209999999999999], 
+          Cases[rsf, _Polygon, \[Infinity]] /. 
+            p_Polygon \[RuleDelayed] holePolygon[p, 0.8]}], 
+      BoxRatios \[Rule] {1, 1, 1.399999999999999}, 
+      ViewPoint \[Rule] {4, \(-2\), 1.7}]; \)\)], "Input",
+  CellTags->"S0.0.2"],
+
+Cell[TextData[{
+  StyleBox[
+  "A slightly more complicated example is given by the function ", "TI"],
+  Cell[BoxData[
+      \(TraditionalForm\`w\^2 - z\^2 + 1 = 0\)], "InlineFormula",
+    CellTags->"S0.0.2"],
+  StyleBox[", which can be solved with respect to ", "TI"],
+  Cell[BoxData[
+      \(TraditionalForm\`w\)], "InlineFormula",
+    CellTags->"S0.0.2"],
+  StyleBox[" in the form ", "TI"],
+  Cell[BoxData[
+      \(TraditionalForm\`w \((z)\) = \@\(z\^2 - 1\)\)], "InlineFormula",
+    CellTags->"S0.0.2"],
+  StyleBox[". Now we have two branch points at ", "TI"],
+  Cell[BoxData[
+      \(TraditionalForm\`\(\[PlusMinus]1\)\)], "InlineFormula",
+    CellTags->"S0.0.2"],
+  StyleBox[
+  ". In the literature the branch cut is usually chosen to extend along the \
+real axis between the two branch points. ", "TI"]
+}], "Text",
+  CellTags->{"S0.0.2", "2.17"}],
+
+Cell[BoxData[
+    \(\(Plot3D[
+      Im[\@\(\((x + I\ y)\)\^2 - 1\)], {x, \(-2\), 2}, {y, \(-2\), 2}, 
+      PlotPoints \[Rule] 37]; \)\)], "Input",
+  CellTags->"S0.0.2"],
+
+Cell[TextData[{
+  StyleBox["Using ", "TI"],
+  Cell[BoxData[
+      \(TraditionalForm\`\@z\^2 - 1\)], "InlineFormula",
+    CellTags->"S0.0.2"],
+  StyleBox[
+  " and the corresponding roots of the other sheets given by ", "TI"],
+  Cell[BoxData[
+      \(TraditionalForm
+      \`\(\[ExponentialE]\^\(j\ 2/5\ \[ImaginaryI]\ \[Pi]\)\) 
+        \(\@z\^2 - 1\)\)], "InlineFormula",
+    CellTags->"S0.0.2"],
+  StyleBox[", ", "TI"],
+  Cell[BoxData[
+      \(TraditionalForm\`j = 1, 2, 3, 4\)], "InlineFormula",
+    CellTags->"S0.0.2"],
+  StyleBox[
+  " strictly inside the first, second, third and fourth quadrant we get \
+pieces of the Riemann which have no discontinuities and which fit together \
+smoothly. ", "TI"]
+}], "Text",
+  CellTags->{"S0.0.2", "2.18"}],
+
+Cell[BoxData[
+    \(\(rsf = 
+      With[{\[CurlyEpsilon] = 1\/10\^12, \[Epsilon] = \(-1\)}, 
+        Show[Graphics3D[{EdgeForm[], Thickness[0.0001], 
+              SurfaceColor[Hue[0.8100000000000001], Hue[0.62], 1.83], 
+              Cases[Apply[
+                    Table[ParametricPlot3D[{r\ Cos[\[CurlyPhi]], 
+                            r\ Sin[\[CurlyPhi]], 
+                            Im[\[Epsilon]\^j\ 
+                                \@\(\((r\ Exp[I\ \[CurlyPhi]])\)\^2 - 1\)]}, {
+                            r, \[CurlyEpsilon], 2}, {\[CurlyPhi], ##1}, 
+                          PlotPoints \[Rule] {33, 16}, 
+                          DisplayFunction \[Rule] Identity], {j, 0, 1}]&, {{
+                        \[CurlyEpsilon], \[Pi]\/2 - \[CurlyEpsilon]}, {
+                        \[Pi]\/2 + \[CurlyEpsilon], 
+                        \[Pi] - \[CurlyEpsilon]}, {\[Pi] + \[CurlyEpsilon], 
+                        \(3\ \[Pi]\)\/2 - \[CurlyEpsilon]}, {
+                        \(3\ \[Pi]\)\/2 + \[CurlyEpsilon], 
+                        2\ \[Pi] - \[CurlyEpsilon]}}, {1}], _Polygon, 
+                  \[Infinity]] /. 
+                p_Polygon \[RuleDelayed] holePolygon[p, 0.74]}]]]; \)\)], 
+  "Input",
+  CellTags->"S0.0.2"],
+
+Cell[TextData[{
+  StyleBox["Looking at the cross section ", "TI"],
+  Cell[BoxData[
+      \(TraditionalForm\`y = 0\)], "InlineFormula",
+    CellTags->"S0.0.2"],
+  StyleBox[" shows the two branch points nicely. ", "TI"]
+}], "Text",
+  CellTags->{"S0.0.2", "2.19"}],
+
+Cell["\<\
+Show[rsf, PlotRange -> {All, {0, 2}, All}, ViewPoint -> {0.3, -1.8, \
+0.5}];\
+\>", "Input",
+  CellTags->"S0.0.2"],
+
+Cell[TextData[{
+  StyleBox[
+  "As the next example of this introductory section let us take ", "TI"],
+  Cell[BoxData[
+      \(TraditionalForm\`\((w\^\(\ 2\) - 1)\)\^2 - z = 0\)], "InlineFormula",
+    CellTags->"S0.0.2"],
+  StyleBox[" or ", "TI"],
+  Cell[BoxData[
+      \(TraditionalForm\`w(z) = \@\(1 + \@z\^\(-1\)\)\)], "InlineFormula",
+    CellTags->"S0.0.2"],
+  StyleBox[". Now we have a singularity (in the sense that ", "TI"],
+  " ",
+  Cell[BoxData[
+      \(TraditionalForm\`\(| w(z) | \)\)]],
+  Cell[BoxData[
+      \(TraditionalForm\`\[LongRightArrow]\+\(z \[Rule] 0\)\)]],
+  "\[Infinity])",
+  StyleBox[" at ", "TI"],
+  Cell[BoxData[
+      \(TraditionalForm\`z = 0\)], "InlineFormula",
+    CellTags->"S0.0.2"],
+  StyleBox[
+  ". Proceeding in a manner similar to the last example gives the following \
+picture of the Riemann surface.Until now we have looked only at the imaginary \
+part of the functions this time we show both the real and the imaginary \
+parts. ", "TI"]
+}], "Text",
+  CellTags->{"S0.0.2", "2.20"}],
+
+Cell[BoxData[
+    \(\(g[reIm_] := 
+      With[{\[CurlyEpsilon] = 1\/10\^8}, 
+        Graphics3D[{EdgeForm[], Thickness[0.0001], 
+            SurfaceColor[Hue[0.28], Hue[0.36], 1.45], 
+            Cases[Function[f, 
+                    Apply[ParametricPlot3D[{r\ Cos[\[CurlyPhi]], 
+                            r\ Sin[\[CurlyPhi]], reIm[f]}, {r, 
+                            \[CurlyEpsilon], 1}, {\[CurlyPhi], ##1}, 
+                          PlotPoints \[Rule] {30, 20}, 
+                          DisplayFunction \[Rule] Identity]&, {{
+                          \[CurlyEpsilon], \[Pi] - \[CurlyEpsilon]}, {
+                          \[Pi] + \[CurlyEpsilon], 
+                          2\ \[Pi] - \[CurlyEpsilon]}}, {1}]]/@{
+                    \@\(1 + 
+                        \@\(1\/\(r\/E
+                                    \^\(-\((\(-\((\(-I\)\ \[CurlyPhi])\)\))
+                                        \)\)\)\)\), 
+                    \(-\@\(1 + 
+                          \@\(1\/\(r\/E
+                                      \^\(-\((\(-\((\(-I\)\ \[CurlyPhi])\)\))
+                                        \)\)\)\)\)\), 
+                    \@\(1 - 
+                        \@\(1\/\(r\/E
+                                    \^\(-\((\(-\((\(-I\)\ \[CurlyPhi])\)\))
+                                        \)\)\)\)\), 
+                    \(-\@\(1 - 
+                          \@\(1\/\(r\/E
+                                      \^\(-\((\(-\((\(-I\)\ \[CurlyPhi])\)\))
+                                        \)\)\)\)\)\)}, _Polygon, 
+                \[Infinity]] /. 
+              p_Polygon \[RuleDelayed] holePolygon[p, 0.7599999999999999]}, 
+          PlotRange \[Rule] {\(-2.2\), 2.5}]]; \)\)], "Input",
+  CellTags->"S0.0.2"],
+
+Cell["Show[GraphicsArray[{g[Im], g[Re]}]];", "Input",
+  CellTags->"S0.0.2"],
+
+Cell[TextData[{
+  StyleBox[
+  "Sometimes expressions one expects to simplify in Mathematica don't; for \
+example, ", "TI"],
+  Cell[BoxData[
+      \(TraditionalForm\`z - \@z\^2\)], "InlineFormula",
+    CellTags->"S0.0.2"],
+  StyleBox[
+  " does not `simplify' to 0. The reason is again the branch cut of the ", 
+    "TI"],
+  StyleBox["Power", "MR",
+    FontFamily->"Courier",
+    FontWeight->"Bold"],
+  StyleBox[
+  " function. The following picture demonstrates the difference between the \
+slightly more complicated example ", "TI"],
+  Cell[BoxData[
+      \(TraditionalForm\`\@z\^5\)], "InlineFormula",
+    CellTags->"S0.0.2"],
+  StyleBox[" and ", "TI"],
+  Cell[BoxData[
+      \(TraditionalForm\`\((\@z)\)\^5\)], "InlineFormula",
+    CellTags->"S0.0.2"],
+  StyleBox[" in Mathematica. ", "TI"]
+}], "Text",
+  CellTags->{"S0.0.2", "2.21"}],
+
+Cell[BoxData[
+    \(\(With[{z = r\ Exp[I\ \[CurlyPhi]]}, 
+      Show[GraphicsArray[
+          \((ParametricPlot3D[{r\ Cos[\[CurlyPhi]], r\ Sin[\[CurlyPhi]], 
+                    Im[#1]}, {r, 0, 3}, {\[CurlyPhi], 0, 2\ \[Pi]}, 
+                  PlotPoints \[Rule] {20, 60}, BoxRatios \[Rule] {1, 1, 0.4}, 
+                  DisplayFunction \[Rule] Identity]&)\)/@{\@z\^5, 
+              \((\@z)\)\^5}]]]; \)\)], "Input",
+  CellTags->"S0.0.2"],
+
+Cell[TextData[StyleBox[
+"Both are two\[Hyphen]valued functions. Here both sheets are \
+shown\[LongDash]the two functions represent the same Riemann surface. ", 
+  "TI"]], "Text",
+  CellTags->{"S0.0.2", "2.22"}],
+
+Cell[BoxData[
+    \(\(With[{z = r\ Exp[I\ \[CurlyPhi]], \[CurlyEpsilon] = 1\/10\^12}, 
+      Show[GraphicsArray[
+          \((Graphics3D[
+                  \(({#1, Map[{1, 1, \(-1\)}\ #1&, #1, {\(-2\)}]}&)\)[
+                    Cases[Table[
+                        ParametricPlot3D[{r\ Cos[\[CurlyPhi]], 
+                            r\ Sin[\[CurlyPhi]], Im[#1]}, {r, 0, 3}, {
+                            \[CurlyPhi], 
+                            \[Pi] + \(i\ 2\ \[Pi]\)\/5 + \[CurlyEpsilon], 
+                            \[Pi] + 1\/5\ \((i + 1)\)\ 2\ \[Pi] - 
+                              \[CurlyEpsilon]}, PlotPoints \[Rule] {20, 15}, 
+                          BoxRatios \[Rule] {1, 1, 0.4}, 
+                          DisplayFunction \[Rule] Identity], {i, 0, 
+                          4}], _Polygon, \[Infinity]]], 
+                  BoxRatios \[Rule] {1, 1, 0.4}]&)\)/@{\@z\^5, 
+              \((\@z)\)\^5}]]]; \)\)], "Input",
+  CellTags->"S0.0.2"],
+
+Cell[TextData[{
+  StyleBox[
+  "Now we will take a look at a function with two branch points and one pole: \
+The two branch points are located at ", "TI"],
+  Cell[BoxData[
+      \(TraditionalForm\`\(-1\)\)], "InlineFormula",
+    CellTags->"S0.0.2"],
+  StyleBox[" and ", "TI"],
+  Cell[BoxData[
+      \(TraditionalForm\`\[ImaginaryI]\)], "InlineFormula",
+    CellTags->"S0.0.2"],
+  StyleBox[" and the pole is at ", "TI"],
+  Cell[BoxData[
+      \(TraditionalForm\`\(3\/2\) \((\[ImaginaryI] - 1)\)\)], 
+    "InlineFormula",
+    CellTags->"S0.0.2"],
+  StyleBox[". The polynomial form ", "TI"],
+  Cell[BoxData[
+      \(TraditionalForm
+      \`\[Sum]\_\(j, k = 0\)\%n a\_\(i  j\)\ \(z\^j\) w\^k = 0\)], 
+    "InlineFormula",
+    CellTags->"S0.0.2"],
+  StyleBox[
+  " is this time much more complicated than in the earlier examples, we use \
+Mathematica's ", "TI"],
+  StyleBox["GroebnerBasis", "MR"],
+  StyleBox[" to calculate it. ", "TI"]
+}], "Text",
+  CellTags->{"S0.0.2", "2.23"}],
+
+Cell[BoxData[
+    \(\[ScriptP] = 
+      With[{p = \(3\ \((I - 1)\)\)\/2}, 
+        Factor[\(GroebnerBasis[
+              Numerator[
+                Together[
+                  Apply[Subtract, {z + 1 == aux1\^2, I\ z + 1 == aux2\^3, 
+                      w == aux1 + aux2 + 1\/\(z - p\)}, {1}]]], {w, z}, {
+                aux1, aux2}, MonomialOrder \[Rule] EliminationOrder]
+              \)\[LeftDoubleBracket]1\[RightDoubleBracket]]]\)], "Input",
+  CellTags->"S0.0.2"],
+
+Cell[TextData[{
+  StyleBox["Here is the principal sheet of ", "TI"],
+  Cell[BoxData[
+      \(TraditionalForm
+      \`\@\(z + 1\) + \@\(\[ImaginaryI]\ z + 1\) + 
+        \((z - \(3\/2\) \((\[ImaginaryI] - 1)\))\)\^\(-1\)\)], 
+    "InlineFormula",
+    CellTags->"S0.0.2"],
+  StyleBox[". ", "TI"]
+}], "Text",
+  CellTags->{"S0.0.2", "2.24"}],
+
+Cell[BoxData[
+    \(\(Plot3D[
+      Im[\@\(x + I\ y + 1\) + \((I\ \((x + I\ y)\) + 1)\)\^\(1/3\) + 
+          1\/\(x + I\ y - \(3\ \((I - 1)\)\)\/2\)], {x, \(-3\), 3}, {y, 
+        \(-3\), 3}, PlotPoints \[Rule] 60]; \)\)], "Input",
+  CellTags->"S0.0.2"],
+
+Cell[TextData[{
+  StyleBox[
+  "The implicit representation is a polynomial of order 6 in ", "TI"],
+  Cell[BoxData[
+      \(TraditionalForm\`w\)], "InlineFormula",
+    CellTags->"S0.0.2"],
+  StyleBox[", ", "TI"]
+}], "Text",
+  CellTags->{"S0.0.2", "2.25"}],
+
+Cell[BoxData[
+    \(Exponent[\[ScriptP], w]\)], "Input",
+  CellTags->"S0.0.2"],
+
+Cell[TextData[{
+  StyleBox[
+  "so we have now six sheets which we can calculate by using all possible \
+combinations of the two sheets of ", "TI"],
+  Cell[BoxData[
+      \(TraditionalForm\`\@\(z + 1\)\)], "InlineFormula",
+    CellTags->"S0.0.2"],
+  StyleBox[" and the three sheets of ", "TI"],
+  Cell[BoxData[
+      \(TraditionalForm\`\@\(\[ImaginaryI]  z + 1\)\)], "InlineFormula",
+    CellTags->"S0.0.2"],
+  StyleBox[". ", "TI"]
+}], "Text",
+  CellTags->{"S0.0.2", "2.26"}],
+
+Cell[BoxData[
+    \(\(rsf = 
+      With[{\[CurlyEpsilon] = 1\/10\^12}, 
+        Show[Apply[
+            Function[{\[Epsilon]1, \[Epsilon]2}, 
+              Apply[Plot3D[
+                    Evaluate[
+                      Im[\[Epsilon]1\ \@\(x + I\ y + 1\) + 
+                          \[Epsilon]2\ \((I\ \((x + I\ y)\) + 1)\)\^\(1/3\) + 
+                          1\/\(x + I\ y - \(3\ \((I - 1)\)\)\/2\)]], {
+                      x, #1, #2}, {y, #3, #4}, PlotPoints \[Rule] 30, 
+                    DisplayFunction \[Rule] Identity]&, {{\[CurlyEpsilon], 3, 
+                    \[CurlyEpsilon], 3}, {\(-\[CurlyEpsilon]\), \(-3\), 
+                    \[CurlyEpsilon], 3}, {\[CurlyEpsilon], 3, 
+                    \(-\[CurlyEpsilon]\), \(-3\)}, {\(-\[CurlyEpsilon]\), 
+                    \(-3\), \(-\[CurlyEpsilon]\), \(-3\)}}, {1}]], 
+            Flatten[Outer[
+                List, {\(-1\), 1}, {1, \((\(-1\))\)\^\(1/3\), 
+                  \((\(-1\))\)\^\(2/3\)}], 1], {1}], 
+          DisplayFunction \[Rule] $DisplayFunction, 
+          PlotRange \[Rule] {\(-6\), 6}]]; \)\)], "Input",
+  CellTags->"S0.0.2"],
+
+Cell[TextData[{
+  StyleBox[
+  "Here is the image with the polygons from the second quadrant taken out. We \
+see the two branch points at ", "TI"],
+  Cell[BoxData[
+      \(TraditionalForm\`\(-1\)\)], "InlineFormula",
+    CellTags->"S0.0.2"],
+  StyleBox[" and ", "TI"],
+  Cell[BoxData[
+      \(TraditionalForm\`\[ImaginaryI]\)], "InlineFormula",
+    CellTags->"S0.0.2"],
+  StyleBox[". ", "TI"]
+}], "Text",
+  CellTags->{"S0.0.2", "2.27"}],
+
+Cell[BoxData[
+    \(\(rsf2 = 
+      Show[Graphics3D[{EdgeForm[Thickness[0.0001]], 
+            SurfaceColor[Hue[0.09], Hue[0.42], 1.5], 
+            Select[Cases[rsf, _Polygon, \[Infinity]], 
+              \((Max[#1] < 0 && Min[#2] > 0&)\)@@
+                  Transpose[#1\[LeftDoubleBracket]1
+                      \[RightDoubleBracket]]&]}], 
+        BoxRatios \[Rule] {1, 1, 3\/2}, Boxed \[Rule] False, 
+        ViewPoint \[Rule] {2.299999999999999, \(-2\), 0.9}]; \)\)], "Input",
+  CellTags->"S0.0.2"],
+
+Cell[TextData[StyleBox[
+"Here are the same surfaces from another viewpoint with some polygons \
+removed: ", "TI"]], "Text",
+  CellTags->{"S0.0.2", "2.28"}],
+
+Cell[BoxData[
+    \(\(Show[
+      Graphics3D[{EdgeForm[Thickness[0.0001]], 
+          SurfaceColor[Hue[0.33], Hue[0.66], 1.11], 
+          Select[Cases[rsf2, _Polygon, \[Infinity]], 
+            Function[p, 
+              \((\((\(-1\))
+                          \)\^\(Round[
+                            1\/3\ #1\[LeftDoubleBracket]1
+                                \[RightDoubleBracket]\ 29] + 
+                          Round[\(-\(1\/3\)\)\ #1\[LeftDoubleBracket]2
+                                \[RightDoubleBracket]\ 29]\) == 1&)\)[
+                1\/4\ Plus@@p\[LeftDoubleBracket]1\[RightDoubleBracket]]]]}], 
+      BoxRatios \[Rule] {1, 1, 2}, Boxed \[Rule] False, 
+      ViewPoint \[Rule] {2.299999999999999, \(-2\), 2.9}]; \)\)], "Input",
+  CellTags->"S0.0.2"],
+
+Cell[TextData[{
+  StyleBox["The function ", "TI"],
+  Cell[BoxData[
+      \(TraditionalForm\`z\^2\ w\^2 - 2  w - 1 = 0\)], "InlineFormula",
+    CellTags->"S0.0.2"],
+  StyleBox[" has a pole at ", "TI"],
+  Cell[BoxData[
+      \(TraditionalForm\`z = 0\)], "InlineFormula",
+    CellTags->"S0.0.2"],
+  StyleBox[" on one sheet, but not on the other. ", "TI"]
+}], "Text",
+  CellTags->{"S0.0.2", "2.29"}],
+
+Cell[BoxData[
+    \(sol = Solve[z\^2\ w\^2 - 2\ w - 1 == 0, w]\)], "Input",
+  CellTags->"S0.0.2"],
+
+Cell[BoxData[
+    \(\((Series[#1, {z, 0, 2}]&)\)/@\((w /. sol)\)\)], "Input",
+  CellTags->"S0.0.2"],
+
+Cell[TextData[StyleBox["Here the two sheets are shown: ", "TI"]], "Text",
+  CellTags->{"S0.0.2", "2.30"}],
+
+Cell[BoxData[
+    \(\(Show[
+      GraphicsArray[
+        \((Plot3D[Im[#1], {x, \(-3\), 2}, {y, \(-2\), 2}, 
+                PlotPoints \[Rule] 50, DisplayFunction \[Rule] Identity]&)\)/@
+          \((\(w /. sol\) /. z \[Rule] x + I\ y)\)]]; \)\)], "Input",
+  CellTags->"S0.0.2"],
+
+Cell[TextData[{
+  StyleBox["Here the two\[Hyphen]sheeted Riemann surface of ", "TI"],
+  Cell[BoxData[
+      \(TraditionalForm\`z\^2\ w\^\(\ 2\) - 2  w - 1 = 0\)], "InlineFormula",
+    CellTags->"S0.0.2"],
+  StyleBox[" is shown: ", "TI"]
+}], "Text",
+  CellTags->{"S0.0.2", "2.31"}],
+
+Cell[BoxData[
+    \(\(Show[
+      Graphics3D[{EdgeForm[], Thickness[0.0001], Hue[0.7], 
+          SurfaceColor[Hue[0.22], Hue[0.21], 2.9], 
+          \(Cases[With[{\[CurlyEpsilon] = 1\/10\^12}, 
+                  Apply[Function[f, 
+                          Graphics3D[
+                            Plot3D[Im[f], ##1, PlotPoints \[Rule] 25, 
+                              DisplayFunction \[Rule] Identity]]]/@
+                        \((\(w /. sol\) /. z \[Rule] x + I\ y)\)&, {{{x, 
+                          \(-2\), \(-\[CurlyEpsilon]\)}, {y, \(-2\), 
+                          \(-\[CurlyEpsilon]\)}}, {{x, \[CurlyEpsilon], 2}, {
+                          y, \(-2\), \(-\[CurlyEpsilon]\)}}, {{x, \(-2\), 
+                          \(-\[CurlyEpsilon]\)}, {y, \[CurlyEpsilon], 2}}, {{
+                          x, \[CurlyEpsilon], 2}, {y, \[CurlyEpsilon], 2}}}, {
+                      1}]], _Polygon, \[Infinity]] //. 
+              x_?\((Abs[#1] > 5&)\) \[RuleDelayed] 5\ Sign[x]\) /. 
+            p_Polygon \[RuleDelayed] holePolygon[p, 0.65]}, 
+        PlotRange \[Rule] {\(-3\), 3}]]; \)\)], "Input",
+  CellTags->"S0.0.2"],
+
+Cell[TextData[{
+  StyleBox[
+  "For one of our final examples in this section, we take the sum of three \
+square roots with branch points at ", "TI"],
+  Cell[BoxData[
+      \(TraditionalForm\`\(\[PlusMinus]\[ImaginaryI]\)\)], "InlineFormula",
+    CellTags->"S0.0.2"],
+  StyleBox[" and 0. ", "TI"]
+}], "Text",
+  CellTags->{"S0.0.2", "2.32"}],
+
+Cell[BoxData[
+    \(\(Plot3D[
+      Im[\@\(\(-I\) + x + I\ y\) + \@\(x + I\ y\) + \@\(I + x + I\ y\)], {x, 
+        \(-2\), 2}, {y, \(-2\), 2}, PlotPoints \[Rule] 30]; \)\)], "Input",
+  CellTags->"S0.0.2"],
+
+Cell[TextData[StyleBox[
+"The implicit representation is again more complicated than the explicit one. \
+", "TI"]], "Text",
+  CellTags->{"S0.0.2", "2.33"}],
+
+Cell[BoxData[
+    \(\[ScriptP] = 
+      Factor[\(GroebnerBasis[
+            Apply[Subtract, {z - I == aux1\^2, z == aux2\^2, 
+                z + I == aux3\^2, w == aux1 + aux2 + aux3}, {1}], {w, z}, {
+              aux1, aux2, aux3}, MonomialOrder \[Rule] EliminationOrder]
+            \)\[LeftDoubleBracket]1\[RightDoubleBracket]]\)], "Input",
+  CellTags->"S0.0.2"],
+
+Cell[TextData[StyleBox[
+"Using both sheets for each of the square roots, we get all eight sheets of \
+the Riemann surface. ", "TI"]], "Text",
+  CellTags->{"S0.0.2", "2.34"}],
+
+Cell[BoxData[
+    \(\(With[{\[CurlyEpsilon] = 1\/10\^12}, 
+      Show[Graphics3D[{EdgeForm[], Thickness[0.0001], 
+            SurfaceColor[Hue[0.85], Hue[0.15], 1.31], 
+            Cases[Show[
+                  Apply[Function[{\[Epsilon]1, \[Epsilon]2, \[Epsilon]3}, 
+                      Apply[Plot3D[
+                            Evaluate[
+                              Im[\[Epsilon]1\ \@\(\(-I\) + x + I\ y\) + 
+                                  \[Epsilon]2\ \@\(x + I\ y\) + 
+                                  \[Epsilon]3\ \@\(I + x + I\ y\)]], {x, 
+                              \(-2\), 2}, {y, ##1}, 
+                            PlotPoints \[Rule] {32, 8}, 
+                            DisplayFunction \[Rule] Identity]&, {{\(-2\), 
+                            \(-1\) - \[CurlyEpsilon]}, {
+                            \(-1\) + \[CurlyEpsilon], \(-\[CurlyEpsilon]\)}, {
+                            \[CurlyEpsilon], 1 - \[CurlyEpsilon]}, {
+                            1 + \[CurlyEpsilon], 2 - \[CurlyEpsilon]}}, {
+                          1}]], Flatten[
+                      Outer[List, {\(-1\), 1}, {\(-1\), 1}, {\(-1\), 1}], 
+                      2], {1}]], _Polygon, \[Infinity]] /. 
+              p_Polygon \[RuleDelayed] holePolygon[p, 0.8]}], 
+        BoxRatios \[Rule] {1, 1, 1.199999999999999}, 
+        ViewPoint \[Rule] {\(-2\), 0, 0}]]; \)\)], "Input",
+  CellTags->"S0.0.2"],
+
+Cell[TextData[{
+  StyleBox["In the last example ", "TI"],
+  Cell[BoxData[
+      \(TraditionalForm\`w \((z)\) = \(\@z\^3 + z\^\(-3\)\)\)], 
+    "InlineFormula",
+    CellTags->"S0.0.2"],
+  StyleBox[" (or ", "TI"],
+  Cell[BoxData[
+      \(TraditionalForm\`1 + \(w\^3\) z\^3 - z\^6 = 0\)], "InlineFormula",
+    CellTags->"S0.0.2"],
+  StyleBox[
+  "). In this section the determination of the form of the branch cuts \
+becomes a bit more complicated\[LongDash]the discontinuities will no longer \
+be located on a straight line. Here the principal sheet is shown: ", "TI"]
+}], "Text",
+  CellTags->{"S0.0.2", "2.35"}],
+
+Cell[BoxData[
+    \(\(Plot3D[
+      Evaluate[Im[\((z\^3 + 1\/z\^3)\)\^\(1/3\) /. z \[Rule] x + I\ y]], {x, 
+        \(-2\), 2}, {y, \(-2\), 2}, PlotPoints \[Rule] 80]; \)\)], "Input",
+  CellTags->"S0.0.2"],
+
+Cell[TextData[{
+  StyleBox["Using a ", "TI"],
+  StyleBox["ContourPlot", "MR"],
+  StyleBox[
+  " allows us a nice view of the branch cuts. They form clusters of contour \
+lines. ", "TI"]
+}], "Text",
+  CellTags->{"S0.0.2", "2.36"}],
+
+Cell[BoxData[
+    \(\(ContourPlot[
+      Evaluate[Im[\((z\^3 + 1\/z\^3)\)\^\(1/3\) /. z \[Rule] x + I\ y]], {x, 
+        \(-\(3\/2\)\), 3\/2}, {y, \(-\(3\/2\)\), 3\/2}, 
+      PlotPoints \[Rule] 200, ColorFunction \[Rule] \((Hue[Random[]]&)\), 
+      Contours \[Rule] 30, 
+      ContourStyle \[Rule] {{Thickness[0.0001], GrayLevel[0]}}]; \)\)], 
+  "Input",
+  CellTags->"S0.0.2"],
+
+Cell[TextData[{
+  StyleBox[
+  "Again all branch cuts are caused by the branch cut of the ", "TI"],
+  StyleBox["Power", "MR"],
+  StyleBox[" function, and occur when ", "TI"],
+  Cell[BoxData[
+      \(TraditionalForm\`z\^3 + z\^\(-3\)\)], "InlineFormula",
+    CellTags->"S0.0.2"],
+  StyleBox[" is equal to a negative real number ", "TI"],
+  Cell[BoxData[
+      \(TraditionalForm\`\[Nu]\)], "InlineFormula",
+    CellTags->"S0.0.2"],
+  StyleBox[". ", "TI"]
+}], "Text",
+  CellTags->{"S0.0.2", "2.37"}],
+
+Cell[TextData["sol = Solve[z^3 + 1/z^3 == \[Nu]], z]"], "Input",
+  CellTags->"S0.0.2"],
+
+Cell[TextData[{
+  StyleBox[
+  "Analyzing these solutions in detail shows that they form rays originating \
+from ", "TI"],
+  Cell[BoxData[
+      \(TraditionalForm\`\(-1\)\)], "InlineFormula",
+    CellTags->"S0.0.2"],
+  StyleBox[", ", "TI"],
+  Cell[BoxData[
+      \(TraditionalForm\`\((\(-1\))\)\^\(1/3\)\)], "InlineFormula",
+    CellTags->"S0.0.2"],
+  StyleBox[", and ", "TI"],
+  Cell[BoxData[
+      \(TraditionalForm\`\((\(-1\))\)\^\(2/3\)\)], "InlineFormula",
+    CellTags->"S0.0.2"],
+  StyleBox[
+  " projecting radially outwards and intersecting arcs of the unit circle \
+between ", "TI"],
+  Cell[BoxData[
+      \(TraditionalForm\`{\[Pi] /6, \[Pi] \(/2\)}\)], "InlineFormula",
+    CellTags->"S0.0.2"],
+  StyleBox[", {5", "TI"],
+  Cell[BoxData[
+      \(TraditionalForm\`\[Pi]\)], "InlineFormula",
+    CellTags->"S0.0.2"],
+  StyleBox["/6, ", "TI"],
+  Cell[BoxData[
+      \(TraditionalForm\`\[Pi]\)], "InlineFormula",
+    CellTags->"S0.0.2"],
+  StyleBox["}, and {3", "TI"],
+  Cell[BoxData[
+      \(TraditionalForm\`\[Pi]\)], "InlineFormula",
+    CellTags->"S0.0.2"],
+  StyleBox["/2, 11", "TI"],
+  Cell[BoxData[
+      \(TraditionalForm\`\[Pi]\)], "InlineFormula",
+    CellTags->"S0.0.2"],
+  StyleBox["/6}. The branch points are at ", "TI"],
+  Cell[BoxData[
+      FormBox[
+        RowBox[{
+        "0", ",", "-", "\[ImaginaryI]", ",", "\[ImaginaryI]", ",", "-", 
+          \(\((\(-1\))\)\^\(1/6\)\), ",", \(\((\(-1\))\)\^\(1/6\)\), ",", 
+          "-", \(\((\(-1\))\)\^\(5/6\)\), ",", 
+          "\<\"\\!\\(\\*StyleBox[\\\"\\\\\\\"and\\\\\\\"\\\", \
+\\\"TI\\\"]\\)\"\>", " ", \(\((\(-1\))\)\^\(5/6\)\)}], TraditionalForm]], 
+    "InlineFormula",
+    CellTags->"S0.0.2"],
+  StyleBox[". ", "TI"]
+}], "Text",
+  CellTags->{"S0.0.2", "2.38"}],
+
+Cell[BoxData[
+    \(\(Show[
+      \((ParametricPlot[
+              Evaluate[\(({Re[#1], Im[#1]}&)\)/@\((z /. sol)\)], #1, 
+              DisplayFunction \[Rule] Identity]&)
+          \)/@{{\[Nu], \(-8\), \(-2\)}, {\[Nu], \(-2\), 0}}, 
+      DisplayFunction \[Rule] $DisplayFunction, PlotRange \[Rule] All, 
+      Frame \[Rule] True, Axes \[Rule] False, AspectRatio \[Rule] Automatic]; 
+    \)\)], "Input",
+  CellTags->"S0.0.2"],
+
+Cell[TextData[{
+  StyleBox[
+  "Knowing the location of the branch cuts now allows us to split the complex \
+", "TI"],
+  Cell[BoxData[
+      \(TraditionalForm\`z\)], "InlineFormula",
+    CellTags->"S0.0.2"],
+  StyleBox[
+  "\[Hyphen]plane into regions such that inside each region we can use ", 
+    "TI"],
+  StyleBox["ParametricPlot3D", "MR",
+    FontFamily->"Courier",
+    FontWeight->"Bold"],
+  StyleBox[" to get a smooth surface. ", "TI"]
+}], "Text",
+  CellTags->{"S0.0.2", "2.39"}],
+
+Cell[BoxData[
+    \(\(With[{\[CurlyEpsilon] = 10\^\(-10\), 
+        \[Epsilon] = \[ExponentialE]\^\(2/3\ \[ImaginaryI]\ \[Pi]\)}, \n
+      Show[Graphics3D[{EdgeForm[], Thickness[0.0001], 
+            SurfaceColor[Hue[0.26], Hue[0.33], 1.88], \n\t
+            Cases[Table[
+                  Apply[ParametricPlot3D[{r\ Cos[\[CurlyPhi]], 
+                          r\ Sin[\[CurlyPhi]], 
+                          Im[\(\[Epsilon]\^j\) 
+                              \@\(\((r\ \[ExponentialE]\^\(\[ImaginaryI]  
+                                        \[CurlyPhi]\))\)\^3 + 
+                                  \((r\ \[ExponentialE]\^\(\[ImaginaryI]  
+                                        \[CurlyPhi]\))\)\^\(-3
+                                      \)\)\%3]}, #1, #2, 
+                        PlotPoints \[Rule] {10, 22}, 
+                        DisplayFunction \[Rule] Identity]&, 
+                    \n{\ {{r, \[CurlyEpsilon], 1 - \[CurlyEpsilon]}, {
+                          \[CurlyPhi], \[Pi]/3 + \[CurlyEpsilon], 
+                          \[Pi] - \[CurlyEpsilon]}}, \n
+                      \t\t{{r, \[CurlyEpsilon], 1 - \[CurlyEpsilon]}, {
+                          \[CurlyPhi], \(-\[Pi]\) + \[CurlyEpsilon], 
+                          \(-\[Pi]\)/3 - \[CurlyEpsilon]}}, \n
+                      \t\ \ {{r, \[CurlyEpsilon], 1 - \[CurlyEpsilon]}, {
+                          \[CurlyPhi], \(-\[Pi]\)/3 + \[CurlyEpsilon], 
+                          \[Pi]/3 - \[CurlyEpsilon]}}, \n
+                      \t\t{{r, 1 + \[CurlyEpsilon], 2}, {\[CurlyPhi], 
+                          \[Pi]/3 + \[CurlyEpsilon], 
+                          \[Pi] - \[CurlyEpsilon]}}, \n
+                      \t\t{{r, 1 + \[CurlyEpsilon], 2}, {\[CurlyPhi], 
+                          \(-\[Pi]\) + \[CurlyEpsilon], 
+                          \(-\[Pi]\)/3 - \[CurlyEpsilon]}}, \n
+                      \t\t{{r, 1 + \[CurlyEpsilon], 2}, {\[CurlyPhi], 
+                          \(-\[Pi]\)/3 + \[CurlyEpsilon], 
+                          \[Pi]/3 - \[CurlyEpsilon]}}}, {1}], \n
+                  \t\t\t\t\t\t{j, 0, 2}], _Polygon, \[Infinity]] /. 
+              p_Polygon \[RuleDelayed] holePolygon[p, \ 0.75]}], 
+        PlotRange \[Rule] {\(-3.4\), 3.4}, BoxRatios \[Rule] {1, 1, 1.9}, 
+        Boxed \[Rule] False]]; \)\)], "Input"],
+
+Cell[TextData[{
+  StyleBox[
+  "Let's stop here with making 3D pictures of simple Riemann surfaces. We \
+could go on and construct Riemann surface with many more sheets, such as the \
+following sum of five square roots ", "TI"],
+  Cell[BoxData[
+      \(TraditionalForm
+      \`w \((z)\) = \@\(z - 2\) + \@\(z - 1\) + \@z + \@\(z + 1\) + 
+        \@\(z + 2\)\)], "InlineFormula",
+    CellTags->"S0.0.2"],
+  StyleBox[
+  ". \nThe implicit form this time is rather large\[LongDash]it is a \
+polynomial with 81 terms of degree 32 in ", "TI"],
+  Cell[BoxData[
+      \(TraditionalForm\`w\)], "InlineFormula",
+    CellTags->"S0.0.2"],
+  StyleBox[". ", "TI"]
+}], "Text",
+  CellTags->{"S0.0.2", "2.40"}],
+
+Cell[BoxData[
+    \(Short[
+      Factor[\(GroebnerBasis[
+            Numerator[
+              Together[
+                Apply[Subtract, {z - 2 == aux1\^2, z - 1 == aux2\^2, 
+                    z == aux3\^2, z + 1 == aux4\^2, z + 2 == aux5\^2, 
+                    w == aux1 + aux2 + aux3 + aux4 + aux5}, {1}]]], {w, z}, {
+              aux1, aux2, aux3, aux4, aux5}, 
+            MonomialOrder \[Rule] EliminationOrder]\)\[LeftDoubleBracket]1
+          \[RightDoubleBracket]], 8]\)], "Input",
+  CellTags->"S0.0.2"],
+
+Cell[TextData[{
+  StyleBox["Here the cross section ", "TI"],
+  Cell[BoxData[
+      \(TraditionalForm\`y = 0\)], "InlineFormula",
+    CellTags->"S0.0.2"],
+  StyleBox[" is shown. ", "TI"]
+}], "Text",
+  CellTags->{"S0.0.2", "2.41"}],
+
+Cell[BoxData[
+    \(\(With[{\[CurlyEpsilon] = 1\/10\^12}, 
+      Plot[Evaluate[
+          Flatten[Table[
+              Table[Im[
+                  \[Sum]\+\(k = \(-2\)\)\%2 \[Epsilon]\_k\ 
+                      \@\(k + x + \[Alpha]\ I\ \[CurlyEpsilon]\)], 
+                Evaluate[
+                  Sequence@@
+                    Table[{\[Epsilon]\_k, \(-1\), 1, 2}, {k, \(-2\), 2}]]], {
+                \[Alpha], \(-1\), 1, 2}]]], {x, \(-3\), 3}, 
+        Frame \[Rule] True, Axes \[Rule] False, PlotRange \[Rule] All, 
+        PlotPoints \[Rule] 200, PlotStyle \[Rule] {Thickness[0.005]}]]; 
+    \)\)], "Input",
+  CellTags->"S0.0.2"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["\<\
+Obstacles occurring in dealing with more complicated \
+polynomials\
+\>", "Section",
+  CellTags->{"S0.0.3", "3.1"}],
+
+Cell[TextData[StyleBox[
+"Let us now try to deal with a slightly more complicated example, say ", 
+  "TI"]], "Text",
+  CellTags->{"S0.0.3", "3.2"}],
+
+Cell[BoxData[
+    \(\[ScriptP] = \(-z\^4\) - 5\ z\^3 - 2\ z\^2\ w - z\^2\ w\^2 + w\^3\)], 
+  "Input",
+  CellTags->"S0.0.3"],
+
+Cell[TextData[{
+  StyleBox["p is a polynomial of degree 3 in ", "TI"],
+  Cell[BoxData[
+      \(TraditionalForm\`w\)], "InlineFormula",
+    CellTags->"S0.0.3"],
+  StyleBox[
+  ", so the Riemann surface has 3 sheets. Actually we can compute the three \
+solutions for ", "TI"],
+  Cell[BoxData[
+      \(TraditionalForm\`p = 0\)], "InlineFormula",
+    CellTags->"S0.0.3"],
+  StyleBox[" explicitly: ", "TI"]
+}], "Text",
+  CellTags->{"S0.0.3", "3.3"}],
+
+Cell[BoxData[
+    \(sol\_1 = Solve[\[ScriptP] == 0, w]\)], "Input",
+  CellTags->"S0.0.3"],
+
+Cell[TextData[{
+  StyleBox[
+  "But trying to directly plot these three solutions reveals the fact the \
+they are not continuous functions of ", "TI"],
+  Cell[BoxData[
+      \(TraditionalForm\`z\)], "InlineFormula",
+    CellTags->"S0.0.3"],
+  StyleBox[
+  ". Here the real part of each of the three solutions is shown: ", "TI"]
+}], "Text",
+  CellTags->{"S0.0.3", "3.4"}],
+
+Cell[BoxData[
+    \(\(Show[
+      GraphicsArray[
+        \((Plot3D[Re[#1], {x, \(-4\), 4}, {y, \(-4\), 4}, 
+                DisplayFunction \[Rule] Identity, PlotPoints \[Rule] 25]&)\)/@
+          \((\(w /. sol\_1\) /. z \[Rule] x + I\ y)\)]]; \)\)], "Input",
+  CellTags->"S0.0.3"],
+
+Cell[TextData[StyleBox[
+"The imaginary part shows similar discontinuities: ", "TI"]], "Text",
+  CellTags->{"S0.0.3", "3.5"}],
+
+Cell[BoxData[
+    \(\(Show[
+      GraphicsArray[
+        \((Plot3D[Im[#1], {x, \(-4\), 4}, {y, \(-4\), 4}, 
+                DisplayFunction \[Rule] Identity, PlotPoints \[Rule] 25]&)\)/@
+          \((\(w /. sol\_1\) /. z \[Rule] x + I\ y)\)]]; \)\)], "Input",
+  CellTags->"S0.0.3"],
+
+Cell[TextData[{
+  StyleBox[
+  "The lines of discontinuity form a fairly complicated pattern. They arise \
+ultimately from the branch cut of the ", "TI"],
+  StyleBox["Power", "MR",
+    FontFamily->"Courier",
+    FontWeight->"Bold"],
+  StyleBox[
+  " function. We can get a picture showing just these lines of discontinuity \
+by taking all arguments of the ", "TI"],
+  StyleBox["Power", "MR",
+    FontFamily->"Courier",
+    FontWeight->"Bold"],
+  StyleBox[" ", "MR"],
+  StyleBox[
+  "function with rational second argument and checking when this argument is \
+purely a negative real. The branch points are determined as the ", "TI"],
+  Cell[BoxData[
+      \(TraditionalForm\`z\)], "InlineFormula",
+    CellTags->"S0.0.3"],
+  StyleBox["\[Hyphen]values where the arguments of the ", "TI"],
+  StyleBox["Power", "MR",
+    FontFamily->"Courier",
+    FontWeight->"Bold"],
+  StyleBox[" function becomes 0. ", "TI"]
+}], "Text",
+  CellTags->{"S0.0.3", "3.6"}],
+
+Cell[BoxData[
+    \(\(powerArguments\[ScriptP] = {
+        643 + 450\ z + 59\ z\^2 + 20\ z\^3 + 4\ z\^4, 
+        135\ z\^3 + 45\ z\^4 + 2\ z\^6 + 
+          3\ \@3\ z\^3\ \@\(643 + 450\ z + 59\ z\^2 + 20\ z\^3 + 4\ z\^4\)}; 
+    \)\)], "Input",
+  CellTags->"S0.0.3"],
+
+Cell[BoxData[
+    \(bps\[ScriptP] = 
+      z /. Flatten[N[\((Solve[#1 == 0, z]&)\)/@powerArguments\[ScriptP]], 1]
+          \)], "Input",
+  CellTags->"S0.0.3"],
+
+Cell[TextData[{
+  StyleBox["To visualize the branch cuts, we first make a ", "TI"],
+  StyleBox["ContourPlot", "MR",
+    FontFamily->"Courier",
+    FontWeight->"Bold"],
+  StyleBox[
+  " by showing only the lines where the imaginary part vanishes and then \
+delete the points where the real part is positive. The following picture \
+shows the branch cuts as well as the branch points: ", "TI"]
+}], "Text",
+  CellTags->{"S0.0.3", "3.7"}],
+
+Cell[BoxData[
+    \(\(Show[
+      Graphics[{
+          Function[rootArg, 
+              Map[If[Re[rootArg /. z \[Rule] #1 . {1, I}] > 0, 
+                    Sequence@@{}, #1]&, 
+                Cases[Graphics[
+                    ContourPlot[
+                      Evaluate[Im[rootArg /. z \[Rule] x + I\ y]], {x, 
+                        \(-6\), 6}, {y, \(-6\), 6}, PlotPoints \[Rule] 250, 
+                      Contours \[Rule] {0}, ContourShading \[Rule] False, 
+                      DisplayFunction \[Rule] Identity]], _Line, 
+                  \[Infinity]], {\(-2\)}]]/@powerArguments\[ScriptP], {
+            PointSize[0.03], Hue[0], 
+            \((Point[{Re[#1], Im[#1]}]&)\)/@bps\[ScriptP]}}], 
+      PlotRange \[Rule] All, Frame \[Rule] True, 
+      AspectRatio \[Rule] Automatic]; \)\)], "Input",
+  CellTags->"S0.0.3"],
+
+Cell[TextData[{
+  StyleBox[
+  "The last picture shows that using the closed form solution for the roots \
+and avoiding traversing the branch cut will be not easy. Trying the same with \
+", "TI"],
+  StyleBox["Root", "MR"],
+  StyleBox[" objects gives similar discouraging results: ", "TI"]
+}], "Text",
+  CellTags->{"S0.0.3", "3.8"}],
+
+Cell[BoxData[
+    \(sol\_2 = {ToRules[Roots[\[ScriptP] == 0, w, Cubics \[Rule] False]]}\)], 
+  "Input",
+  CellTags->"S0.0.3"],
+
+Cell[BoxData[
+    \(\(Show[
+      GraphicsArray[
+        \((Plot3D[Im[#1], {x, \(-4\), 4}, {y, \(-4\), 4}, 
+                DisplayFunction \[Rule] Identity, PlotPoints \[Rule] 25]&)\)/@
+          \((\(w /. sol\_2\) /. z \[Rule] x + I\ y)\)]]; \)\)], "Input",
+  CellTags->"S0.0.3"],
+
+Cell[TextData[{
+  StyleBox[
+  "The explicit locations of the lines of discontinuity are unfortunately not \
+easy to calculate for ", "TI"],
+  StyleBox["Root", "MR"],
+  StyleBox[
+  " objects either. (Actually they are more complicated to calculate than the \
+above example involving radicals, because this time the discontinuities are \
+caused by the switch of the root numbers.) So we must conclude that our first \
+naive trial to generate a Riemann surface of a generic algebraic function \
+failed. (It's possible to determine the lines of discontinuity, but it would \
+turn out that calculating the branch cuts and constructing appropriate meshes \
+is not easy.) \n\nA second possibility which comes to mind is the following \
+strategy: \n", "TI"],
+  Cell[BoxData[
+      \(TraditionalForm\`p = 0\)], "InlineFormula",
+    CellTags->"S0.0.3"],
+  StyleBox[
+  " means that simultaneously the following two equations must hold ", "TI"]
+}], "Text",
+  CellTags->{"S0.0.3", "3.9"}],
+
+Cell[BoxData[
+    FormBox[
+      RowBox[{
+        StyleBox[
+          FormBox[
+            RowBox[{
+              RowBox[{"\[GothicCapitalR]", "(", 
+                RowBox[{\(\[Sum]\+\(i, j = 0\)\%n\), 
+                  RowBox[{
+                    StyleBox[\(a\_ij\),
+                      FontSlant->"Italic"], 
+                    StyleBox[" ",
+                      FontWeight->"Plain"], 
+                    StyleBox[
+                      SuperscriptBox[
+                        RowBox[{"(", 
+                          RowBox[{"x", "+", 
+                            RowBox[{"\[ImaginaryI]", " ", 
+                              StyleBox["y",
+                                FontWeight->"Plain"]}]}], ")"}], "j"],
+                      FontWeight->"Plain"], 
+                    StyleBox[
+                      SuperscriptBox[
+                        RowBox[{"(", 
+                          RowBox[{
+                            StyleBox["u",
+                              FontWeight->"Plain"], "+", 
+                            RowBox[{"\[ImaginaryI]", " ", 
+                              StyleBox["v",
+                                FontWeight->"Plain"]}]}], ")"}], "k"],
+                      FontWeight->"Plain"]}]}], ")"}], "=", "0"}],
+            "TraditionalForm"],
+          FontWeight->"Plain"], "\n"}], TraditionalForm]], "Input",
+  Evaluatable->False],
+
+Cell[BoxData[
+    FormBox[
+      StyleBox[
+        FormBox[
+          RowBox[{
+            RowBox[{
+              StyleBox["\[GothicCapitalI]",
+                FontWeight->"Plain"], "(", 
+              RowBox[{\(\[Sum]\+\(i, j = 0\)\%n\), 
+                RowBox[{
+                  StyleBox[\(a\_ij\),
+                    FontSlant->"Italic"], 
+                  StyleBox[" ",
+                    FontWeight->"Plain"], 
+                  StyleBox[
+                    SuperscriptBox[
+                      RowBox[{"(", 
+                        RowBox[{"x", "+", 
+                          RowBox[{"\[ImaginaryI]", " ", 
+                            StyleBox["y",
+                              FontWeight->"Plain"]}]}], ")"}], "j"],
+                    FontWeight->"Plain"], 
+                  StyleBox[
+                    SuperscriptBox[
+                      RowBox[{"(", 
+                        RowBox[{
+                          StyleBox["u",
+                            FontWeight->"Plain"], "+", 
+                          RowBox[{"\[ImaginaryI]", " ", 
+                            StyleBox["v",
+                              FontWeight->"Plain"]}]}], ")"}], "k"],
+                    FontWeight->"Plain"]}]}], ")"}], "=", "0"}],
+          "TraditionalForm"],
+        FontWeight->"Plain"], TraditionalForm]], "Input",
+  Evaluatable->False],
+
+Cell[TextData[{
+  StyleBox["These two equations in the four real variables ", "TI"],
+  Cell[BoxData[
+      \(TraditionalForm\`x\)], "InlineFormula",
+    CellTags->"S0.0.3"],
+  StyleBox[", ", "TI"],
+  Cell[BoxData[
+      \(TraditionalForm\`y\)], "InlineFormula",
+    CellTags->"S0.0.3"],
+  StyleBox[", ", "TI"],
+  Cell[BoxData[
+      \(TraditionalForm\`u\)], "InlineFormula",
+    CellTags->"S0.0.3"],
+  StyleBox[", ", "TI"],
+  Cell[BoxData[
+      \(TraditionalForm\`v\)], "InlineFormula",
+    CellTags->"S0.0.3"],
+  StyleBox[" allow us to eliminate one variable, say ", "TI"],
+  Cell[BoxData[
+      \(TraditionalForm\`u\)], "InlineFormula",
+    CellTags->"S0.0.3"],
+  StyleBox[", to obtain one implicit equation in ", "TI"],
+  Cell[BoxData[
+      \(TraditionalForm\`x\)], "InlineFormula",
+    CellTags->"S0.0.3"],
+  StyleBox[", ", "TI"],
+  Cell[BoxData[
+      \(TraditionalForm\`y\)], "InlineFormula",
+    CellTags->"S0.0.3"],
+  StyleBox[", ", "TI"],
+  Cell[BoxData[
+      \(TraditionalForm\`v\)], "InlineFormula",
+    CellTags->"S0.0.3"],
+  StyleBox[". Here this done for the polynomial p from above. ", "TI"]
+}], "Text",
+  CellTags->{"S0.0.3", "3.10"}],
+
+Cell[BoxData[
+    \(ReIm\[ScriptP] = 
+      Expand[\[ScriptP] /. {z \[Rule] x + I\ y, w \[Rule] u + I\ v}]\)], 
+  "Input",
+  CellTags->"S0.0.3"],
+
+Cell[BoxData[
+    \(Im\[ScriptP] = Plus@@Expand[Cases[ReIm\[ScriptP], _Complex\ _]\/I]\)], 
+  "Input",
+  CellTags->"S0.0.3"],
+
+Cell[BoxData[
+    \(Re\[ScriptP] = Expand[ReIm\[ScriptP] - I\ Im\[ScriptP]]\)], "Input",
+  CellTags->"S0.0.3"],
+
+Cell[BoxData[
+    \(\[ScriptP]\_2 = Resultant[Re\[ScriptP], Im\[ScriptP], u]\)], "Input",
+  CellTags->"S0.0.3"],
+
+Cell[TextData[{
+  StyleBox["Using the function ", "TI"],
+  StyleBox["ContourPlot3D", "MR",
+    FontFamily->"Courier",
+    FontWeight->"Bold"],
+  StyleBox[" from the package ", "TI"],
+  StyleBox["Graphics`ContourPlot3D`", "MR",
+    FontFamily->"Courier",
+    FontWeight->"Bold"],
+  StyleBox[
+  " we can display the surface defined by the implicit equation ", "TI"],
+  Cell[BoxData[
+      \(TraditionalForm\`\((\[ScriptP])\)\_2 = 0\)], "InlineFormula",
+    CellTags->"S0.0.3"],
+  StyleBox[". ", "TI"]
+}], "Text",
+  CellTags->{"S0.0.3", "3.11"}],
+
+Cell["Needs[\"Graphics`ContourPlot3D`\"]", "Input",
+  CellTags->"S0.0.3"],
+
+Cell[TextData[
+"Show[Graphics3D[{EdgeForm[], Thickness[0.0001], SurfaceColor[Hue[0.2], \
+Hue[0.45], 1.34],\n     Cases[ContourPlot3D[Evaluate[N[Subscript[\[ScriptP], \
+2]]], {x, -4, 4}, {y, -4, 4},\n        {v, -4, 4}, PlotPoints -> 25, \
+MaxRecursion -> 0, DisplayFunction -> Identity,\n        PlotRange -> All], \
+_Polygon, Infinity] /. p_Polygon :> holePolygon[p, 0.8]}]];"], "Input",
+  CellTags->"S0.0.3"],
+
+Cell[TextData[{
+  StyleBox[
+  "Although in principle this method works\[LongDash]but with ", "TI"],
+  StyleBox["PlotPoints ", "MR",
+    FontFamily->"Courier",
+    FontWeight->"Bold"],
+  Cell[BoxData[
+      \(TraditionalForm\` \[Rule] \)], "InlineFormula",
+    FontFamily->"Courier",
+    FontWeight->"Bold",
+    CellTags->"S0.0.3"],
+  StyleBox[" ",
+    FontFamily->"Courier",
+    FontWeight->"Bold"],
+  StyleBox["25", "MR",
+    FontFamily->"Courier",
+    FontWeight->"Bold"],
+  StyleBox[
+  " in the last picture one still can see some regions where a finer division \
+would be appropriate\[LongDash]for higher order polynomials the ", "TI"],
+  StyleBox["Resultant", "MR"],
+  StyleBox[
+  " calculation will become much more expensive. Also the generation of a \
+high resolution ", "TI"],
+  StyleBox["ContourPlot3D", "MR",
+    FontFamily->"Courier",
+    FontWeight->"Bold"],
+  StyleBox[
+  " requires much CPU time, and this method will be unable to deal, for \
+instance, with the following example of a two sheeted hyperelliptic curve \
+with 100 branch points. (In the following contour plot of the imaginary part \
+of the square root of a random polynomial ", "TI"],
+  Cell[BoxData[
+      \(TraditionalForm\`\[ScriptP]\)], "InlineFormula",
+    CellTags->"S0.0.3"],
+  StyleBox[
+  " of degree 100, the branch points are shown in blue, the branch cuts are \
+shown in red, the black areas are characterized by ", "TI"],
+  Cell[BoxData[
+      \(TraditionalForm\`"\[GothicCapitalI]"(\[ScriptP]) < 0\)], 
+    "InlineFormula",
+    CellTags->"S0.0.3"],
+  StyleBox[" and the white ones by ", "TI"],
+  Cell[BoxData[
+      \(TraditionalForm\`"\[GothicCapitalR]"(\[ScriptP]) < 0\)], 
+    "InlineFormula",
+    CellTags->"S0.0.3"],
+  StyleBox[".) ", "TI"]
+}], "Text",
+  CellTags->{"S0.0.3", "3.12"}],
+
+Cell[BoxData[{
+    \(SeedRandom[222]\), 
+    \(\(Module[{branchPoints = Table[Random[Complex], {100}], hyperellipticF, 
+        cp, gr, branchCuts}, 
+      hyperellipticF[z_] = Times@@\((z - branchPoints)\); 
+      cp = ContourPlot[
+          Evaluate[Im[hyperellipticF[x + I\ y]]], {x, \(-0.1\), 1.1}, {y, 
+            \(-0.1\), 1.1}, Contours \[Rule] {0}, PlotPoints \[Rule] 400, 
+          DisplayFunction \[Rule] Identity]; 
+      branchCuts = 
+        Map[If[Re[hyperellipticF[{1, I} . #1]] > 0, Sequence@@{}, #1]&, 
+          Cases[Graphics[cp], _Line, \[Infinity]], {\(-2\)}]; 
+      Show[{cp, 
+          Graphics[{{Thickness[0.004], Hue[0], branchCuts}, {PointSize[0.01], 
+                Hue[0.7], \((Point[{Re[#1], Im[#1]}]&)\)/@branchPoints}}]}, 
+        DisplayFunction \[Rule] $DisplayFunction]]; \)\)}], "Input",
+  CellTags->"S0.0.3"],
+
+Cell[TextData[StyleBox[
+"Other methods which come to mind to construct the Riemann surface of an \
+algebraic function include the Weierstrass continuation method [Henrici 1974] \
+(for an example see [Trott 1997]), representing the sheets as hypergeometric \
+functions [Appell and Kamp\[EAcute] de Feriet 1926; Eisenstein 1844; Trott \
+and Adamchik 1994] or as Siegel Theta functions [Lindemann 1892; Lindemann \
+1884; Umemura 1984]. Due to their complexity, all of these methods are \
+limited to treating relatively small examples. \nThat's why in the following \
+sections we will take another approach. ", "TI"]], "Text",
+  CellTags->{"S0.0.4", "3.13"}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Outline of the construction", "Section",
+  CellTags->{"S0.0.4", "4.1"}],
+
+Cell[TextData[{
+  StyleBox[
+  "The last section showed that the main obstacle in making a smooth picture \
+of all the sheets is due to branch cuts of radicals and/or of ", "TI"],
+  StyleBox["Root", "MR"],
+  StyleBox[
+  " objects. To avoid discontinuities we would have to carefully restrict the \
+regions where we plot the function. On the other hand, branch cuts can be \
+chosen to a large extent arbitrarily, and only the location of the branch \
+points represents a property inherent and well defined for an algebraic \
+function. (Branch cuts have to connect branch points, but how exactly a \
+branch cut is chosen in the principle sheet between the branch points doesn't \
+matter). That's why we will avoid using closed form radical or ", "TI"],
+  StyleBox["Root", "MR"],
+  StyleBox[" formulas and branch cuts at all and instead use ", "TI"],
+  StyleBox["NDSolve", "MR"],
+  StyleBox[
+  " to calculate smooth patches inside branch\[Hyphen]point\[Hyphen]free \
+regions of the complex ", "TI"],
+  Cell[BoxData[
+      \(TraditionalForm\`z\)], "InlineFormula",
+    CellTags->"S0.0.4"],
+  StyleBox[
+  "\[Hyphen]plane. This treatment avoids completely dealing with branch cuts \
+(at least on a Riemann surface). The patches will be chosen in such a way \
+that the branch points (which must be treated carefully, where two or more \
+sheets are glued together) are always at their edges . This also allows a \
+good spatial resolution near the branchpoints, which is important because \
+typically ", "TI"],
+  Cell[BoxData[
+      \(TraditionalForm\`w \((z)\)\)], "InlineFormula",
+    CellTags->"S0.0.4"],
+  StyleBox[
+  " varies most near a branch point. This will result in a smooth, in 3D self\
+\[Hyphen]intersecting surfaces representing the Riemann surface of the \
+polynomial under consideration. \nTo construct the Riemann surface we will \
+proceed with the following, partially symbolic, partially numerical steps: ", 
+    "TI"]
+}], "Text",
+  CellTags->{"S0.0.4", "4.2"}],
+
+Cell[TextData[{
+  StyleBox[
+  "1. We use the discriminant to calculate all potential branch points ", 
+    "TI"],
+  Cell[BoxData[
+      \(TraditionalForm\`\[ScriptP]\)], "InlineFormula",
+    CellTags->"S0.0.4"],
+  StyleBox[". ", "TI"]
+}], "Notes",
+  CellTags->{"S0.0.4", "4.3"}],
+
+Cell[TextData[{
+  StyleBox["2. We divide a circular part of the complex ", "TI"],
+  Cell[BoxData[
+      \(TraditionalForm\`z\)], "InlineFormula",
+    CellTags->"S0.0.4"],
+  StyleBox[
+  "\[Hyphen]plane radially and azimuthally into sectors generated by the \
+outer product of the radial and azimuthal coordinates of the branch points, \
+such that every sector has no branch point inside. ", "TI"]
+}], "Notes",
+  CellTags->{"S0.0.4", "4.4"}],
+
+Cell[TextData[{
+  StyleBox["3. We derive a differential equation for ", "TI"],
+  Cell[BoxData[
+      \(TraditionalForm\`\(w\^\[Prime]\)(z)\)], "InlineFormula",
+    CellTags->"S0.0.4"],
+  StyleBox[" from ", "TI"],
+  Cell[BoxData[
+      \(TraditionalForm\`\[ScriptP]\)], "InlineFormula",
+    CellTags->"S0.0.4"],
+  StyleBox[". ", "TI"]
+}], "Notes",
+  CellTags->{"S0.0.4", "4.5"}],
+
+Cell[TextData[StyleBox[
+"4. By starting (very) near the branch points we solve the differential \
+equation radially outwards for all sheets of every sector. ", "TI"]], "Notes",\
+
+  CellTags->{"S0.0.4", "4.6"}],
+
+Cell[TextData[{
+  StyleBox[
+  "5. Starting from the radial solutions of the differential equations we \
+solve the differential equation azimuthally inside the sectors constructed in \
+(3.). This results in parametrized (by the radius ", "TI"],
+  Cell[BoxData[
+      \(TraditionalForm\`r\)], "InlineFormula",
+    CellTags->"S0.0.4"],
+  StyleBox[" and the angle ", "TI"],
+  Cell[BoxData[
+      \(TraditionalForm\`\[CurlyPhi]\)], "InlineFormula",
+    CellTags->"S0.0.4"],
+  StyleBox[") parts of all sheets for each sector. ", "TI"]
+}], "Notes",
+  CellTags->{"S0.0.4", "4.7"}],
+
+Cell[TextData[StyleBox[
+"6. We generate polygons from the parametrizations for all sheets and all \
+sectors and display all things together (and maybe cut holes into the \
+polygons for better visibility of the inner parts). ", "TI"]], "Notes",
+  CellTags->{"S0.0.4", "4.8"}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Implementing the construction", "Section",
+  CellTags->{"S0.0.5", "5.1"}],
+
+Cell[TextData[{
+  StyleBox["1. At a branch point ", "TI"],
+  Cell[BoxData[
+      \(TraditionalForm\`w(z)\)], "InlineFormula",
+    CellTags->"S0.0.5"],
+  StyleBox[" has a multiple solution. This means ", "TI"],
+  Cell[BoxData[
+      \(TraditionalForm\`\[ScriptP]\)], "InlineFormula",
+    CellTags->"S0.0.5"],
+  StyleBox[" and ", "TI"],
+  Cell[BoxData[
+      \(TraditionalForm\`\[PartialD]\_w \[ScriptP]\)], "InlineFormula",
+    CellTags->"S0.0.5"],
+  StyleBox[
+  " must both be zero. (For a detailed discussion of the local behaviour of \
+algebraic functions near branch points see [Cano 1995; Chudnovsky and \
+Chudnovsky 1987; McDonald 1995; Teissier 1995; Walker 1950].) ", "TI"]
+}], "Notes",
+  CellTags->{"S0.0.5", "5.2"}],
+
+Cell[BoxData[
+    \(discriminant[poly_, w_] := 
+      Factor[Resultant[poly, \[PartialD]\_w poly, w]]\)], "Input",
+  CellTags->"S0.0.5"],
+
+Cell[BoxData[
+    \(branchPoints[poly_, {w_, z_}] := 
+      Union[z /. 
+          NSolve[discriminant[poly, w] == 0, z, WorkingPrecision \[Rule] 25]]
+        \)], "Input",
+  CellTags->"S0.0.5"],
+
+Cell[TextData[{
+  StyleBox["As an example for the ", "TI"],
+  Cell[BoxData[
+      \(TraditionalForm\`\[ScriptP]\)], "InlineFormula",
+    CellTags->"S0.0.5"],
+  StyleBox[
+  " let us take the following (we will use this polynomial throughout this \
+section for exemplifying the various functions defined below): ", "TI"]
+}], "Text",
+  CellTags->{"S0.0.5", "5.3"}],
+
+Cell[BoxData[
+    \(\(\[ScriptP] = \(-z\) - 3\ w\^2\ z\^2 + w\^6 - z\^3\ w + 4; \)\)], 
+  "Input",
+  CellTags->"S0.0.5"],
+
+Cell[TextData[StyleBox[
+"This function has 18 potential branch points: ", "TI"]], "Text",
+  CellTags->{"S0.0.5", "5.4"}],
+
+Cell[BoxData[
+    \(Short[bPs = branchPoints[\[ScriptP], {w, z}], 6]\)], "Input",
+  CellTags->"S0.0.5"],
+
+Cell[TextData[{
+  StyleBox["Here their location in the complex ", "TI"],
+  Cell[BoxData[
+      \(TraditionalForm\`z\)], "InlineFormula",
+    CellTags->"S0.0.5"],
+  StyleBox["\[Hyphen]plane is shown. ", "TI"]
+}], "Text",
+  CellTags->{"S0.0.5", "5.5"}],
+
+Cell[BoxData[
+    \(\(Show[
+      Graphics[{PointSize[0.02], \((Point[{Re[#1], Im[#1]}]&)\)/@bPs}], 
+      PlotRange \[Rule] All, AspectRatio \[Rule] Automatic, 
+      Frame \[Rule] True, Axes \[Rule] False]; \)\)], "Input",
+  CellTags->"S0.0.5"],
+
+Cell[TextData[{
+  StyleBox[
+  "2. Given the branch points we calculate their distances from the origin \
+and their phase and divide the ", "TI"],
+  Cell[BoxData[
+      \(TraditionalForm\`r\)], "InlineFormula",
+    CellTags->"S0.0.5"],
+  StyleBox["-", "TI"],
+  Cell[BoxData[
+      \(TraditionalForm\`\[CurlyPhi]\)], "InlineFormula",
+    CellTags->"S0.0.5"],
+  StyleBox[
+  "\[Hyphen]plane into radial and azimuthal sectors which are formed between \
+radially and azimuthally adjacent branch points. ", "TI"]
+}], "Notes",
+  CellTags->{"S0.0.5", "5.6"}],
+
+Cell[BoxData[
+    \(sectors[poly_, {w_, z_}] := 
+      Module[{\[CurlyEpsilon] = 1\/10\^5, bps = branchPoints[poly, {w, z}], 
+          arg, rMax, rList, \[CurlyPhi]List}, 
+        arg[\[Xi]_] := If[\[Xi] == 0. , 0``25, Arg[\[Xi]]]; 
+        rMax = \((If[#1 == 0. , 1, \(12\ #1\)\/10]&)\)[
+            Max[Abs[rList = Abs/@bps]]]; 
+        rList = Prepend[Append[rList, rMax], 0] \[Union] 
+            \((SameTest \[Rule] \((Abs[#1 - #2] < \[CurlyEpsilon]&)\))\); 
+        \[CurlyPhi]List = 
+          arg/@bps \[Union] 
+            \((SameTest \[Rule] \((Abs[#1 - #2] < \[CurlyEpsilon]&)\))\); 
+        \[CurlyPhi]List = 
+          Append[\[CurlyPhi]List, First[\[CurlyPhi]List] + 2\ \[Pi]]; 
+        \((N[#1, 25]&)\)[
+          Flatten[Table[{
+                rList\[LeftDoubleBracket]i\[RightDoubleBracket] + 
+                  \[CurlyEpsilon], 
+                \[CurlyPhi]List\[LeftDoubleBracket]j\[RightDoubleBracket] + 
+                  \[CurlyEpsilon], 
+                rList\[LeftDoubleBracket]i + 1\[RightDoubleBracket] - 
+                  \[CurlyEpsilon], 
+                \[CurlyPhi]List
+                    \[LeftDoubleBracket]j + 1\[RightDoubleBracket] - 
+                  \[CurlyEpsilon]}, {i, Length[rList] - 1}, {j, 
+                Length[\[CurlyPhi]List] - 1}], 1]]]\)], "Input",
+  CellTags->"S0.0.5"],
+
+Cell[TextData[{
+  StyleBox["Here the sectors for our example polygon ", "TI"],
+  Cell[BoxData[
+      \(TraditionalForm\`\[ScriptP]\)], "InlineFormula",
+    CellTags->"S0.0.5"],
+  StyleBox[" are calculated: ", "TI"]
+}], "Text",
+  CellTags->{"S0.0.5", "5.7"}],
+
+Cell[BoxData[
+    \(Short[s1 = sectors[\[ScriptP], {w, z}], 12]\)], "Input",
+  CellTags->"S0.0.5"],
+
+Cell[TextData[StyleBox[
+"Let's visualize the sectors together with the branch points by coloring each \
+sector with a randomly chosen color: ", "TI"]], "Text",
+  CellTags->{"S0.0.5", "5.8"}],
+
+Cell[BoxData[
+    \(sectorPolygon[{r1_, \[CurlyPhi]1_, r2_, \[CurlyPhi]2_}] := 
+      With[{pp = 12}, 
+        Polygon[Join[
+            Table[r1\ {Cos[\[CurlyPhi]], Sin[\[CurlyPhi]]}, {\[CurlyPhi], 
+                \[CurlyPhi]1, \[CurlyPhi]2, 
+                \(\[CurlyPhi]2 - \[CurlyPhi]1\)\/pp}], 
+            Table[r\ {Cos[\[CurlyPhi]2], Sin[\[CurlyPhi]2]}, {r, r1, r2, 
+                \(r2 - r1\)\/pp}], 
+            Table[r2\ {Cos[\[CurlyPhi]], Sin[\[CurlyPhi]]}, {\[CurlyPhi], 
+                \[CurlyPhi]2, \[CurlyPhi]1, 
+                \(\[CurlyPhi]1 - \[CurlyPhi]2\)\/pp}], 
+            Table[r\ {Cos[\[CurlyPhi]1], Sin[\[CurlyPhi]1]}, {r, r2, r1, 
+                \(r1 - r2\)\/pp}]]]]\)], "Input",
+  CellTags->"S0.0.5"],
+
+Cell[BoxData[
+    \(\(Show[
+      Graphics[{\(({Hue[Random[]], sectorPolygon[#1]}&)\)/@s1, 
+          PointSize[0.02], \((Point[{Re[#1], Im[#1]}]&)\)/@bPs}], 
+      PlotRange \[Rule] All, Frame \[Rule] True, 
+      AspectRatio \[Rule] Automatic]; \)\)], "Input",
+  CellTags->"S0.0.5"],
+
+Cell[TextData[StyleBox[
+"3. Now let's derive a differential equation equivalent to the polynomial \
+under consideration. ", "TI"]], "Notes",
+  CellTags->{"S0.0.5", "5.9"}],
+
+Cell[TextData[{
+  StyleBox[
+  "The solution of the differential equation we are looking for should \
+reproduce the original polynomial. If we integrate the differential equation \
+and avoid branch points along the integration path, then this solution will \
+be a smooth function representing the original polynomial. Let us take a \
+simple example to demonstrate this: ", "TI"],
+  Cell[BoxData[
+      \(TraditionalForm\`w(z) = \@z\)], "InlineFormula",
+    CellTags->"S0.0.5"],
+  StyleBox[". This equation is equivalent to ", "TI"],
+  Cell[BoxData[
+      \(TraditionalForm\`\((w(z))\)\^3 = z\)], "InlineFormula",
+    CellTags->"S0.0.5"],
+  StyleBox[". Differentiating this equation with respect to ", "TI"],
+  Cell[BoxData[
+      \(TraditionalForm\`z\)], "InlineFormula",
+    CellTags->"S0.0.5"],
+  StyleBox[" gives the differential equation ", "TI"],
+  Cell[BoxData[
+      \(TraditionalForm\`\(\(w\^\[Prime]\)(z)\)\ \((w(z))\)\^2 = 1\)], 
+    "InlineFormula",
+    CellTags->"S0.0.5"],
+  StyleBox[
+  ". Solving this differential equation along the unit circle (after changing \
+the independent variable from ", "TI"],
+  Cell[BoxData[
+      \(TraditionalForm\`z\)], "InlineFormula",
+    CellTags->"S0.0.5"],
+  StyleBox[" to ", "TI"],
+  Cell[BoxData[
+      \(TraditionalForm\`z \[Rule] \[CurlyPhi]\)], "InlineFormula",
+    CellTags->"S0.0.5"],
+  StyleBox[" with ", "TI"],
+  Cell[BoxData[
+      \(TraditionalForm
+      \`z = \[ExponentialE]\^\(\[ImaginaryI]\ \[CurlyPhi]\)\)], 
+    "InlineFormula",
+    CellTags->"S0.0.5"],
+  StyleBox[" gives: ", "TI"]
+}], "Text",
+  CellTags->{"S0.0.5", "5.10"}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+    \(nsol = 
+      NDSolve[{\(\[Psi]'\)[\[CurlyPhi]]/\((I\ Exp[I\ \[CurlyPhi]])\) 
+              \[Psi][\[CurlyPhi]]\^2 \[Equal] 1, \[Psi][0] \[Equal] 1}, 
+        \[Psi], {\[CurlyPhi], 0, 8  \[Pi]}]\)], "Input"],
+
+Cell[BoxData[
+    RowBox[{"{", 
+      RowBox[{"{", 
+        RowBox[{"\[Psi]", "\[Rule]", 
+          
+          TagBox[\(InterpolatingFunction[{{0.`, 25.1327412287183449`}}, "<>"]
+              \),
+            False,
+            Editable->False]}], "}"}], "}"}]], "Output"]
+}, Open  ]],
+
+Cell[TextData[{
+  StyleBox["Because the function ", "TI"],
+  Cell[BoxData[
+      \(TraditionalForm\`w \((z)\) = \@z\)], "InlineFormula",
+    CellTags->"S0.0.5"],
+  StyleBox[
+  " has a Riemann surface with three sheets, we need three revolutions around \
+the origin to come back to the starting value. ", "TI"]
+}], "Text",
+  CellTags->{"S0.0.5", "5.17"}],
+
+Cell[BoxData[
+    \(\(Plot[
+      Evaluate[Re[\[Psi][\[CurlyPhi]] /. nsol]], {\[CurlyPhi], 0, 8\ \[Pi]}, 
+      \ \n\t\ \ \ \ \ \ \ \ 
+      Ticks \[Rule] {Table[j\ \[Pi], {j, 8}], Automatic}]; \)\)], "Input"],
+
+Cell[TextData[{
+  StyleBox[
+  "Now let us return to the general case. Also here we will derive a first\
+\[Hyphen]order nonlinear differential equation. (We could also generate \
+higher\[Hyphen]order linear differential equations with polynomial \
+coefficients [see [Cockle 1860; Cockle 1862; Harley 1862; Lachtin 1898] for \
+details], but for higher\[Hyphen]order equations getting the initial \
+conditions is no longer so easy\[LongDash]for first\[Hyphen]order cases one \
+just solves numerically the polynomial under consideration for a given ", 
+    "TI"],
+  Cell[BoxData[
+      \(TraditionalForm\`z\)], "InlineFormula",
+    CellTags->"S0.0.5"],
+  StyleBox[" with respect to ", "TI"],
+  Cell[BoxData[
+      \(TraditionalForm\`w\)], "InlineFormula",
+    CellTags->"S0.0.5"],
+  StyleBox[".) \n\nIf we view ", "TI"],
+  Cell[BoxData[
+      \(TraditionalForm\`w\)], "InlineFormula",
+    CellTags->"S0.0.5"],
+  StyleBox[" as a function of ", "TI"],
+  Cell[BoxData[
+      \(TraditionalForm\`z\)], "InlineFormula",
+    CellTags->"S0.0.5"],
+  StyleBox[", we can differentiate the polynomial with respect to ", "TI"],
+  Cell[BoxData[
+      \(TraditionalForm\`z\)], "InlineFormula",
+    CellTags->"S0.0.5"],
+  StyleBox[" and solve for ", "TI"],
+  Cell[BoxData[
+      \(TraditionalForm\`\(w\^\[Prime]\)(z)\)], "InlineFormula",
+    CellTags->"S0.0.5"],
+  StyleBox[". ", "TI"]
+}], "Text",
+  CellTags->{"S0.0.5", "5.20"}],
+
+Cell[BoxData[
+    RowBox[{\(ode[poly_, {w_, z_}]\), ":=", 
+      RowBox[{"Equal", "@@", 
+        RowBox[{
+          RowBox[{"Solve", "[", 
+            RowBox[{
+            \(\[PartialD]\_z\((poly /. w \[Rule] w[z])\) == 0\), ",", 
+              RowBox[{
+                SuperscriptBox["w", "\[Prime]",
+                  MultilineFunction->None], "[", "z", "]"}]}], "]"}], 
+          "\[LeftDoubleBracket]", \(1, 1\), "\[RightDoubleBracket]"}]}]}]], 
+  "Input",
+  CellTags->"S0.0.5"],
+
+Cell[TextData[StyleBox[
+"The nonlinear first\[Hyphen]order differential equation we get this way for \
+our example polynomial is the following: ", "TI"]], "Text",
+  CellTags->{"S0.0.5", "5.21"}],
+
+Cell[BoxData[
+    \(ode\[ScriptP] = ode[\[ScriptP], {w, z}]\)], "Input",
+  CellTags->"S0.0.5"],
+
+Cell[TextData[{
+  StyleBox[
+  "Later on we will need to solve this differential equation in azimuthal and \
+radial directions. \nTransforming the independent variable from ", "TI"],
+  Cell[BoxData[
+      \(TraditionalForm\`z\)], "InlineFormula",
+    CellTags->"S0.0.5"],
+  StyleBox[" to ", "TI"],
+  Cell[BoxData[
+      \(TraditionalForm\`\[CurlyPhi]\)], "InlineFormula",
+    CellTags->"S0.0.5"],
+  StyleBox[
+  ", we get the differential equation in azimuthal direction: ", "TI"]
+}], "Text",
+  CellTags->{"S0.0.5", "5.22"}],
+
+Cell[BoxData[
+    RowBox[{
+    \(ode\[CurlyPhi][ode_, {w_, z_}, {\[Psi]_, \[CurlyPhi]_}, r_]\), ":=", 
+      RowBox[{"ode", "//.", 
+        RowBox[{"{", 
+          RowBox[{
+            RowBox[{
+              RowBox[{
+                RowBox[{
+                  SuperscriptBox["w", "\[Prime]",
+                    MultilineFunction->None], "[", "z", "]"}], "==", 
+                "rhs_"}], "\[Rule]", 
+              RowBox[{
+                RowBox[{
+                  SuperscriptBox["\[Psi]", "\[Prime]",
+                    MultilineFunction->None], "[", "\[CurlyPhi]", "]"}], 
+                "==", \(rhs\ 
+                  \[PartialD]\_\[CurlyPhi]\((r\ Exp[I\ \[CurlyPhi]])\)\)}]}], 
+            ",", \(w[z] \[Rule] \[Psi][\[CurlyPhi]]\), ",", 
+            \(z \[Rule] r\ Exp[I\ \[CurlyPhi]]\)}], "}"}]}]}]], "Input",
+  CellTags->"S0.0.5"],
+
+Cell[BoxData[
+    \(ode\[ScriptP]\[CurlyPhi] = 
+      ode\[CurlyPhi][ode\[ScriptP], {w, z}, {\[Psi], \[CurlyPhi]}, r]\)], 
+  "Input",
+  CellTags->"S0.0.5"],
+
+Cell[TextData[{
+  StyleBox["Transforming the independent variable from ", "TI"],
+  Cell[BoxData[
+      \(TraditionalForm\`z\)], "InlineFormula",
+    CellTags->"S0.0.5"],
+  StyleBox[" to ", "TI"],
+  Cell[BoxData[
+      \(TraditionalForm\`r\)], "InlineFormula",
+    CellTags->"S0.0.5"],
+  StyleBox[", we get the differential equation in radial direction ", "TI"],
+  StyleBox["dir", "MR"],
+  StyleBox[". ", "TI"]
+}], "Text",
+  CellTags->{"S0.0.5", "5.23"}],
+
+Cell[BoxData[
+    RowBox[{\(oder[ode_, {w_, z_}, {\[Psi]_, \[Rho]_}, dir_]\), ":=", 
+      RowBox[{"ode", "//.", 
+        RowBox[{"{", 
+          RowBox[{
+            RowBox[{
+              RowBox[{
+                RowBox[{
+                  SuperscriptBox["w", "\[Prime]",
+                    MultilineFunction->None], "[", "z", "]"}], "==", 
+                "rhs_"}], "\[Rule]", 
+              RowBox[{
+                RowBox[{
+                  SuperscriptBox["\[Psi]", "\[Prime]",
+                    MultilineFunction->None], "[", "\[Rho]", "]"}], "==", 
+                \(rhs\ \[PartialD]\_\[Rho]\((\[Rho]\ dir)\)\)}]}], ",", 
+            \(w[z] \[Rule] \[Psi][\[Rho]]\), ",", 
+            \(z \[Rule] dir\ \[Rho]\)}], "}"}]}]}]], "Input",
+  CellTags->"S0.0.5"],
+
+Cell[BoxData[
+    \(ode\[ScriptP]r = oder[ode\[ScriptP], {w, z}, {\[Psi], \[Rho]}, dir]\)], 
+  "Input",
+  CellTags->"S0.0.5"],
+
+Cell[TextData[{
+  StyleBox[
+  "The points (4.), (5.) and (6.) we will carry out not sequentially, but \
+rather for every sector at once. The advantage is that we do not have to \
+store a large number of ", "TI"],
+  StyleBox["InterpolatingFunction", "MR"],
+  StyleBox[
+  " objects (which can be quite memory intensive). \nFor the numerical \
+solution, we set some options in ", "TI"],
+  StyleBox["ND", "MR"],
+  StyleBox["\[Hyphen] ", "TI"],
+  StyleBox["Solve", "MR"],
+  StyleBox[
+  ". (The following option settings will be suitable for the examples treated \
+in the following\[LongDash]more complicated polynomials might need larger \
+values of the maximum number of steps as well of the precision/accuracy \
+goals.) ", "TI"]
+}], "Text",
+  CellTags->{"S0.0.5", "5.24"}],
+
+Cell[BoxData[
+    \(\(SetOptions[NDSolve, PrecisionGoal \[Rule] 12, 
+      AccuracyGoal \[Rule] 12, MaxSteps \[Rule] 2000]; \)\)], "Input",
+  CellTags->"S0.0.5"],
+
+Cell[TextData[{
+  StyleBox["The function ", "TI"],
+  StyleBox["patch", "MR"],
+  StyleBox[" calculates polygons of all sheets of the polynomial ", "TI"],
+  StyleBox["poly", "MR"],
+  StyleBox[" using ", "TI"],
+  StyleBox["pp", "MR"],
+  Cell[BoxData[
+      \(TraditionalForm\`\[CurlyPhi]\)], "InlineFormula",
+    CellTags->"S0.0.5"],
+  StyleBox[" azimuthal and ", "TI"],
+  StyleBox["ppr", "MR"],
+  StyleBox[
+  " radial plot points in a given sector. (We give the radial as well as the \
+azimuthal differential equation as arguments to ", "TI"],
+  StyleBox["patch", "MR"],
+  StyleBox[". Although they could be calculated from ", "TI"],
+  StyleBox["poly", "MR"],
+  StyleBox[", later on we have to call ", "TI"],
+  StyleBox["patch", "MR"],
+  StyleBox[
+  " on each of the sectors, and we would like to avoid recalculating the \
+differential equation for every sector.) ", "TI"]
+}], "Text",
+  CellTags->{"S0.0.5", "5.25"}],
+
+Cell[BoxData[
+    \(patch[
+        reIm_, {poly_, {w_, z_}}, {ode\[CurlyPhi]_, {\[Psi]_, \[CurlyPhi]_}, 
+          r_}, {oder_, {\[Psi]_, \[Rho]_}, dir_}, {r1_, \[CurlyPhi]1_, r2_, 
+          \[CurlyPhi]2_}, {pp\[CurlyPhi]_, ppr_}] := 
+      Module[{radialStartingValues, radialIFs, azimuthalIFs, points, ra, 
+          \[CurlyPhi]a}, 
+        radialStartingValues = 
+          w /. Solve[poly == 0 /. {z \[Rule] r1\ Exp[I\ \[CurlyPhi]1]}, w]; 
+        radialIFs = 
+          \((\(NDSolve[{oder /. dir \[Rule] Exp[I\ \[CurlyPhi]1], 
+                      \[Psi][r1] == #1}, \[Psi], {\[Rho], r1, r2}]
+                    \)\[LeftDoubleBracket]1, 1, 2\[RightDoubleBracket]&)\)/@
+            radialStartingValues; 
+        azimuthalIFs = 
+          Table[ra = r1 + \(i\ \((r2 - r1)\)\)\/ppr; 
+            \(NDSolve[{ode\[CurlyPhi] /. r \[Rule] ra, 
+                  \[Psi][\[CurlyPhi]1] == 
+                    \(radialIFs\[LeftDoubleBracket]j\[RightDoubleBracket]\)[
+                      ra]}, \[Psi], {\[CurlyPhi], \[CurlyPhi]1, \[CurlyPhi]2}]
+                \)\[LeftDoubleBracket]1, 1, 2\[RightDoubleBracket], {j, 
+              Length[radialIFs]}, {i, 0, ppr}]; 
+        points = 
+          Table[ra = r1 + \(i\ \((r2 - r1)\)\)\/ppr; 
+            \[CurlyPhi]a = 
+              \[CurlyPhi]1 + 
+                \(k\ \((\[CurlyPhi]2 - \[CurlyPhi]1)\)\)\/pp\[CurlyPhi]; {
+              ra\ Cos[\[CurlyPhi]a], ra\ Sin[\[CurlyPhi]a], 
+              reIm[\(azimuthalIFs\[LeftDoubleBracket]j, 
+                    i + 1\[RightDoubleBracket]\)[\[CurlyPhi]a]]}, {j, 
+              Length[radialIFs]}, {i, 0, ppr}, {k, 0, pp\[CurlyPhi]}]; 
+        Function[s, 
+            Apply[Polygon[Join[#1, Reverse[#2]]]&, 
+              Transpose/@Partition[\((Partition[#1, 2, 1]&)\)/@s, 2, 1], {
+                2}]]/@points]\)], "Input",
+  CellTags->"S0.0.5"],
+
+Cell[TextData[StyleBox[
+"Here the six sheets inside two of the sectors of our example polynomial are \
+calculated. The right\[Hyphen]hand example contains a clearly visible branch \
+point. ", "TI"]], "Text",
+  CellTags->{"S0.0.5", "5.26"}],
+
+Cell[BoxData[
+    \(\(Show[
+      GraphicsArray[
+        \((Graphics3D[
+                patch[Im, {\[ScriptP], {w, z}}, {
+                    ode\[ScriptP]\[CurlyPhi], {\[Psi], \[CurlyPhi]}, r}, {
+                    ode\[ScriptP]r, {\[Psi], \[Rho]}, dir}, 
+                  s1\[LeftDoubleBracket]#1\[RightDoubleBracket], {8, 8}], 
+                BoxRatios \[Rule] {1, 1, 2}, ViewPoint \[Rule] {2, 1, 0.6}]&)
+            \)/@{6, 111}]]; \)\)], "Input",
+  CellTags->"S0.0.5"],
+
+Cell[TextData[{
+  StyleBox[
+  "For the whole Riemann surface we want the mesh as uniform as possible, and \
+at the same time we want the branch points always to be (near) mesh points. \
+The function ", "TI"],
+  StyleBox["patchPlotPoints", "MR",
+    FontFamily->"Courier",
+    FontWeight->"Bold"],
+  StyleBox[
+  " calculates the number of radial and azimuthal points inside a given \
+sector, provided the whole number of radial and azimuthal points should be \
+around ", "TI"],
+  StyleBox["ppr", "MR"],
+  StyleBox[" and ", "TI"],
+  StyleBox["pp", "MR"],
+  Cell[BoxData[
+      \(TraditionalForm\`\[CurlyPhi]\)], "InlineFormula",
+    CellTags->"S0.0.5"],
+  StyleBox[
+  ". The actual number of plot points might slightly deviate from ", "TI"],
+  StyleBox["ppr", "MR",
+    FontFamily->"Courier",
+    FontWeight->"Bold"],
+  StyleBox[" and ", "TI"],
+  StyleBox["pp", "MR",
+    FontFamily->"Courier",
+    FontWeight->"Bold"],
+  Cell[BoxData[
+      \(TraditionalForm\`\[CurlyPhi]\)], "InlineFormula",
+    FontFamily->"Courier",
+    FontWeight->"Bold",
+    CellTags->"S0.0.5"],
+  StyleBox[". ", "TI"]
+}], "Text",
+  CellTags->{"S0.0.5", "5.27"}],
+
+Cell[BoxData[
+    \(patchPlotPoints[{r1_, \[CurlyPhi]1_, r2_, \[CurlyPhi]2_}, 
+        rMax_, {pp\[CurlyPhi]_, ppr_}] := 
+      \((Max[#1, 1]&)\)/@
+        Round[\({pp\[CurlyPhi], ppr}\ {\[CurlyPhi]2 - \[CurlyPhi]1, r2 - r1}
+                \)\/{2\ \[Pi], rMax}]\)], "Input",
+  CellTags->"S0.0.5"],
+
+Cell[TextData[{
+  StyleBox[
+  "Now we have all pieces together to implement the function ", "TI"],
+  StyleBox["RiemannSurface", "MR",
+    FontFamily->"Courier",
+    FontWeight->"Bold"],
+  StyleBox[". Its first argument ", "TI"],
+  StyleBox["poly", "MR"],
+  StyleBox[" is a bivariate polynomial in ", "TI"],
+  StyleBox["w", "MR"],
+  StyleBox[" and ", "TI"],
+  StyleBox["z", "MR"],
+  StyleBox[
+  ", the second argument is the function to be shown (in most cases ", "TI"],
+  StyleBox["Re", "MR"],
+  StyleBox[" or ", "TI"],
+  StyleBox["Im", "MR"],
+  StyleBox[
+  ") and the last argument is the number of radial and azimuthal plot points. \
+The function ", "TI"],
+  StyleBox["RiemannSurface", "MR",
+    FontFamily->"Courier",
+    FontWeight->"Bold"],
+  StyleBox[" returns a list of polygons of all sheets. ", "TI"]
+}], "Text",
+  CellTags->{"S0.0.5", "5.28"}],
+
+Cell[BoxData[
+    \(RiemannSurface[poly_, {w_, z_}, reIm_, {pp\[CurlyPhi]_, ppr_}] := 
+      Module[{s, rMax, odePoly, odePoly\[CurlyPhi], odePolyr}, 
+        s = sectors[poly, {w, z}]; 
+        rMax = Max[\((#1\[LeftDoubleBracket]3\[RightDoubleBracket]&)\)/@s]; 
+        odePoly = ode[poly, {w, z}]; 
+        odePoly\[CurlyPhi] = 
+          ode\[CurlyPhi][odePoly, {w, z}, {\[Psi], \[CurlyPhi]}, r]; 
+        odePolyr = oder[odePoly, {w, z}, {\[Psi], \[Rho]}, dir]; 
+        Table[patch[
+            reIm, {poly, {w, z}}, {odePoly\[CurlyPhi], {\[Psi], \[CurlyPhi]}, 
+              r}, {odePolyr, {\[Psi], \[Rho]}, dir}, 
+            s\[LeftDoubleBracket]i\[RightDoubleBracket], 
+            patchPlotPoints[s\[LeftDoubleBracket]i\[RightDoubleBracket], 
+              rMax, {pp\[CurlyPhi], ppr}]], {i, Length[s]}]]\)], "Input",
+  CellTags->"S0.0.5"],
+
+Cell[TextData[{
+  StyleBox["Here one half of the Riemann surface of ", "TI"],
+  Cell[BoxData[
+      \(TraditionalForm\`\[ScriptP]\)], "InlineFormula",
+    CellTags->"S0.0.5"],
+  StyleBox[
+  " is shown. A cross\[Hyphen]sectional view along the plane ", "TI"],
+  Cell[BoxData[
+      \(TraditionalForm\`y = 0\)], "InlineFormula",
+    CellTags->"S0.0.5"],
+  StyleBox[
+  " shows nicely the branching at the six branch points along the real axis. \
+", "TI"]
+}], "Text",
+  CellTags->{"S0.0.5", "5.29"}],
+
+Cell[BoxData[
+    \(\(Show[
+      Graphics3D[{EdgeForm[Thickness[0.0001]], 
+          SurfaceColor[Hue[0.45], Hue[0.53], 1.78], 
+          RiemannSurface[\[ScriptP], {w, z}, Im, {50, 36}]}], 
+      PlotRange \[Rule] {All, {0, 6}, All}]; \)\)], "Input",
+  CellTags->"S0.0.5"],
+
+Cell[TextData[StyleBox[
+"By using only one plot point in the azimuthal direction and replacing \
+polygons by lines, we can make a picture showing cross section along all \
+directions which contain branch points. One sees nicely the splitting of the \
+branches near branch points. (Generically one expects most branch points to \
+be of square root type.) Both the real as well as the imaginary part are \
+shown. ", "TI"]], "Text",
+  CellTags->{"S0.0.5", "5.30"}],
+
+Cell[BoxData[
+    \(\(Show[
+      GraphicsArray[
+        \(Function[l, 
+            Function[reIm, 
+                Map[If[Head[#1] === List, MapAt[reIm, #1, 3], #1]&, 
+                  l, {\(-2\)}]]/@{Re, Im}]\)[
+          Graphics3D[{Thickness[0.0001], 
+              RiemannSurface[\[ScriptP], {w, z}, Identity, {1, 30}] /. 
+                Polygon[{p1_, p2_, p3_, p4_}] 
+                  \[RuleDelayed] {Line[{p2, p3}], Line[{p4, p1}]}}, 
+            ViewPoint \[Rule] {\(-2\), \(-1\), 0.7}]]]]; \)\)], "Input",
+  CellTags->"S0.0.5"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Some examples", "Section",
+  CellTags->{"S0.0.6", "6.1"}],
+
+Cell[TextData[{
+  StyleBox["In this section we will use the function ", "TI"],
+  StyleBox["RiemannSurface", "MR"],
+  StyleBox[
+  " to visualize a collection of Riemann surfaces of algebraic functions. \n\
+We start with the simple function ", "TI"],
+  Cell[BoxData[
+      \(TraditionalForm\`w \((z)\) = \@\(1 - z\^2\)\)], "InlineFormula",
+    CellTags->"S0.0.6"],
+  StyleBox[" or ", "TI"],
+  Cell[BoxData[
+      \(TraditionalForm\`w\^2 + z\^2 - 1 = 0\)], "InlineFormula",
+    CellTags->"S0.0.6"],
+  StyleBox[
+  ", but this time we show the phase instead of the real or imaginary part. ",
+     "TI"]
+}], "Text",
+  CellTags->{"S0.0.6", "6.2"}],
+
+Cell[BoxData[
+    \(\(\[ScriptP] = w\^2 + z\^2 - 1; \)\)], "Input",
+  CellTags->"S0.0.6"],
+
+Cell[BoxData[
+    \(\(Show[
+      Graphics3D[{EdgeForm[], Thickness[0.0001], GrayLevel[0], 
+            SurfaceColor[Hue[0.5], Hue[0.5], 2], 
+            RiemannSurface[\[ScriptP], {w, z}, Arg[#1]\^2&, {60, 30}]} /. 
+          p_Polygon \[RuleDelayed] holePolygon[p, 0.8]], 
+      PlotRange \[Rule] All, BoxRatios \[Rule] {1, 1, 1}, 
+      ViewPoint \[Rule] {1.9, \(-2.2\), 0.6}]; \)\)], "Input",
+  CellTags->"S0.0.6"],
+
+Cell[TextData[{
+  StyleBox["Two quartics (symmetric in ", "TI"],
+  Cell[BoxData[
+      \(TraditionalForm\`z\)], "InlineFormula",
+    CellTags->"S0.0.6"],
+  StyleBox[" and ", "TI"],
+  Cell[BoxData[
+      \(TraditionalForm\`w\)], "InlineFormula",
+    CellTags->"S0.0.6"],
+  StyleBox["): ", "TI"]
+}], "Text",
+  CellTags->{"S0.0.6", "6.3"}],
+
+Cell[BoxData[
+    \(\(Show[
+      GraphicsArray[
+        \((Graphics3D[{EdgeForm[], Thickness[0.0001], RGBColor[0, 1, 0], 
+                    SurfaceColor[Hue[0.78], Hue[0.22], 1.06], 
+                    RiemannSurface[#1, {w, z}, Im, {60, 30}]} /. 
+                  p_Polygon \[RuleDelayed] holePolygon[p, 0.7], 
+                PlotRange \[Rule] {All, {0, 1.399999999999999}, All}, 
+                ViewPoint \[Rule] {0, \(-2\), 0}, 
+                BoxRatios \[Rule] {1, 1, 3\/2}]&)\)/@{
+            1 + z + z\^2 + z\^3 + z\^4 + w + w\^2 + w\^3 + w\^4, 
+            1 + z + z\^2 + z\^3 + z\^4 - w - w\^2 - w\^3 - w\^4}]]; \)\)], 
+  "Input",
+  CellTags->"S0.0.6"],
+
+Cell[TextData[StyleBox["Here is an elliptic curve. ", "TI"]], "Text",
+  CellTags->{"S0.0.6", "6.4"}],
+
+Cell[TextData["\[ScriptP] = w^2 + z^3 + 3*z^2 - 1;"], "Input",
+  CellTags->"S0.0.6"],
+
+Cell[BoxData[
+    \(\(Show[
+      Graphics3D[{EdgeForm[], Thickness[0.0001], GrayLevel[0], 
+            SurfaceColor[Hue[0.3], Hue[0.8199999999999999], 1.02], 
+            RiemannSurface[\[ScriptP], {w, z}, Im, {60, 30}]} /. 
+          p_Polygon \[RuleDelayed] holePolygon[p, 0.8]], 
+      PlotRange \[Rule] All, BoxRatios \[Rule] {1, 1, 1}]; \)\)], "Input",
+  CellTags->"S0.0.6"],
+
+Cell[TextData[StyleBox[
+"The Riemann surface of a hyperelliptic curve. Coloring the individual \
+patches differently makes it easier to spot the 8 branch points located at \
+the unit circle. ", "TI"]], "Text",
+  CellTags->{"S0.0.6", "6.5"}],
+
+Cell[BoxData[
+    \(\(\[ScriptP] = w\^2 - z\^8 - 1; \)\)], "Input",
+  CellTags->"S0.0.6"],
+
+Cell[TextData[StyleBox[
+"To change the appearance of these pictures, we implement another form for \
+making holes in the surface. ", "TI"]], "Text",
+  CellTags->{"S0.0.6", "6.6"}],
+
+Cell[BoxData[
+    \(starPolygon[Polygon[{p1_, p2_, p3_, p4_}], f_] := 
+      Module[{m = 1\/4\ \((p1 + p2 + p3 + p4)\), q1 = \(p4 + p1\)\/2, 
+          q2 = \(p1 + p2\)\/2, q3 = \(p2 + p3\)\/2, q4 = \(p3 + p4\)\/2, r1, 
+          r2, r3, r4}, {r1, r2, r3, r4} = 
+          \((m + f\ \((#1 - m)\)&)\)/@{q1, q2, q3, q4}; {
+          Polygon/@{{r1, p1, r2}, {r2, p2, r3}, {r3, p3, r4}, {r4, p4, r1}}, 
+          Line/@{{r1, r2, r3, r4, r1}, {p1, r2, p2, r3, p3, r4, p4, r1, p1}}}]
+        \)], "Input",
+  CellTags->"S0.0.6"],
+
+Cell[TextData[
+"Show[Graphics3D[{EdgeForm[], Thickness[0.0001], GrayLevel[0],\n      \
+Map[{SurfaceColor[Hue[Random[]], Hue[Random[]], 3*Random[]], #1} & ,\n       \
+RiemannSurface[\[ScriptP], {w, z}, Im, {60, 30}], {2}]} /.\n     p_Polygon :> \
+starPolygon[p, 0.5]], PlotRange -> All, BoxRatios -> {1, 1, 1}];"], "Input",
+  CellTags->"S0.0.6"],
+
+Cell[TextData[StyleBox[
+"The Riemann surface of a generalized hyperelliptic function: ", "TI"]], 
+  "Text",
+  CellTags->{"S0.0.6", "6.7"}],
+
+Cell[TextData[
+"\[ScriptP] = -1 + z - 4*z^2 + z^3 - z^4 + z^5 - z^6 + w^4;"], "Input",
+  CellTags->"S0.0.6"],
+
+Cell[BoxData[
+    \(\(Show[
+      Graphics3D[{EdgeForm[], Thickness[0.0001], GrayLevel[1], 
+            SurfaceColor[Hue[0.04], Hue[0.2399999999999999], 
+              1.889999999999999], 
+            RiemannSurface[\[ScriptP], {w, z}, Im, {60, 30}]} /. 
+          p_Polygon \[RuleDelayed] starPolygon[p, 0.3]], 
+      PlotRange \[Rule] All, Background \[Rule] GrayLevel[0]]; \)\)], "Input",\
+
+  CellTags->"S0.0.6"],
+
+Cell[TextData[{
+  StyleBox["The Riemann surface of the cubic (in ", "TI"],
+  Cell[BoxData[
+      \(TraditionalForm\`w\)], "InlineFormula",
+    CellTags->"S0.0.6"],
+  StyleBox[
+  ") from the section above. The polygons are colored according to their \
+distance from the ", "TI"],
+  Cell[BoxData[
+      \(TraditionalForm\`z\)], "InlineFormula",
+    CellTags->"S0.0.6"],
+  StyleBox["\[Hyphen]axis. The function ", "TI"],
+  StyleBox["holePolygon1", "MR"],
+  StyleBox[
+  " also cuts a hole into a polygon, but in a slightly different manner than \
+", "TI"],
+  StyleBox["holePolygon", "MR"],
+  StyleBox[" and ", "TI"],
+  StyleBox["starPolygon", "MR"],
+  StyleBox[". ", "TI"]
+}], "Text",
+  CellTags->{"S0.0.6", "6.8"}],
+
+Cell[BoxData[
+    \(holePolygon1[Polygon[{p1_, p2_, p3_, p4_}]] := 
+      \(Function[{q1, q2, q3, q4}, {
+            Polygon/@{{q1, p1, q2}, {q2, p2, q3}, {q3, p3, q4}, {q4, p4, 
+                  q1}}, Line[{q1, q2, q3, q4, q1}]}]\)[\(p4 + p1\)\/2, 
+        \(p1 + p2\)\/2, \(p2 + p3\)\/2, \(p3 + p4\)\/2]\)], "Input",
+  CellTags->"S0.0.6"],
+
+Cell[BoxData[
+    \(\(\[ScriptP] = \(-z\^4\) - 5\ z\^3 - 2\ z\^2\ w - z\^2\ w\^2 + w\^3; 
+    \)\)], "Input",
+  CellTags->"S0.0.6"],
+
+Cell[BoxData[
+    \(\(Show[
+      Graphics3D[{EdgeForm[], GrayLevel[0.6], 
+          \(({\((SurfaceColor[Hue[#1\/45], Hue[#1\/45], 2.299999999999999]&)
+                      \)[\((#1 . #1&)\)[
+                      Drop[1\/4\ 
+                          Plus@@#1\[LeftDoubleBracket]1\[RightDoubleBracket], 
+                        \(-1\)]]], #1}&)\)/@
+            DeleteCases[
+              Flatten[RiemannSurface[\[ScriptP], {w, z}, Im, {70, 30}] /. 
+                  p_Polygon \[RuleDelayed] holePolygon1[p]], _Line]}], 
+      PlotRange \[Rule] All, BoxRatios \[Rule] {1, 1, 1}]; \)\)], "Input",
+  CellTags->"S0.0.6"],
+
+Cell[TextData[{
+  StyleBox["Another cubic (in ", "TI"],
+  Cell[BoxData[
+      \(TraditionalForm\`w\)], "InlineFormula",
+    CellTags->"S0.0.6"],
+  StyleBox["): ", "TI"]
+}], "Text",
+  CellTags->{"S0.0.6", "6.9"}],
+
+Cell[BoxData[
+    \(\(\[ScriptP] = 7 + 10\ w\^2 - 10\ w\^3 - 2\ z\^3 - 15\ z\^4; \)\)], 
+  "Input",
+  CellTags->"S0.0.6"],
+
+Cell[BoxData[
+    \(\(Show[
+      Graphics3D[{EdgeForm[Thickness[0.0001]], 
+            SurfaceColor[Hue[0.32], Hue[0.4699999999999999], 2.24], 
+            RiemannSurface[\[ScriptP], {w, z}, Im, {60, 25}]} /. 
+          p_Polygon \[RuleDelayed] starPolygon[p, 0.7]], 
+      BoxRatios \[Rule] {1, 1, 1}, ViewPoint \[Rule] {\(-2\), 2, 0.3}]; 
+    \)\)], "Input",
+  CellTags->"S0.0.6"],
+
+Cell[TextData[StyleBox[
+"The Riemann surface of a trinomial sextic. ", "TI"]], "Text",
+  CellTags->{"S0.0.6", "6.10"}],
+
+Cell[BoxData[
+    \(\(\[ScriptP] = w\^6 - w - z; \)\)], "Input",
+  CellTags->"S0.0.6"],
+
+Cell[BoxData[
+    \(\(Show[
+      Graphics3D[{EdgeForm[], Thickness[0.0001], GrayLevel[0], 
+            SurfaceColor[Hue[0.22], Hue[0.78], 1.52], 
+            RiemannSurface[\[ScriptP], {w, z}, Im, {60, 30}]} /. 
+          p_Polygon \[RuleDelayed] starPolygon[p, 0.8]], 
+      PlotRange \[Rule] All, BoxRatios \[Rule] {1, 1, 2}, 
+      ViewPoint \[Rule] {2, \(-2\), 0.7}]; \)\)], "Input",
+  CellTags->"S0.0.6"],
+
+Cell[TextData[{
+  StyleBox["The next example has a pole at ", "TI"],
+  Cell[BoxData[
+      \(TraditionalForm\`z = 0\)], "InlineFormula",
+    CellTags->"S0.0.6"],
+  StyleBox[": ", "TI"]
+}], "Text",
+  CellTags->{"S0.0.6", "6.11"}],
+
+Cell[BoxData[
+    \(\(\[ScriptP] = \((w\^3 + w - 1)\)\ z\^2 - 1; \)\)], "Input",
+  CellTags->"S0.0.6"],
+
+Cell[BoxData[
+    \(\(Show[
+      Graphics3D[{EdgeForm[], Thickness[0.0001], Hue[0], 
+            SurfaceColor[Hue[0.52], Hue[0.65], 1.82], 
+            RiemannSurface[\[ScriptP], {w, z}, Im, {60, 30}]} /. 
+          p_Polygon \[RuleDelayed] holePolygon1[p]], 
+      BoxRatios \[Rule] {1, 1, 1}, Axes \[Rule] True, 
+      PlotRange \[Rule] {\(-5\), 5}]; \)\)], "Input",
+  CellTags->"S0.0.6"],
+
+Cell[TextData[StyleBox["Here is an example with five poles: ", "TI"]], "Text",
+  CellTags->{"S0.0.6", "6.12"}],
+
+Cell[BoxData[
+    \(\(\[ScriptP] = 
+      \((w\^4 + w\^2 - 1)\)\ \((z\^3 - 1)\)\ \((3\ z\^2 - 1)\)\^2 - 1; \)\)], 
+  "Input",
+  CellTags->"S0.0.6"],
+
+Cell[BoxData[
+    \(\(Show[
+      Graphics3D[{EdgeForm[], Thickness[0.0001], Hue[0.22], 
+            SurfaceColor[Hue[0.03], Hue[0.56], 1.07], 
+            RiemannSurface[\[ScriptP], {w, z}, Im, {80, 40}]} /. 
+          p_Polygon \[RuleDelayed] starPolygon[p, 0.4]], 
+      BoxRatios \[Rule] {1, 1, 3\/2}, PlotRange \[Rule] {\(-3\), 3}]; \)\)], 
+  "Input",
+  CellTags->"S0.0.6"],
+
+Cell[TextData[StyleBox[
+"A randomly chosen example with three poles. ", "TI"]], "Text",
+  CellTags->{"S0.0.6", "6.13"}],
+
+Cell[BoxData[
+    \(\[ScriptP] = 
+      \(-11\)\ w\^4 + 8\ w\^2\ z\^2 + 10\ w\ z\^3 + 3\ w\^4\ z\^3 - 
+        10\ z\^4 + 5\ w\ z\^5\)], "Input",
+  CellTags->"S0.0.6"],
+
+Cell[BoxData[
+    \(\(Show[
+      Graphics3D[{EdgeForm[Thickness[0.0001]], 
+            SurfaceColor[Hue[0.067], Hue[0.64], 1.04], 
+            RiemannSurface[\[ScriptP], {w, z}, Im, {60, 25}]} /. 
+          p_Polygon \[RuleDelayed] starPolygon[p, 0.55]], 
+      BoxRatios \[Rule] {1, 1, 1}, Axes \[Rule] True]; \)\)], "Input",
+  CellTags->"S0.0.6"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Compactified Riemann surfaces ", "Section",
+  CellTags->{"S0.0.7", "7.1"}],
+
+Cell[TextData[{
+  StyleBox[
+  "Many more algebraic functions can be visualized using the function ", 
+    "TI"],
+  StyleBox["RiemannSurface", "MR",
+    FontFamily->"Courier",
+    FontWeight->"Bold"],
+  StyleBox[
+  ", but we will end here. One might now go on and construct pictures where \
+we do not show ", "TI"],
+  Cell[BoxData[
+      \(TraditionalForm\`"\[GothicCapitalI]"(w)\)], "InlineFormula",
+    CellTags->"S0.0.7"],
+  StyleBox[" or ", "TI"],
+  Cell[BoxData[
+      \(TraditionalForm\`"\[GothicCapitalR]"(w)\)], "InlineFormula",
+    CellTags->"S0.0.7"],
+  StyleBox[" over the complex ", "TI"],
+  Cell[BoxData[
+      \(TraditionalForm\`z\)], "InlineFormula",
+    CellTags->"S0.0.7"],
+  StyleBox[
+  "\[Hyphen]plane, but rather over the Riemann sphere\[LongDash]this would \
+allow to cover all ", "TI"],
+  Cell[BoxData[
+      \(TraditionalForm\`z\)], "InlineFormula",
+    CellTags->"S0.0.7"],
+  StyleBox[
+  "\[Hyphen]values and result in pictures which show explicitly compact \
+Riemann surfaces ('spheres with ears'). Given the Riemann sphere of radius ", 
+    "TI"],
+  Cell[BoxData[
+      \(TraditionalForm\`R = 1/2\)], "InlineFormula",
+    CellTags->"S0.0.7"],
+  StyleBox[" around ", "TI"],
+  Cell[BoxData[
+      \(TraditionalForm\`{0, 0, \(1/2}\)\)], "InlineFormula",
+    CellTags->"S0.0.7"],
+  StyleBox[" we could visualize ", "TI"],
+  Cell[BoxData[
+      \(TraditionalForm\`"\[GothicCapitalI]"(w(x + \[ImaginaryI]\ y))\)], 
+    "InlineFormula",
+    CellTags->"S0.0.7"],
+  StyleBox[" as a point in direction of the image of ", "TI"],
+  Cell[BoxData[
+      \(TraditionalForm\`x + \[ImaginaryI]\ y\)], "InlineFormula",
+    CellTags->"S0.0.7"],
+  StyleBox[" on the Riemann sphere and distance radius ", "TI"],
+  Cell[BoxData[
+      \(TraditionalForm
+      \`R + r\ \(arctan("\[GothicCapitalI]"(w(x + \[ImaginaryI]\ y)))\)\)], 
+    "InlineFormula",
+    CellTags->"S0.0.7"],
+  StyleBox[
+  " (the arctan in the last formula allows to uniquely map the interval ", 
+    "TI"],
+  Cell[BoxData[
+      \(TraditionalForm\`{\(-\[Infinity]\), \[Infinity]}\)], "InlineFormula",
+    CellTags->"S0.0.7"],
+  StyleBox[" to a finite interval). The function ", "TI"],
+  StyleBox["RiemannSpherePoint", "MR",
+    FontFamily->"Courier",
+    FontWeight->"Bold"],
+  StyleBox[
+  " calculates the position of the point corresponding to the spherical \
+coordinates ", "TI"],
+  StyleBox["{", "MR"],
+  Cell[BoxData[
+      \(TraditionalForm\`\[CurlyPhi]\)], "InlineFormula",
+    CellTags->"S0.0.7"],
+  StyleBox[", ", "MR"],
+  Cell[BoxData[
+      \(TraditionalForm\`\[Theta]\)], "InlineFormula",
+    CellTags->"S0.0.7"],
+  StyleBox["}", "MR"],
+  StyleBox[" under the mapping of the function ", "TI"],
+  StyleBox["f", "MR"],
+  StyleBox[" on the 'stretched' Riemann sphere. ", "TI"]
+}], "Text",
+  CellTags->{"S0.0.7", "7.2"}],
+
+Cell[BoxData[
+    \(RiemannSpherePoint[{\[CurlyPhi]_, \[Theta]_}, f_] := 
+      Module[{\[Xi], \[Eta], d, rMax = 0.2}, {\[Xi], \[Eta]} = 
+          N[Cot[\[Theta]\/2]\ {Cos[\[CurlyPhi]], Sin[\[CurlyPhi]]}]; 
+        d = {Cos[\[CurlyPhi]]\ Sin[\[Theta]], 
+            Sin[\[CurlyPhi]]\ Sin[\[Theta]], Cos[\[Theta]]}; {0, 0, 1\/2} + 
+          d\ \((1\/2 + rMax\ ArcTan[f[\[Xi], \[Eta]]])\)]\)], "Input",
+  CellTags->"S0.0.7"],
+
+Cell[TextData[{
+  StyleBox["The function ", "TI"],
+  StyleBox["RiemannSpherePatch", "MR",
+    FontFamily->"Courier",
+    FontWeight->"Bold"],
+  StyleBox[" generates a patch for the function ", "TI"],
+  StyleBox["f", "MR",
+    FontFamily->"Courier",
+    FontWeight->"Bold"],
+  StyleBox[
+  " in the specified part of the domain of the spherical coordinates. ", 
+    "TI"]
+}], "Text",
+  CellTags->{"S0.0.7", "7.3"}],
+
+Cell[BoxData[
+    \(RiemannSpherePatch[
+        f_, {\[CurlyPhi]1_, \[CurlyPhi]2_}, {\[Theta]1_, \[Theta]2_}, {
+          pp\[CurlyPhi]_, pp\[Theta]_}] := 
+      Module[{\[CurlyEpsilon] = 1\/10\^12}, 
+        points = 
+          Table[RiemannSpherePoint[{\[CurlyPhi], \[Theta]}, f], {\[CurlyPhi], 
+              \[CurlyPhi]1 + \[CurlyEpsilon], \[CurlyPhi]2 - \[CurlyEpsilon], 
+              \(\[CurlyPhi]2 - \[CurlyPhi]1 - 
+                  2\ \[CurlyEpsilon]\)\/pp\[CurlyPhi]}, {\[Theta], 
+              \[Theta]1 + \[CurlyEpsilon], \[Theta]2 - \[CurlyEpsilon], 
+              \(\[Theta]2 - \[Theta]1 - 2\ \[CurlyEpsilon]\)\/pp\[Theta]}]; 
+        \(Function[s, 
+            Apply[Polygon[Join[#1, Reverse[#2]]]&, 
+              Transpose/@Partition[\((Partition[#1, 2, 1]&)\)/@s, 2, 1], {2}]]
+            \)[points]]\)], "Input",
+  CellTags->"S0.0.7"],
+
+Cell[TextData[{
+  StyleBox["Here the function ", "TI"],
+  Cell[BoxData[
+      \(TraditionalForm\`\@\(1 - z\^2\)\)], "InlineFormula",
+    CellTags->"S0.0.7"],
+  StyleBox[
+  " shown in using the above defined functions. The two branch points at ", 
+    "TI"],
+  Cell[BoxData[
+      \(TraditionalForm\`\(\[PlusMinus]1\)\)], "InlineFormula",
+    CellTags->"S0.0.7"],
+  StyleBox[" are mapped into the points ", "TI"],
+  Cell[BoxData[
+      \(TraditionalForm\`{\[PlusMinus]1\/2, 0, 1\/2}\)], "InlineFormula",
+    CellTags->"S0.0.7"],
+  StyleBox[". The north pole corresponds to complex infinity. ", "TI"]
+}], "Text",
+  CellTags->{"S0.0.7", "7.4"}],
+
+Cell[BoxData[
+    \(\(rsf = 
+      With[{\[Epsilon] = \(-1\)}, 
+        Show[Graphics3D[{EdgeForm[], Thickness[0.0001], GrayLevel[0], 
+                SurfaceColor[Hue[0.22], Hue[0.78], 1.919999999999999], 
+                Table[Map[
+                    RiemannSpherePatch[
+                        Function[{x, y}, 
+                          Im[\[Epsilon]\^i\ 
+                              \@\(\((x + I\ y)\)\^2 - 1\)]], #1, {0, \[Pi]}, {
+                          20, 30}]&, {{0, \[Pi]\/2}, {\[Pi]\/2, \[Pi]}, {
+                        \[Pi], \(3\ \[Pi]\)\/2}, {\(3\ \[Pi]\)\/2, 
+                        2\ \[Pi]}}, {1}], {i, 0, 1}]} /. 
+              p_Polygon \[RuleDelayed] holePolygon[p, 0.8]], 
+          Boxed \[Rule] False]]; \)\)], "Input",
+  CellTags->"S0.0.7"],
+
+Cell[TextData[{
+  StyleBox[
+  "Despite the holes in the polygons the inner parts are hard to see in the \
+last picture, so lets cut the last surface along the ", "TI"],
+  Cell[BoxData[
+      \(TraditionalForm\`x\)], "InlineFormula",
+    CellTags->"S0.0.7"],
+  StyleBox["-", "TI"],
+  Cell[BoxData[
+      \(TraditionalForm\`y\)], "InlineFormula",
+    CellTags->"S0.0.7"],
+  StyleBox["\[Hyphen]plane, along the ", "TI"],
+  Cell[BoxData[
+      \(TraditionalForm\`x\)], "InlineFormula",
+    CellTags->"S0.0.7"],
+  StyleBox["-", "TI"],
+  Cell[BoxData[
+      \(TraditionalForm\`z\)], "InlineFormula",
+    CellTags->"S0.0.7"],
+  StyleBox["\[Hyphen]plane and along the ", "TI"],
+  Cell[BoxData[
+      \(TraditionalForm\`y\)], "InlineFormula",
+    CellTags->"S0.0.7"],
+  StyleBox["-", "TI"],
+  Cell[BoxData[
+      \(TraditionalForm\`z\)], "InlineFormula",
+    CellTags->"S0.0.7"],
+  StyleBox["\[Hyphen]plane. ", "TI"]
+}], "Text",
+  CellTags->{"S0.0.7", "7.5"}],
+
+Cell[BoxData[
+    \(\(Show[
+      GraphicsArray[{
+          Show[rsf, DisplayFunction \[Rule] Identity, 
+            PlotRange \[Rule] {All, All, {0.5, \(-0.16\)}}, 
+            ViewPoint \[Rule] {0.2, 0, 2.1}], 
+          Show[rsf, DisplayFunction \[Rule] Identity, 
+            PlotRange \[Rule] {{0, \(-0.6\)}, All, All}, 
+            ViewPoint \[Rule] {2.1, 0.2, 0}], 
+          Show[rsf, DisplayFunction \[Rule] Identity, 
+            PlotRange \[Rule] {All, {0, \(-0.7\)}, All}, 
+            ViewPoint \[Rule] {0, 2.1, 0}]}]]; \)\)], "Input",
+  CellTags->"S0.0.7"],
+
+Cell[TextData[{
+  StyleBox["As another example let us take the function ", "TI"],
+  Cell[BoxData[
+      \(TraditionalForm\`\@z\^2 - 1\)], "InlineFormula",
+    CellTags->"S0.0.7"],
+  StyleBox[
+  ", shown on the Riemann sphere. The two branch points are again at ", 
+    "TI"],
+  Cell[BoxData[
+      \(TraditionalForm\`\(\[PlusMinus]1\)\)], "InlineFormula",
+    CellTags->"S0.0.7"],
+  StyleBox[" and are mapped into the points ", "TI"],
+  Cell[BoxData[
+      \(TraditionalForm\`{\[PlusMinus]1\/2, 0, 1\/2}\)], "InlineFormula",
+    CellTags->"S0.0.7"],
+  StyleBox[". ", "TI"]
+}], "Text",
+  CellTags->{"S0.0.7", "7.6"}],
+
+Cell[BoxData[
+    \(\(rsf = 
+      With[{\[Epsilon] = E\^\(\(2\ I\ \[Pi]\)\/3\)}, 
+        Show[Graphics3D[
+            \({EdgeForm[], Thickness[0.0001], GrayLevel[0], 
+                  Table[Map[
+                      RiemannSpherePatch[
+                          Function[{x, y}, 
+                            Im[\[Epsilon]\^i\ 
+                                \((\((x + I\ y)\)\^2 - 1)\)\^\(1/3\)]], #1, {
+                            0, \[Pi]}, {20, 30}]&, {{0, \[Pi]\/2}, {\[Pi]\/2, 
+                          \[Pi]}, {\[Pi], \(3\ \[Pi]\)\/2}, {\(3\ \[Pi]\)\/2, 
+                          2\ \[Pi]}}, {1}], {i, 0, 2}]} /. 
+                p_Polygon \[RuleDelayed] starPolygon[p, 0.4]\) /. 
+              p_Polygon 
+                \[RuleDelayed] {
+                  \((SurfaceColor[Hue[0.6\ #1], Hue[0.45\ #1], 1.37]&)\)[
+                    \((\@\(#1 . #1\)&)\)[
+                      1\/4\ Plus@@
+                            p\[LeftDoubleBracket]1\[RightDoubleBracket] - {0, 
+                          0, 1\/2}]], p}], Boxed \[Rule] False]]; \)\)], 
+  "Input",
+  CellTags->"S0.0.7"],
+
+Cell[TextData[{
+  StyleBox["Again we cut the last surface along the ", "TI"],
+  Cell[BoxData[
+      \(TraditionalForm\`x\)], "InlineFormula",
+    CellTags->"S0.0.7"],
+  StyleBox["-", "TI"],
+  Cell[BoxData[
+      \(TraditionalForm\`y\)], "InlineFormula",
+    CellTags->"S0.0.7"],
+  StyleBox["\[Hyphen]plane, along the ", "TI"],
+  Cell[BoxData[
+      \(TraditionalForm\`x\)], "InlineFormula",
+    CellTags->"S0.0.7"],
+  StyleBox["-", "TI"],
+  Cell[BoxData[
+      \(TraditionalForm\`z\)], "InlineFormula",
+    CellTags->"S0.0.7"],
+  StyleBox["\[Hyphen]plane and along the ", "TI"],
+  Cell[BoxData[
+      \(TraditionalForm\`y\)], "InlineFormula",
+    CellTags->"S0.0.7"],
+  StyleBox["-", "TI"],
+  Cell[BoxData[
+      \(TraditionalForm\`z\)], "InlineFormula",
+    CellTags->"S0.0.7"],
+  StyleBox[
+  "\[Hyphen]plane. In distinction to the above pictures over the complex ", 
+    "TI"],
+  Cell[BoxData[
+      \(TraditionalForm\`z\)], "InlineFormula",
+    CellTags->"S0.0.7"],
+  StyleBox["\[Hyphen]plane, we now also see the branch point at ", "TI"],
+  Cell[BoxData[
+      \(TraditionalForm\`\[Infinity]\)], "InlineFormula",
+    CellTags->"S0.0.7"],
+  StyleBox[". ", "TI"]
+}], "Text",
+  CellTags->{"S0.0.7", "7.7"}],
+
+Cell[BoxData[
+    \(\(Show[
+      GraphicsArray[{
+          Show[rsf, DisplayFunction \[Rule] Identity, 
+            PlotRange \[Rule] {All, All, {0.5, \(-0.15\)}}, 
+            ViewPoint \[Rule] {0.2, 0, 2.5}], 
+          Show[rsf, DisplayFunction \[Rule] Identity, 
+            PlotRange \[Rule] {{0, \(-0.62\)}, All, All}, 
+            ViewPoint \[Rule] {2.5, 0.2, 0}], 
+          Show[rsf, DisplayFunction \[Rule] Identity, 
+            PlotRange \[Rule] {All, {0, \(-0.67\)}, All}, 
+            ViewPoint \[Rule] {0, 2.5, 0.2}]}]]; \)\)], "Input",
+  CellTags->"S0.0.7"],
+
+Cell[TextData[{
+  StyleBox["Here is the function ", "TI"],
+  Cell[BoxData[
+      \(TraditionalForm\`\@z\^5 - 1\)], "InlineFormula",
+    CellTags->"S0.0.7"],
+  StyleBox[
+  " shown on the Riemann sphere. The five branch points lie on the equator. \
+We view from above into the lower half of the 'sphere'. ", "TI"]
+}], "Text",
+  CellTags->{"S0.0.7", "7.8"}],
+
+Cell[BoxData[
+    \(\(With[{\[Epsilon] = E\^\(\(2\ I\ \[Pi]\)\/5\)}, 
+      Show[Graphics3D[{EdgeForm[], SurfaceColor[Hue[0.07], Hue[0.27], 1.55], 
+            Table[Map[
+                RiemannSpherePatch[
+                    Function[{x, y}, 
+                      Im[\[Epsilon]\^i\ 
+                          \((\((x + I\ y)\)\^5 - 1)\)\^\(1/5\)]], #1, {
+                      \[Pi]\/2, \[Pi]}, {32, 30}]&, 
+                Partition[1\/5\ \[Pi]\ Range[1, 11, 2], 2, 1], {1}], {i, 0, 
+                4}]}], Boxed \[Rule] False, 
+        ViewPoint \[Rule] {0.1, 0.9, 3.6}]]; \)\)], "Input",
+  CellTags->"S0.0.7"],
+
+Cell[TextData[{
+  StyleBox[
+  "One could now go on and visualize more complicated Riemann surfaces on the \
+Riemann sphere. To do this in the spirit of the last paragraph we would \
+rewrite ", "TI"],
+  StyleBox["oder", "MR"],
+  StyleBox[" to a differential equation ", "TI"],
+  StyleBox["ode", "MR",
+    FontFamily->"Courier",
+    FontWeight->"Bold"],
+  Cell[BoxData[
+      \(TraditionalForm\`\[Theta]\)], "InlineFormula",
+    FontFamily->"Courier",
+    FontWeight->"Bold",
+    CellTags->"S0.0.7"],
+  StyleBox[
+  " for the longitudinal coordinate of a spherical coordinate ", "TI"],
+  Cell[BoxData[
+      \(TraditionalForm\`\[Theta]\)], "InlineFormula",
+    CellTags->"S0.0.7"],
+  StyleBox[" system according to ", "TI"]
+}], "Text",
+  CellTags->{"S0.0.7", "7.9"}],
+
+Cell[BoxData[
+    RowBox[{
+    \(ode\[Theta][oder_, {\[Psi]_, \[Rho]_}, {\[Phi]_, \[Theta]_}]\), ":=", 
+      RowBox[{"oder", "//.", 
+        RowBox[{"{", 
+          RowBox[{
+            RowBox[{
+              RowBox[{
+                RowBox[{
+                  SuperscriptBox["\[Psi]", "\[Prime]",
+                    MultilineFunction->None], "[", "\[Rho]", "]"}], "==", 
+                "rhs_"}], "\[Rule]", 
+              RowBox[{
+                RowBox[{
+                  SuperscriptBox["\[Phi]", "\[Prime]",
+                    MultilineFunction->None], "[", "\[Theta]", "]"}], "==", 
+                \(\((Cos[\[Theta]] - 1)\)\ rhs\)}]}], ",", 
+            \(\[Psi][\[Rho]] \[Rule] \[Phi][\[Theta]]\), ",", 
+            \(\[Rho] \[Rule] Cot[\[Theta]\/2]\)}], "}"}]}]}]], "Input",
+  CellTags->"S0.0.7"],
+
+Cell[TextData[{
+  StyleBox["together with corresponding modifications in ", "TI"],
+  StyleBox["patch", "MR"],
+  StyleBox[" and ", "TI"],
+  StyleBox["RiemannSurface", "MR",
+    FontFamily->"Courier",
+    FontWeight->"Bold"],
+  StyleBox[
+  ". Such an extension is straightforward; we end now and leave further \
+explorations in this direction to the reader. \nSo far for the construction \
+of Riemann surfaces of algebraic functions. The construction of Riemann \
+surfaces of transcendental functions is more complicated, a few examples \
+(inverse trigonometric functions, hypergeometric functions, the ", "TI"],
+  StyleBox["ProductLog", "MR",
+    FontFamily->"Courier",
+    FontWeight->"Bold"],
+  StyleBox[
+  " function) will be discussed in parts II to IV (forthcoming) of this \
+series on the visualization of Riemann surfaces. ", "TI"]
+}], "Text",
+  CellTags->{"S0.0.8", "7.10"}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["References", "Section",
+  CellTags->{"S0.0.8", "8.1"}],
+
+Cell[TextData[{
+  StyleBox[
+  "Appell, P., J. Kamp\[EAcute] De Feriet. Fonctions \
+hyper\[EAcute]om\[EAcute]triques et hypersph\[EAcute]riques, \
+Gauthier\[Hyphen]Villars, Paris 1926. \n\nBrill, A.  Vorlesungen \
+\[UDoubleDot]ber ebene algebraische Kurven und algebraische Funktionen, \
+Vieweg, Braunschweig, 1925. \n\nCano, J. , in D. L. Te, K. Saito, Teissier, \
+B. (eds.). Singularity Theory, World Scientific, Singapore, 1995. \n\n\
+Chudnovsky, D. V., G. V. Chudnovsky. J. Complexity ", "TI"],
+  StyleBox["3, 1 (1987). \n\nCockle, J. ", "TB"],
+  StyleBox["Phil. Mag. ", "TI"],
+  StyleBox["XX, 145 (1860). \n\nCockle, J. ", "TB"],
+  StyleBox["Phil. Mag. ", "TI"],
+  StyleBox["XXIII, 135 (1862). \n\nDyck, W. (ed.). ", "TB"],
+  StyleBox[
+  "Katalog mathematischer und mathematisch physikalischer Modelle, Apparate \
+und Instrumente, Georg Olms Verlag, Heidelberg, 1994. \n\nEisenstein, G. J. \
+reine angew. Math. 27, 81 (1844). \n\nFischer, G. (ed.). Mathematical Models, \
+Vieweg & Sohn, Braunschweig, 1986. \n\nJung, H. W. Einf\[UDoubleDot]hrung in \
+die Theorie der algebraischen Funktionen einer Ver\[ADoubleDot]nderlichen, de \
+Gruyter, Berlin, 1923. \n\nHarley, R. Quart. J. pure appl. Math. ", "TI"],
+  StyleBox["V, 337 (1862). \n\nHenrici, P. ", "TB"],
+  StyleBox[
+  "Applied and Computational Complex Analysis, v. 1, John Wiley & Sons, New \
+York, 1974. \n\nLachtin, L. K. Mat. Sbornik ", "TI"],
+  StyleBox["XXI, 393 (1898). \n\nLindemann, F. ", "TB"],
+  StyleBox[
+  "Nachrichten der K\[ODoubleDot]nigl. Gesell. der Wiss. zu \
+G\[ODoubleDot]ttingen, 292 (1892). \n\nLindemann, F. Nachrichten der K\
+\[ODoubleDot]nigl. Gesell. der Wiss. zu G\[ODoubleDot]ttingen, 245 (1884). \n\
+\nMathews, J. H., Howell, R. W., Complex Analysis for Mathematics and \
+Engineering, Jones and Bartlett, Boston 1997. \n\nMcDonald, J. J. Pure Appl. \
+Math. ", "TI"],
+  StyleBox["104, 213 (1995). \n\nMonna, A. F., ", "TB"],
+  StyleBox[
+  "Dirichlet's Principle, Ososthoek, Scheltema & Holkema, Utrecht 1975. \n\n\
+Osgood, W. F., Lehrbuch der Funktionentheorie, Teubner, Leipzig, 1923. \n\n\
+Rauch, H. E., Lebowitz, A., Elliptic Functions, Theta Functions and Riemann \
+Surfaces, Williams & Wilkins, Baltimore 1973. \n\nShihara, K., Sasaki, T. \
+Japan. J. Indust. Appl. Math. ", "TI"],
+  StyleBox[
+  "13, 107 (1996). \n\nTeissier, B., in D. L. Te, K. Saito, Tteissier B. \
+(eds.). ", "TB"],
+  StyleBox[
+  "Singularity Theory, World Scientific, Singapore, 1995. \n\nTrott, M., \
+Adamchik, v., Solving the Quintic with Mathematica, \
+http://www.mathsource.com/MathSource/Applications/Mathematics/ ", "TI"],
+  StyleBox["0207", "MR"],
+  StyleBox[
+  " \n\nTrott, M. The Mathematica Guidebook, TELOS, 1998, forthcoming. \n\
+umemura, h. in d. mumford. Tata Lectures on Theta II, Birkh\[ADoubleDot]user, \
+Boston 1984. \n\nWalker, R. J. Algebraic Curves, Princeton University Press, \
+Princeton, 1950. ", "TI"]
+}], "Text",
+  CellTags->{"S0.0.9", "8.2"}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["About the Author", "Section",
+  CellTags->{"S0.0.9", "9.1"}],
+
+Cell[TextData[StyleBox[
+"Michael Trott studied physics at the Humboldt\[Hyphen]University of Berlin \
+from 1981 to 1986. He got his Ph.D. in theoretical solid state physics in \
+1990 at the Technical University of Ilmenau. In 1994 he joined the Research \
+and Development team at Wolfram Research, Inc. His current scientific \
+interests are visualization in mathematics, elliptic functions, the \
+application of computer algebra to solved and unsolved problems from physics \
+and the foundational problems of quantum mechanics. \n\nMichael Trott\n\
+Wolfram Research, Inc.\n100 Trade Center Drive\nChampaign, IL 61820\n\
+mtrott@wolfram.com ", "TI"]], "Text",
+  CellTags->{"S0.0.10", "9.2"}]
+}, Open  ]]
+}, Open  ]]
+},
+FrontEndVersion->"X 3.0",
+ScreenRectangle->{{0, 1600}, {0, 1280}},
+WindowSize->{520, 600},
+WindowMargins->{{Automatic, 486}, {Automatic, 35}},
+Visible->True,
+StyleDefinitions -> "Default.nb"
+]
+
+
+(***********************************************************************
+Cached data follows.  If you edit this Notebook file directly, not using
+Mathematica, you must remove the line containing CacheID at the top of 
+the file.  The cache data will then be recreated when you save this file 
+from within Mathematica.
+***********************************************************************)
+
+(*CellTagsOutline
+CellTagsIndex->{
+  "0.1"->{
+    Cell[1731, 51, 92, 1, 192, "Title",
+      CellTags->"0.1"]},
+  "S0.0.1"->{
+    Cell[1826, 54, 297, 6, 180, "Subtitle",
+      CellTags->{"S0.0.1", "1.1"}],
+    Cell[2126, 62, 70, 1, 53, "Subsubtitle",
+      CellTags->{"S0.0.1", "1.2"}]},
+  "1.1"->{
+    Cell[1826, 54, 297, 6, 180, "Subtitle",
+      CellTags->{"S0.0.1", "1.1"}]},
+  "1.2"->{
+    Cell[2126, 62, 70, 1, 53, "Subsubtitle",
+      CellTags->{"S0.0.1", "1.2"}]},
+  "S0.0.2"->{
+    Cell[2199, 65, 3671, 84, 434, "Text",
+      CellTags->{"S0.0.2", "1.3"}],
+    Cell[5895, 153, 70, 1, 52, "Section",
+      CellTags->{"S0.0.2", "2.1"}],
+    Cell[5968, 156, 1935, 50, 177, "Text",
+      CellTags->{"S0.0.2", "2.2"}],
+    Cell[7906, 208, 149, 3, 33, "Input",
+      CellTags->"S0.0.2"],
+    Cell[8058, 213, 847, 23, 73, "Text",
+      CellTags->{"S0.0.2", "2.3"}],
+    Cell[8908, 238, 336, 6, 93, "Input",
+      CellTags->"S0.0.2"],
+    Cell[9247, 246, 303, 9, 50, "Text",
+      CellTags->{"S0.0.2", "2.4"}],
+    Cell[9553, 257, 243, 5, 85, "Input",
+      CellTags->"S0.0.2"],
+    Cell[9799, 264, 1742, 54, 122, "Text",
+      CellTags->{"S0.0.2", "2.5"}],
+    Cell[11544, 320, 116, 3, 31, "Input",
+      CellTags->"S0.0.2"],
+    Cell[11663, 325, 658, 19, 50, "Text",
+      CellTags->{"S0.0.2", "2.7"}],
+    Cell[12324, 346, 398, 8, 141, "Input",
+      CellTags->"S0.0.2"],
+    Cell[12725, 356, 799, 20, 89, "Text",
+      CellTags->{"S0.0.2", "2.8"}],
+    Cell[13527, 378, 158, 3, 31, "Input",
+      CellTags->"S0.0.2"],
+    Cell[13688, 383, 859, 27, 56, "Text",
+      CellTags->{"S0.0.2", "2.9"}],
+    Cell[14550, 412, 281, 5, 87, "Input",
+      CellTags->"S0.0.2"],
+    Cell[14834, 419, 425, 11, 53, "Text",
+      CellTags->{"S0.0.2", "2.10"}],
+    Cell[15262, 432, 531, 9, 141, "Input",
+      CellTags->"S0.0.2"],
+    Cell[15796, 443, 1223, 31, 105, "Text",
+      CellTags->{"S0.0.2", "2.11"}],
+    Cell[17022, 476, 282, 7, 106, "Input",
+      CellTags->"S0.0.2"],
+    Cell[17307, 485, 145, 3, 32, "Text",
+      CellTags->{"S0.0.2", "2.12"}],
+    Cell[17455, 490, 687, 14, 159, "Input",
+      CellTags->"S0.0.2"],
+    Cell[18145, 506, 1008, 26, 87, "Text",
+      CellTags->{"S0.0.2", "2.13"}],
+    Cell[19156, 534, 282, 7, 106, "Input",
+      CellTags->"S0.0.2"],
+    Cell[19441, 543, 384, 10, 50, "Text",
+      CellTags->{"S0.0.2", "2.14"}],
+    Cell[19828, 555, 839, 16, 187, "Input",
+      CellTags->"S0.0.2"],
+    Cell[20670, 573, 440, 10, 68, "Text",
+      CellTags->{"S0.0.2", "2.15"}],
+    Cell[21113, 585, 465, 9, 136, "Input",
+      CellTags->"S0.0.2"],
+    Cell[21581, 596, 157, 3, 32, "Text",
+      CellTags->{"S0.0.2", "2.16"}],
+    Cell[21741, 601, 412, 9, 91, "Input",
+      CellTags->"S0.0.2"],
+    Cell[22156, 612, 852, 22, 87, "Text",
+      CellTags->{"S0.0.2", "2.17"}],
+    Cell[23011, 636, 169, 4, 56, "Input",
+      CellTags->"S0.0.2"],
+    Cell[23183, 642, 748, 21, 69, "Text",
+      CellTags->{"S0.0.2", "2.18"}],
+    Cell[23934, 665, 1233, 22, 254, "Input",
+      CellTags->"S0.0.2"],
+    Cell[25170, 689, 261, 7, 32, "Text",
+      CellTags->{"S0.0.2", "2.19"}],
+    Cell[25434, 698, 123, 4, 42, "Input",
+      CellTags->"S0.0.2"],
+    Cell[25560, 704, 1020, 27, 120, "Text",
+      CellTags->{"S0.0.2", "2.20"}],
+    Cell[26583, 733, 1731, 33, 333, "Input",
+      CellTags->"S0.0.2"],
+    Cell[28317, 768, 75, 1, 27, "Input",
+      CellTags->"S0.0.2"],
+    Cell[28395, 771, 835, 25, 89, "Text",
+      CellTags->{"S0.0.2", "2.21"}],
+    Cell[29233, 798, 442, 8, 107, "Input",
+      CellTags->"S0.0.2"],
+    Cell[29678, 808, 210, 4, 50, "Text",
+      CellTags->{"S0.0.2", "2.22"}],
+    Cell[29891, 814, 956, 17, 268, "Input",
+      CellTags->"S0.0.2"],
+    Cell[30850, 833, 973, 28, 97, "Text",
+      CellTags->{"S0.0.2", "2.23"}],
+    Cell[31826, 863, 471, 10, 160, "Input",
+      CellTags->"S0.0.2"],
+    Cell[32300, 875, 337, 10, 34, "Text",
+      CellTags->{"S0.0.2", "2.24"}],
+    Cell[32640, 887, 254, 5, 75, "Input",
+      CellTags->"S0.0.2"],
+    Cell[32897, 894, 254, 8, 32, "Text",
+      CellTags->{"S0.0.2", "2.25"}],
+    Cell[33154, 904, 78, 2, 27, "Input",
+      CellTags->"S0.0.2"],
+    Cell[33235, 908, 474, 13, 51, "Text",
+      CellTags->{"S0.0.2", "2.26"}],
+    Cell[33712, 923, 1116, 21, 224, "Input",
+      CellTags->"S0.0.2"],
+    Cell[34831, 946, 435, 13, 50, "Text",
+      CellTags->{"S0.0.2", "2.27"}],
+    Cell[35269, 961, 505, 10, 133, "Input",
+      CellTags->"S0.0.2"],
+    Cell[35777, 973, 155, 3, 32, "Text",
+      CellTags->{"S0.0.2", "2.28"}],
+    Cell[35935, 978, 769, 15, 173, "Input",
+      CellTags->"S0.0.2"],
+    Cell[36707, 995, 395, 11, 32, "Text",
+      CellTags->{"S0.0.2", "2.29"}],
+    Cell[37105, 1008, 97, 2, 31, "Input",
+      CellTags->"S0.0.2"],
+    Cell[37205, 1012, 99, 2, 27, "Input",
+      CellTags->"S0.0.2"],
+    Cell[37307, 1016, 105, 1, 32, "Text",
+      CellTags->{"S0.0.2", "2.30"}],
+    Cell[37415, 1019, 278, 6, 59, "Input",
+      CellTags->"S0.0.2"],
+    Cell[37696, 1027, 280, 7, 32, "Text",
+      CellTags->{"S0.0.2", "2.31"}],
+    Cell[37979, 1036, 1126, 19, 242, "Input",
+      CellTags->"S0.0.2"],
+    Cell[39108, 1057, 339, 9, 50, "Text",
+      CellTags->{"S0.0.2", "2.32"}],
+    Cell[39450, 1068, 205, 4, 52, "Input",
+      CellTags->"S0.0.2"],
+    Cell[39658, 1074, 154, 3, 32, "Text",
+      CellTags->{"S0.0.2", "2.33"}],
+    Cell[39815, 1079, 367, 7, 105, "Input",
+      CellTags->"S0.0.2"],
+    Cell[40185, 1088, 173, 3, 32, "Text",
+      CellTags->{"S0.0.2", "2.34"}],
+    Cell[40361, 1093, 1392, 24, 258, "Input",
+      CellTags->"S0.0.2"],
+    Cell[41756, 1119, 609, 15, 69, "Text",
+      CellTags->{"S0.0.2", "2.35"}],
+    Cell[42368, 1136, 205, 4, 66, "Input",
+      CellTags->"S0.0.2"],
+    Cell[42576, 1142, 228, 7, 50, "Text",
+      CellTags->{"S0.0.2", "2.36"}],
+    Cell[42807, 1151, 378, 8, 119, "Input",
+      CellTags->"S0.0.2"],
+    Cell[43188, 1161, 495, 14, 50, "Text",
+      CellTags->{"S0.0.2", "2.37"}],
+    Cell[43686, 1177, 86, 1, 27, "Input",
+      CellTags->"S0.0.2"],
+    Cell[43775, 1180, 1734, 50, 86, "Text",
+      CellTags->{"S0.0.2", "2.38"}],
+    Cell[45512, 1232, 427, 9, 91, "Input",
+      CellTags->"S0.0.2"],
+    Cell[45942, 1243, 484, 15, 68, "Text",
+      CellTags->{"S0.0.2", "2.39"}],
+    Cell[48739, 1299, 692, 18, 87, "Text",
+      CellTags->{"S0.0.2", "2.40"}],
+    Cell[49434, 1319, 515, 11, 141, "Input",
+      CellTags->"S0.0.2"],
+    Cell[49952, 1332, 229, 7, 32, "Text",
+      CellTags->{"S0.0.2", "2.41"}],
+    Cell[50184, 1341, 637, 14, 183, "Input",
+      CellTags->"S0.0.2"]},
+  "1.3"->{
+    Cell[2199, 65, 3671, 84, 434, "Text",
+      CellTags->{"S0.0.2", "1.3"}]},
+  "2.1"->{
+    Cell[5895, 153, 70, 1, 52, "Section",
+      CellTags->{"S0.0.2", "2.1"}]},
+  "2.2"->{
+    Cell[5968, 156, 1935, 50, 177, "Text",
+      CellTags->{"S0.0.2", "2.2"}]},
+  "2.3"->{
+    Cell[8058, 213, 847, 23, 73, "Text",
+      CellTags->{"S0.0.2", "2.3"}]},
+  "2.4"->{
+    Cell[9247, 246, 303, 9, 50, "Text",
+      CellTags->{"S0.0.2", "2.4"}]},
+  "2.5"->{
+    Cell[9799, 264, 1742, 54, 122, "Text",
+      CellTags->{"S0.0.2", "2.5"}]},
+  "2.7"->{
+    Cell[11663, 325, 658, 19, 50, "Text",
+      CellTags->{"S0.0.2", "2.7"}]},
+  "2.8"->{
+    Cell[12725, 356, 799, 20, 89, "Text",
+      CellTags->{"S0.0.2", "2.8"}]},
+  "2.9"->{
+    Cell[13688, 383, 859, 27, 56, "Text",
+      CellTags->{"S0.0.2", "2.9"}]},
+  "2.10"->{
+    Cell[14834, 419, 425, 11, 53, "Text",
+      CellTags->{"S0.0.2", "2.10"}]},
+  "2.11"->{
+    Cell[15796, 443, 1223, 31, 105, "Text",
+      CellTags->{"S0.0.2", "2.11"}]},
+  "2.12"->{
+    Cell[17307, 485, 145, 3, 32, "Text",
+      CellTags->{"S0.0.2", "2.12"}]},
+  "2.13"->{
+    Cell[18145, 506, 1008, 26, 87, "Text",
+      CellTags->{"S0.0.2", "2.13"}]},
+  "2.14"->{
+    Cell[19441, 543, 384, 10, 50, "Text",
+      CellTags->{"S0.0.2", "2.14"}]},
+  "2.15"->{
+    Cell[20670, 573, 440, 10, 68, "Text",
+      CellTags->{"S0.0.2", "2.15"}]},
+  "2.16"->{
+    Cell[21581, 596, 157, 3, 32, "Text",
+      CellTags->{"S0.0.2", "2.16"}]},
+  "2.17"->{
+    Cell[22156, 612, 852, 22, 87, "Text",
+      CellTags->{"S0.0.2", "2.17"}]},
+  "2.18"->{
+    Cell[23183, 642, 748, 21, 69, "Text",
+      CellTags->{"S0.0.2", "2.18"}]},
+  "2.19"->{
+    Cell[25170, 689, 261, 7, 32, "Text",
+      CellTags->{"S0.0.2", "2.19"}]},
+  "2.20"->{
+    Cell[25560, 704, 1020, 27, 120, "Text",
+      CellTags->{"S0.0.2", "2.20"}]},
+  "2.21"->{
+    Cell[28395, 771, 835, 25, 89, "Text",
+      CellTags->{"S0.0.2", "2.21"}]},
+  "2.22"->{
+    Cell[29678, 808, 210, 4, 50, "Text",
+      CellTags->{"S0.0.2", "2.22"}]},
+  "2.23"->{
+    Cell[30850, 833, 973, 28, 97, "Text",
+      CellTags->{"S0.0.2", "2.23"}]},
+  "2.24"->{
+    Cell[32300, 875, 337, 10, 34, "Text",
+      CellTags->{"S0.0.2", "2.24"}]},
+  "2.25"->{
+    Cell[32897, 894, 254, 8, 32, "Text",
+      CellTags->{"S0.0.2", "2.25"}]},
+  "2.26"->{
+    Cell[33235, 908, 474, 13, 51, "Text",
+      CellTags->{"S0.0.2", "2.26"}]},
+  "2.27"->{
+    Cell[34831, 946, 435, 13, 50, "Text",
+      CellTags->{"S0.0.2", "2.27"}]},
+  "2.28"->{
+    Cell[35777, 973, 155, 3, 32, "Text",
+      CellTags->{"S0.0.2", "2.28"}]},
+  "2.29"->{
+    Cell[36707, 995, 395, 11, 32, "Text",
+      CellTags->{"S0.0.2", "2.29"}]},
+  "2.30"->{
+    Cell[37307, 1016, 105, 1, 32, "Text",
+      CellTags->{"S0.0.2", "2.30"}]},
+  "2.31"->{
+    Cell[37696, 1027, 280, 7, 32, "Text",
+      CellTags->{"S0.0.2", "2.31"}]},
+  "2.32"->{
+    Cell[39108, 1057, 339, 9, 50, "Text",
+      CellTags->{"S0.0.2", "2.32"}]},
+  "2.33"->{
+    Cell[39658, 1074, 154, 3, 32, "Text",
+      CellTags->{"S0.0.2", "2.33"}]},
+  "2.34"->{
+    Cell[40185, 1088, 173, 3, 32, "Text",
+      CellTags->{"S0.0.2", "2.34"}]},
+  "2.35"->{
+    Cell[41756, 1119, 609, 15, 69, "Text",
+      CellTags->{"S0.0.2", "2.35"}]},
+  "2.36"->{
+    Cell[42576, 1142, 228, 7, 50, "Text",
+      CellTags->{"S0.0.2", "2.36"}]},
+  "2.37"->{
+    Cell[43188, 1161, 495, 14, 50, "Text",
+      CellTags->{"S0.0.2", "2.37"}]},
+  "2.38"->{
+    Cell[43775, 1180, 1734, 50, 86, "Text",
+      CellTags->{"S0.0.2", "2.38"}]},
+  "2.39"->{
+    Cell[45942, 1243, 484, 15, 68, "Text",
+      CellTags->{"S0.0.2", "2.39"}]},
+  "2.40"->{
+    Cell[48739, 1299, 692, 18, 87, "Text",
+      CellTags->{"S0.0.2", "2.40"}]},
+  "2.41"->{
+    Cell[49952, 1332, 229, 7, 32, "Text",
+      CellTags->{"S0.0.2", "2.41"}]},
+  "S0.0.3"->{
+    Cell[50858, 1360, 124, 4, 72, "Section",
+      CellTags->{"S0.0.3", "3.1"}],
+    Cell[50985, 1366, 146, 3, 32, "Text",
+      CellTags->{"S0.0.3", "3.2"}],
+    Cell[51134, 1371, 123, 3, 29, "Input",
+      CellTags->"S0.0.3"],
+    Cell[51260, 1376, 443, 13, 50, "Text",
+      CellTags->{"S0.0.3", "3.3"}],
+    Cell[51706, 1391, 89, 2, 27, "Input",
+      CellTags->"S0.0.3"],
+    Cell[51798, 1395, 368, 10, 50, "Text",
+      CellTags->{"S0.0.3", "3.4"}],
+    Cell[52169, 1407, 281, 6, 59, "Input",
+      CellTags->"S0.0.3"],
+    Cell[52453, 1415, 124, 2, 32, "Text",
+      CellTags->{"S0.0.3", "3.5"}],
+    Cell[52580, 1419, 281, 6, 59, "Input",
+      CellTags->"S0.0.3"],
+    Cell[52864, 1427, 946, 26, 104, "Text",
+      CellTags->{"S0.0.3", "3.6"}],
+    Cell[53813, 1455, 267, 6, 58, "Input",
+      CellTags->"S0.0.3"],
+    Cell[54083, 1463, 159, 4, 27, "Input",
+      CellTags->"S0.0.3"],
+    Cell[54245, 1469, 433, 10, 68, "Text",
+      CellTags->{"S0.0.3", "3.7"}],
+    Cell[54681, 1481, 832, 17, 171, "Input",
+      CellTags->"S0.0.3"],
+    Cell[55516, 1500, 330, 8, 68, "Text",
+      CellTags->{"S0.0.3", "3.8"}],
+    Cell[55849, 1510, 125, 3, 27, "Input",
+      CellTags->"S0.0.3"],
+    Cell[55977, 1515, 281, 6, 59, "Input",
+      CellTags->"S0.0.3"],
+    Cell[56261, 1523, 975, 20, 194, "Text",
+      CellTags->{"S0.0.3", "3.9"}],
+    Cell[59958, 1616, 1153, 35, 50, "Text",
+      CellTags->{"S0.0.3", "3.10"}],
+    Cell[61114, 1653, 144, 4, 27, "Input",
+      CellTags->"S0.0.3"],
+    Cell[61261, 1659, 124, 3, 43, "Input",
+      CellTags->"S0.0.3"],
+    Cell[61388, 1664, 110, 2, 27, "Input",
+      CellTags->"S0.0.3"],
+    Cell[61501, 1668, 111, 2, 27, "Input",
+      CellTags->"S0.0.3"],
+    Cell[61615, 1672, 542, 16, 50, "Text",
+      CellTags->{"S0.0.3", "3.11"}],
+    Cell[62160, 1690, 73, 1, 27, "Input",
+      CellTags->"S0.0.3"],
+    Cell[62236, 1693, 410, 6, 132, "Input",
+      CellTags->"S0.0.3"],
+    Cell[62649, 1701, 1782, 49, 158, "Text",
+      CellTags->{"S0.0.3", "3.12"}],
+    Cell[64434, 1752, 848, 16, 219, "Input",
+      CellTags->"S0.0.3"]},
+  "3.1"->{
+    Cell[50858, 1360, 124, 4, 72, "Section",
+      CellTags->{"S0.0.3", "3.1"}]},
+  "3.2"->{
+    Cell[50985, 1366, 146, 3, 32, "Text",
+      CellTags->{"S0.0.3", "3.2"}]},
+  "3.3"->{
+    Cell[51260, 1376, 443, 13, 50, "Text",
+      CellTags->{"S0.0.3", "3.3"}]},
+  "3.4"->{
+    Cell[51798, 1395, 368, 10, 50, "Text",
+      CellTags->{"S0.0.3", "3.4"}]},
+  "3.5"->{
+    Cell[52453, 1415, 124, 2, 32, "Text",
+      CellTags->{"S0.0.3", "3.5"}]},
+  "3.6"->{
+    Cell[52864, 1427, 946, 26, 104, "Text",
+      CellTags->{"S0.0.3", "3.6"}]},
+  "3.7"->{
+    Cell[54245, 1469, 433, 10, 68, "Text",
+      CellTags->{"S0.0.3", "3.7"}]},
+  "3.8"->{
+    Cell[55516, 1500, 330, 8, 68, "Text",
+      CellTags->{"S0.0.3", "3.8"}]},
+  "3.9"->{
+    Cell[56261, 1523, 975, 20, 194, "Text",
+      CellTags->{"S0.0.3", "3.9"}]},
+  "3.10"->{
+    Cell[59958, 1616, 1153, 35, 50, "Text",
+      CellTags->{"S0.0.3", "3.10"}]},
+  "3.11"->{
+    Cell[61615, 1672, 542, 16, 50, "Text",
+      CellTags->{"S0.0.3", "3.11"}]},
+  "3.12"->{
+    Cell[62649, 1701, 1782, 49, 158, "Text",
+      CellTags->{"S0.0.3", "3.12"}]},
+  "S0.0.4"->{
+    Cell[65285, 1770, 654, 9, 140, "Text",
+      CellTags->{"S0.0.4", "3.13"}],
+    Cell[65976, 1784, 77, 1, 52, "Section",
+      CellTags->{"S0.0.4", "4.1"}],
+    Cell[66056, 1787, 1970, 39, 320, "Text",
+      CellTags->{"S0.0.4", "4.2"}],
+    Cell[68029, 1828, 278, 9, 24, "Notes",
+      CellTags->{"S0.0.4", "4.3"}],
+    Cell[68310, 1839, 439, 10, 56, "Notes",
+      CellTags->{"S0.0.4", "4.4"}],
+    Cell[68752, 1851, 377, 11, 24, "Notes",
+      CellTags->{"S0.0.4", "4.5"}],
+    Cell[69132, 1864, 209, 4, 40, "Notes",
+      CellTags->{"S0.0.4", "4.6"}],
+    Cell[69344, 1870, 572, 14, 56, "Notes",
+      CellTags->{"S0.0.4", "4.7"}],
+    Cell[69919, 1886, 274, 4, 40, "Notes",
+      CellTags->{"S0.0.4", "4.8"}]},
+  "3.13"->{
+    Cell[65285, 1770, 654, 9, 140, "Text",
+      CellTags->{"S0.0.4", "3.13"}]},
+  "4.1"->{
+    Cell[65976, 1784, 77, 1, 52, "Section",
+      CellTags->{"S0.0.4", "4.1"}]},
+  "4.2"->{
+    Cell[66056, 1787, 1970, 39, 320, "Text",
+      CellTags->{"S0.0.4", "4.2"}]},
+  "4.3"->{
+    Cell[68029, 1828, 278, 9, 24, "Notes",
+      CellTags->{"S0.0.4", "4.3"}]},
+  "4.4"->{
+    Cell[68310, 1839, 439, 10, 56, "Notes",
+      CellTags->{"S0.0.4", "4.4"}]},
+  "4.5"->{
+    Cell[68752, 1851, 377, 11, 24, "Notes",
+      CellTags->{"S0.0.4", "4.5"}]},
+  "4.6"->{
+    Cell[69132, 1864, 209, 4, 40, "Notes",
+      CellTags->{"S0.0.4", "4.6"}]},
+  "4.7"->{
+    Cell[69344, 1870, 572, 14, 56, "Notes",
+      CellTags->{"S0.0.4", "4.7"}]},
+  "4.8"->{
+    Cell[69919, 1886, 274, 4, 40, "Notes",
+      CellTags->{"S0.0.4", "4.8"}]},
+  "S0.0.5"->{
+    Cell[70230, 1895, 79, 1, 52, "Section",
+      CellTags->{"S0.0.5", "5.1"}],
+    Cell[70312, 1898, 724, 18, 56, "Notes",
+      CellTags->{"S0.0.5", "5.2"}],
+    Cell[71039, 1918, 136, 3, 27, "Input",
+      CellTags->"S0.0.5"],
+    Cell[71178, 1923, 193, 5, 43, "Input",
+      CellTags->"S0.0.5"],
+    Cell[71374, 1930, 361, 9, 50, "Text",
+      CellTags->{"S0.0.5", "5.3"}],
+    Cell[71738, 1941, 120, 3, 29, "Input",
+      CellTags->"S0.0.5"],
+    Cell[71861, 1946, 120, 2, 32, "Text",
+      CellTags->{"S0.0.5", "5.4"}],
+    Cell[71984, 1950, 103, 2, 27, "Input",
+      CellTags->"S0.0.5"],
+    Cell[72090, 1954, 250, 7, 32, "Text",
+      CellTags->{"S0.0.5", "5.5"}],
+    Cell[72343, 1963, 246, 5, 75, "Input",
+      CellTags->"S0.0.5"],
+    Cell[72592, 1970, 549, 15, 56, "Notes",
+      CellTags->{"S0.0.5", "5.6"}],
+    Cell[73144, 1987, 1322, 26, 234, "Input",
+      CellTags->"S0.0.5"],
+    Cell[74469, 2015, 257, 7, 32, "Text",
+      CellTags->{"S0.0.5", "5.7"}],
+    Cell[74729, 2024, 98, 2, 27, "Input",
+      CellTags->"S0.0.5"],
+    Cell[74830, 2028, 190, 3, 50, "Text",
+      CellTags->{"S0.0.5", "5.8"}],
+    Cell[75023, 2033, 732, 14, 187, "Input",
+      CellTags->"S0.0.5"],
+    Cell[75758, 2049, 284, 6, 59, "Input",
+      CellTags->"S0.0.5"],
+    Cell[76045, 2057, 171, 3, 24, "Notes",
+      CellTags->{"S0.0.5", "5.9"}],
+    Cell[76219, 2062, 1592, 41, 141, "Text",
+      CellTags->{"S0.0.5", "5.10"}],
+    Cell[78353, 2124, 353, 9, 51, "Text",
+      CellTags->{"S0.0.5", "5.17"}],
+    Cell[78921, 2141, 1409, 35, 176, "Text",
+      CellTags->{"S0.0.5", "5.20"}],
+    Cell[80333, 2178, 482, 12, 43, "Input",
+      CellTags->"S0.0.5"],
+    Cell[80818, 2192, 194, 3, 50, "Text",
+      CellTags->{"S0.0.5", "5.21"}],
+    Cell[81015, 2197, 94, 2, 27, "Input",
+      CellTags->"S0.0.5"],
+    Cell[81112, 2201, 522, 14, 68, "Text",
+      CellTags->{"S0.0.5", "5.22"}],
+    Cell[81637, 2217, 841, 20, 59, "Input",
+      CellTags->"S0.0.5"],
+    Cell[82481, 2239, 155, 4, 27, "Input",
+      CellTags->"S0.0.5"],
+    Cell[82639, 2245, 453, 13, 50, "Text",
+      CellTags->{"S0.0.5", "5.23"}],
+    Cell[83095, 2260, 767, 18, 43, "Input",
+      CellTags->"S0.0.5"],
+    Cell[83865, 2280, 125, 3, 27, "Input",
+      CellTags->"S0.0.5"],
+    Cell[83993, 2285, 769, 18, 122, "Text",
+      CellTags->{"S0.0.5", "5.24"}],
+    Cell[84765, 2305, 161, 3, 43, "Input",
+      CellTags->"S0.0.5"],
+    Cell[84929, 2310, 914, 24, 104, "Text",
+      CellTags->{"S0.0.5", "5.25"}],
+    Cell[85846, 2336, 1845, 35, 361, "Input",
+      CellTags->"S0.0.5"],
+    Cell[87694, 2373, 239, 4, 50, "Text",
+      CellTags->{"S0.0.5", "5.26"}],
+    Cell[87936, 2379, 476, 10, 75, "Input",
+      CellTags->"S0.0.5"],
+    Cell[88415, 2391, 1134, 34, 104, "Text",
+      CellTags->{"S0.0.5", "5.27"}],
+    Cell[89552, 2427, 297, 6, 64, "Input",
+      CellTags->"S0.0.5"],
+    Cell[89852, 2435, 853, 25, 86, "Text",
+      CellTags->{"S0.0.5", "5.28"}],
+    Cell[90708, 2462, 849, 15, 155, "Input",
+      CellTags->"S0.0.5"],
+    Cell[91560, 2479, 495, 14, 50, "Text",
+      CellTags->{"S0.0.5", "5.29"}],
+    Cell[92058, 2495, 274, 6, 75, "Input",
+      CellTags->"S0.0.5"],
+    Cell[92335, 2503, 461, 7, 86, "Text",
+      CellTags->{"S0.0.5", "5.30"}],
+    Cell[92799, 2512, 539, 12, 139, "Input",
+      CellTags->"S0.0.5"]},
+  "5.1"->{
+    Cell[70230, 1895, 79, 1, 52, "Section",
+      CellTags->{"S0.0.5", "5.1"}]},
+  "5.2"->{
+    Cell[70312, 1898, 724, 18, 56, "Notes",
+      CellTags->{"S0.0.5", "5.2"}]},
+  "5.3"->{
+    Cell[71374, 1930, 361, 9, 50, "Text",
+      CellTags->{"S0.0.5", "5.3"}]},
+  "5.4"->{
+    Cell[71861, 1946, 120, 2, 32, "Text",
+      CellTags->{"S0.0.5", "5.4"}]},
+  "5.5"->{
+    Cell[72090, 1954, 250, 7, 32, "Text",
+      CellTags->{"S0.0.5", "5.5"}]},
+  "5.6"->{
+    Cell[72592, 1970, 549, 15, 56, "Notes",
+      CellTags->{"S0.0.5", "5.6"}]},
+  "5.7"->{
+    Cell[74469, 2015, 257, 7, 32, "Text",
+      CellTags->{"S0.0.5", "5.7"}]},
+  "5.8"->{
+    Cell[74830, 2028, 190, 3, 50, "Text",
+      CellTags->{"S0.0.5", "5.8"}]},
+  "5.9"->{
+    Cell[76045, 2057, 171, 3, 24, "Notes",
+      CellTags->{"S0.0.5", "5.9"}]},
+  "5.10"->{
+    Cell[76219, 2062, 1592, 41, 141, "Text",
+      CellTags->{"S0.0.5", "5.10"}]},
+  "5.17"->{
+    Cell[78353, 2124, 353, 9, 51, "Text",
+      CellTags->{"S0.0.5", "5.17"}]},
+  "5.20"->{
+    Cell[78921, 2141, 1409, 35, 176, "Text",
+      CellTags->{"S0.0.5", "5.20"}]},
+  "5.21"->{
+    Cell[80818, 2192, 194, 3, 50, "Text",
+      CellTags->{"S0.0.5", "5.21"}]},
+  "5.22"->{
+    Cell[81112, 2201, 522, 14, 68, "Text",
+      CellTags->{"S0.0.5", "5.22"}]},
+  "5.23"->{
+    Cell[82639, 2245, 453, 13, 50, "Text",
+      CellTags->{"S0.0.5", "5.23"}]},
+  "5.24"->{
+    Cell[83993, 2285, 769, 18, 122, "Text",
+      CellTags->{"S0.0.5", "5.24"}]},
+  "5.25"->{
+    Cell[84929, 2310, 914, 24, 104, "Text",
+      CellTags->{"S0.0.5", "5.25"}]},
+  "5.26"->{
+    Cell[87694, 2373, 239, 4, 50, "Text",
+      CellTags->{"S0.0.5", "5.26"}]},
+  "5.27"->{
+    Cell[88415, 2391, 1134, 34, 104, "Text",
+      CellTags->{"S0.0.5", "5.27"}]},
+  "5.28"->{
+    Cell[89852, 2435, 853, 25, 86, "Text",
+      CellTags->{"S0.0.5", "5.28"}]},
+  "5.29"->{
+    Cell[91560, 2479, 495, 14, 50, "Text",
+      CellTags->{"S0.0.5", "5.29"}]},
+  "5.30"->{
+    Cell[92335, 2503, 461, 7, 86, "Text",
+      CellTags->{"S0.0.5", "5.30"}]},
+  "S0.0.6"->{
+    Cell[93375, 2529, 63, 1, 52, "Section",
+      CellTags->{"S0.0.6", "6.1"}],
+    Cell[93441, 2532, 640, 17, 87, "Text",
+      CellTags->{"S0.0.6", "6.2"}],
+    Cell[94084, 2551, 89, 2, 29, "Input",
+      CellTags->"S0.0.6"],
+    Cell[94176, 2555, 418, 8, 121, "Input",
+      CellTags->"S0.0.6"],
+    Cell[94597, 2565, 336, 11, 32, "Text",
+      CellTags->{"S0.0.6", "6.3"}],
+    Cell[94936, 2578, 668, 13, 205, "Input",
+      CellTags->"S0.0.6"],
+    Cell[95607, 2593, 100, 1, 32, "Text",
+      CellTags->{"S0.0.6", "6.4"}],
+    Cell[95710, 2596, 84, 1, 27, "Input",
+      CellTags->"S0.0.6"],
+    Cell[95797, 2599, 380, 7, 91, "Input",
+      CellTags->"S0.0.6"],
+    Cell[96180, 2608, 240, 4, 50, "Text",
+      CellTags->{"S0.0.6", "6.5"}],
+    Cell[96423, 2614, 89, 2, 29, "Input",
+      CellTags->"S0.0.6"],
+    Cell[96515, 2618, 179, 3, 50, "Text",
+      CellTags->{"S0.0.6", "6.6"}],
+    Cell[96697, 2623, 521, 9, 151, "Input",
+      CellTags->"S0.0.6"],
+    Cell[97221, 2634, 344, 5, 102, "Input",
+      CellTags->"S0.0.6"],
+    Cell[97568, 2641, 138, 3, 32, "Text",
+      CellTags->{"S0.0.6", "6.7"}],
+    Cell[97709, 2646, 108, 2, 27, "Input",
+      CellTags->"S0.0.6"],
+    Cell[97820, 2650, 415, 9, 107, "Input",
+      CellTags->"S0.0.6"],
+    Cell[98238, 2661, 711, 21, 68, "Text",
+      CellTags->{"S0.0.6", "6.8"}],
+    Cell[98952, 2684, 341, 6, 130, "Input",
+      CellTags->"S0.0.6"],
+    Cell[99296, 2692, 131, 3, 29, "Input",
+      CellTags->"S0.0.6"],
+    Cell[99430, 2697, 619, 12, 190, "Input",
+      CellTags->"S0.0.6"],
+    Cell[100052, 2711, 211, 7, 32, "Text",
+      CellTags->{"S0.0.6", "6.9"}],
+    Cell[100266, 2720, 121, 3, 29, "Input",
+      CellTags->"S0.0.6"],
+    Cell[100390, 2725, 383, 8, 91, "Input",
+      CellTags->"S0.0.6"],
+    Cell[100776, 2735, 118, 2, 32, "Text",
+      CellTags->{"S0.0.6", "6.10"}],
+    Cell[100897, 2739, 86, 2, 29, "Input",
+      CellTags->"S0.0.6"],
+    Cell[100986, 2743, 410, 8, 107, "Input",
+      CellTags->"S0.0.6"],
+    Cell[101399, 2753, 228, 7, 32, "Text",
+      CellTags->{"S0.0.6", "6.11"}],
+    Cell[101630, 2762, 102, 2, 31, "Input",
+      CellTags->"S0.0.6"],
+    Cell[101735, 2766, 391, 8, 107, "Input",
+      CellTags->"S0.0.6"],
+    Cell[102129, 2776, 110, 1, 32, "Text",
+      CellTags->{"S0.0.6", "6.12"}],
+    Cell[102242, 2779, 147, 4, 32, "Input",
+      CellTags->"S0.0.6"],
+    Cell[102392, 2785, 378, 8, 113, "Input",
+      CellTags->"S0.0.6"],
+    Cell[102773, 2795, 119, 2, 32, "Text",
+      CellTags->{"S0.0.6", "6.13"}],
+    Cell[102895, 2799, 167, 4, 29, "Input",
+      CellTags->"S0.0.6"],
+    Cell[103065, 2805, 349, 7, 91, "Input",
+      CellTags->"S0.0.6"]},
+  "6.1"->{
+    Cell[93375, 2529, 63, 1, 52, "Section",
+      CellTags->{"S0.0.6", "6.1"}]},
+  "6.2"->{
+    Cell[93441, 2532, 640, 17, 87, "Text",
+      CellTags->{"S0.0.6", "6.2"}]},
+  "6.3"->{
+    Cell[94597, 2565, 336, 11, 32, "Text",
+      CellTags->{"S0.0.6", "6.3"}]},
+  "6.4"->{
+    Cell[95607, 2593, 100, 1, 32, "Text",
+      CellTags->{"S0.0.6", "6.4"}]},
+  "6.5"->{
+    Cell[96180, 2608, 240, 4, 50, "Text",
+      CellTags->{"S0.0.6", "6.5"}]},
+  "6.6"->{
+    Cell[96515, 2618, 179, 3, 50, "Text",
+      CellTags->{"S0.0.6", "6.6"}]},
+  "6.7"->{
+    Cell[97568, 2641, 138, 3, 32, "Text",
+      CellTags->{"S0.0.6", "6.7"}]},
+  "6.8"->{
+    Cell[98238, 2661, 711, 21, 68, "Text",
+      CellTags->{"S0.0.6", "6.8"}]},
+  "6.9"->{
+    Cell[100052, 2711, 211, 7, 32, "Text",
+      CellTags->{"S0.0.6", "6.9"}]},
+  "6.10"->{
+    Cell[100776, 2735, 118, 2, 32, "Text",
+      CellTags->{"S0.0.6", "6.10"}]},
+  "6.11"->{
+    Cell[101399, 2753, 228, 7, 32, "Text",
+      CellTags->{"S0.0.6", "6.11"}]},
+  "6.12"->{
+    Cell[102129, 2776, 110, 1, 32, "Text",
+      CellTags->{"S0.0.6", "6.12"}]},
+  "6.13"->{
+    Cell[102773, 2795, 119, 2, 32, "Text",
+      CellTags->{"S0.0.6", "6.13"}]},
+  "S0.0.7"->{
+    Cell[103451, 2817, 80, 1, 52, "Section",
+      CellTags->{"S0.0.7", "7.1"}],
+    Cell[103534, 2820, 2799, 79, 194, "Text",
+      CellTags->{"S0.0.7", "7.2"}],
+    Cell[106336, 2901, 424, 7, 116, "Input",
+      CellTags->"S0.0.7"],
+    Cell[106763, 2910, 412, 13, 50, "Text",
+      CellTags->{"S0.0.7", "7.3"}],
+    Cell[107178, 2925, 854, 16, 195, "Input",
+      CellTags->"S0.0.7"],
+    Cell[108035, 2943, 641, 17, 53, "Text",
+      CellTags->{"S0.0.7", "7.4"}],
+    Cell[108679, 2962, 772, 15, 217, "Input",
+      CellTags->"S0.0.7"],
+    Cell[109454, 2979, 950, 29, 50, "Text",
+      CellTags->{"S0.0.7", "7.5"}],
+    Cell[110407, 3010, 570, 12, 123, "Input",
+      CellTags->"S0.0.7"],
+    Cell[110980, 3024, 615, 17, 53, "Text",
+      CellTags->{"S0.0.7", "7.6"}],
+    Cell[111598, 3043, 1088, 22, 258, "Input",
+      CellTags->"S0.0.7"],
+    Cell[112689, 3067, 1207, 37, 68, "Text",
+      CellTags->{"S0.0.7", "7.7"}],
+    Cell[113899, 3106, 574, 12, 139, "Input",
+      CellTags->"S0.0.7"],
+    Cell[114476, 3120, 354, 9, 51, "Text",
+      CellTags->{"S0.0.7", "7.8"}],
+    Cell[114833, 3131, 615, 12, 180, "Input",
+      CellTags->"S0.0.7"],
+    Cell[115451, 3145, 763, 22, 68, "Text",
+      CellTags->{"S0.0.7", "7.9"}],
+    Cell[116217, 3169, 808, 19, 80, "Input",
+      CellTags->"S0.0.7"]},
+  "7.1"->{
+    Cell[103451, 2817, 80, 1, 52, "Section",
+      CellTags->{"S0.0.7", "7.1"}]},
+  "7.2"->{
+    Cell[103534, 2820, 2799, 79, 194, "Text",
+      CellTags->{"S0.0.7", "7.2"}]},
+  "7.3"->{
+    Cell[106763, 2910, 412, 13, 50, "Text",
+      CellTags->{"S0.0.7", "7.3"}]},
+  "7.4"->{
+    Cell[108035, 2943, 641, 17, 53, "Text",
+      CellTags->{"S0.0.7", "7.4"}]},
+  "7.5"->{
+    Cell[109454, 2979, 950, 29, 50, "Text",
+      CellTags->{"S0.0.7", "7.5"}]},
+  "7.6"->{
+    Cell[110980, 3024, 615, 17, 53, "Text",
+      CellTags->{"S0.0.7", "7.6"}]},
+  "7.7"->{
+    Cell[112689, 3067, 1207, 37, 68, "Text",
+      CellTags->{"S0.0.7", "7.7"}]},
+  "7.8"->{
+    Cell[114476, 3120, 354, 9, 51, "Text",
+      CellTags->{"S0.0.7", "7.8"}]},
+  "7.9"->{
+    Cell[115451, 3145, 763, 22, 68, "Text",
+      CellTags->{"S0.0.7", "7.9"}]},
+  "S0.0.8"->{
+    Cell[117028, 3190, 881, 20, 140, "Text",
+      CellTags->{"S0.0.8", "7.10"}],
+    Cell[117946, 3215, 60, 1, 52, "Section",
+      CellTags->{"S0.0.8", "8.1"}]},
+  "7.10"->{
+    Cell[117028, 3190, 881, 20, 140, "Text",
+      CellTags->{"S0.0.8", "7.10"}]},
+  "8.1"->{
+    Cell[117946, 3215, 60, 1, 52, "Section",
+      CellTags->{"S0.0.8", "8.1"}]},
+  "S0.0.9"->{
+    Cell[118009, 3218, 2933, 54, 1094, "Text",
+      CellTags->{"S0.0.9", "8.2"}],
+    Cell[120979, 3277, 66, 1, 52, "Section",
+      CellTags->{"S0.0.9", "9.1"}]},
+  "8.2"->{
+    Cell[118009, 3218, 2933, 54, 1094, "Text",
+      CellTags->{"S0.0.9", "8.2"}]},
+  "9.1"->{
+    Cell[120979, 3277, 66, 1, 52, "Section",
+      CellTags->{"S0.0.9", "9.1"}]},
+  "S0.0.10"->{
+    Cell[121048, 3280, 690, 10, 230, "Text",
+      CellTags->{"S0.0.10", "9.2"}]},
+  "9.2"->{
+    Cell[121048, 3280, 690, 10, 230, "Text",
+      CellTags->{"S0.0.10", "9.2"}]}
+  }
+*)
+
+(*CellTagsIndex
+CellTagsIndex->{
+  {"0.1", 122396, 3312},
+  {"S0.0.1", 122475, 3315},
+  {"1.1", 122648, 3320},
+  {"1.2", 122740, 3323},
+  {"S0.0.2", 122836, 3326},
+  {"1.3", 128886, 3489},
+  {"2.1", 128976, 3492},
+  {"2.2", 129066, 3495},
+  {"2.3", 129157, 3498},
+  {"2.4", 129246, 3501},
+  {"2.5", 129334, 3504},
+  {"2.7", 129425, 3507},
+  {"2.8", 129515, 3510},
+  {"2.9", 129605, 3513},
+  {"2.10", 129696, 3516},
+  {"2.11", 129788, 3519},
+  {"2.12", 129882, 3522},
+  {"2.13", 129973, 3525},
+  {"2.14", 130066, 3528},
+  {"2.15", 130158, 3531},
+  {"2.16", 130250, 3534},
+  {"2.17", 130341, 3537},
+  {"2.18", 130433, 3540},
+  {"2.19", 130525, 3543},
+  {"2.20", 130616, 3546},
+  {"2.21", 130710, 3549},
+  {"2.22", 130802, 3552},
+  {"2.23", 130893, 3555},
+  {"2.24", 130985, 3558},
+  {"2.25", 131077, 3561},
+  {"2.26", 131168, 3564},
+  {"2.27", 131260, 3567},
+  {"2.28", 131352, 3570},
+  {"2.29", 131443, 3573},
+  {"2.30", 131535, 3576},
+  {"2.31", 131627, 3579},
+  {"2.32", 131719, 3582},
+  {"2.33", 131811, 3585},
+  {"2.34", 131903, 3588},
+  {"2.35", 131995, 3591},
+  {"2.36", 132088, 3594},
+  {"2.37", 132180, 3597},
+  {"2.38", 132273, 3600},
+  {"2.39", 132367, 3603},
+  {"2.40", 132460, 3606},
+  {"2.41", 132553, 3609},
+  {"S0.0.3", 132647, 3612},
+  {"3.1", 134737, 3669},
+  {"3.2", 134830, 3672},
+  {"3.3", 134920, 3675},
+  {"3.4", 135011, 3678},
+  {"3.5", 135102, 3681},
+  {"3.6", 135192, 3684},
+  {"3.7", 135284, 3687},
+  {"3.8", 135375, 3690},
+  {"3.9", 135465, 3693},
+  {"3.10", 135558, 3696},
+  {"3.11", 135652, 3699},
+  {"3.12", 135745, 3702},
+  {"S0.0.4", 135842, 3705},
+  {"3.13", 136573, 3724},
+  {"4.1", 136665, 3727},
+  {"4.2", 136757, 3730},
+  {"4.3", 136850, 3733},
+  {"4.4", 136941, 3736},
+  {"4.5", 137033, 3739},
+  {"4.6", 137125, 3742},
+  {"4.7", 137216, 3745},
+  {"4.8", 137308, 3748},
+  {"S0.0.5", 137402, 3751},
+  {"5.1", 140721, 3840},
+  {"5.2", 140813, 3843},
+  {"5.3", 140905, 3846},
+  {"5.4", 140995, 3849},
+  {"5.5", 141085, 3852},
+  {"5.6", 141175, 3855},
+  {"5.7", 141267, 3858},
+  {"5.8", 141357, 3861},
+  {"5.9", 141447, 3864},
+  {"5.10", 141539, 3867},
+  {"5.17", 141634, 3870},
+  {"5.20", 141726, 3873},
+  {"5.21", 141821, 3876},
+  {"5.22", 141913, 3879},
+  {"5.23", 142006, 3882},
+  {"5.24", 142099, 3885},
+  {"5.25", 142193, 3888},
+  {"5.26", 142287, 3891},
+  {"5.27", 142379, 3894},
+  {"5.28", 142474, 3897},
+  {"5.29", 142567, 3900},
+  {"5.30", 142660, 3903},
+  {"S0.0.6", 142754, 3906},
+  {"6.1", 145422, 3979},
+  {"6.2", 145514, 3982},
+  {"6.3", 145605, 3985},
+  {"6.4", 145696, 3988},
+  {"6.5", 145786, 3991},
+  {"6.6", 145876, 3994},
+  {"6.7", 145966, 3997},
+  {"6.8", 146056, 4000},
+  {"6.9", 146147, 4003},
+  {"6.10", 146239, 4006},
+  {"6.11", 146332, 4009},
+  {"6.12", 146425, 4012},
+  {"6.13", 146518, 4015},
+  {"S0.0.7", 146613, 4018},
+  {"7.1", 147931, 4053},
+  {"7.2", 148024, 4056},
+  {"7.3", 148118, 4059},
+  {"7.4", 148210, 4062},
+  {"7.5", 148302, 4065},
+  {"7.6", 148394, 4068},
+  {"7.7", 148486, 4071},
+  {"7.8", 148579, 4074},
+  {"7.9", 148670, 4077},
+  {"S0.0.8", 148765, 4080},
+  {"7.10", 148941, 4085},
+  {"8.1", 149035, 4088},
+  {"S0.0.9", 149131, 4091},
+  {"8.2", 149307, 4096},
+  {"9.1", 149402, 4099},
+  {"S0.0.10", 149499, 4102},
+  {"9.2", 149593, 4105}
+  }
+*)
+
+(*NotebookFileOutline
+Notebook[{
+
+Cell[CellGroupData[{
+Cell[1731, 51, 92, 1, 192, "Title",
+  CellTags->"0.1"],
+Cell[1826, 54, 297, 6, 180, "Subtitle",
+  CellTags->{"S0.0.1", "1.1"}],
+Cell[2126, 62, 70, 1, 53, "Subsubtitle",
+  CellTags->{"S0.0.1", "1.2"}],
+Cell[2199, 65, 3671, 84, 434, "Text",
+  CellTags->{"S0.0.2", "1.3"}],
+
+Cell[CellGroupData[{
+Cell[5895, 153, 70, 1, 52, "Section",
+  CellTags->{"S0.0.2", "2.1"}],
+Cell[5968, 156, 1935, 50, 177, "Text",
+  CellTags->{"S0.0.2", "2.2"}],
+Cell[7906, 208, 149, 3, 33, "Input",
+  CellTags->"S0.0.2"],
+Cell[8058, 213, 847, 23, 73, "Text",
+  CellTags->{"S0.0.2", "2.3"}],
+Cell[8908, 238, 336, 6, 93, "Input",
+  CellTags->"S0.0.2"],
+Cell[9247, 246, 303, 9, 50, "Text",
+  CellTags->{"S0.0.2", "2.4"}],
+Cell[9553, 257, 243, 5, 85, "Input",
+  CellTags->"S0.0.2"],
+Cell[9799, 264, 1742, 54, 122, "Text",
+  CellTags->{"S0.0.2", "2.5"}],
+Cell[11544, 320, 116, 3, 31, "Input",
+  CellTags->"S0.0.2"],
+Cell[11663, 325, 658, 19, 50, "Text",
+  CellTags->{"S0.0.2", "2.7"}],
+Cell[12324, 346, 398, 8, 141, "Input",
+  CellTags->"S0.0.2"],
+Cell[12725, 356, 799, 20, 89, "Text",
+  CellTags->{"S0.0.2", "2.8"}],
+Cell[13527, 378, 158, 3, 31, "Input",
+  CellTags->"S0.0.2"],
+Cell[13688, 383, 859, 27, 56, "Text",
+  CellTags->{"S0.0.2", "2.9"}],
+Cell[14550, 412, 281, 5, 87, "Input",
+  CellTags->"S0.0.2"],
+Cell[14834, 419, 425, 11, 53, "Text",
+  CellTags->{"S0.0.2", "2.10"}],
+Cell[15262, 432, 531, 9, 141, "Input",
+  CellTags->"S0.0.2"],
+Cell[15796, 443, 1223, 31, 105, "Text",
+  CellTags->{"S0.0.2", "2.11"}],
+Cell[17022, 476, 282, 7, 106, "Input",
+  CellTags->"S0.0.2"],
+Cell[17307, 485, 145, 3, 32, "Text",
+  CellTags->{"S0.0.2", "2.12"}],
+Cell[17455, 490, 687, 14, 159, "Input",
+  CellTags->"S0.0.2"],
+Cell[18145, 506, 1008, 26, 87, "Text",
+  CellTags->{"S0.0.2", "2.13"}],
+Cell[19156, 534, 282, 7, 106, "Input",
+  CellTags->"S0.0.2"],
+Cell[19441, 543, 384, 10, 50, "Text",
+  CellTags->{"S0.0.2", "2.14"}],
+Cell[19828, 555, 839, 16, 187, "Input",
+  CellTags->"S0.0.2"],
+Cell[20670, 573, 440, 10, 68, "Text",
+  CellTags->{"S0.0.2", "2.15"}],
+Cell[21113, 585, 465, 9, 136, "Input",
+  CellTags->"S0.0.2"],
+Cell[21581, 596, 157, 3, 32, "Text",
+  CellTags->{"S0.0.2", "2.16"}],
+Cell[21741, 601, 412, 9, 91, "Input",
+  CellTags->"S0.0.2"],
+Cell[22156, 612, 852, 22, 87, "Text",
+  CellTags->{"S0.0.2", "2.17"}],
+Cell[23011, 636, 169, 4, 56, "Input",
+  CellTags->"S0.0.2"],
+Cell[23183, 642, 748, 21, 69, "Text",
+  CellTags->{"S0.0.2", "2.18"}],
+Cell[23934, 665, 1233, 22, 254, "Input",
+  CellTags->"S0.0.2"],
+Cell[25170, 689, 261, 7, 32, "Text",
+  CellTags->{"S0.0.2", "2.19"}],
+Cell[25434, 698, 123, 4, 42, "Input",
+  CellTags->"S0.0.2"],
+Cell[25560, 704, 1020, 27, 120, "Text",
+  CellTags->{"S0.0.2", "2.20"}],
+Cell[26583, 733, 1731, 33, 333, "Input",
+  CellTags->"S0.0.2"],
+Cell[28317, 768, 75, 1, 27, "Input",
+  CellTags->"S0.0.2"],
+Cell[28395, 771, 835, 25, 89, "Text",
+  CellTags->{"S0.0.2", "2.21"}],
+Cell[29233, 798, 442, 8, 107, "Input",
+  CellTags->"S0.0.2"],
+Cell[29678, 808, 210, 4, 50, "Text",
+  CellTags->{"S0.0.2", "2.22"}],
+Cell[29891, 814, 956, 17, 268, "Input",
+  CellTags->"S0.0.2"],
+Cell[30850, 833, 973, 28, 97, "Text",
+  CellTags->{"S0.0.2", "2.23"}],
+Cell[31826, 863, 471, 10, 160, "Input",
+  CellTags->"S0.0.2"],
+Cell[32300, 875, 337, 10, 34, "Text",
+  CellTags->{"S0.0.2", "2.24"}],
+Cell[32640, 887, 254, 5, 75, "Input",
+  CellTags->"S0.0.2"],
+Cell[32897, 894, 254, 8, 32, "Text",
+  CellTags->{"S0.0.2", "2.25"}],
+Cell[33154, 904, 78, 2, 27, "Input",
+  CellTags->"S0.0.2"],
+Cell[33235, 908, 474, 13, 51, "Text",
+  CellTags->{"S0.0.2", "2.26"}],
+Cell[33712, 923, 1116, 21, 224, "Input",
+  CellTags->"S0.0.2"],
+Cell[34831, 946, 435, 13, 50, "Text",
+  CellTags->{"S0.0.2", "2.27"}],
+Cell[35269, 961, 505, 10, 133, "Input",
+  CellTags->"S0.0.2"],
+Cell[35777, 973, 155, 3, 32, "Text",
+  CellTags->{"S0.0.2", "2.28"}],
+Cell[35935, 978, 769, 15, 173, "Input",
+  CellTags->"S0.0.2"],
+Cell[36707, 995, 395, 11, 32, "Text",
+  CellTags->{"S0.0.2", "2.29"}],
+Cell[37105, 1008, 97, 2, 31, "Input",
+  CellTags->"S0.0.2"],
+Cell[37205, 1012, 99, 2, 27, "Input",
+  CellTags->"S0.0.2"],
+Cell[37307, 1016, 105, 1, 32, "Text",
+  CellTags->{"S0.0.2", "2.30"}],
+Cell[37415, 1019, 278, 6, 59, "Input",
+  CellTags->"S0.0.2"],
+Cell[37696, 1027, 280, 7, 32, "Text",
+  CellTags->{"S0.0.2", "2.31"}],
+Cell[37979, 1036, 1126, 19, 242, "Input",
+  CellTags->"S0.0.2"],
+Cell[39108, 1057, 339, 9, 50, "Text",
+  CellTags->{"S0.0.2", "2.32"}],
+Cell[39450, 1068, 205, 4, 52, "Input",
+  CellTags->"S0.0.2"],
+Cell[39658, 1074, 154, 3, 32, "Text",
+  CellTags->{"S0.0.2", "2.33"}],
+Cell[39815, 1079, 367, 7, 105, "Input",
+  CellTags->"S0.0.2"],
+Cell[40185, 1088, 173, 3, 32, "Text",
+  CellTags->{"S0.0.2", "2.34"}],
+Cell[40361, 1093, 1392, 24, 258, "Input",
+  CellTags->"S0.0.2"],
+Cell[41756, 1119, 609, 15, 69, "Text",
+  CellTags->{"S0.0.2", "2.35"}],
+Cell[42368, 1136, 205, 4, 66, "Input",
+  CellTags->"S0.0.2"],
+Cell[42576, 1142, 228, 7, 50, "Text",
+  CellTags->{"S0.0.2", "2.36"}],
+Cell[42807, 1151, 378, 8, 119, "Input",
+  CellTags->"S0.0.2"],
+Cell[43188, 1161, 495, 14, 50, "Text",
+  CellTags->{"S0.0.2", "2.37"}],
+Cell[43686, 1177, 86, 1, 27, "Input",
+  CellTags->"S0.0.2"],
+Cell[43775, 1180, 1734, 50, 86, "Text",
+  CellTags->{"S0.0.2", "2.38"}],
+Cell[45512, 1232, 427, 9, 91, "Input",
+  CellTags->"S0.0.2"],
+Cell[45942, 1243, 484, 15, 68, "Text",
+  CellTags->{"S0.0.2", "2.39"}],
+Cell[46429, 1260, 2307, 37, 325, "Input"],
+Cell[48739, 1299, 692, 18, 87, "Text",
+  CellTags->{"S0.0.2", "2.40"}],
+Cell[49434, 1319, 515, 11, 141, "Input",
+  CellTags->"S0.0.2"],
+Cell[49952, 1332, 229, 7, 32, "Text",
+  CellTags->{"S0.0.2", "2.41"}],
+Cell[50184, 1341, 637, 14, 183, "Input",
+  CellTags->"S0.0.2"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+Cell[50858, 1360, 124, 4, 72, "Section",
+  CellTags->{"S0.0.3", "3.1"}],
+Cell[50985, 1366, 146, 3, 32, "Text",
+  CellTags->{"S0.0.3", "3.2"}],
+Cell[51134, 1371, 123, 3, 29, "Input",
+  CellTags->"S0.0.3"],
+Cell[51260, 1376, 443, 13, 50, "Text",
+  CellTags->{"S0.0.3", "3.3"}],
+Cell[51706, 1391, 89, 2, 27, "Input",
+  CellTags->"S0.0.3"],
+Cell[51798, 1395, 368, 10, 50, "Text",
+  CellTags->{"S0.0.3", "3.4"}],
+Cell[52169, 1407, 281, 6, 59, "Input",
+  CellTags->"S0.0.3"],
+Cell[52453, 1415, 124, 2, 32, "Text",
+  CellTags->{"S0.0.3", "3.5"}],
+Cell[52580, 1419, 281, 6, 59, "Input",
+  CellTags->"S0.0.3"],
+Cell[52864, 1427, 946, 26, 104, "Text",
+  CellTags->{"S0.0.3", "3.6"}],
+Cell[53813, 1455, 267, 6, 58, "Input",
+  CellTags->"S0.0.3"],
+Cell[54083, 1463, 159, 4, 27, "Input",
+  CellTags->"S0.0.3"],
+Cell[54245, 1469, 433, 10, 68, "Text",
+  CellTags->{"S0.0.3", "3.7"}],
+Cell[54681, 1481, 832, 17, 171, "Input",
+  CellTags->"S0.0.3"],
+Cell[55516, 1500, 330, 8, 68, "Text",
+  CellTags->{"S0.0.3", "3.8"}],
+Cell[55849, 1510, 125, 3, 27, "Input",
+  CellTags->"S0.0.3"],
+Cell[55977, 1515, 281, 6, 59, "Input",
+  CellTags->"S0.0.3"],
+Cell[56261, 1523, 975, 20, 194, "Text",
+  CellTags->{"S0.0.3", "3.9"}],
+Cell[57239, 1545, 1367, 33, 78, "Input",
+  Evaluatable->False],
+Cell[58609, 1580, 1346, 34, 57, "Input",
+  Evaluatable->False],
+Cell[59958, 1616, 1153, 35, 50, "Text",
+  CellTags->{"S0.0.3", "3.10"}],
+Cell[61114, 1653, 144, 4, 27, "Input",
+  CellTags->"S0.0.3"],
+Cell[61261, 1659, 124, 3, 43, "Input",
+  CellTags->"S0.0.3"],
+Cell[61388, 1664, 110, 2, 27, "Input",
+  CellTags->"S0.0.3"],
+Cell[61501, 1668, 111, 2, 27, "Input",
+  CellTags->"S0.0.3"],
+Cell[61615, 1672, 542, 16, 50, "Text",
+  CellTags->{"S0.0.3", "3.11"}],
+Cell[62160, 1690, 73, 1, 27, "Input",
+  CellTags->"S0.0.3"],
+Cell[62236, 1693, 410, 6, 132, "Input",
+  CellTags->"S0.0.3"],
+Cell[62649, 1701, 1782, 49, 158, "Text",
+  CellTags->{"S0.0.3", "3.12"}],
+Cell[64434, 1752, 848, 16, 219, "Input",
+  CellTags->"S0.0.3"],
+Cell[65285, 1770, 654, 9, 140, "Text",
+  CellTags->{"S0.0.4", "3.13"}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+Cell[65976, 1784, 77, 1, 52, "Section",
+  CellTags->{"S0.0.4", "4.1"}],
+Cell[66056, 1787, 1970, 39, 320, "Text",
+  CellTags->{"S0.0.4", "4.2"}],
+Cell[68029, 1828, 278, 9, 24, "Notes",
+  CellTags->{"S0.0.4", "4.3"}],
+Cell[68310, 1839, 439, 10, 56, "Notes",
+  CellTags->{"S0.0.4", "4.4"}],
+Cell[68752, 1851, 377, 11, 24, "Notes",
+  CellTags->{"S0.0.4", "4.5"}],
+Cell[69132, 1864, 209, 4, 40, "Notes",
+  CellTags->{"S0.0.4", "4.6"}],
+Cell[69344, 1870, 572, 14, 56, "Notes",
+  CellTags->{"S0.0.4", "4.7"}],
+Cell[69919, 1886, 274, 4, 40, "Notes",
+  CellTags->{"S0.0.4", "4.8"}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+Cell[70230, 1895, 79, 1, 52, "Section",
+  CellTags->{"S0.0.5", "5.1"}],
+Cell[70312, 1898, 724, 18, 56, "Notes",
+  CellTags->{"S0.0.5", "5.2"}],
+Cell[71039, 1918, 136, 3, 27, "Input",
+  CellTags->"S0.0.5"],
+Cell[71178, 1923, 193, 5, 43, "Input",
+  CellTags->"S0.0.5"],
+Cell[71374, 1930, 361, 9, 50, "Text",
+  CellTags->{"S0.0.5", "5.3"}],
+Cell[71738, 1941, 120, 3, 29, "Input",
+  CellTags->"S0.0.5"],
+Cell[71861, 1946, 120, 2, 32, "Text",
+  CellTags->{"S0.0.5", "5.4"}],
+Cell[71984, 1950, 103, 2, 27, "Input",
+  CellTags->"S0.0.5"],
+Cell[72090, 1954, 250, 7, 32, "Text",
+  CellTags->{"S0.0.5", "5.5"}],
+Cell[72343, 1963, 246, 5, 75, "Input",
+  CellTags->"S0.0.5"],
+Cell[72592, 1970, 549, 15, 56, "Notes",
+  CellTags->{"S0.0.5", "5.6"}],
+Cell[73144, 1987, 1322, 26, 234, "Input",
+  CellTags->"S0.0.5"],
+Cell[74469, 2015, 257, 7, 32, "Text",
+  CellTags->{"S0.0.5", "5.7"}],
+Cell[74729, 2024, 98, 2, 27, "Input",
+  CellTags->"S0.0.5"],
+Cell[74830, 2028, 190, 3, 50, "Text",
+  CellTags->{"S0.0.5", "5.8"}],
+Cell[75023, 2033, 732, 14, 187, "Input",
+  CellTags->"S0.0.5"],
+Cell[75758, 2049, 284, 6, 59, "Input",
+  CellTags->"S0.0.5"],
+Cell[76045, 2057, 171, 3, 24, "Notes",
+  CellTags->{"S0.0.5", "5.9"}],
+Cell[76219, 2062, 1592, 41, 141, "Text",
+  CellTags->{"S0.0.5", "5.10"}],
+
+Cell[CellGroupData[{
+Cell[77836, 2107, 227, 4, 47, "Input"],
+Cell[78066, 2113, 272, 8, 27, "Output"]
+}, Open  ]],
+Cell[78353, 2124, 353, 9, 51, "Text",
+  CellTags->{"S0.0.5", "5.17"}],
+Cell[78709, 2135, 209, 4, 43, "Input"],
+Cell[78921, 2141, 1409, 35, 176, "Text",
+  CellTags->{"S0.0.5", "5.20"}],
+Cell[80333, 2178, 482, 12, 43, "Input",
+  CellTags->"S0.0.5"],
+Cell[80818, 2192, 194, 3, 50, "Text",
+  CellTags->{"S0.0.5", "5.21"}],
+Cell[81015, 2197, 94, 2, 27, "Input",
+  CellTags->"S0.0.5"],
+Cell[81112, 2201, 522, 14, 68, "Text",
+  CellTags->{"S0.0.5", "5.22"}],
+Cell[81637, 2217, 841, 20, 59, "Input",
+  CellTags->"S0.0.5"],
+Cell[82481, 2239, 155, 4, 27, "Input",
+  CellTags->"S0.0.5"],
+Cell[82639, 2245, 453, 13, 50, "Text",
+  CellTags->{"S0.0.5", "5.23"}],
+Cell[83095, 2260, 767, 18, 43, "Input",
+  CellTags->"S0.0.5"],
+Cell[83865, 2280, 125, 3, 27, "Input",
+  CellTags->"S0.0.5"],
+Cell[83993, 2285, 769, 18, 122, "Text",
+  CellTags->{"S0.0.5", "5.24"}],
+Cell[84765, 2305, 161, 3, 43, "Input",
+  CellTags->"S0.0.5"],
+Cell[84929, 2310, 914, 24, 104, "Text",
+  CellTags->{"S0.0.5", "5.25"}],
+Cell[85846, 2336, 1845, 35, 361, "Input",
+  CellTags->"S0.0.5"],
+Cell[87694, 2373, 239, 4, 50, "Text",
+  CellTags->{"S0.0.5", "5.26"}],
+Cell[87936, 2379, 476, 10, 75, "Input",
+  CellTags->"S0.0.5"],
+Cell[88415, 2391, 1134, 34, 104, "Text",
+  CellTags->{"S0.0.5", "5.27"}],
+Cell[89552, 2427, 297, 6, 64, "Input",
+  CellTags->"S0.0.5"],
+Cell[89852, 2435, 853, 25, 86, "Text",
+  CellTags->{"S0.0.5", "5.28"}],
+Cell[90708, 2462, 849, 15, 155, "Input",
+  CellTags->"S0.0.5"],
+Cell[91560, 2479, 495, 14, 50, "Text",
+  CellTags->{"S0.0.5", "5.29"}],
+Cell[92058, 2495, 274, 6, 75, "Input",
+  CellTags->"S0.0.5"],
+Cell[92335, 2503, 461, 7, 86, "Text",
+  CellTags->{"S0.0.5", "5.30"}],
+Cell[92799, 2512, 539, 12, 139, "Input",
+  CellTags->"S0.0.5"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+Cell[93375, 2529, 63, 1, 52, "Section",
+  CellTags->{"S0.0.6", "6.1"}],
+Cell[93441, 2532, 640, 17, 87, "Text",
+  CellTags->{"S0.0.6", "6.2"}],
+Cell[94084, 2551, 89, 2, 29, "Input",
+  CellTags->"S0.0.6"],
+Cell[94176, 2555, 418, 8, 121, "Input",
+  CellTags->"S0.0.6"],
+Cell[94597, 2565, 336, 11, 32, "Text",
+  CellTags->{"S0.0.6", "6.3"}],
+Cell[94936, 2578, 668, 13, 205, "Input",
+  CellTags->"S0.0.6"],
+Cell[95607, 2593, 100, 1, 32, "Text",
+  CellTags->{"S0.0.6", "6.4"}],
+Cell[95710, 2596, 84, 1, 27, "Input",
+  CellTags->"S0.0.6"],
+Cell[95797, 2599, 380, 7, 91, "Input",
+  CellTags->"S0.0.6"],
+Cell[96180, 2608, 240, 4, 50, "Text",
+  CellTags->{"S0.0.6", "6.5"}],
+Cell[96423, 2614, 89, 2, 29, "Input",
+  CellTags->"S0.0.6"],
+Cell[96515, 2618, 179, 3, 50, "Text",
+  CellTags->{"S0.0.6", "6.6"}],
+Cell[96697, 2623, 521, 9, 151, "Input",
+  CellTags->"S0.0.6"],
+Cell[97221, 2634, 344, 5, 102, "Input",
+  CellTags->"S0.0.6"],
+Cell[97568, 2641, 138, 3, 32, "Text",
+  CellTags->{"S0.0.6", "6.7"}],
+Cell[97709, 2646, 108, 2, 27, "Input",
+  CellTags->"S0.0.6"],
+Cell[97820, 2650, 415, 9, 107, "Input",
+  CellTags->"S0.0.6"],
+Cell[98238, 2661, 711, 21, 68, "Text",
+  CellTags->{"S0.0.6", "6.8"}],
+Cell[98952, 2684, 341, 6, 130, "Input",
+  CellTags->"S0.0.6"],
+Cell[99296, 2692, 131, 3, 29, "Input",
+  CellTags->"S0.0.6"],
+Cell[99430, 2697, 619, 12, 190, "Input",
+  CellTags->"S0.0.6"],
+Cell[100052, 2711, 211, 7, 32, "Text",
+  CellTags->{"S0.0.6", "6.9"}],
+Cell[100266, 2720, 121, 3, 29, "Input",
+  CellTags->"S0.0.6"],
+Cell[100390, 2725, 383, 8, 91, "Input",
+  CellTags->"S0.0.6"],
+Cell[100776, 2735, 118, 2, 32, "Text",
+  CellTags->{"S0.0.6", "6.10"}],
+Cell[100897, 2739, 86, 2, 29, "Input",
+  CellTags->"S0.0.6"],
+Cell[100986, 2743, 410, 8, 107, "Input",
+  CellTags->"S0.0.6"],
+Cell[101399, 2753, 228, 7, 32, "Text",
+  CellTags->{"S0.0.6", "6.11"}],
+Cell[101630, 2762, 102, 2, 31, "Input",
+  CellTags->"S0.0.6"],
+Cell[101735, 2766, 391, 8, 107, "Input",
+  CellTags->"S0.0.6"],
+Cell[102129, 2776, 110, 1, 32, "Text",
+  CellTags->{"S0.0.6", "6.12"}],
+Cell[102242, 2779, 147, 4, 32, "Input",
+  CellTags->"S0.0.6"],
+Cell[102392, 2785, 378, 8, 113, "Input",
+  CellTags->"S0.0.6"],
+Cell[102773, 2795, 119, 2, 32, "Text",
+  CellTags->{"S0.0.6", "6.13"}],
+Cell[102895, 2799, 167, 4, 29, "Input",
+  CellTags->"S0.0.6"],
+Cell[103065, 2805, 349, 7, 91, "Input",
+  CellTags->"S0.0.6"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+Cell[103451, 2817, 80, 1, 52, "Section",
+  CellTags->{"S0.0.7", "7.1"}],
+Cell[103534, 2820, 2799, 79, 194, "Text",
+  CellTags->{"S0.0.7", "7.2"}],
+Cell[106336, 2901, 424, 7, 116, "Input",
+  CellTags->"S0.0.7"],
+Cell[106763, 2910, 412, 13, 50, "Text",
+  CellTags->{"S0.0.7", "7.3"}],
+Cell[107178, 2925, 854, 16, 195, "Input",
+  CellTags->"S0.0.7"],
+Cell[108035, 2943, 641, 17, 53, "Text",
+  CellTags->{"S0.0.7", "7.4"}],
+Cell[108679, 2962, 772, 15, 217, "Input",
+  CellTags->"S0.0.7"],
+Cell[109454, 2979, 950, 29, 50, "Text",
+  CellTags->{"S0.0.7", "7.5"}],
+Cell[110407, 3010, 570, 12, 123, "Input",
+  CellTags->"S0.0.7"],
+Cell[110980, 3024, 615, 17, 53, "Text",
+  CellTags->{"S0.0.7", "7.6"}],
+Cell[111598, 3043, 1088, 22, 258, "Input",
+  CellTags->"S0.0.7"],
+Cell[112689, 3067, 1207, 37, 68, "Text",
+  CellTags->{"S0.0.7", "7.7"}],
+Cell[113899, 3106, 574, 12, 139, "Input",
+  CellTags->"S0.0.7"],
+Cell[114476, 3120, 354, 9, 51, "Text",
+  CellTags->{"S0.0.7", "7.8"}],
+Cell[114833, 3131, 615, 12, 180, "Input",
+  CellTags->"S0.0.7"],
+Cell[115451, 3145, 763, 22, 68, "Text",
+  CellTags->{"S0.0.7", "7.9"}],
+Cell[116217, 3169, 808, 19, 80, "Input",
+  CellTags->"S0.0.7"],
+Cell[117028, 3190, 881, 20, 140, "Text",
+  CellTags->{"S0.0.8", "7.10"}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+Cell[117946, 3215, 60, 1, 52, "Section",
+  CellTags->{"S0.0.8", "8.1"}],
+Cell[118009, 3218, 2933, 54, 1094, "Text",
+  CellTags->{"S0.0.9", "8.2"}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+Cell[120979, 3277, 66, 1, 52, "Section",
+  CellTags->{"S0.0.9", "9.1"}],
+Cell[121048, 3280, 690, 10, 230, "Text",
+  CellTags->{"S0.0.10", "9.2"}]
+}, Open  ]]
+}, Open  ]]
+}
+]
+*)
+
+
+
+
+(***********************************************************************
+End of Mathematica Notebook file.
+***********************************************************************)
+
