@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[   3255570,      54398]
-NotebookOptionsPosition[   3239591,      54140]
-NotebookOutlinePosition[   3240281,      54163]
-CellTagsIndexPosition[   3240238,      54160]
+NotebookDataLength[   3256660,      54435]
+NotebookOptionsPosition[   3240449,      54173]
+NotebookOutlinePosition[   3241139,      54196]
+CellTagsIndexPosition[   3241096,      54193]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
@@ -53243,7 +53243,7 @@ Cell[BoxData[
   "Out[104]=",ExpressionUUID->"e140629f-6d2b-437c-9b63-b022d43a4fd7"]
 }, Open  ]]
 }, Open  ]]
-}, Closed]],
+}, Open  ]],
 
 Cell["1.9 The Eisenstein series and the invariants g2 and g3", "Section",
  Background->RGBColor[
@@ -54133,13 +54133,46 @@ Cell[BoxData[
 Cell[BoxData["0"], "Output",
  CellLabel->
   "Out[326]=",ExpressionUUID->"82e9cf8b-b48e-4954-b176-149bc37dd730"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"DSolve", "[", 
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{
+      RowBox[{"y", "''"}], "[", "x", "]"}], "\[Equal]", 
+     RowBox[{"x", "  ", 
+      RowBox[{"y", "[", "x", "]"}]}]}], "}"}], ",", " ", 
+   RowBox[{"y", "[", "x", "]"}], ",", " ", "x"}], "]"}]], "Input",
+ CellLabel->
+  "In[341]:=",ExpressionUUID->"3fa9f460-6a52-4fc6-a8f7-ff8b32d51e44"],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"{", 
+   RowBox[{
+    RowBox[{"y", "[", "x", "]"}], "\[Rule]", 
+    RowBox[{
+     RowBox[{
+      RowBox[{"AiryAi", "[", "x", "]"}], " ", 
+      TemplateBox[{"1"},
+       "C"]}], "+", 
+     RowBox[{
+      RowBox[{"AiryBi", "[", "x", "]"}], " ", 
+      TemplateBox[{"2"},
+       "C"]}]}]}], "}"}], "}"}]], "Output",
+ CellLabel->
+  "Out[341]=",ExpressionUUID->"38e4c996-47f3-4940-80e1-575166937f42"]
 }, Open  ]]
 }, Open  ]]
 }, Open  ]]
 }, Open  ]]
 },
 WindowToolbars->{"RulerBar", "EditBar"},
-WindowSize->{1285, 942},
+WindowSize->{1285, 796},
 WindowMargins->{{Automatic, 61}, {Automatic, 23}},
 TrackCellChangeTimes->False,
 FrontEndVersion->"12.2 for Microsoft Windows (64-bit) (December 12, 2020)",
@@ -54298,8 +54331,8 @@ Cell[3210688, 53210, 483, 15, 45, "Input",ExpressionUUID->"c9fd4437-41f9-4ff3-ad
 Cell[3211174, 53227, 439, 15, 32, "Output",ExpressionUUID->"e140629f-6d2b-437c-9b63-b022d43a4fd7"]
 }, Open  ]]
 }, Open  ]]
-}, Closed]],
-Cell[3211652, 53247, 167, 2, 57, "Section",ExpressionUUID->"e9c5bf78-3f6e-4ca6-9c6f-8b0996df5e0a"],
+}, Open  ]],
+Cell[3211652, 53247, 167, 2, 71, "Section",ExpressionUUID->"e9c5bf78-3f6e-4ca6-9c6f-8b0996df5e0a"],
 Cell[CellGroupData[{
 Cell[3211844, 53253, 104, 0, 53, "Section",ExpressionUUID->"7606064e-27ad-4010-9d37-d9b7074cd349"],
 Cell[CellGroupData[{
@@ -54395,7 +54428,11 @@ Cell[3238784, 54109, 208, 4, 32, "Output",ExpressionUUID->"e1d3e809-df7b-4aee-9e
 }, Open  ]],
 Cell[CellGroupData[{
 Cell[3239029, 54118, 396, 12, 28, "Input",ExpressionUUID->"3029210c-6a67-4dad-9f47-749738fc637e"],
-Cell[3239428, 54132, 111, 2, 53, "Output",ExpressionUUID->"82e9cf8b-b48e-4954-b176-149bc37dd730"]
+Cell[3239428, 54132, 111, 2, 32, "Output",ExpressionUUID->"82e9cf8b-b48e-4954-b176-149bc37dd730"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[3239576, 54139, 383, 11, 28, "Input",ExpressionUUID->"3fa9f460-6a52-4fc6-a8f7-ff8b32d51e44"],
+Cell[3239962, 54152, 435, 15, 32, "Output",ExpressionUUID->"38e4c996-47f3-4940-80e1-575166937f42"]
 }, Open  ]]
 }, Open  ]]
 }, Open  ]]
