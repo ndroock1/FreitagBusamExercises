@@ -1,15 +1,29 @@
-\section{Taylor Series}
+\section{Liouville's Theorems}
 
-\begin{theorem}[Taylor's Theorem]
-    Let $f$ be a function whose derivative exists in every point, then $f$
-    is a continuous function.
+\begin{definition}[Elliptic Function]
+    Elliptic functions are doubly periodic meromorphic functions on C.
+\end{definition}
+
+\begin{theorem}[First Liouville Theorem]
+    Any elliptic function without poles is constant.
 \end{theorem}
-
 \begin{proof}
-    To prove it by contradiction try and assume that the statemenet is false,
-    proceed from there and at some point you will arrive to a contradiction.
+    The set
+    \[F = F(\omega_1, \omega_2) = \{ t_1 \omega_1 + t_2 \omega_2 ; 0 \leq t1, t2 \leq 1 \}\]
+    is called a fundamental region for a lattice L with respect to the basis $\omega_1, \omega_2$.
+    For any point $z \in \mathbb{C}$ there exists a lattice point $\omega \in L$, such that
+    $z-\omega \in F$. Any value of an elliptic function is hence also taken in a fundamental region $F$.
+    But $F$ is bounded and closed in $\mathbb{C}$, hence, any continuous function defined on $F$ is bounded.
+    An elliptic function without poles is thus bounded on F, and hence also on the entire $\mathbb{C}$,
+    so it is a constant function.
 \end{proof}
 
-$$\Gamma (z+1) = z \Gamma (z)$$
-
-$$\Gamma (z) = \frac {\Gamma (z+n+1)}{(z)_n}$$
+\begin{theorem}[Second Liouville Theorem]
+    An elliptic function has only finitely many poles modulo $L$ (i.e. on the torus $\mathbb{C} / L$), and the
+    sum of their residues vanishes:
+    \[ \sum_z Res(f; z)=0\]
+    Here, the sum is taken over a system of representatives modulo $L$ for all poles of f.
+\end{theorem}
+\begin{proof}
+    TBD.
+\end{proof}
