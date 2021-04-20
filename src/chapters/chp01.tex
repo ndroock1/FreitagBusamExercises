@@ -29,6 +29,30 @@ We answer this by proving the following proposition.
 \end{proposition}
 
 \begin{proof}
-    Assume $L(\omega)$ = $L(\omega^\prime)$, then unimodular matrices exist, such that:
-    $\omega^\prime = \omega \cdot U$, similarly $\omega = \omega^\prime \cdot V$.
+    Assume $L(\omega)$ = $L(\omega^\prime)$, then integer matrices exist, such that:
+    $\omega^\prime = \omega \cdot U$, and similarly $\omega = \omega^\prime \cdot V$. Hence
+    \begin{align*}
+        \omega^\prime &= \omega^\prime \cdot V \cdot U \\
+        {\omega^\prime}^T \cdot \omega^\prime &= {(\omega^\prime \cdot V \cdot U)}^T \cdot (\omega^\prime \cdot V \cdot U) &&\text{transpose both sides} \\
+        {\omega^\prime}^T \cdot \omega^\prime &= {(V \cdot U)}^T \cdot ({\omega^\prime}^T \cdot \omega^\prime) \cdot (V \cdot U)\\
+        \det{({\omega^\prime}^T \cdot \omega^\prime)} &= \det{({(V \cdot U)}^T \cdot ({\omega^\prime}^T \cdot \omega^\prime) \cdot (V \cdot U))} &&\text{taking determinants} \\
+        \det{({\omega^\prime}^T \cdot \omega^\prime)} &= \det{({(V \cdot U)})}^2 \cdot \det{({\omega^\prime}^T \cdot \omega^\prime)} \\
+        \det{(V)}\det{(U)}  &= \pm 1
+    \end{align*}
+
+    Since both $U,V$ are integer matrices, we conclude that $\det{(U)} = \pm 1$ and that $U$ is unimodular.\\
+
+    For the other direction, assume that $\omega^\prime = \omega \cdot U$ for some unimodular matrix $U$.
+    Therefore each column of $\omega^\prime$ is contained in $L(\omega)$ and we get $L(\omega^\prime) \subseteq L(\omega)$.
+    In addition, $L(\omega) = \omega^\prime \cdot U^{-1}$, and since $U^{-1}$ is unimodular we similarly get that
+    $L(\omega) \subseteq L(\omega^\prime)$. We conclude that $L(\omega)=L(\omega^\prime)$.
 \end{proof}
+
+
+\subsection*{Question 2.}
+\noindent
+Given
+
+\subsection*{Answer}
+\noindent
+With
