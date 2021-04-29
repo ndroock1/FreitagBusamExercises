@@ -56,5 +56,40 @@ $S(0)-S(\infty)$ is a period of $f$. (Hint: Integrate $\frac{z \cdot f'(z)}{f(z)
 
 \subsection*{Answer}
 \noindent
-So we need to prove that inside a fundamental parallelogram the sum of the coordinates of the zeroes equals
-the sum of the coordinates of the poles modulo a period of $f$.
+So we need to prove that inside a fundamental parallelogram spanned by the complex numbers $(\omega_1, \omega_2)$ the
+sum of the coordinates of the zeroes equals the sum of the coordinates of the poles modulo a period of $f$. We have to
+prove the following proposition.
+
+\begin{proposition}
+    \[
+        S(0) - S(\infty) = n \cdot \omega_1 + m \cdot \omega_2  \  ( \text{ for some } n,m \in \mathbb{Z} \  )
+    \]
+\end{proposition}
+
+\begin{proof}
+    \begin{align*}
+        S(0) - S(\infty) &= \frac{1}{2 \pi i} \oint_{C} z \frac{f'(z)}{f(z)} dz \\
+        &= \frac{1}{2 \pi i} \oint_{0}^{\omega_1} z \frac{f'(z)}{f(z)} dz +
+                            \frac{1}{2 \pi i} \oint_{\omega_1}^{\omega_1 + \omega_2} z \frac{f'(z)}{f(z)} dz +
+                            \frac{1}{2 \pi i} \oint_{\omega_1 + \omega_2}^{\omega_2} z \frac{f'(z)}{f(z)} dz +
+                            \frac{1}{2 \pi i} \oint_{\omega_2}^{0} z \frac{f'(z)}{f(z)} dz \\
+        &= \frac{1}{2 \pi i} ( \int_{0}^{\omega_1} z \frac{f'(z)}{f(z)} dz +
+         \int_{\omega_1 + \omega_2}^{\omega_2} z \frac{f'(z)}{f(z)} dz +
+         \int_{\omega_1}^{\omega_1 + \omega_2} z \frac{f'(z)}{f(z)} dz +
+         \int_{\omega_2}^{0} z \frac{f'(z)}{f(z)} dz ) \\
+        &= \frac{1}{2 \pi i} ( \int_{0}^{\omega_1} z \frac{f'(z)}{f(z)} dz -
+        \int_{\omega_2}^{\omega_1 + \omega_2} z \frac{f'(z)}{f(z)} dz +
+        \int_{\omega_1}^{\omega_1 + \omega_2} z \frac{f'(z)}{f(z)} dz -
+        \int_{0}^{\omega_2} z \frac{f'(z)}{f(z)} dz ) \\
+        &= \frac{1}{2 \pi i} ( \int_{0}^{\omega_1} z \frac{f'(z)}{f(z)} dz -
+        \int_{0}^{\omega_1} (z + \omega_2) \frac{f'(z+\omega_2)}{f(z+\omega_2)} dz +
+        \int_{0}^{\omega_2} (z + \omega_1) \frac{f'(z+\omega_1)}{f(z+\omega_1)} dz -
+        \int_{0}^{\omega_2} z \frac{f'(z)}{f(z)} dz ) \\
+        &= \frac{1}{2 \pi i} ( \int_{0}^{\omega_1} z \frac{f'(z)}{f(z)} dz -
+        \int_{0}^{\omega_1} (z + \omega_2) \frac{f'(z)}{f(z)} dz +
+        \int_{0}^{\omega_2} (z + \omega_1) \frac{f'(z)}{f(z)} dz -
+        \int_{0}^{\omega_2} z \frac{f'(z)}{f(z)} dz ) \\
+        &= \frac{1}{2 \pi i} ( \int_{0}^{\omega_1} ( z - (z + \omega_2) ) \frac{f'(z)}{f(z)} dz +
+        \int_{0}^{\omega_2} ((z + \omega_1) -z ) \frac{f'(z)}{f(z)} dz )
+    \end{align*}
+\end{proof}
