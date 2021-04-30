@@ -62,17 +62,17 @@ prove the following proposition.
 
 \begin{proposition}
     \[
-        S(0) - S(\infty) = n \cdot \omega_1 + m \cdot \omega_2  \  ( \text{ for some } n,m \in \mathbb{Z} \  )
+        S(0) - S(\infty) = m \cdot \omega_1 + n \cdot \omega_2  \  ( \text{ for some } m,n \in \mathbb{Z} \  )
     \]
 \end{proposition}
 
 \begin{proof}
     \begin{align*}
         S(0) - S(\infty) &= \frac{1}{2 \pi i} \oint_{C} z \frac{f'(z)}{f(z)} dz \\
-        &= \frac{1}{2 \pi i} \oint_{0}^{\omega_1} z \frac{f'(z)}{f(z)} dz +
-                            \frac{1}{2 \pi i} \oint_{\omega_1}^{\omega_1 + \omega_2} z \frac{f'(z)}{f(z)} dz +
-                            \frac{1}{2 \pi i} \oint_{\omega_1 + \omega_2}^{\omega_2} z \frac{f'(z)}{f(z)} dz +
-                            \frac{1}{2 \pi i} \oint_{\omega_2}^{0} z \frac{f'(z)}{f(z)} dz \\
+        &= \frac{1}{2 \pi i} \int_{0}^{\omega_1} z \frac{f'(z)}{f(z)} dz +
+                            \frac{1}{2 \pi i} \int_{\omega_1}^{\omega_1 + \omega_2} z \frac{f'(z)}{f(z)} dz +
+                            \frac{1}{2 \pi i} \int_{\omega_1 + \omega_2}^{\omega_2} z \frac{f'(z)}{f(z)} dz +
+                            \frac{1}{2 \pi i} \int_{\omega_2}^{0} z \frac{f'(z)}{f(z)} dz \\
         &= \frac{1}{2 \pi i} ( \int_{0}^{\omega_1} z \frac{f'(z)}{f(z)} dz +
          \int_{\omega_1 + \omega_2}^{\omega_2} z \frac{f'(z)}{f(z)} dz +
          \int_{\omega_1}^{\omega_1 + \omega_2} z \frac{f'(z)}{f(z)} dz +
@@ -90,6 +90,34 @@ prove the following proposition.
         \int_{0}^{\omega_2} (z + \omega_1) \frac{f'(z)}{f(z)} dz -
         \int_{0}^{\omega_2} z \frac{f'(z)}{f(z)} dz ) \\
         &= \frac{1}{2 \pi i} ( \int_{0}^{\omega_1} ( z - (z + \omega_2) ) \frac{f'(z)}{f(z)} dz +
-        \int_{0}^{\omega_2} ((z + \omega_1) -z ) \frac{f'(z)}{f(z)} dz )
+        \int_{0}^{\omega_2} ((z + \omega_1) -z ) \frac{f'(z)}{f(z)} dz ) \\
+        &= \frac{1}{2 \pi i} ( \omega_2 \int_{0}^{\omega_1} \frac{f'(z)}{f(z)} dz +
+        \omega_1 \int_{0}^{\omega_2} \frac{f'(z)}{f(z)} dz ) \\
+        &= \frac{1}{2 \pi i} ( \omega_2 \log{f(z)} \rvert_{0}^{\omega_1} + \omega_1 \log{f(z)} \rvert_{0}^{\omega_2} ) \\
+        &= \frac{1}{2 \pi i} ( \omega_2 \log{1} + \omega_1 \log{1} ) \\
+        &= \frac{1}{2 \pi i} ( \omega_2 \cdot n \cdot 2 \pi i + \omega_1 \cdot m \cdot 2 \pi i ) \\
+        & = m \cdot \omega_1 + n \cdot \omega_2
+    \end{align*}
+\end{proof}
+
+
+\subsection*{Question 3 a).}
+\noindent
+Prove that $\wp(u)=\wp(v)$, if and only if, $u-v$ or $u+v$ is a period of $\wp$.
+
+\subsection*{Answer}
+\noindent
+So we have to prove the following proposition.
+
+\begin{proposition}
+    \[
+        \wp(u)=\wp(v) \text{ if and only if } u \pm v \in m \cdot \omega_1 + n \cdot \omega_2
+        \  ( \text{ for some } m,n \in \mathbb{Z} \  )
+    \]
+\end{proposition}
+
+\begin{proof}
+    \begin{align*}
+        1 &= 1
     \end{align*}
 \end{proof}
