@@ -18,7 +18,7 @@ The condition that $\omega_2 / \omega_1$ and ${\omega_2}^\prime / {\omega_1}^\pr
 in vector terminology, that $\omega_1, \omega_2$, resp. ${\omega_1}^\prime, {\omega_2}^\prime$ are both
 non-zero and independent.
 A 2 by 2 matrix $\begin{pmatrix} a & b \\ c & d \end{pmatrix}$ with integer entries and determinant $\pm 1$ is called
-a unimodular matrix. The inverse of a unimodular matrix is also unimodular.
+a unimodular matrix. The inverse of a unimodular matrix is also unimodular by Cramer's Rule for the inverse.
 The question we address here is how to determine if two given bases $\omega = (\omega_1, \omega_2)$ and
 $\omega^\prime = ({\omega_1}^\prime, {\omega_2}^\prime)$ are equivalent, i.e. generate the same lattice
 $L(\omega)=L(\omega^\prime)$.
@@ -111,7 +111,7 @@ So we have to prove the following proposition.
 
 \begin{proposition}
     \[
-        \wp(u)=\wp(v) \text{ if and only if } u \pm v \in m \cdot \omega_1 + n \cdot \omega_2
+        \wp(u)=\wp(v) \text{ if and only if } u-v \text{ or } u+v \in m \cdot \omega_1 + n \cdot \omega_2
         \  ( \text{ for some } m,n \in \mathbb{Z} \  )
     \]
 \end{proposition}
