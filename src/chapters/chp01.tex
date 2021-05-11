@@ -214,23 +214,21 @@ Prove that every elliptic function $f$ can be expressed in the form
 \[
     f(z) = R_1(\wp(z))+ \wp'(z)R_2(\wp(z)),
 \]
-where$R_1, R_2$ are rational functions and $\wp$ has the same set of periods as $f$.
+where $R_1, R_2$ are rational functions and $\wp$ has the same set of periods as $f$.
 
 \subsection*{Answer}
-\noindent
-We answer this by proving the following proposition.
-
-\begin{proposition}
-    $1=1$
-\end{proposition}
 
 \begin{proof}
-    Assume that:
+    Let $f$ be an elliptic function, $E_i$ an even elliptic function and $O_i$ an odd elliptic function, all for the
+    lattice $L$, then
 
     \begin{align*}
-        1 &= 1
+        f(z) &= \frac{f(z)+f(-z)}{2}+\frac{f(z)-f(-z)}{2} \\
+        f(z) &= E_1(z)+O_1(z) \\
+        f(z) &= E_1(z)+\wp'(z) \frac{O_1(z)}{\wp'(z)} \\
+        f(z) &= E_1(z)+\wp'(z) E_2(z) \Rightarrow \\
+        f(z) &= R_1(\wp(z))+ \wp'(z)R_2(\wp(z))
     \end{align*}
-
 \end{proof}
 
 
