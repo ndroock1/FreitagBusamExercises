@@ -154,7 +154,7 @@ has poles at $b_1, \cdots , b_m$. We also need to explain the impact of any of t
 
 \subsection{Question 4.}
 \noindent
-Prove that every elliptic function $f$ is a rational function of $\wp$, where the periods of $\wp$ are a subset of
+Prove that every even elliptic function $f$ is a rational function of $\wp$, where the periods of $\wp$ are a subset of
 the periods of $f$.
 
 \subsection*{Answer}
@@ -162,30 +162,49 @@ the periods of $f$.
 We answer this by proving the following two propositions.
 
 \begin{proposition}[1]
-    $1=1$
+    Let $f$ be an even elliptic function, whose pole set is contained in $L$. Then $f$can be represented as a
+    polynomial in $\wp$. The degree of this polynomial is half of the order of $f$.
 \end{proposition}
 
 \begin{proof}
-    Assume that:
-
-    \begin{align*}
-        1 &= 1
-    \end{align*}
-
+    The Laurent series of $f$ in $0$ has only even coefficients, and is hence of the form
+    \[
+        f(z) = a_{-2n}z^{-2n}+a_{-2(n-1)}z^{-2(n-1)}+ \cdots \ \ \ \ n \geq 1, a_{-2n} \neq 0.
+    \]
+    The Laurent series of $\wp$ is of the form
+    \[
+        \wp(z) = z^{-2} + \cdots \ ,
+    \]
+    and for the n-th power we obtain
+    \[
+        \wp(z)^n = z^{-2n} + \cdots
+    \]
+    Just as $f$ and $\wp$ the function
+    \[
+        g(z) = f(z) - a_{-2n} \wp(z)^n
+    \]
+    is an even elliptic function whose pole set is contained in $L$. The order of $g$ is strictly smaller than the
+    order of $f$. The proof now is obtained by induction.
 \end{proof}
 
 
 \begin{proposition}[2]
-    $1=1$
+    The field of all even elliptic functions for the lattice $L$ is equal to $\mathbb{C}(\wp(z))$, as a subfield
+    of $K(L)$, and is thus isomorphic to the field of rational functions.
 \end{proposition}
 
 \begin{proof}
-    Assume that:
-
-    \begin{align*}
-        1 &= 1
-    \end{align*}
-
+    Let $f$ be a non-constant even elliptic function. If $a$ is a pole of $f$ which is not contained in $L$, the
+    function
+    \[
+        z \mapsto (\wp(z)-\wp(a))^N \cdot f(z)
+    \]
+    has in $z=a$ a removable singularity, if $N$ is sufficiently large. Since $f$ has only finitely many poles mod $L$,
+    we find finitely many points $a_1, \cdots , a_m$ and natural numbers $N_1, \cdots , N_m$ such that
+    \[
+        g(z) = f(z) \cdot \prod_{j=1}^{n} [ \wp(z) - \wp(a_j) ]^{N_j}
+    \]
+    has no poles outside $L$. By proposition 1 $g(z)$ is a polynomial in $\wp(z)$.
 \end{proof}
 
 
