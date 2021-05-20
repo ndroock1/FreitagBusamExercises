@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[   4057642,      69850]
-NotebookOptionsPosition[   4013546,      69139]
-NotebookOutlinePosition[   4014236,      69162]
-CellTagsIndexPosition[   4014193,      69159]
+NotebookDataLength[   4061028,      69943]
+NotebookOptionsPosition[   4016696,      69228]
+NotebookOutlinePosition[   4017386,      69251]
+CellTagsIndexPosition[   4017343,      69248]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
@@ -68133,6 +68133,95 @@ Cell[BoxData[
 
 Cell[CellGroupData[{
 
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"Graphics", "[", 
+   RowBox[{"{", 
+    RowBox[{"Black", ",", 
+     RowBox[{"Circle", "[", 
+      RowBox[{
+       RowBox[{"{", 
+        RowBox[{"0", ",", "0"}], "}"}], ",", "1"}], "]"}], ",", "White", ",", 
+     RowBox[{"DiskSegment", "[", 
+      RowBox[{
+       RowBox[{"{", 
+        RowBox[{"0", ",", "0"}], "}"}], ",", "1", ",", 
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{
+          FractionBox["1", "2"], "\[Pi]"}], ",", 
+         RowBox[{
+          FractionBox["3", "2"], "\[Pi]"}]}], "}"}]}], "]"}], ",", 
+     "\[IndentingNewLine]", "Black", ",", 
+     RowBox[{"DiskSegment", "[", 
+      RowBox[{
+       RowBox[{"{", 
+        RowBox[{"0", ",", "0"}], "}"}], ",", "1", ",", 
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{
+          FractionBox["3", "2"], "\[Pi]"}], ",", 
+         RowBox[{
+          FractionBox["5", "2"], "\[Pi]"}]}], "}"}]}], "]"}], ",", "White", 
+     ",", 
+     RowBox[{"Disk", "[", 
+      RowBox[{
+       RowBox[{"{", 
+        RowBox[{"0", ",", "0.5"}], "}"}], ",", "0.5"}], "]"}], ",", 
+     "\[IndentingNewLine]", "Black", ",", 
+     RowBox[{"Disk", "[", 
+      RowBox[{
+       RowBox[{"{", 
+        RowBox[{"0", ",", 
+         RowBox[{"-", "0.5"}]}], "}"}], ",", "0.5"}], "]"}], ",", "Black", 
+     ",", 
+     RowBox[{"Disk", "[", 
+      RowBox[{
+       RowBox[{"{", 
+        RowBox[{"0", ",", "0.5"}], "}"}], ",", "0.125"}], "]"}], ",", 
+     "\[IndentingNewLine]", "White", ",", 
+     RowBox[{"Disk", "[", 
+      RowBox[{
+       RowBox[{"{", 
+        RowBox[{"0", ",", 
+         RowBox[{"-", "0.5"}]}], "}"}], ",", "0.125"}], "]"}]}], 
+    "\[IndentingNewLine]", "}"}], "]"}], "//", "Show"}]], "Input",
+ CellLabel->
+  "In[384]:=",ExpressionUUID->"f4c21abf-59c9-4baa-98b5-d18d6ab9b167"],
+
+Cell[BoxData[
+ GraphicsBox[{
+   {GrayLevel[0], CircleBox[{0, 0}, 1]}, 
+   {GrayLevel[1], 
+    InterpretationBox[
+     FilledCurveBox[
+      BSplineCurve[{{0., 1.}, {-1., 1.}, {-1., 0.}, {-1., -1.}, {0., -1.}, {
+       0., -1.}, {0., -1.}, {0., 0.}, {0., 1.}}, 
+       SplineKnots -> {
+        0, 0, 0, Rational[1, 4], Rational[1, 4], Rational[1, 2], Rational[
+         1, 2], Rational[3, 4], Rational[3, 4], 1, 1, 1}, 
+       SplineWeights -> {1, 1, 2, 2, 4, 4, 4., 4., 4.}, SplineDegree -> 2]],
+     DiskSegment[{0, 0}, 1, {Rational[1, 2] Pi, Rational[3, 2] Pi}]]}, 
+   {GrayLevel[0], 
+    InterpretationBox[
+     FilledCurveBox[
+      BSplineCurve[{{0., -1.}, {1., -1.}, {1., 0.}, {1., 1.}, {0., 1.}, {0., 
+       1.}, {0., 1.}, {0., 0.}, {0., -1.}}, 
+       SplineKnots -> {
+        0, 0, 0, Rational[1, 4], Rational[1, 4], Rational[1, 2], Rational[
+         1, 2], Rational[3, 4], Rational[3, 4], 1, 1, 1}, 
+       SplineWeights -> {1, 1, 2, 2, 4, 4, 4., 4., 4.}, SplineDegree -> 2]],
+     DiskSegment[{0, 0}, 1, {Rational[3, 2] Pi, Rational[5, 2] Pi}]]}, 
+   {GrayLevel[1], DiskBox[{0, 0.5}, 0.5]}, 
+   {GrayLevel[0], DiskBox[{0, -0.5}, 0.5]}, 
+   {GrayLevel[0], DiskBox[{0, 0.5}, 0.125]}, 
+   {GrayLevel[1], DiskBox[{0, -0.5}, 0.125]}}]], "Output",
+ CellLabel->
+  "Out[384]=",ExpressionUUID->"7d1e5c4a-404d-402b-a3bf-b0e45afd255f"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
 Cell[BoxData[{
  RowBox[{
   RowBox[{"a", "=", "0.65"}], ";"}], "\[IndentingNewLine]", 
@@ -69846,10 +69935,14 @@ Cell[3954762, 68049, 1756, 50, 105, "Input",ExpressionUUID->"a5e53334-69e5-4ab4-
 Cell[3956521, 68101, 1365, 29, 376, "Output",ExpressionUUID->"2a03c920-68ee-4759-ac2c-3b905ae2f4a4"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[3957923, 68135, 1637, 51, 118, "Input",ExpressionUUID->"70953c24-0023-48a8-8267-56b0779b72d9"],
-Cell[3959563, 68188, 2216, 45, 523, "Output",ExpressionUUID->"398cecc8-8542-49ee-95bd-2145cf3c884a"]
+Cell[3957923, 68135, 1773, 54, 149, "Input",ExpressionUUID->"f4c21abf-59c9-4baa-98b5-d18d6ab9b167"],
+Cell[3959699, 68191, 1337, 28, 376, "Output",ExpressionUUID->"7d1e5c4a-404d-402b-a3bf-b0e45afd255f"]
 }, Open  ]],
-Cell[3961794, 68236, 51724, 899, 338, "Input",ExpressionUUID->"cecf1811-5599-43b5-bd28-6d32731e477d"]
+Cell[CellGroupData[{
+Cell[3961073, 68224, 1637, 51, 118, "Input",ExpressionUUID->"70953c24-0023-48a8-8267-56b0779b72d9"],
+Cell[3962713, 68277, 2216, 45, 523, "Output",ExpressionUUID->"398cecc8-8542-49ee-95bd-2145cf3c884a"]
+}, Open  ]],
+Cell[3964944, 68325, 51724, 899, 338, "Input",ExpressionUUID->"cecf1811-5599-43b5-bd28-6d32731e477d"]
 }, Open  ]]
 }, Open  ]]
 }
