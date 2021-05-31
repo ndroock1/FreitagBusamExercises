@@ -329,19 +329,19 @@ According to Exercise 4, the function $\wp(2z)$ is a rational function of $\wp(z
 
 \subsection*{Answer}
 \noindent
-We answer this by proving the following proposition.
+We start from the 'Weierstrass Doubling Formula' $\wp(2z)= \frac{1}{4}\left\{ \frac{\wp''(z)}{\wp'(z)}\right\}^2-2\wp(z)$.
 
-\begin{proposition}
-    $1=1$
-\end{proposition}
 
 \begin{proof}
-    Assume that:
-
     \begin{align*}
-        1 &= 1
+        \wp(2z) &= \frac{1}{4}\left\{ \frac{\wp''(z)}{\wp'(z)}\right\}^2-2\wp(z) \\
+        \wp(2z) &= \frac{1}{4} \frac{(6\wp(z)-\frac{1}{2}g_2)^2}{4 \wp(z)^3 -g_2\wp(z)-g_3}-2\wp(z) \\
+        \wp(2z) &= \frac{1}{4} \frac{(6\wp(z)-\frac{1}{2}g_2)^2-4 \cdot 2\wp(z)(4 \wp(z)^3 -g_2\wp(z)-g_3) }{4 \wp(z)^3 -g_2\wp(z)-g_3} \\
+        \wp(2z) &= \frac{1}{4} \frac{36\wp(z)^4 - 6g_2 \wp(z)^2 + \frac{1}{4}g_2^2 -32\wp(z)^4 + 8g_2\wp(z)^2 + 8g_3\wp(z) }{4 \wp(z)^3 -g_2\wp(z)-g_3} \\
+        \wp(2z) &= \frac{9\wp(z)^4 - \frac{3}{2}g_2 \wp(z)^2 + \frac{1}{16}g_2^2 -8\wp(z)^4 + 2g_2\wp(z)^2 + 2g_3\wp(z) }{4 \wp(z)^3 -g_2\wp(z)-g_3} \\
+        \wp(2z) &= \frac{\wp(z)^4 + \frac{1}{2}g_2 \wp(z)^2 + \frac{1}{16}g_2^2 + 2g_3\wp(z) }{4 \wp(z)^3 -g_2\wp(z)-g_3} \\
+        \wp(2z) &= \frac{(\wp(z)^2 + \frac{1}{4}g_2)^2+2g_3\wp(z)}{4\wp(z)^3-g_2\wp(z)-g_3}.
     \end{align*}
-
 \end{proof}
 
 
@@ -373,7 +373,7 @@ We answer this by proving the following proposition.
 \noindent
 If $k \geq 2$ and $\tau \in H$ prove that the Eisenstein series
 \[
-    G_{2k}(\tau) = \sum_{m,n}^{'}(m + n\tau)^{-2k}
+    G_{2k}(\tau) = \sum_{m,n}{'}(m + n\tau)^{-2k}
 \]
 has the Fourier expansion
 \[
