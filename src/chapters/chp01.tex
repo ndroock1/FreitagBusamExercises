@@ -383,25 +383,35 @@ has the Fourier expansion
 \subsection*{Answer}
 \noindent
 We answer this by starting from the known identity
-\[
+$
     \frac{1}{z} + \sum_m{'} ( \frac{1}{z+m} - \frac{1}{m} ) = \pi \cot(\pi z)
-\]
+$
 and work our way from there.
 
 \begin{proof}
     \begin{align*}
         \frac{1}{z} + \sum_m{'} ( \frac{1}{z+m} - \frac{1}{m} ) &= \pi \cot(\pi z) &&(1)\\
-        1 &= 1 &&(2) \\
-        1 &= 1
+        \frac{1}{z} + \sum_m{'} ( \frac{1}{z+m} - \frac{1}{m} ) &= -\pi i -2 \pi i \sum_{n=1}^\infty e^{2 \pi i z n} &&(2)\\
+        (-1)^j j! \sum_{m=-\infty}^{\infty} \frac{1}{(z+m)^{j+1}} &= -(2 \pi i)^{j+1} \sum_{n=1}^\infty n^j e^{2 \pi i z n} &&(3)\\
+        (-1)^j j! \sum_{m=-\infty}^{\infty} \frac{1}{(m+N\tau)^{j+1}} &= -(2 \pi i)^{j+1} \sum_{n=1}^\infty n^j e^{(2 \pi i N\tau) n} &&(4)\\
+        (-1)^j j! \sum_{N=1}^{\infty} \sum_{m=-\infty}^{\infty} \frac{1}{(m+N\tau)^{j+1}} &= -(2 \pi i)^{j+1} \sum_{n=1}^\infty n^j \frac{e^{(2 \pi i \tau)n}}{1-e^{(2 \pi i \tau)n}} &&(5)\\
+        \frac{1}{2} \sum_{m,N}{'} \frac{1}{(m+N\tau)^{2k}} - \sum_{m=1}^\infty \frac{1}{m^{2k}} &= \frac{(2 \pi i)^{2k}}{(2k-1)!} \sum_{n=1}^\infty n^{2k-1} \frac{e^{(2 \pi i \tau)n}}{1-e^{(2 \pi i \tau)n}} &&(6)\\
+        \sum_{m,N}{'} \frac{1}{(m+N\tau)^{2k}} &= 2\zeta(2k) + 2 \frac{(2 \pi i)^{2k}}{(2k-1)!} \sum_{n=1}^\infty n^{2k-1} \frac{e^{(2 \pi i \tau)n}}{1-e^{(2 \pi i \tau)n}} &&(7)\\
+        G_{2k}(\tau) &= 2\zeta(2k) +\frac{2(2 \pi i)^{2k}}{(2k-1)!}\sum_{n=1}^{\infty}\sigma_{2k-1}(n)e^{2\pi i n \tau} &&(8)
     \end{align*}
 
 \end{proof}
 
 \subsection*{Remarks}
 \noindent
-(1): The known identity.\\
-(2):
-
+(1): Starting point.\\
+(2): Rework $\pi \cot(\pi z) $. \\
+(3): Differentiate both sides over $z$, \  $j$ times. \\
+(4): Replace $z$ by $N\tau$. \\
+(5): Sum both sides over $N$ from $1$ to $\infty$.\\
+(6): Now, assume $j$ is odd, so $j=2k-1$. \\
+(7): Multiply both sides by $2$ and replace $\sum_{m=1}^\infty \frac{1}{m^{2k}}$ by $\zeta(2k)$.\\
+(8): Apply that $\sum_{n=1}^\infty n^{2k-1} \frac{e^{(2 \pi i \tau)n}}{1-e^{(2 \pi i \tau)n}} = \sum_{n=1}^{\infty}\sigma_{2k-1}(n)e^{2\pi i n \tau}$.
 
 \subsection{Question 12.}
 \noindent
