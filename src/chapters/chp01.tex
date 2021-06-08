@@ -424,8 +424,14 @@ Refer to exercise 11. If $\tau \in H$ prove that
 
 \begin{proof}
     \begin{align*}
-        G_{2k}(-\frac{1}{\tau}) &= \sum_{m,n}{'} \frac{1}{(m + n \frac{-1}{\tau})^{2k}} \\
-        1 &= 1
+        G_{2k}(-\frac{1}{\tau}) &= \sum_{m,n}{'} \frac{1}{(m + n (\frac{-1}{\tau}))^{2k}} \\
+        G_{2k}(-\frac{1}{\tau}) &= \sum_{m,n}{'} \frac{1}{(m - \frac{n}{\tau})^{2k}} \\
+        G_{2k}(-\frac{1}{\tau}) &= \sum_{m,n}{'} \tau^{2k} \frac{1}{(m\tau - n)^{2k}} \\
+        G_{2k}(-\frac{1}{\tau}) &= \tau^{2k} \sum_{m,n}{'} \frac{1}{(m\tau - n)^{2k}} \\
+        G_{2k}(-\frac{1}{\tau}) &= \tau^{2k} \sum_{m,n}{'} \frac{1}{(-n +m\tau)^{2k}} \\
+        G_{2k}(-\frac{1}{\tau}) &= \tau^{2k} \sum_{m,n}{'} \frac{1}{(n + m\tau)^{2k}} \\
+        G_{2k}(-\frac{1}{\tau}) &= \tau^{2k} \sum_{m,n}{'} \frac{1}{(m + n\tau)^{2k}} \\
+        G_{2k}(-\frac{1}{\tau}) &= \tau^{2k} \sum_{m,n}{'} G_{2k}(\tau)
     \end{align*}
 
 \end{proof}
@@ -440,19 +446,17 @@ Refer to exercise 11. If $\tau \in H$ deduce that
 
 \subsection*{Answer}
 \noindent
-We answer this by proving the following proposition.
-
-\begin{proposition}
-    $1=1$
-\end{proposition}
+We answer this by using
+$
+    G_{2k}(-\frac{1}{\tau}) = \tau^{2k} \sum_{m,n}{'} G_{2k}(\tau)
+$
+and set $\tau = 2i$.
 
 \begin{proof}
-    Assume that:
-
     \begin{align*}
-        1 &= 1
+        G_{2k}(\frac{i}{2}) &= (2i)^{2k} G_{2k}(2i) \\
+        &= (-4)^{k} G_{2k}(2i)
     \end{align*}
-
 \end{proof}
 
 
@@ -465,19 +469,18 @@ Refer to exercise 11. If $\tau \in H$ deduce that
 
 \subsection*{Answer}
 \noindent
-We answer this by proving the following proposition.
-
-\begin{proposition}
-    $1=1$
-\end{proposition}
+We answer this by using
+$
+G_{2k}(-\frac{1}{\tau}) = \tau^{2k} \sum_{m,n}{'} G_{2k}(\tau),
+$
+set $\tau = i$, $k$ odd. Note that $\frac{-1}{i}=i$.
 
 \begin{proof}
-    Assume that:
-
     \begin{align*}
-        1 &= 1
+        G_{2k}(i) &= (i)^{2k} G_{2k}(i) \\
+        G_{2k}(i) &= (-1)^{k} G_{2k}(i) \\
+        G_{2k}(i) &= 0
     \end{align*}
-
 \end{proof}
 
 
