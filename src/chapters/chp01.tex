@@ -493,16 +493,23 @@ Refer to exercise 11. If $\tau \in H$ deduce that
 
 \subsection*{Answer}
 \noindent
-We answer this by proving the following proposition.
-
-\begin{proposition}
-    $1=1$
-\end{proposition}
+We answer this by using
+$
+G_{2k}(-\frac{1}{\tau}) = \tau^{2k} \sum_{m,n}{'} G_{2k}(\tau)
+$
+and set $\tau = e^{\frac{1}{3}\pi i}$. Note that $\frac{-1}{e^{\frac{1}{3}\pi i}}=e^{\frac{2}{3}\pi i}$.
 
 \begin{proof}
-    Assume that:
-
     \begin{align*}
+        G_{2k}(e^{\frac{2}{3}\pi i}) &= (e^{\frac{1}{3}\pi i})^{2k} G_{2k}(e^{\frac{1}{3}\pi i}) \\
+        G_{2k}(e^{\frac{2}{3}\pi i} + 1) &= (e^{\frac{1}{3}\pi i})^{2k} G_{2k}(e^{\frac{1}{3}\pi i}) \\
+        G_{2k}(e^{\frac{1}{3}\pi i}) &= (e^{\frac{1}{3}\pi i})^{2k} G_{2k}(e^{\frac{1}{3}\pi i}) \\
+        G_{2k}(e^{\frac{1}{3}\pi i}) &= (e^{\frac{2}{3}\pi i})^{k} G_{2k}(e^{\frac{1}{3}\pi i}) \\
+            |x| = \begin{cases}
+                      -x & \text{if } x < 0,\\
+                      0 & \text{if } x = 0,\\
+                      x & \text{if } x > 0.
+            \end{cases} \\
         1 &= 1
     \end{align*}
 
