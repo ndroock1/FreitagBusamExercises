@@ -540,58 +540,24 @@ and
 
 \subsection*{Answer}
 \noindent
-We answer this by proving the following proposition.
-
-\begin{proposition}
-    $1=1$
-\end{proposition}
+We answer this by using the following identities:
+\[
+    \Delta(\tau)={g_2(\tau)}^3-27{g_3(\tau)}^2
+\]
+\[
+    {g_2(\tau)}=\frac{4}{3}\pi^4 \cdot 240 \cdot \sum_{n=0}^{\infty}\sigma_3(n)e^{2\pi i n \tau}
+\]
+\[
+    {g_3(\tau)}=-\frac{8}{27}\pi^6 \cdot 504 \cdot \sum_{n=0}^{\infty}\sigma_5(n)e^{2\pi i n \tau}
+\]
 
 \begin{proof}
-    Assume that:
-
     \begin{align*}
-        1 &= 1
+        \Delta(\tau)&={g_2(\tau)}^3-27{g_3(\tau)}^2 \\
+        \Delta(\tau)&={(\frac{4}{3}\pi^4 \cdot 240 \cdot \sum_{n=0}^{\infty}\sigma_3(n)e^{2\pi i n \tau})}^3-27 \cdot {(-\frac{8}{27}\pi^6 \cdot 504 \cdot \sum_{n=0}^{\infty}\sigma_5(n)e^{2\pi i n \tau})}^2 \\
+        \Delta(\tau)&=32768000\pi^{12} \sum_{n=0}^{\infty}\sigma_3 \circ \sigma_3 \circ \sigma_3(n)e^{2\pi i n \tau} - 602112\pi^{12} \sum_{n=0}^{\infty}\sigma_5 \circ \sigma_5(n)e^{2\pi i n \tau} \\
+        \Delta(\tau)&=(2\pi)^{12}\sum_{n=0}^{\infty} (8000\sigma_3 \circ \sigma_3 \circ \sigma_3(n)-147\sigma_5 \circ \sigma_5(n))e^{2\pi i n \tau}
     \end{align*}
-
-\end{proof}
-
-
-\subsection{Question 13.}
-\noindent
-Ramanujan's tau function $\tau(n)$ is defined by the Fourier expansion
-\[
-    \Delta(\tau)=(2\pi)^{12}\sum_{n=1}^{\infty}\tau(n)e^{2\pi i n \tau},
-\]
-derived in Theorem 2.19. Prove that
-\[
-    \tau(n)=8000 \{ (\sigma_3 \circ \sigma_3) \circ \sigma_3 \}(n) - 147 (\sigma_5 \circ \sigma_5)(n),
-\]
-where $f \circ g$ denotes the Cauchy product of two sequences,
-\[
-    (f \circ g)(n) = \sum_{k=0}^{n}f(k)g(n-k),
-\]
-and
-\[
-    \sigma_{\alpha}(n)= \sum_{d/n} d^{\alpha} \text{ for } n\geq 1, \text{ with } \sigma_3(0)=\frac{1}{240},
-    \sigma_5(0)=-\frac{1}{504}.
-\]
-(Hint: Theorem 1.18.)
-
-\subsection*{Answer}
-\noindent
-We answer this by proving the following proposition.
-
-\begin{proposition}
-    $1=1$
-\end{proposition}
-
-\begin{proof}
-    Assume that:
-
-    \begin{align*}
-        1 &= 1
-    \end{align*}
-
 \end{proof}
 
 
