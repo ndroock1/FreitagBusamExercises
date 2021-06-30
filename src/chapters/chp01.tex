@@ -572,19 +572,36 @@ where $F(n) = \sum_{d/n}f(d)$.
 
 \subsection*{Answer}
 \noindent
-We answer this by proving the following proposition.
-
-\begin{proposition}
-    $1=1$
-\end{proposition}
+We answer this by using the following identity:
+\[
+    \frac{x^n}{1-x^n} = \frac{1}{1-x^n}-1 = x^n+x^{2n}+x^{3n}+ \cdots
+\]
 
 \begin{proof}
-    Assume that:
+    \[
+        \begin{array}{@{}*{10}{>{{}}r@{}}}
+            S ={} \sum_{n=1}^{\infty}f(n) \frac{x^n}{1-x^n} &= f(1)x &+ f(2)x^2 &+ f(3)x^3 &+ f(4)x^4 &+ f(5)x^5 &+ f(6)x^6\\
+            S ={} & a(1) &+ a(2) &+ a(3) &+ a(4) &+ a(5) &+ a(6) &+ a(7) &+ a(8) &+ \dots \\
+            &      &+ b(2) &       &+ b(4) &       &+ b(6) &       &+ b(8) &+ \dots\\
+            &      &       &+ c(3) &       &       &+ c(6) &       &       &+ \dots \\
+            &      &       &       &+ d(4) &       &       &       &+ d(8) &+ \dots \\
+            S ={} \\
+            S ={}
+        \end{array}
+    \]
 
     \begin{align*}
-        1 &= 1
+        \sum_{n=1}^{\infty}f(n) \frac{x^n}{1-x^n} &= f(1)x &+ f(2)x^2 &+ f(3)x^3 &+ f(4)x^4 &+ f(5)x^5 &+ f(6)x^6\\
+                                                  &+      &+        &+        &+        &+        &+ f(6)x^6
     \end{align*}
 
+    \begin{alignat*}{10}
+        S =& a(1) &+& a(2) &+& a(3) &+& a(4) &+& a(5)& +& a(6)& +& a(7) &+& a(8) &+ &\ldots\\
+        +&    &&    b(2)  &&      &+& b(4)    &&    &+& b(6)&&        &+& b(8) &+& \ldots \\
+        +&    &&      &&     c(3) &&      &&        &+& c(6)               && &&  &+& \dots\\
+        +&    &&      &&      &&      d(4)    &&  &&  &&              &+& d(8) &+& \dots\\
+        +& ...
+    \end{alignat*}
 \end{proof}
 
 
