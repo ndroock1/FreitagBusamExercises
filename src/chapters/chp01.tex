@@ -670,17 +670,11 @@ We answer this by using the following identities:
     \sum_{d/n}d^\alpha = \sigma_{\alpha}(n)
 \]
 
-\begin{proposition}
-    $1=1$
-\end{proposition}
-
 \begin{proof}
-    Assume that:
-
     \begin{align*}
-        1 &= 1
+        \sum_{n=1}^{\infty}n^\alpha \frac{x^n}{1-x^n} &= \sum_{n=1}^{\infty} \sum_{d/n} \sigma_{\alpha}(d) x^n \\
+        &= \sum_{n=1}^{\infty} \sigma_{\alpha}(n) x^n
     \end{align*}
-
 \end{proof}
 
 
@@ -693,19 +687,20 @@ Apply the result of exercise 14 to obtain the following formula valid for $|x|<1
 
 \subsection*{Answer}
 \noindent
-We answer this by proving the following proposition.
-
-\begin{proposition}
-    $1=1$
-\end{proposition}
+We answer this by using the following identity:
+\[
+    \sum_{d/n}\lambda(d) =
+    \begin{cases}
+        1 \text{ if n is a square} \\
+        0 \text{ otherwise. }
+    \end{cases}
+\]
 
 \begin{proof}
-    Assume that:
-
     \begin{align*}
-        1 &= 1
+        \sum_{n=1}^{\infty}\lambda(n) \frac{x^n}{1-x^n} &= \sum_{n=1}^{\infty} \sum_{d/n} \lambda(d) x^n \\
+        &= \sum_{n=1}^{\infty} x^{n^2}
     \end{align*}
-
 \end{proof}
 
 
@@ -716,17 +711,20 @@ $x=e^{2\pi i \tau}$.
 
 \subsection*{Answer}
 \noindent
-We answer this by proving the following proposition.
-
-\begin{proposition}
-    $1=1$
-\end{proposition}
+We answer this by using the following identities:
+\[
+    {g_2(\tau)}=\frac{4}{3}\pi^4 \cdot (1 + 240 \cdot \sum_{n=1}^{\infty}\sigma_3(n)e^{2\pi i n \tau})
+\]
+\[
+    {g_3(\tau)}=\frac{8}{27}\pi^6(1 - \cdot 504 \cdot \sum_{n=1}^{\infty}\sigma_5(n)e^{2\pi i n \tau})
+\]
 
 \begin{proof}
-    Assume that:
+    Let $x=e^{2 \pi i \tau}$ and using 14 c) we get the following expressions for $g2(\tau)$, and $g3(\tau)$:
 
     \begin{align*}
-        1 &= 1
+        g2(\tau)&=\frac{4}{3}\pi^4 \cdot (1 + 240 \cdot \sum_{n=1}^{\infty}n^3 \frac{x^n}{1-x^n}) \\
+        g3(\tau)&=\frac{8}{27}\pi^6 \cdot (1 - 504 \cdot \sum_{n=1}^{\infty}n^5 \frac{x^n}{1-x^n}) \\
     \end{align*}
 
 \end{proof}
