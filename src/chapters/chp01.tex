@@ -611,17 +611,20 @@ Apply the result of exercise 14 to obtain the following formula valid for $|x|<1
 
 \subsection*{Answer}
 \noindent
-We answer this by proving the following proposition.
-
-\begin{proposition}
-    $1=1$
-\end{proposition}
+We answer this by using the following identity:
+\[
+    \sum_{d/n}\mu(d) = I(n) =
+        \begin{cases}
+                                              1 \text{ if } n = 1,\\
+                                              0 \text{ if } n > 1.
+        \end{cases}
+\]
 
 \begin{proof}
-    Assume that:
-
     \begin{align*}
-        1 &= 1
+        \sum_{n=1}^{\infty}\mu(n) \frac{x^n}{1-x^n} &= \sum_{n=1}^{\infty} \sum_{d/n} \mu(d) x^n \\
+        &= \sum_{n=1}^{\infty} I(n) x^n \\
+        &= x
     \end{align*}
 
 \end{proof}
