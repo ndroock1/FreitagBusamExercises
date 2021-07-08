@@ -747,19 +747,48 @@ Show that
 
 \subsection*{Answer}
 \noindent
-We answer this by proving the following proposition.
+We will use the following identities:
+\[
+    G(x)=\sigma_5(n)x^n
+\]
+\[
+    G(x^2)=\sigma_5(n)x^{2n}
+\]
+\[
+    G(x^4)=\sigma_5(n)x^{4n}
+\]
+\[
+    G(x)-32G(x^2)+64G(x^4)= (\sigma_5(n) - 32 \sigma_5(\frac{n}{2}) + 64 \sigma_5(\frac{n}{4}) ) x^{n}
+\]
+\[
+    F(x)=\sigma{'}_5(n) (-1)^{n+1}x^n
+\]
+where $\sigma{'}_{\alpha}(n) = \sum_{\substack{d/n \\ d \text{ odd} }}d^{\alpha}$, and answer the question by
+proving the following proposition.
 
 \begin{proposition}
-    $1=1$
+    $\sigma{'}_5(n) (-1)^{n+1} = (\sigma_5(n) - 34 \sigma_5(\frac{n}{2}) + 64 \sigma_5(\frac{n}{4}) )$
 \end{proposition}
 
 \begin{proof}
-    Assume that:
-
-    \begin{align*}
-        1 &= 1
-    \end{align*}
-
+    We distinguish $3$ cases:
+        $n \mod 4 = 1,3$,
+        $n \mod 4 = 2$, and
+        $n \mod 4 = 0$.
+\newline\\
+    If $n \mod 4 = 1,3$ then $n$ is odd, and thus $(-1)^{n+1}=1$ and $\sigma{'}_5(n) = \sigma_5(n)$ since all the
+    divisors of $n$ are odd, and clearly $\sigma_5(\frac{n}{2})$ and $\sigma_5(\frac{n}{4})$ are zero, since not defined.
+\newline\\
+    If $n \mod 4 = 2$, then $n$ is divible by $2$, but not divisible by $4$, $(-1)^{n+1}=-1$, so in this case
+    we need the sum of the odd divisors multiplied by $-1$. Since there is only one factor of $2$ in $n$
+    $(\sigma_5(n) - 2^5 \sigma_5(\frac{n}{2})$ is equal to the sum of the odd divisors. In fact, $\sigma_5(\frac{n}{2}$
+    is also equal to the sum of the odd divisors, in order to switch the sign we can substract it an additional two
+    times, making the expression $(\sigma_5(n) - 34 \sigma_5(\frac{n}{2}))$ and clearly $\sigma_5(\frac{n}{4})$
+    is zero, since not defined.
+\newline\\
+    If $n \mod 4 = 0$, then $n$ is divible by $4$ and $(-1)^{n+1}=-1$. Now, $(\sigma_5(n) - 34 \sigma_5(\frac{n}{2}))$
+    is not what we want, because additional even divisors have been subtracted. This can be corrected by adding
+    $2 \cdot 2^5 \sigma_5(\frac{n}{4})$, making the expression $(\sigma_5(n) - 34 \sigma_5(\frac{n}{2}) + 64 \sigma_5(\frac{n}{4}) )$.
 \end{proof}
 
 
