@@ -4,14 +4,21 @@
 \subsection*{Theorem 1.1}
 
 \begin{proposition}[fundamental pair]
-    $(\omega_1, \omega_2)$ is a fundamental pair IFF the triangle $(0, \omega_1, \omega_2)$ contains no periods.
+    $(\omega_1, \omega_2)$ is a fundamental pair IFF the triangle $(0, \omega_1, \omega_2)$ contains no further periods.
 \end{proposition}
 
 \begin{proof}
     . \\
     $\Rightarrow$ \\
-    . \\
-    . \\
+    The set of points $z$ of the parallelogram $(0, \omega_1, \omega_1 + \omega_2, \omega_2)$ is defined by
+    $
+        \{z | z = \alpha \cdot \omega_1 + \beta \cdot \omega_2 \wedge 0 \leq \alpha \leq 1 \wedge 0 \leq \beta \leq 1 \}.
+    $
+    The only periods in this set are $(0, \omega_1, \omega_1 + \omega_2, \omega_2)$ so the triangle contains no periods
+    other than the vertices. \\
     $\Leftarrow$ \\
-    .
+    Let $\omega = t_1 \cdot \omega_1 + t_2 \cdot \omega_2$ $(t_1, t_2 \in \mathbf{R})$ be any period.
+    If $t_1$ and $t_2$ are not integers we would have a period in the triangle,
+    since $\omega - ( [t_1] \cdot \omega_1 + [t_2] \cdot \omega_2 ) = ( \{ t_1 \} \cdot \omega_1 + \{ t_2 \} \cdot \omega_2 )$.
+    This is a contradiction, so $t_1$ and $t_2$ are integers.
 \end{proof}
