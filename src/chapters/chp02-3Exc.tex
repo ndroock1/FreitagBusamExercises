@@ -7,20 +7,63 @@ Find all elements $A$ of $\Gamma$ which commute with $S$.
 
 \subsection*{Answer}
 \noindent
-We answer this by proving the following proposition.
+We search for a matrix $A$, such that $A.S = S.A \wedge A \in \Gamma$.
+\begin{align*}
+    \begin{pmatrix}
+        a & b\\
+        c & d
+    \end{pmatrix} \cdot
+    \begin{pmatrix}
+        0 & -1\\
+        1 & 0
+    \end{pmatrix}
+    &=
+    \begin{pmatrix}
+        0 & -1\\
+        1 & 0
+    \end{pmatrix} \cdot
+    \begin{pmatrix}
+        a & b\\
+        c & d
+    \end{pmatrix} \\
+    \begin{pmatrix}
+        b & -a\\
+        d & -c
+    \end{pmatrix}
+    &=
+    \begin{pmatrix}
+        -c & -d\\
+        a & b
+    \end{pmatrix}
+\end{align*}
+Clearly, the elements which commute are:
+\[
+    \begin{pmatrix}
+        a & -c\\
+        c & a
+    \end{pmatrix}
+    \wedge a^2 + c^2 = 1 \wedge a,c \in \mathbf{Z}.
+\]
+This leaves the following commuting matrices.
+\[
+    \begin{pmatrix}
+        1 & 0\\
+        0 & 1
+    \end{pmatrix},
+    \begin{pmatrix}
+        -1 & 0\\
+        0 & -1
+    \end{pmatrix},
+    \begin{pmatrix}
+        0 & -1\\
+        1 & 0
+    \end{pmatrix},
+    \begin{pmatrix}
+        0 & 1\\
+        -1 & 0
+    \end{pmatrix}.
+\]
 
-\begin{proposition}
-    $1=1$
-\end{proposition}
-
-\begin{proof}
-    Assume that:
-
-    \begin{align*}
-        1 &= 1
-    \end{align*}
-
-\end{proof}
 
 
 \subsection{Question 1 b).}
