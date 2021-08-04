@@ -42,7 +42,7 @@ Clearly, the elements which commute are:
         a & -c\\
         c & a
     \end{pmatrix}
-    \wedge a^2 + c^2 = 1 \wedge a,c \in \mathbf{Z}.
+    \wedge a^2 + c^2 = 1 \wedge a,c \in \mathbb{Z}.
 \]
 This leaves the following commuting matrices.
 \[
@@ -72,17 +72,67 @@ Find all elements $A$ of $\Gamma$ which commute with $ST$.
 
 \subsection*{Answer}
 \noindent
-We answer this by proving the following proposition.
-
-\begin{proposition}
-    $1=1$
-\end{proposition}
-
-\begin{proof}
-    Assume that:
-
-    \begin{align*}
-        1 &= 1
-    \end{align*}
-
-\end{proof}
+We search for a matrix $A$, such that $A.(ST) = (ST).A \wedge A \in \Gamma$.
+\begin{align*}
+    \begin{pmatrix}
+        a & b\\
+        c & d
+    \end{pmatrix} \cdot
+    \begin{pmatrix}
+        0 & -1\\
+        1 & 1
+    \end{pmatrix}
+    &=
+    \begin{pmatrix}
+        0 & -1\\
+        1 & 1
+    \end{pmatrix} \cdot
+    \begin{pmatrix}
+        a & b\\
+        c & d
+    \end{pmatrix} \\
+    \begin{pmatrix}
+        b & -a+b\\
+        d & -c+d
+    \end{pmatrix}
+    &=
+    \begin{pmatrix}
+        -c & -d\\
+        a+c & b+d
+    \end{pmatrix}
+\end{align*}
+Clearly, the elements which commute are:
+\[
+    \begin{pmatrix}
+        -c+d & c\\
+        -c & d
+    \end{pmatrix}
+    \wedge c^2 -c d + d^2 = 1 \wedge c,d \in \mathbb{Z}.
+\]
+This leaves the following commuting matrices.
+\[
+    \begin{pmatrix}
+        0 & 1\\
+        -1 & -1
+    \end{pmatrix},
+    \begin{pmatrix}
+        1 & 1\\
+        -1 & 0
+    \end{pmatrix},
+    \begin{pmatrix}
+        -1 & 0\\
+        0 & -1
+    \end{pmatrix},
+    \begin{pmatrix}
+        1 & 0\\
+        0 & 1
+    \end{pmatrix},
+    \begin{pmatrix}
+        -1 & -1\\
+        1 & 0
+    \end{pmatrix},
+    \begin{pmatrix}
+        0 & -1\\
+        1 & 1
+    \end{pmatrix}.
+\]
