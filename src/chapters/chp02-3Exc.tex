@@ -185,13 +185,14 @@ Determine all elements $A$ of $\Gamma$ which leave $i$ fixed.
     \left\{
     \begin{array}{ll}
         ac + bd &= 0\\
-        ad - bc &= 1\\
-        c^2 + d^2 &= 1
+        c^2 + d^2 &= 1\\
+        ad - bc &= 1
     \end{array}
     \right.
 \end{align*}
 Solving the last system of equations in the integers gives the following solutions for ${a,b,c,d}$: \\
 $\{0,-1,1,0\},\{-1,0,0,-1\},\{0,1,-1,0\},\{1,0,0,1\}$ or in matrices: $S, S^2, S^3$ and $I$.
+
 
 \subsection{Question 5.}
 \noindent
@@ -199,4 +200,18 @@ Determine all elements $A$ of $\Gamma$ which leave $\rho = e^{\frac{2 \pi i}{3}}
 
 \subsection*{Answer}
 \noindent
-[ TBD ]
+\begin{align*}
+    \frac{b + a (-\frac{1}{2}+\frac{1}{2}\sqrt{3}i)}{d + c (-\frac{1}{2}+\frac{1}{2}\sqrt{3}i)} &= (-\frac{1}{2}+\frac{1}{2}\sqrt{3}i) \\
+    \frac{(a c - \frac{1}{2}b c - \frac{1}{2}a d + b d)+(- \frac{1}{2} bc + \frac{1}{2} ad)\sqrt{3}i}{c^2 - cd + d^2}&= (-\frac{1}{2}+\frac{1}{2}\sqrt{3}i) \\
+    \left\{
+    \begin{array}{ll}
+        (a c - \frac{1}{2}b c - \frac{1}{2}a d + b d) &= -\frac{1}{2} \\
+        (- \frac{1}{2} bc + \frac{1}{2} ad) &= \frac{1}{2}  \\
+        c^2 - cd + d^2 &= 1 \\
+        ad - bc &= 1
+    \end{array}
+    \right.
+\end{align*}
+Solving the last system of equations in the integers gives the following solutions for ${a,b,c,d}$: \\
+$\{0,-1,1,1\},\{-1,-1,1,0\},\{-1,0,0,-1\},\{0,1,-1,-1\},\{1,1,-1,0\},\{1,0,0,1\}$ \\or in matrices:
+$ST, (ST)^2, (ST)^3, (ST)^4, (ST)^5$ and $I$.
