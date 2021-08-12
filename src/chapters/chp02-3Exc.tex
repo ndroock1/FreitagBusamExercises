@@ -232,7 +232,15 @@ transformed to a quadratic form having the same discriminant.
 \subsection*{Answer}
 \noindent
 \begin{align*}
-    Q(x,y) &= (x', y') \cdot \begin{pmatrix} A & B/2 \\ B/2 & C \end{pmatrix} \cdot \begin{pmatrix} x' \\ y' \end{pmatrix} \\
-    1 &= 1\\
-    1 &=1
+    Q(x,y) &= (x, y) \cdot \begin{pmatrix} A & B/2 \\ B/2 & C \end{pmatrix} \cdot \begin{pmatrix} x \\ y \end{pmatrix} \\
+    &= (x, y) \cdot {\begin{pmatrix} \alpha & \beta \\ \gamma & \delta \end{pmatrix}}^T \cdot \begin{pmatrix} A & B/2 \\ B/2 & C \end{pmatrix} \cdot \begin{pmatrix} \alpha & \beta \\ \gamma & \delta \end{pmatrix} \cdot \begin{pmatrix} x \\ y \end{pmatrix} \\
+    &= (x, y) \cdot \begin{pmatrix} A \alpha^2 + B \alpha \gamma +C \gamma^2 & (2 A \alpha \beta + B \beta \gamma + B \alpha \delta +2 C \gamma \delta)/2 \\ (2 A \alpha \beta + B \beta \gamma + B \alpha \delta +2 C \gamma \delta)/2 & A \beta^2 + B \beta \delta +C \delta^2 \end{pmatrix} \cdot \begin{pmatrix} x \\ y \end{pmatrix}
+\end{align*}
+The discriminant of this transformed BQF is:
+\begin{align*}
+    d &= 4 (A \alpha^2 + B \alpha \gamma +C \gamma^2)(A \beta^2 + B \beta \delta +C \delta^2) - (2 A \alpha \beta + B \beta \gamma + B \alpha \delta +2 C \gamma \delta)^2 \\
+    &= 4 A C (\alpha^2 \delta^2  - 2 \alpha \beta \gamma \delta + \beta^2 \delta^2) - B^2 (\alpha^2 \delta^2  - 2 \alpha \beta \gamma \delta + \beta^2 \gamma^2) \\
+    &= ( 4 A C - B^2)(\alpha^2 \delta^2  - 2 \alpha \beta \gamma \delta + \beta^2 \gamma^2) \\
+    &= ( 4 A C - B^2)(\alpha \delta - \beta \gamma)^2 \\
+    &= 4 AC - B^2 .
 \end{align*}
