@@ -1,0 +1,1999 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='WolframCDFPlayer 10.3' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       163,          7]
+NotebookDataLength[     86661,       1990]
+NotebookOptionsPosition[     82143,       1850]
+NotebookOutlinePosition[     83749,       1901]
+CellTagsIndexPosition[     83421,       1889]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell["Domain Coloring for Common Functions in Complex Analysis", "DemoTitle",
+ CellChangeTimes->{{3.6652781183955307`*^9, 3.665278135907009*^9}, {
+  3.6652781871019254`*^9, 3.665278195565559*^9}, {3.66549699865827*^9, 
+  3.6654970085278378`*^9}, {3.665507368218855*^9, 3.6655073738344793`*^9}}],
+
+Cell["", "InitializationSection"],
+
+Cell[CellGroupData[{
+
+Cell["", "ManipulateSection"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Manipulate", "[", 
+  RowBox[{
+   RowBox[{"Module", "[", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"x0", "=", "0"}], ",", 
+       RowBox[{"y0", "=", "0"}]}], "}"}], ",", 
+     RowBox[{"ParametricPlot", "[", 
+      RowBox[{
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{"Re", "[", 
+          RowBox[{"x", "+", 
+           RowBox[{"I", " ", "y"}]}], "]"}], ",", 
+         RowBox[{"Im", "[", 
+          RowBox[{"x", "+", 
+           RowBox[{"I", " ", "y"}]}], "]"}]}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"x", ",", 
+         RowBox[{"x0", "-", "A"}], ",", 
+         RowBox[{"x0", "+", "A"}]}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"y", ",", 
+         RowBox[{"x0", "-", "A"}], ",", 
+         RowBox[{"x0", "+", "A"}]}], "}"}], ",", 
+       RowBox[{"ColorFunction", "\[Rule]", 
+        RowBox[{"Function", "[", 
+         RowBox[{
+          RowBox[{"{", 
+           RowBox[{"x", ",", "y"}], "}"}], ",", 
+          RowBox[{"Hue", "[", 
+           RowBox[{
+            RowBox[{
+             RowBox[{"(", 
+              RowBox[{
+               RowBox[{"Mod", "[", 
+                RowBox[{
+                 RowBox[{
+                  RowBox[{"Arg", "[", 
+                   RowBox[{"f", "[", 
+                    RowBox[{"(", 
+                    RowBox[{"x", "+", 
+                    RowBox[{"I", " ", "y"}]}], ")"}], "]"}], "]"}], "+", 
+                  "\[Pi]"}], ",", 
+                 RowBox[{"2", " ", "\[Pi]"}]}], "]"}], "+", "\[Pi]"}], ")"}], 
+             "/", 
+             RowBox[{"(", 
+              RowBox[{"2", " ", "\[Pi]"}], ")"}]}], ",", "1", ",", 
+            RowBox[{"1", "-", 
+             RowBox[{
+              RowBox[{"2", "/", "\[Pi]"}], " ", 
+              RowBox[{"ArcTan", "[", 
+               RowBox[{"Log", "[", 
+                RowBox[{"1", "+", 
+                 RowBox[{"1", "/", 
+                  RowBox[{"Abs", "[", 
+                   RowBox[{"f", "[", 
+                    RowBox[{"x", "+", 
+                    RowBox[{"I", " ", "y"}]}], "]"}], "]"}]}]}], "]"}], 
+               "]"}]}]}], ",", 
+            RowBox[{"1", "-", 
+             RowBox[{"(", 
+              RowBox[{
+               RowBox[{"2", "/", "\[Pi]"}], " ", 
+               RowBox[{"ArcTan", "[", 
+                RowBox[{
+                 RowBox[{"Log", "[", 
+                  RowBox[{"1", "+", 
+                   RowBox[{"Abs", "[", 
+                    RowBox[{"f", "[", 
+                    RowBox[{"x", "+", 
+                    RowBox[{"I", " ", "y"}]}], "]"}], "]"}]}], "]"}], "/", 
+                 "2"}], "]"}]}], ")"}]}]}], "]"}]}], "]"}]}], ",", 
+       RowBox[{"ColorFunctionScaling", "\[Rule]", "False"}], ",", 
+       RowBox[{"PlotRange", "\[Rule]", 
+        RowBox[{"{", 
+         RowBox[{
+          RowBox[{"{", 
+           RowBox[{
+            RowBox[{"x0", "-", "A"}], ",", 
+            RowBox[{"x0", "+", "A"}]}], "}"}], ",", 
+          RowBox[{"{", 
+           RowBox[{
+            RowBox[{"y0", "-", "A"}], ",", 
+            RowBox[{"y0", "+", "A"}]}], "}"}]}], "}"}]}], ",", 
+       RowBox[{"PlotPoints", "\[Rule]", "P"}], ",", 
+       RowBox[{"Mesh", "\[Rule]", "None"}], ",", 
+       RowBox[{"Axes", "\[Rule]", "False"}], ",", 
+       RowBox[{"FrameStyle", "\[Rule]", "Black"}], ",", 
+       RowBox[{"ImageSize", "\[Rule]", "400"}]}], "]"}]}], "]"}], ",", 
+   RowBox[{"Column", "[", 
+    RowBox[{"{", 
+     RowBox[{
+      RowBox[{"Control", "[", 
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{"{", 
+          RowBox[{"f", ",", 
+           RowBox[{"#", "&"}], ",", 
+           RowBox[{"Style", "[", 
+            RowBox[{
+             RowBox[{"Row", "[", 
+              RowBox[{"{", 
+               RowBox[{
+                RowBox[{"Style", "[", 
+                 RowBox[{"\"\<f\>\"", ",", "Italic"}], "]"}], ",", 
+                "\"\<(\>\"", ",", 
+                RowBox[{"Style", "[", 
+                 RowBox[{"\"\<x\>\"", ",", "Italic"}], "]"}], ",", 
+                "\"\<)=\>\""}], "}"}], "]"}], ",", "12"}], "]"}]}], "}"}], 
+         ",", 
+         RowBox[{"(", 
+          RowBox[{
+           RowBox[{
+            RowBox[{"(", 
+             RowBox[{
+              RowBox[{"#", "[", 
+               RowBox[{"[", "1", "]"}], "]"}], "\[Rule]", 
+              RowBox[{"TraditionalForm", "[", 
+               RowBox[{"#", "[", 
+                RowBox[{"[", "2", "]"}], "]"}], "]"}]}], ")"}], "&"}], "/@", 
+           RowBox[{"{", 
+            RowBox[{
+             RowBox[{
+              RowBox[{"#", "&"}], "\[Rule]", "z"}], ",", 
+             RowBox[{
+              RowBox[{
+               RowBox[{
+                RowBox[{"(", 
+                 RowBox[{"1", "-", "#"}], ")"}], "/", 
+                RowBox[{"(", 
+                 RowBox[{"1", "+", "#"}], ")"}]}], "&"}], "\[Rule]", 
+              RowBox[{
+               RowBox[{"(", 
+                RowBox[{"1", "-", "z"}], ")"}], "/", 
+               RowBox[{"(", "\"\<1+z\>\"", ")"}]}]}], ",", " ", 
+             RowBox[{"Log", "\[Rule]", 
+              RowBox[{"Log", "[", "z", "]"}]}], ",", 
+             RowBox[{
+              RowBox[{
+               RowBox[{"#", "^", "2"}], "&"}], "\[Rule]", 
+              RowBox[{"z", "^", "2"}]}], ",", 
+             RowBox[{
+              RowBox[{
+               RowBox[{"#", "^", 
+                RowBox[{"(", 
+                 RowBox[{"1", "/", "2"}], ")"}]}], "&"}], "\[Rule]", 
+              RowBox[{"z", "^", 
+               RowBox[{"(", 
+                RowBox[{"1", "/", "2"}], ")"}]}]}], ",", 
+             "\[IndentingNewLine]", 
+             RowBox[{
+              RowBox[{
+               RowBox[{"#", "/", 
+                RowBox[{
+                 RowBox[{"(", 
+                  RowBox[{"1", "-", "#"}], ")"}], "^", "2"}]}], "&"}], 
+              "\[Rule]", 
+              RowBox[{"z", "/", 
+               RowBox[{
+                RowBox[{"(", 
+                 RowBox[{"1", "-", "z"}], ")"}], "^", "2"}]}]}], ",", 
+             RowBox[{
+              RowBox[{
+               RowBox[{"Beta", "[", 
+                RowBox[{"#", ",", "1", ",", "2"}], "]"}], "&"}], "\[Rule]", 
+              RowBox[{"HoldForm", "[", 
+               RowBox[{"Beta", "[", 
+                RowBox[{"z", ",", "1", ",", "2"}], "]"}], "]"}]}], ",", 
+             RowBox[{
+              RowBox[{
+               RowBox[{"Beta", "[", 
+                RowBox[{"#", ",", "1", ",", "3"}], "]"}], "&"}], "\[Rule]", 
+              RowBox[{"HoldForm", "[", 
+               RowBox[{"Beta", "[", 
+                RowBox[{"z", ",", "1", ",", "3"}], "]"}], "]"}]}], ",", 
+             RowBox[{
+              RowBox[{
+               RowBox[{"Beta", "[", 
+                RowBox[{"#", ",", "1", ",", "4"}], "]"}], "&"}], "\[Rule]", 
+              RowBox[{"HoldForm", "[", 
+               RowBox[{"Beta", "[", 
+                RowBox[{"z", ",", "1", ",", "4"}], "]"}], "]"}]}], ",", 
+             RowBox[{"Cos", "\[Rule]", 
+              RowBox[{"Cos", "[", "z", "]"}]}], ",", 
+             RowBox[{"ArcCos", "\[Rule]", 
+              RowBox[{
+               RowBox[{"Cos", "[", "z", "]"}], "^", 
+               RowBox[{"-", "1"}]}]}], ",", 
+             RowBox[{"Cot", "\[Rule]", 
+              RowBox[{"Cot", "[", "z", "]"}]}], ",", 
+             RowBox[{"ArcCot", "\[Rule]", 
+              RowBox[{
+               RowBox[{"Cot", "[", "z", "]"}], "^", 
+               RowBox[{"-", "1"}]}]}], ",", 
+             RowBox[{"Csc", "\[Rule]", 
+              RowBox[{"Csc", "[", "z", "]"}]}], ",", 
+             RowBox[{"ArcCsc", "\[Rule]", 
+              RowBox[{
+               RowBox[{"Csc", "[", "z", "]"}], "^", 
+               RowBox[{"-", "1"}]}]}], ",", 
+             RowBox[{"Exp", "\[Rule]", 
+              RowBox[{"E", "^", "z"}]}], ",", 
+             RowBox[{
+              RowBox[{
+               RowBox[{"Exp", "[", 
+                RowBox[{"1", "/", "#"}], "]"}], "&"}], "\[Rule]", 
+              RowBox[{"E", "^", 
+               RowBox[{"(", "\"\<1/z\>\"", ")"}]}]}], ",", 
+             RowBox[{"Gamma", "\[Rule]", 
+              RowBox[{"Gamma", "[", "z", "]"}]}], ",", 
+             RowBox[{
+              RowBox[{
+               RowBox[{"Gamma", "[", 
+                RowBox[{"2", ",", "#"}], "]"}], "&"}], "\[Rule]", 
+              RowBox[{"Gamma", "[", 
+               RowBox[{"2", ",", "z"}], "]"}]}], ",", 
+             RowBox[{
+              RowBox[{
+               RowBox[{"Gamma", "[", 
+                RowBox[{"3", ",", "#"}], "]"}], "&"}], "\[Rule]", 
+              RowBox[{"Gamma", "[", 
+               RowBox[{"3", ",", "z"}], "]"}]}], ",", " ", 
+             RowBox[{
+              RowBox[{
+               RowBox[{"#", "+", 
+                RowBox[{"1", "/", "#"}]}], "&"}], "\[Rule]", 
+              RowBox[{"z", "+", 
+               RowBox[{"1", "/", "z"}]}]}], " ", ",", 
+             RowBox[{
+              RowBox[{
+               RowBox[{"WeierstrassP", "[", 
+                RowBox[{"#", ",", 
+                 RowBox[{"{", 
+                  RowBox[{"1", ",", "2"}], "}"}]}], "]"}], "&"}], "\[Rule]", 
+              RowBox[{"WeierstrassP", "[", 
+               RowBox[{"z", ",", 
+                RowBox[{"{", 
+                 RowBox[{"1", ",", "2"}], "}"}]}], "]"}]}], ",", 
+             RowBox[{
+              RowBox[{
+               RowBox[{"WeierstrassP", "[", 
+                RowBox[{"#", ",", 
+                 RowBox[{"{", 
+                  RowBox[{"1", ",", "I"}], "}"}]}], "]"}], "&"}], "\[Rule]", 
+              RowBox[{"WeierstrassP", "[", 
+               RowBox[{"z", ",", 
+                RowBox[{"{", 
+                 RowBox[{"1", ",", "I"}], "}"}]}], "]"}]}], ",", 
+             RowBox[{"Sec", "\[Rule]", 
+              RowBox[{"Sec", "[", "z", "]"}]}], ",", 
+             RowBox[{"Sin", "\[Rule]", 
+              RowBox[{"Sin", "[", "z", "]"}]}], ",", 
+             RowBox[{
+              RowBox[{
+               RowBox[{"Sin", "[", 
+                RowBox[{"1", "/", "#"}], "]"}], "&"}], "\[Rule]", 
+              RowBox[{"Sin", "[", 
+               RowBox[{"1", "/", "z"}], "]"}]}], ",", 
+             RowBox[{"ArcSin", "\[Rule]", 
+              RowBox[{
+               RowBox[{"Sin", "[", "z", "]"}], "^", 
+               RowBox[{"-", "1"}]}]}], ",", 
+             RowBox[{"Tan", "\[Rule]", 
+              RowBox[{"Tan", "[", "z", "]"}]}], ",", 
+             RowBox[{"ArcTan", "\[Rule]", 
+              RowBox[{
+               RowBox[{"Tan", "[", "z", "]"}], "^", 
+               RowBox[{"-", "1"}]}]}], ",", 
+             RowBox[{"Zeta", "\[Rule]", 
+              RowBox[{"Zeta", "[", "z", "]"}]}]}], "}"}]}], ")"}], ",", 
+         RowBox[{"Appearance", "\[Rule]", 
+          RowBox[{"\"\<Vertical\>\"", "\[Rule]", 
+           RowBox[{"{", 
+            RowBox[{"Automatic", ",", "2"}], "}"}]}]}], ",", 
+         RowBox[{"ControlType", "\[Rule]", "SetterBar"}]}], "}"}], "]"}], 
+      RowBox[{"(*", 
+       RowBox[{",", 
+        RowBox[{"{", 
+         RowBox[{
+          RowBox[{"{", 
+           RowBox[{"g", ",", 
+            RowBox[{"#", "&"}], ",", 
+            RowBox[{"Style", "[", 
+             RowBox[{"\"\< \>\"", ",", "12"}], "]"}]}], "}"}], ",", 
+          RowBox[{"{", "}"}], ",", "SetterBar"}], "}"}]}], "*)"}], ",", 
+      RowBox[{"Style", "[", 
+       RowBox[{"\"\<\>\"", ",", "5"}], "]"}], ",", 
+      RowBox[{"Control", "[", 
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{"{", 
+          RowBox[{"P", ",", "100", ",", 
+           RowBox[{"Style", "[", 
+            RowBox[{"\"\<detail\>\"", ",", "12"}], "]"}]}], "}"}], ",", 
+         RowBox[{"{", 
+          RowBox[{
+           RowBox[{"50", "\[Rule]", "\"\<low\>\""}], ",", 
+           RowBox[{"100", "\[Rule]", "\"\<medium\>\""}], ",", 
+           RowBox[{"150", "\[Rule]", "\"\<high\>\""}]}], "}"}]}], "}"}], 
+       "]"}], ",", 
+      RowBox[{"Style", "[", 
+       RowBox[{"\"\<\>\"", ",", "5"}], "]"}], ",", 
+      RowBox[{"Control", "[", 
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{"{", 
+          RowBox[{"A", ",", "\[Pi]", ",", 
+           RowBox[{"Style", "[", 
+            RowBox[{"\"\<range\>\"", ",", "12"}], "]"}]}], "}"}], ",", 
+         RowBox[{"{", 
+          RowBox[{
+           RowBox[{
+            RowBox[{"\[Pi]", "/", "8"}], "\[Rule]", "\"\<\[Pi]/8\>\""}], ",", 
+           RowBox[{
+            RowBox[{"\[Pi]", "/", "4"}], "\[Rule]", "\"\<\[Pi]/4\>\""}], ",", 
+           RowBox[{
+            RowBox[{"\[Pi]", "/", "2"}], "\[Rule]", "\"\<\[Pi]/2\>\""}], ",", 
+           RowBox[{
+            RowBox[{"2", 
+             RowBox[{"\[Pi]", "/", "3"}]}], "->", "\"\<2\[Pi]/3\>\""}], ",", 
+           "\[Pi]", ",", 
+           RowBox[{
+            RowBox[{"3", 
+             RowBox[{"\[Pi]", "/", "2"}]}], "\[Rule]", "\"\<3\[Pi]/2\>\""}], 
+           ",", 
+           RowBox[{"2", "\[Pi]"}], ",", 
+           RowBox[{"4", "\[Pi]"}], ",", 
+           RowBox[{"8", "\[Pi]"}]}], "}"}], ",", 
+         RowBox[{"Appearance", "\[Rule]", 
+          RowBox[{"\"\<Vertical\>\"", "\[Rule]", 
+           RowBox[{"{", 
+            RowBox[{"Automatic", ",", "3"}], "}"}]}]}], ",", 
+         RowBox[{"ControlType", "\[Rule]", "SetterBar"}]}], "}"}], "]"}]}], 
+     "}"}], "]"}], ",", 
+   RowBox[{"ControlPlacement", "\[Rule]", "Left"}], ",", 
+   RowBox[{"AutorunSequencing", "\[Rule]", 
+    RowBox[{"{", "1", "}"}]}]}], "]"}]], "Input",
+ CellChangeTimes->{
+  3.6652766699043016`*^9, {3.6652790656789846`*^9, 3.6652792048534756`*^9}, {
+   3.665279252448146*^9, 3.665279252698151*^9}, {3.6652792932199183`*^9, 
+   3.665279293563679*^9}, {3.6652795040250406`*^9, 3.665279564673993*^9}, {
+   3.6654309335961695`*^9, 3.6654309575318713`*^9}, {3.665431019344123*^9, 
+   3.665431023406865*^9}, 3.6654310808234015`*^9, {3.6654320520794725`*^9, 
+   3.6654320522357273`*^9}, {3.665438050137312*^9, 3.6654380502779446`*^9}, {
+   3.665438122303213*^9, 3.665438130486224*^9}, 3.6654984150834866`*^9, 
+   3.665498605907211*^9, 3.66549968080267*^9, {3.665499859415778*^9, 
+   3.6654998742446337`*^9}, {3.6655001113986845`*^9, 
+   3.6655001245557384`*^9}, {3.665500429744087*^9, 3.6655004567314873`*^9}, {
+   3.665500729100087*^9, 3.665500797850087*^9}, {3.6655008385870876`*^9, 
+   3.6655008723714876`*^9}, {3.6655010427670875`*^9, 
+   3.6655010620556874`*^9}, {3.665508014131076*^9, 3.665508043297203*^9}, {
+   3.665508087914248*^9, 3.665508095680099*^9}, {3.665508196511554*^9, 
+   3.66550820213481*^9}}],
+
+Cell[BoxData[
+ TagBox[
+  StyleBox[
+   DynamicModuleBox[{$CellContext`A$$ = Pi, $CellContext`f$$ = (1 - #)/(
+    1 + #)& , $CellContext`P$$ = 100, Typeset`show$$ = True, 
+    Typeset`bookmarkList$$ = {}, Typeset`bookmarkMode$$ = "Menu", 
+    Typeset`animator$$, Typeset`animvar$$ = 1, Typeset`name$$ = 
+    "\"untitled\"", Typeset`specs$$ = {{{
+       Hold[$CellContext`f$$], (1 - #)/(1 + #)& , 
+       Style[
+        Row[{
+          Style["f", Italic], "(", 
+          Style["x", Italic], ")="}], 12]}, {(#& ) -> 
+       TraditionalForm[$CellContext`z], ((1 - #)/(1 + #)& ) -> 
+       TraditionalForm["1+z"^(-1) (1 - $CellContext`z)], Log -> 
+       TraditionalForm[
+         Log[$CellContext`z]], (#^2& ) -> 
+       TraditionalForm[$CellContext`z^2], (#^(1/2)& ) -> 
+       TraditionalForm[$CellContext`z^Rational[1, 2]], (#/(1 - #)^2& ) -> 
+       TraditionalForm[(1 - $CellContext`z)^(-2) $CellContext`z], (
+        Beta[#, 1, 2]& ) -> TraditionalForm[
+         HoldForm[
+          Beta[$CellContext`z, 1, 2]]], (Beta[#, 1, 3]& ) -> TraditionalForm[
+         HoldForm[
+          Beta[$CellContext`z, 1, 3]]], (Beta[#, 1, 4]& ) -> TraditionalForm[
+         HoldForm[
+          Beta[$CellContext`z, 1, 4]]], Cos -> TraditionalForm[
+         Cos[$CellContext`z]], ArcCos -> TraditionalForm[
+         Sec[$CellContext`z]], Cot -> TraditionalForm[
+         Cot[$CellContext`z]], ArcCot -> TraditionalForm[
+         Tan[$CellContext`z]], Csc -> TraditionalForm[
+         Csc[$CellContext`z]], ArcCsc -> TraditionalForm[
+         Sin[$CellContext`z]], Exp -> 
+       TraditionalForm[E^$CellContext`z], (Exp[1/#]& ) -> 
+       TraditionalForm[E^"1/z"], Gamma -> TraditionalForm[
+         Gamma[$CellContext`z]], (Gamma[2, #]& ) -> TraditionalForm[
+         Gamma[2, $CellContext`z]], (Gamma[3, #]& ) -> TraditionalForm[
+         Gamma[3, $CellContext`z]], (# + 1/#& ) -> 
+       TraditionalForm[$CellContext`z^(-1) + $CellContext`z], (
+        WeierstrassP[#, {1, 2}]& ) -> TraditionalForm[
+         WeierstrassP[$CellContext`z, {1, 2}]], (WeierstrassP[#, {1, I}]& ) -> 
+       TraditionalForm[
+         WeierstrassP[$CellContext`z, {1, 
+           Complex[0, 1]}]], Sec -> TraditionalForm[
+         Sec[$CellContext`z]], Sin -> TraditionalForm[
+         Sin[$CellContext`z]], (Sin[1/#]& ) -> TraditionalForm[
+         Sin[$CellContext`z^(-1)]], ArcSin -> TraditionalForm[
+         Csc[$CellContext`z]], Tan -> TraditionalForm[
+         Tan[$CellContext`z]], ArcTan -> TraditionalForm[
+         Cot[$CellContext`z]], Zeta -> TraditionalForm[
+         Zeta[$CellContext`z]]}}, {{
+       Hold[$CellContext`P$$], 100, 
+       Style["detail", 12]}, {50 -> "low", 100 -> "medium", 150 -> "high"}}, {{
+       Hold[$CellContext`A$$], Pi, 
+       Style["range", 12]}, {
+      Rational[1, 8] Pi -> "\[Pi]/8", Rational[1, 4] Pi -> "\[Pi]/4", 
+       Rational[1, 2] Pi -> "\[Pi]/2", Rational[2, 3] Pi -> "2\[Pi]/3", Pi, 
+       Rational[3, 2] Pi -> "3\[Pi]/2", 2 Pi, 4 Pi, 8 Pi}}, {
+      Hold[
+       Column[{
+         Manipulate`Place[1], 
+         Style["", 5], 
+         Manipulate`Place[2], 
+         Style["", 5], 
+         Manipulate`Place[3]}]], Manipulate`Dump`ThisIsNotAControl}}, 
+    Typeset`size$$ = {400., {197., 202.}}, Typeset`update$$ = 0, 
+    Typeset`initDone$$, Typeset`skipInitDone$$ = 
+    True, $CellContext`f$681882$$ = False, $CellContext`P$681883$$ = 
+    False, $CellContext`A$681884$$ = False}, 
+    DynamicBox[Manipulate`ManipulateBoxes[
+     2, StandardForm, 
+      "Variables" :> {$CellContext`A$$ = 
+        Pi, $CellContext`f$$ = (1 - #)/(1 + #)& , $CellContext`P$$ = 100}, 
+      "ControllerVariables" :> {
+        Hold[$CellContext`f$$, $CellContext`f$681882$$, False], 
+        Hold[$CellContext`P$$, $CellContext`P$681883$$, False], 
+        Hold[$CellContext`A$$, $CellContext`A$681884$$, False]}, 
+      "OtherVariables" :> {
+       Typeset`show$$, Typeset`bookmarkList$$, Typeset`bookmarkMode$$, 
+        Typeset`animator$$, Typeset`animvar$$, Typeset`name$$, 
+        Typeset`specs$$, Typeset`size$$, Typeset`update$$, Typeset`initDone$$,
+         Typeset`skipInitDone$$}, "Body" :> 
+      Module[{$CellContext`x0$ = 0, $CellContext`y0$ = 0}, 
+        ParametricPlot[{
+          Re[$CellContext`x + I $CellContext`y], 
+          
+          Im[$CellContext`x + 
+           I $CellContext`y]}, {$CellContext`x, $CellContext`x0$ - \
+$CellContext`A$$, $CellContext`x0$ + $CellContext`A$$}, {$CellContext`y, \
+$CellContext`x0$ - $CellContext`A$$, $CellContext`x0$ + $CellContext`A$$}, 
+         ColorFunction -> Function[{$CellContext`x$, $CellContext`y$}, 
+           Hue[(Mod[Arg[
+                 $CellContext`f$$[$CellContext`x$ + I $CellContext`y$]] + Pi, 
+               2 Pi] + Pi)/(2 Pi), 1, 1 - (2/Pi) ArcTan[
+              Log[1 + 1/Abs[
+                 $CellContext`f$$[$CellContext`x$ + I $CellContext`y$]]]], 
+            1 - (2/Pi) ArcTan[Log[1 + Abs[
+                  $CellContext`f$$[$CellContext`x$ + I $CellContext`y$]]]/
+              2]]], ColorFunctionScaling -> False, 
+         PlotRange -> {{$CellContext`x0$ - $CellContext`A$$, $CellContext`x0$ + \
+$CellContext`A$$}, {$CellContext`y0$ - $CellContext`A$$, $CellContext`y0$ + \
+$CellContext`A$$}}, PlotPoints -> $CellContext`P$$, Mesh -> None, Axes -> 
+         False, FrameStyle -> Black, ImageSize -> 400]], 
+      "Specifications" :> {{{$CellContext`f$$, (1 - #)/(1 + #)& , 
+          Style[
+           Row[{
+             Style["f", Italic], "(", 
+             Style["x", Italic], ")="}], 12]}, {(#& ) -> 
+          TraditionalForm[$CellContext`z], ((1 - #)/(1 + #)& ) -> 
+          TraditionalForm["1+z"^(-1) (1 - $CellContext`z)], Log -> 
+          TraditionalForm[
+            Log[$CellContext`z]], (#^2& ) -> 
+          TraditionalForm[$CellContext`z^2], (#^(1/2)& ) -> 
+          TraditionalForm[$CellContext`z^Rational[1, 2]], (#/(1 - #)^2& ) -> 
+          TraditionalForm[(1 - $CellContext`z)^(-2) $CellContext`z], (
+           Beta[#, 1, 2]& ) -> TraditionalForm[
+            HoldForm[
+             Beta[$CellContext`z, 1, 2]]], (Beta[#, 1, 3]& ) -> 
+          TraditionalForm[
+            HoldForm[
+             Beta[$CellContext`z, 1, 3]]], (Beta[#, 1, 4]& ) -> 
+          TraditionalForm[
+            HoldForm[
+             Beta[$CellContext`z, 1, 4]]], Cos -> TraditionalForm[
+            Cos[$CellContext`z]], ArcCos -> TraditionalForm[
+            Sec[$CellContext`z]], Cot -> TraditionalForm[
+            Cot[$CellContext`z]], ArcCot -> TraditionalForm[
+            Tan[$CellContext`z]], Csc -> TraditionalForm[
+            Csc[$CellContext`z]], ArcCsc -> TraditionalForm[
+            Sin[$CellContext`z]], Exp -> 
+          TraditionalForm[E^$CellContext`z], (Exp[1/#]& ) -> 
+          TraditionalForm[E^"1/z"], Gamma -> TraditionalForm[
+            Gamma[$CellContext`z]], (Gamma[2, #]& ) -> TraditionalForm[
+            Gamma[2, $CellContext`z]], (Gamma[3, #]& ) -> TraditionalForm[
+            Gamma[3, $CellContext`z]], (# + 1/#& ) -> 
+          TraditionalForm[$CellContext`z^(-1) + $CellContext`z], (
+           WeierstrassP[#, {1, 2}]& ) -> TraditionalForm[
+            WeierstrassP[$CellContext`z, {1, 2}]], (
+           WeierstrassP[#, {1, I}]& ) -> TraditionalForm[
+            WeierstrassP[$CellContext`z, {1, 
+              Complex[0, 1]}]], Sec -> TraditionalForm[
+            Sec[$CellContext`z]], Sin -> TraditionalForm[
+            Sin[$CellContext`z]], (Sin[1/#]& ) -> TraditionalForm[
+            Sin[$CellContext`z^(-1)]], ArcSin -> TraditionalForm[
+            Csc[$CellContext`z]], Tan -> TraditionalForm[
+            Tan[$CellContext`z]], ArcTan -> TraditionalForm[
+            Cot[$CellContext`z]], Zeta -> TraditionalForm[
+            Zeta[$CellContext`z]]}, 
+         Appearance -> ("Vertical" -> {Automatic, 2}), ControlType -> 
+         SetterBar, ControlPlacement -> 1}, {{$CellContext`P$$, 100, 
+          Style["detail", 12]}, {50 -> "low", 100 -> "medium", 150 -> "high"},
+          ControlPlacement -> 2}, {{$CellContext`A$$, Pi, 
+          Style["range", 12]}, {
+         Rational[1, 8] Pi -> "\[Pi]/8", Rational[1, 4] Pi -> "\[Pi]/4", 
+          Rational[1, 2] Pi -> "\[Pi]/2", Rational[2, 3] Pi -> "2\[Pi]/3", Pi,
+           Rational[3, 2] Pi -> "3\[Pi]/2", 2 Pi, 4 Pi, 8 Pi}, 
+         Appearance -> ("Vertical" -> {Automatic, 3}), ControlType -> 
+         SetterBar, ControlPlacement -> 3}, 
+        Column[{
+          Manipulate`Place[1], 
+          Style["", 5], 
+          Manipulate`Place[2], 
+          Style["", 5], 
+          Manipulate`Place[3]}]}, 
+      "Options" :> {ControlPlacement -> Left, AutorunSequencing -> {1}}, 
+      "DefaultOptions" :> {ControllerLinking -> True}],
+     ImageSizeCache->{591., {236., 242.}},
+     SingleEvaluation->True],
+    Deinitialization:>None,
+    DynamicModuleValues:>{},
+    SynchronousInitialization->True,
+    UndoTrackedVariables:>{Typeset`show$$, Typeset`bookmarkMode$$},
+    UnsavedVariables:>{Typeset`initDone$$},
+    UntrackedVariables:>{Typeset`size$$}], "Manipulate",
+   Deployed->True,
+   StripOnInput->False],
+  Manipulate`InterpretManipulate[1]]], "Output",
+ CellID->2128561366]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["", "ManipulateCaptionSection"],
+
+Cell[TextData[{
+ "A ",
+ StyleBox["domain coloring",
+  FontSlant->"Italic"],
+ " or ",
+ StyleBox["phase portrait",
+  FontSlant->"Italic"],
+ " is a popular and attractive way to visualize functions of a complex \
+variable. The absolute value (modulus) of the function at a point is \
+represented by brightness (dark for small modulus, light for large modulus), \
+while the argument (phase) is represented by hue (red for positive real \
+values, yellow-green for positive imaginary values, etc.). This Demonstration \
+creates domain colorings for many well-known functions in complex analysis: \
+trigonometric and exponential functions, M\[ODoubleDot]bius transformations, \
+the Joukowski map, the ",
+ "Koebe",
+ " function, Weierstrass ",
+ Cell[BoxData[
+  FormBox["\[WeierstrassP]", TraditionalForm]], "InlineMath"],
+ " functions, gamma and beta functions, and the Riemann zeta function."
+}], "ManipulateCaption",
+ CellChangeTimes->{{3.6652767229815574`*^9, 3.66527677316978*^9}, {
+   3.6652768250426745`*^9, 3.6652769239187307`*^9}, {3.66527703061843*^9, 
+   3.665277131900838*^9}, {3.665277172702423*^9, 3.6652773472677608`*^9}, {
+   3.665279766330127*^9, 3.665279772694402*^9}, {3.665279974939783*^9, 
+   3.6652799768366995`*^9}, {3.665280617684058*^9, 3.6652806187935143`*^9}, 
+   3.665431984890617*^9, {3.6654371322860208`*^9, 3.6654371334267035`*^9}, 
+   3.66550016614194*^9, {3.6655010991774874`*^9, 3.6655010996454873`*^9}, {
+   3.6655037822794724`*^9, 3.665503850793433*^9}, {3.665507321965098*^9, 
+   3.665507325163629*^9}, 3.6666235281008244`*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["", "ThumbnailSection"],
+
+Cell[BoxData[
+ TagBox[
+  StyleBox[
+   DynamicModuleBox[{$CellContext`A$$ = Rational[1, 8] Pi, $CellContext`f$$ = 
+    Exp[1/#]& , $CellContext`P$$ = 150, Typeset`show$$ = True, 
+    Typeset`bookmarkList$$ = {}, Typeset`bookmarkMode$$ = "Menu", 
+    Typeset`animator$$, Typeset`animvar$$ = 1, Typeset`name$$ = 
+    "\"untitled\"", Typeset`specs$$ = {{{
+       Hold[$CellContext`f$$], Exp[1/#]& , 
+       Style[
+        Row[{
+          Style["f", Italic], "(", 
+          Style["x", Italic], ")="}], 12]}, {(#& ) -> 
+       TraditionalForm[$CellContext`z], ((1 - #)/(1 + #)& ) -> 
+       TraditionalForm["1+z"^(-1) (1 - $CellContext`z)], Log -> 
+       TraditionalForm[
+         Log[$CellContext`z]], (#^2& ) -> 
+       TraditionalForm[$CellContext`z^2], (#^(1/2)& ) -> 
+       TraditionalForm[$CellContext`z^Rational[1, 2]], (#/(1 - #)^2& ) -> 
+       TraditionalForm[(1 - $CellContext`z)^(-2) $CellContext`z], (
+        Beta[#, 1, 2]& ) -> TraditionalForm[
+         HoldForm[
+          Beta[$CellContext`z, 1, 2]]], (Beta[#, 1, 3]& ) -> TraditionalForm[
+         HoldForm[
+          Beta[$CellContext`z, 1, 3]]], (Beta[#, 1, 4]& ) -> TraditionalForm[
+         HoldForm[
+          Beta[$CellContext`z, 1, 4]]], Cos -> TraditionalForm[
+         Cos[$CellContext`z]], ArcCos -> TraditionalForm[
+         Sec[$CellContext`z]], Cot -> TraditionalForm[
+         Cot[$CellContext`z]], ArcCot -> TraditionalForm[
+         Tan[$CellContext`z]], Csc -> TraditionalForm[
+         Csc[$CellContext`z]], ArcCsc -> TraditionalForm[
+         Sin[$CellContext`z]], Exp -> 
+       TraditionalForm[E^$CellContext`z], (Exp[1/#]& ) -> 
+       TraditionalForm[E^"1/z"], Gamma -> TraditionalForm[
+         Gamma[$CellContext`z]], (Gamma[2, #]& ) -> TraditionalForm[
+         Gamma[2, $CellContext`z]], (Gamma[3, #]& ) -> TraditionalForm[
+         Gamma[3, $CellContext`z]], (# + 1/#& ) -> 
+       TraditionalForm[$CellContext`z^(-1) + $CellContext`z], (
+        WeierstrassP[#, {1, 2}]& ) -> TraditionalForm[
+         WeierstrassP[$CellContext`z, {1, 2}]], (WeierstrassP[#, {1, I}]& ) -> 
+       TraditionalForm[
+         WeierstrassP[$CellContext`z, {1, 
+           Complex[0, 1]}]], Sec -> TraditionalForm[
+         Sec[$CellContext`z]], Sin -> TraditionalForm[
+         Sin[$CellContext`z]], (Sin[1/#]& ) -> TraditionalForm[
+         Sin[$CellContext`z^(-1)]], ArcSin -> TraditionalForm[
+         Csc[$CellContext`z]], Tan -> TraditionalForm[
+         Tan[$CellContext`z]], ArcTan -> TraditionalForm[
+         Cot[$CellContext`z]], Zeta -> TraditionalForm[
+         Zeta[$CellContext`z]]}}, {{
+       Hold[$CellContext`P$$], 150, 
+       Style["detail", 12]}, {50 -> "low", 100 -> "medium", 150 -> "high"}}, {{
+       Hold[$CellContext`A$$], Rational[1, 8] Pi, 
+       Style["range", 12]}, {
+      Rational[1, 8] Pi -> "\[Pi]/8", Rational[1, 4] Pi -> "\[Pi]/4", 
+       Rational[1, 2] Pi -> "\[Pi]/2", Rational[2, 3] Pi -> "2\[Pi]/3", Pi, 
+       Rational[3, 2] Pi -> "3\[Pi]/2", 2 Pi, 4 Pi, 8 Pi}}, {
+      Hold[
+       Column[{
+         Manipulate`Place[1], 
+         Style["", 5], 
+         Manipulate`Place[2], 
+         Style["", 5], 
+         Manipulate`Place[3]}]], Manipulate`Dump`ThisIsNotAControl}}, 
+    Typeset`size$$ = {400., {193., 198.}}, Typeset`update$$ = 0, 
+    Typeset`initDone$$, Typeset`skipInitDone$$ = 
+    True, $CellContext`f$681952$$ = False, $CellContext`P$681953$$ = 
+    False, $CellContext`A$681954$$ = False}, 
+    DynamicBox[Manipulate`ManipulateBoxes[
+     2, StandardForm, 
+      "Variables" :> {$CellContext`A$$ = Rational[1, 8] Pi, $CellContext`f$$ = 
+        Exp[1/#]& , $CellContext`P$$ = 150}, "ControllerVariables" :> {
+        Hold[$CellContext`f$$, $CellContext`f$681952$$, False], 
+        Hold[$CellContext`P$$, $CellContext`P$681953$$, False], 
+        Hold[$CellContext`A$$, $CellContext`A$681954$$, False]}, 
+      "OtherVariables" :> {
+       Typeset`show$$, Typeset`bookmarkList$$, Typeset`bookmarkMode$$, 
+        Typeset`animator$$, Typeset`animvar$$, Typeset`name$$, 
+        Typeset`specs$$, Typeset`size$$, Typeset`update$$, Typeset`initDone$$,
+         Typeset`skipInitDone$$}, "Body" :> 
+      Module[{$CellContext`x0$ = 0, $CellContext`y0$ = 0}, 
+        ParametricPlot[{
+          Re[$CellContext`x + I $CellContext`y], 
+          
+          Im[$CellContext`x + 
+           I $CellContext`y]}, {$CellContext`x, $CellContext`x0$ - \
+$CellContext`A$$, $CellContext`x0$ + $CellContext`A$$}, {$CellContext`y, \
+$CellContext`x0$ - $CellContext`A$$, $CellContext`x0$ + $CellContext`A$$}, 
+         ColorFunction -> Function[{$CellContext`x$, $CellContext`y$}, 
+           Hue[(Mod[Arg[
+                 $CellContext`f$$[$CellContext`x$ + I $CellContext`y$]] + Pi, 
+               2 Pi] + Pi)/(2 Pi), 1, 1 - (2/Pi) ArcTan[
+              Log[1 + 1/Abs[
+                 $CellContext`f$$[$CellContext`x$ + I $CellContext`y$]]]], 
+            1 - (2/Pi) ArcTan[Log[1 + Abs[
+                  $CellContext`f$$[$CellContext`x$ + I $CellContext`y$]]]/
+              2]]], ColorFunctionScaling -> False, 
+         PlotRange -> {{$CellContext`x0$ - $CellContext`A$$, $CellContext`x0$ + \
+$CellContext`A$$}, {$CellContext`y0$ - $CellContext`A$$, $CellContext`y0$ + \
+$CellContext`A$$}}, PlotPoints -> $CellContext`P$$, Mesh -> None, Axes -> 
+         False, FrameStyle -> Black, ImageSize -> 400]], 
+      "Specifications" :> {{{$CellContext`f$$, Exp[1/#]& , 
+          Style[
+           Row[{
+             Style["f", Italic], "(", 
+             Style["x", Italic], ")="}], 12]}, {(#& ) -> 
+          TraditionalForm[$CellContext`z], ((1 - #)/(1 + #)& ) -> 
+          TraditionalForm["1+z"^(-1) (1 - $CellContext`z)], Log -> 
+          TraditionalForm[
+            Log[$CellContext`z]], (#^2& ) -> 
+          TraditionalForm[$CellContext`z^2], (#^(1/2)& ) -> 
+          TraditionalForm[$CellContext`z^Rational[1, 2]], (#/(1 - #)^2& ) -> 
+          TraditionalForm[(1 - $CellContext`z)^(-2) $CellContext`z], (
+           Beta[#, 1, 2]& ) -> TraditionalForm[
+            HoldForm[
+             Beta[$CellContext`z, 1, 2]]], (Beta[#, 1, 3]& ) -> 
+          TraditionalForm[
+            HoldForm[
+             Beta[$CellContext`z, 1, 3]]], (Beta[#, 1, 4]& ) -> 
+          TraditionalForm[
+            HoldForm[
+             Beta[$CellContext`z, 1, 4]]], Cos -> TraditionalForm[
+            Cos[$CellContext`z]], ArcCos -> TraditionalForm[
+            Sec[$CellContext`z]], Cot -> TraditionalForm[
+            Cot[$CellContext`z]], ArcCot -> TraditionalForm[
+            Tan[$CellContext`z]], Csc -> TraditionalForm[
+            Csc[$CellContext`z]], ArcCsc -> TraditionalForm[
+            Sin[$CellContext`z]], Exp -> 
+          TraditionalForm[E^$CellContext`z], (Exp[1/#]& ) -> 
+          TraditionalForm[E^"1/z"], Gamma -> TraditionalForm[
+            Gamma[$CellContext`z]], (Gamma[2, #]& ) -> TraditionalForm[
+            Gamma[2, $CellContext`z]], (Gamma[3, #]& ) -> TraditionalForm[
+            Gamma[3, $CellContext`z]], (# + 1/#& ) -> 
+          TraditionalForm[$CellContext`z^(-1) + $CellContext`z], (
+           WeierstrassP[#, {1, 2}]& ) -> TraditionalForm[
+            WeierstrassP[$CellContext`z, {1, 2}]], (
+           WeierstrassP[#, {1, I}]& ) -> TraditionalForm[
+            WeierstrassP[$CellContext`z, {1, 
+              Complex[0, 1]}]], Sec -> TraditionalForm[
+            Sec[$CellContext`z]], Sin -> TraditionalForm[
+            Sin[$CellContext`z]], (Sin[1/#]& ) -> TraditionalForm[
+            Sin[$CellContext`z^(-1)]], ArcSin -> TraditionalForm[
+            Csc[$CellContext`z]], Tan -> TraditionalForm[
+            Tan[$CellContext`z]], ArcTan -> TraditionalForm[
+            Cot[$CellContext`z]], Zeta -> TraditionalForm[
+            Zeta[$CellContext`z]]}, 
+         Appearance -> ("Vertical" -> {Automatic, 2}), ControlType -> 
+         SetterBar, ControlPlacement -> 1}, {{$CellContext`P$$, 150, 
+          Style["detail", 12]}, {50 -> "low", 100 -> "medium", 150 -> "high"},
+          ControlPlacement -> 2}, {{$CellContext`A$$, Rational[1, 8] Pi, 
+          Style["range", 12]}, {
+         Rational[1, 8] Pi -> "\[Pi]/8", Rational[1, 4] Pi -> "\[Pi]/4", 
+          Rational[1, 2] Pi -> "\[Pi]/2", Rational[2, 3] Pi -> "2\[Pi]/3", Pi,
+           Rational[3, 2] Pi -> "3\[Pi]/2", 2 Pi, 4 Pi, 8 Pi}, 
+         Appearance -> ("Vertical" -> {Automatic, 3}), ControlType -> 
+         SetterBar, ControlPlacement -> 3}, 
+        Column[{
+          Manipulate`Place[1], 
+          Style["", 5], 
+          Manipulate`Place[2], 
+          Style["", 5], 
+          Manipulate`Place[3]}]}, 
+      "Options" :> {ControlPlacement -> Left, AutorunSequencing -> {1}}, 
+      "DefaultOptions" :> {ControllerLinking -> True}],
+     ImageSizeCache->{591., {236., 242.}},
+     SingleEvaluation->True],
+    Deinitialization:>None,
+    DynamicModuleValues:>{},
+    SynchronousInitialization->True,
+    UndoTrackedVariables:>{Typeset`show$$, Typeset`bookmarkMode$$},
+    UnsavedVariables:>{Typeset`initDone$$},
+    UntrackedVariables:>{Typeset`size$$}], "Manipulate",
+   Deployed->True,
+   StripOnInput->False],
+  Manipulate`InterpretManipulate[1]]], "Output",
+ CellID->1948286636]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["", "SnapshotsSection"],
+
+Cell[BoxData[
+ TagBox[
+  StyleBox[
+   DynamicModuleBox[{$CellContext`A$$ = Rational[2, 3] 
+    Pi, $CellContext`f$$ = (1 - #)/(1 + #)& , $CellContext`P$$ = 150, 
+    Typeset`show$$ = True, Typeset`bookmarkList$$ = {}, 
+    Typeset`bookmarkMode$$ = "Menu", Typeset`animator$$, Typeset`animvar$$ = 
+    1, Typeset`name$$ = "\"untitled\"", Typeset`specs$$ = {{{
+       Hold[$CellContext`f$$], (1 - #)/(1 + #)& , 
+       Style[
+        Row[{
+          Style["f", Italic], "(", 
+          Style["x", Italic], ")="}], 12]}, {(#& ) -> 
+       TraditionalForm[$CellContext`z], ((1 - #)/(1 + #)& ) -> 
+       TraditionalForm["1+z"^(-1) (1 - $CellContext`z)], Log -> 
+       TraditionalForm[
+         Log[$CellContext`z]], (#^2& ) -> 
+       TraditionalForm[$CellContext`z^2], (#^(1/2)& ) -> 
+       TraditionalForm[$CellContext`z^Rational[1, 2]], (#/(1 - #)^2& ) -> 
+       TraditionalForm[(1 - $CellContext`z)^(-2) $CellContext`z], (
+        Beta[#, 1, 2]& ) -> TraditionalForm[
+         HoldForm[
+          Beta[$CellContext`z, 1, 2]]], (Beta[#, 1, 3]& ) -> TraditionalForm[
+         HoldForm[
+          Beta[$CellContext`z, 1, 3]]], (Beta[#, 1, 4]& ) -> TraditionalForm[
+         HoldForm[
+          Beta[$CellContext`z, 1, 4]]], Cos -> TraditionalForm[
+         Cos[$CellContext`z]], ArcCos -> TraditionalForm[
+         Sec[$CellContext`z]], Cot -> TraditionalForm[
+         Cot[$CellContext`z]], ArcCot -> TraditionalForm[
+         Tan[$CellContext`z]], Csc -> TraditionalForm[
+         Csc[$CellContext`z]], ArcCsc -> TraditionalForm[
+         Sin[$CellContext`z]], Exp -> 
+       TraditionalForm[E^$CellContext`z], (Exp[1/#]& ) -> 
+       TraditionalForm[E^"1/z"], Gamma -> TraditionalForm[
+         Gamma[$CellContext`z]], (Gamma[2, #]& ) -> TraditionalForm[
+         Gamma[2, $CellContext`z]], (Gamma[3, #]& ) -> TraditionalForm[
+         Gamma[3, $CellContext`z]], (# + 1/#& ) -> 
+       TraditionalForm[$CellContext`z^(-1) + $CellContext`z], (
+        WeierstrassP[#, {1, 2}]& ) -> TraditionalForm[
+         WeierstrassP[$CellContext`z, {1, 2}]], (WeierstrassP[#, {1, I}]& ) -> 
+       TraditionalForm[
+         WeierstrassP[$CellContext`z, {1, 
+           Complex[0, 1]}]], Sec -> TraditionalForm[
+         Sec[$CellContext`z]], Sin -> TraditionalForm[
+         Sin[$CellContext`z]], (Sin[1/#]& ) -> TraditionalForm[
+         Sin[$CellContext`z^(-1)]], ArcSin -> TraditionalForm[
+         Csc[$CellContext`z]], Tan -> TraditionalForm[
+         Tan[$CellContext`z]], ArcTan -> TraditionalForm[
+         Cot[$CellContext`z]], Zeta -> TraditionalForm[
+         Zeta[$CellContext`z]]}}, {{
+       Hold[$CellContext`P$$], 150, 
+       Style["detail", 12]}, {50 -> "low", 100 -> "medium", 150 -> "high"}}, {{
+       Hold[$CellContext`A$$], Rational[2, 3] Pi, 
+       Style["range", 12]}, {
+      Rational[1, 8] Pi -> "\[Pi]/8", Rational[1, 4] Pi -> "\[Pi]/4", 
+       Rational[1, 2] Pi -> "\[Pi]/2", Rational[2, 3] Pi -> "2\[Pi]/3", Pi, 
+       Rational[3, 2] Pi -> "3\[Pi]/2", 2 Pi, 4 Pi, 8 Pi}}, {
+      Hold[
+       Column[{
+         Manipulate`Place[1], 
+         Style["", 5], 
+         Manipulate`Place[2], 
+         Style["", 5], 
+         Manipulate`Place[3]}]], Manipulate`Dump`ThisIsNotAControl}}, 
+    Typeset`size$$ = {400., {197., 202.}}, Typeset`update$$ = 0, 
+    Typeset`initDone$$, Typeset`skipInitDone$$ = 
+    True, $CellContext`f$682022$$ = False, $CellContext`P$682023$$ = 
+    False, $CellContext`A$682024$$ = False}, 
+    DynamicBox[Manipulate`ManipulateBoxes[
+     2, StandardForm, 
+      "Variables" :> {$CellContext`A$$ = 
+        Rational[2, 3] Pi, $CellContext`f$$ = (1 - #)/(
+         1 + #)& , $CellContext`P$$ = 150}, "ControllerVariables" :> {
+        Hold[$CellContext`f$$, $CellContext`f$682022$$, False], 
+        Hold[$CellContext`P$$, $CellContext`P$682023$$, False], 
+        Hold[$CellContext`A$$, $CellContext`A$682024$$, False]}, 
+      "OtherVariables" :> {
+       Typeset`show$$, Typeset`bookmarkList$$, Typeset`bookmarkMode$$, 
+        Typeset`animator$$, Typeset`animvar$$, Typeset`name$$, 
+        Typeset`specs$$, Typeset`size$$, Typeset`update$$, Typeset`initDone$$,
+         Typeset`skipInitDone$$}, "Body" :> 
+      Module[{$CellContext`x0$ = 0, $CellContext`y0$ = 0}, 
+        ParametricPlot[{
+          Re[$CellContext`x + I $CellContext`y], 
+          
+          Im[$CellContext`x + 
+           I $CellContext`y]}, {$CellContext`x, $CellContext`x0$ - \
+$CellContext`A$$, $CellContext`x0$ + $CellContext`A$$}, {$CellContext`y, \
+$CellContext`x0$ - $CellContext`A$$, $CellContext`x0$ + $CellContext`A$$}, 
+         ColorFunction -> Function[{$CellContext`x$, $CellContext`y$}, 
+           Hue[(Mod[Arg[
+                 $CellContext`f$$[$CellContext`x$ + I $CellContext`y$]] + Pi, 
+               2 Pi] + Pi)/(2 Pi), 1, 1 - (2/Pi) ArcTan[
+              Log[1 + 1/Abs[
+                 $CellContext`f$$[$CellContext`x$ + I $CellContext`y$]]]], 
+            1 - (2/Pi) ArcTan[Log[1 + Abs[
+                  $CellContext`f$$[$CellContext`x$ + I $CellContext`y$]]]/
+              2]]], ColorFunctionScaling -> False, 
+         PlotRange -> {{$CellContext`x0$ - $CellContext`A$$, $CellContext`x0$ + \
+$CellContext`A$$}, {$CellContext`y0$ - $CellContext`A$$, $CellContext`y0$ + \
+$CellContext`A$$}}, PlotPoints -> $CellContext`P$$, Mesh -> None, Axes -> 
+         False, FrameStyle -> Black, ImageSize -> 400]], 
+      "Specifications" :> {{{$CellContext`f$$, (1 - #)/(1 + #)& , 
+          Style[
+           Row[{
+             Style["f", Italic], "(", 
+             Style["x", Italic], ")="}], 12]}, {(#& ) -> 
+          TraditionalForm[$CellContext`z], ((1 - #)/(1 + #)& ) -> 
+          TraditionalForm["1+z"^(-1) (1 - $CellContext`z)], Log -> 
+          TraditionalForm[
+            Log[$CellContext`z]], (#^2& ) -> 
+          TraditionalForm[$CellContext`z^2], (#^(1/2)& ) -> 
+          TraditionalForm[$CellContext`z^Rational[1, 2]], (#/(1 - #)^2& ) -> 
+          TraditionalForm[(1 - $CellContext`z)^(-2) $CellContext`z], (
+           Beta[#, 1, 2]& ) -> TraditionalForm[
+            HoldForm[
+             Beta[$CellContext`z, 1, 2]]], (Beta[#, 1, 3]& ) -> 
+          TraditionalForm[
+            HoldForm[
+             Beta[$CellContext`z, 1, 3]]], (Beta[#, 1, 4]& ) -> 
+          TraditionalForm[
+            HoldForm[
+             Beta[$CellContext`z, 1, 4]]], Cos -> TraditionalForm[
+            Cos[$CellContext`z]], ArcCos -> TraditionalForm[
+            Sec[$CellContext`z]], Cot -> TraditionalForm[
+            Cot[$CellContext`z]], ArcCot -> TraditionalForm[
+            Tan[$CellContext`z]], Csc -> TraditionalForm[
+            Csc[$CellContext`z]], ArcCsc -> TraditionalForm[
+            Sin[$CellContext`z]], Exp -> 
+          TraditionalForm[E^$CellContext`z], (Exp[1/#]& ) -> 
+          TraditionalForm[E^"1/z"], Gamma -> TraditionalForm[
+            Gamma[$CellContext`z]], (Gamma[2, #]& ) -> TraditionalForm[
+            Gamma[2, $CellContext`z]], (Gamma[3, #]& ) -> TraditionalForm[
+            Gamma[3, $CellContext`z]], (# + 1/#& ) -> 
+          TraditionalForm[$CellContext`z^(-1) + $CellContext`z], (
+           WeierstrassP[#, {1, 2}]& ) -> TraditionalForm[
+            WeierstrassP[$CellContext`z, {1, 2}]], (
+           WeierstrassP[#, {1, I}]& ) -> TraditionalForm[
+            WeierstrassP[$CellContext`z, {1, 
+              Complex[0, 1]}]], Sec -> TraditionalForm[
+            Sec[$CellContext`z]], Sin -> TraditionalForm[
+            Sin[$CellContext`z]], (Sin[1/#]& ) -> TraditionalForm[
+            Sin[$CellContext`z^(-1)]], ArcSin -> TraditionalForm[
+            Csc[$CellContext`z]], Tan -> TraditionalForm[
+            Tan[$CellContext`z]], ArcTan -> TraditionalForm[
+            Cot[$CellContext`z]], Zeta -> TraditionalForm[
+            Zeta[$CellContext`z]]}, 
+         Appearance -> ("Vertical" -> {Automatic, 2}), ControlType -> 
+         SetterBar, ControlPlacement -> 1}, {{$CellContext`P$$, 150, 
+          Style["detail", 12]}, {50 -> "low", 100 -> "medium", 150 -> "high"},
+          ControlPlacement -> 2}, {{$CellContext`A$$, Rational[2, 3] Pi, 
+          Style["range", 12]}, {
+         Rational[1, 8] Pi -> "\[Pi]/8", Rational[1, 4] Pi -> "\[Pi]/4", 
+          Rational[1, 2] Pi -> "\[Pi]/2", Rational[2, 3] Pi -> "2\[Pi]/3", Pi,
+           Rational[3, 2] Pi -> "3\[Pi]/2", 2 Pi, 4 Pi, 8 Pi}, 
+         Appearance -> ("Vertical" -> {Automatic, 3}), ControlType -> 
+         SetterBar, ControlPlacement -> 3}, 
+        Column[{
+          Manipulate`Place[1], 
+          Style["", 5], 
+          Manipulate`Place[2], 
+          Style["", 5], 
+          Manipulate`Place[3]}]}, 
+      "Options" :> {ControlPlacement -> Left, AutorunSequencing -> {1}}, 
+      "DefaultOptions" :> {ControllerLinking -> True}],
+     ImageSizeCache->{591., {236., 242.}},
+     SingleEvaluation->True],
+    Deinitialization:>None,
+    DynamicModuleValues:>{},
+    SynchronousInitialization->True,
+    UndoTrackedVariables:>{Typeset`show$$, Typeset`bookmarkMode$$},
+    UnsavedVariables:>{Typeset`initDone$$},
+    UntrackedVariables:>{Typeset`size$$}], "Manipulate",
+   Deployed->True,
+   StripOnInput->False],
+  Manipulate`InterpretManipulate[1]]], "Output",
+ CellID->22841796],
+
+Cell[BoxData[
+ TagBox[
+  StyleBox[
+   DynamicModuleBox[{$CellContext`A$$ = Rational[3, 2] Pi, $CellContext`f$$ = 
+    Exp, $CellContext`P$$ = 150, Typeset`show$$ = True, 
+    Typeset`bookmarkList$$ = {}, Typeset`bookmarkMode$$ = "Menu", 
+    Typeset`animator$$, Typeset`animvar$$ = 1, Typeset`name$$ = 
+    "\"untitled\"", Typeset`specs$$ = {{{
+       Hold[$CellContext`f$$], Exp, 
+       Style[
+        Row[{
+          Style["f", Italic], "(", 
+          Style["x", Italic], ")="}], 12]}, {(#& ) -> 
+       TraditionalForm[$CellContext`z], ((1 - #)/(1 + #)& ) -> 
+       TraditionalForm["1+z"^(-1) (1 - $CellContext`z)], Log -> 
+       TraditionalForm[
+         Log[$CellContext`z]], (#^2& ) -> 
+       TraditionalForm[$CellContext`z^2], (#^(1/2)& ) -> 
+       TraditionalForm[$CellContext`z^Rational[1, 2]], (#/(1 - #)^2& ) -> 
+       TraditionalForm[(1 - $CellContext`z)^(-2) $CellContext`z], (
+        Beta[#, 1, 2]& ) -> TraditionalForm[
+         HoldForm[
+          Beta[$CellContext`z, 1, 2]]], (Beta[#, 1, 3]& ) -> TraditionalForm[
+         HoldForm[
+          Beta[$CellContext`z, 1, 3]]], (Beta[#, 1, 4]& ) -> TraditionalForm[
+         HoldForm[
+          Beta[$CellContext`z, 1, 4]]], Cos -> TraditionalForm[
+         Cos[$CellContext`z]], ArcCos -> TraditionalForm[
+         Sec[$CellContext`z]], Cot -> TraditionalForm[
+         Cot[$CellContext`z]], ArcCot -> TraditionalForm[
+         Tan[$CellContext`z]], Csc -> TraditionalForm[
+         Csc[$CellContext`z]], ArcCsc -> TraditionalForm[
+         Sin[$CellContext`z]], Exp -> 
+       TraditionalForm[E^$CellContext`z], (Exp[1/#]& ) -> 
+       TraditionalForm[E^"1/z"], Gamma -> TraditionalForm[
+         Gamma[$CellContext`z]], (Gamma[2, #]& ) -> TraditionalForm[
+         Gamma[2, $CellContext`z]], (Gamma[3, #]& ) -> TraditionalForm[
+         Gamma[3, $CellContext`z]], (# + 1/#& ) -> 
+       TraditionalForm[$CellContext`z^(-1) + $CellContext`z], (
+        WeierstrassP[#, {1, 2}]& ) -> TraditionalForm[
+         WeierstrassP[$CellContext`z, {1, 2}]], (WeierstrassP[#, {1, I}]& ) -> 
+       TraditionalForm[
+         WeierstrassP[$CellContext`z, {1, 
+           Complex[0, 1]}]], Sec -> TraditionalForm[
+         Sec[$CellContext`z]], Sin -> TraditionalForm[
+         Sin[$CellContext`z]], (Sin[1/#]& ) -> TraditionalForm[
+         Sin[$CellContext`z^(-1)]], ArcSin -> TraditionalForm[
+         Csc[$CellContext`z]], Tan -> TraditionalForm[
+         Tan[$CellContext`z]], ArcTan -> TraditionalForm[
+         Cot[$CellContext`z]], Zeta -> TraditionalForm[
+         Zeta[$CellContext`z]]}}, {{
+       Hold[$CellContext`P$$], 150, 
+       Style["detail", 12]}, {50 -> "low", 100 -> "medium", 150 -> "high"}}, {{
+       Hold[$CellContext`A$$], Rational[3, 2] Pi, 
+       Style["range", 12]}, {
+      Rational[1, 8] Pi -> "\[Pi]/8", Rational[1, 4] Pi -> "\[Pi]/4", 
+       Rational[1, 2] Pi -> "\[Pi]/2", Rational[2, 3] Pi -> "2\[Pi]/3", Pi, 
+       Rational[3, 2] Pi -> "3\[Pi]/2", 2 Pi, 4 Pi, 8 Pi}}, {
+      Hold[
+       Column[{
+         Manipulate`Place[1], 
+         Style["", 5], 
+         Manipulate`Place[2], 
+         Style["", 5], 
+         Manipulate`Place[3]}]], Manipulate`Dump`ThisIsNotAControl}}, 
+    Typeset`size$$ = {400., {197., 202.}}, Typeset`update$$ = 0, 
+    Typeset`initDone$$, Typeset`skipInitDone$$ = 
+    True, $CellContext`f$682092$$ = False, $CellContext`P$682093$$ = 
+    False, $CellContext`A$682094$$ = False}, 
+    DynamicBox[Manipulate`ManipulateBoxes[
+     2, StandardForm, 
+      "Variables" :> {$CellContext`A$$ = Rational[3, 2] Pi, $CellContext`f$$ = 
+        Exp, $CellContext`P$$ = 150}, "ControllerVariables" :> {
+        Hold[$CellContext`f$$, $CellContext`f$682092$$, False], 
+        Hold[$CellContext`P$$, $CellContext`P$682093$$, False], 
+        Hold[$CellContext`A$$, $CellContext`A$682094$$, False]}, 
+      "OtherVariables" :> {
+       Typeset`show$$, Typeset`bookmarkList$$, Typeset`bookmarkMode$$, 
+        Typeset`animator$$, Typeset`animvar$$, Typeset`name$$, 
+        Typeset`specs$$, Typeset`size$$, Typeset`update$$, Typeset`initDone$$,
+         Typeset`skipInitDone$$}, "Body" :> 
+      Module[{$CellContext`x0$ = 0, $CellContext`y0$ = 0}, 
+        ParametricPlot[{
+          Re[$CellContext`x + I $CellContext`y], 
+          
+          Im[$CellContext`x + 
+           I $CellContext`y]}, {$CellContext`x, $CellContext`x0$ - \
+$CellContext`A$$, $CellContext`x0$ + $CellContext`A$$}, {$CellContext`y, \
+$CellContext`x0$ - $CellContext`A$$, $CellContext`x0$ + $CellContext`A$$}, 
+         ColorFunction -> Function[{$CellContext`x$, $CellContext`y$}, 
+           Hue[(Mod[Arg[
+                 $CellContext`f$$[$CellContext`x$ + I $CellContext`y$]] + Pi, 
+               2 Pi] + Pi)/(2 Pi), 1, 1 - (2/Pi) ArcTan[
+              Log[1 + 1/Abs[
+                 $CellContext`f$$[$CellContext`x$ + I $CellContext`y$]]]], 
+            1 - (2/Pi) ArcTan[Log[1 + Abs[
+                  $CellContext`f$$[$CellContext`x$ + I $CellContext`y$]]]/
+              2]]], ColorFunctionScaling -> False, 
+         PlotRange -> {{$CellContext`x0$ - $CellContext`A$$, $CellContext`x0$ + \
+$CellContext`A$$}, {$CellContext`y0$ - $CellContext`A$$, $CellContext`y0$ + \
+$CellContext`A$$}}, PlotPoints -> $CellContext`P$$, Mesh -> None, Axes -> 
+         False, FrameStyle -> Black, ImageSize -> 400]], 
+      "Specifications" :> {{{$CellContext`f$$, Exp, 
+          Style[
+           Row[{
+             Style["f", Italic], "(", 
+             Style["x", Italic], ")="}], 12]}, {(#& ) -> 
+          TraditionalForm[$CellContext`z], ((1 - #)/(1 + #)& ) -> 
+          TraditionalForm["1+z"^(-1) (1 - $CellContext`z)], Log -> 
+          TraditionalForm[
+            Log[$CellContext`z]], (#^2& ) -> 
+          TraditionalForm[$CellContext`z^2], (#^(1/2)& ) -> 
+          TraditionalForm[$CellContext`z^Rational[1, 2]], (#/(1 - #)^2& ) -> 
+          TraditionalForm[(1 - $CellContext`z)^(-2) $CellContext`z], (
+           Beta[#, 1, 2]& ) -> TraditionalForm[
+            HoldForm[
+             Beta[$CellContext`z, 1, 2]]], (Beta[#, 1, 3]& ) -> 
+          TraditionalForm[
+            HoldForm[
+             Beta[$CellContext`z, 1, 3]]], (Beta[#, 1, 4]& ) -> 
+          TraditionalForm[
+            HoldForm[
+             Beta[$CellContext`z, 1, 4]]], Cos -> TraditionalForm[
+            Cos[$CellContext`z]], ArcCos -> TraditionalForm[
+            Sec[$CellContext`z]], Cot -> TraditionalForm[
+            Cot[$CellContext`z]], ArcCot -> TraditionalForm[
+            Tan[$CellContext`z]], Csc -> TraditionalForm[
+            Csc[$CellContext`z]], ArcCsc -> TraditionalForm[
+            Sin[$CellContext`z]], Exp -> 
+          TraditionalForm[E^$CellContext`z], (Exp[1/#]& ) -> 
+          TraditionalForm[E^"1/z"], Gamma -> TraditionalForm[
+            Gamma[$CellContext`z]], (Gamma[2, #]& ) -> TraditionalForm[
+            Gamma[2, $CellContext`z]], (Gamma[3, #]& ) -> TraditionalForm[
+            Gamma[3, $CellContext`z]], (# + 1/#& ) -> 
+          TraditionalForm[$CellContext`z^(-1) + $CellContext`z], (
+           WeierstrassP[#, {1, 2}]& ) -> TraditionalForm[
+            WeierstrassP[$CellContext`z, {1, 2}]], (
+           WeierstrassP[#, {1, I}]& ) -> TraditionalForm[
+            WeierstrassP[$CellContext`z, {1, 
+              Complex[0, 1]}]], Sec -> TraditionalForm[
+            Sec[$CellContext`z]], Sin -> TraditionalForm[
+            Sin[$CellContext`z]], (Sin[1/#]& ) -> TraditionalForm[
+            Sin[$CellContext`z^(-1)]], ArcSin -> TraditionalForm[
+            Csc[$CellContext`z]], Tan -> TraditionalForm[
+            Tan[$CellContext`z]], ArcTan -> TraditionalForm[
+            Cot[$CellContext`z]], Zeta -> TraditionalForm[
+            Zeta[$CellContext`z]]}, 
+         Appearance -> ("Vertical" -> {Automatic, 2}), ControlType -> 
+         SetterBar, ControlPlacement -> 1}, {{$CellContext`P$$, 150, 
+          Style["detail", 12]}, {50 -> "low", 100 -> "medium", 150 -> "high"},
+          ControlPlacement -> 2}, {{$CellContext`A$$, Rational[3, 2] Pi, 
+          Style["range", 12]}, {
+         Rational[1, 8] Pi -> "\[Pi]/8", Rational[1, 4] Pi -> "\[Pi]/4", 
+          Rational[1, 2] Pi -> "\[Pi]/2", Rational[2, 3] Pi -> "2\[Pi]/3", Pi,
+           Rational[3, 2] Pi -> "3\[Pi]/2", 2 Pi, 4 Pi, 8 Pi}, 
+         Appearance -> ("Vertical" -> {Automatic, 3}), ControlType -> 
+         SetterBar, ControlPlacement -> 3}, 
+        Column[{
+          Manipulate`Place[1], 
+          Style["", 5], 
+          Manipulate`Place[2], 
+          Style["", 5], 
+          Manipulate`Place[3]}]}, 
+      "Options" :> {ControlPlacement -> Left, AutorunSequencing -> {1}}, 
+      "DefaultOptions" :> {ControllerLinking -> True}],
+     ImageSizeCache->{591., {236., 242.}},
+     SingleEvaluation->True],
+    Deinitialization:>None,
+    DynamicModuleValues:>{},
+    SynchronousInitialization->True,
+    UndoTrackedVariables:>{Typeset`show$$, Typeset`bookmarkMode$$},
+    UnsavedVariables:>{Typeset`initDone$$},
+    UntrackedVariables:>{Typeset`size$$}], "Manipulate",
+   Deployed->True,
+   StripOnInput->False],
+  Manipulate`InterpretManipulate[1]]], "Output",
+ CellID->1649976206],
+
+Cell[BoxData[
+ TagBox[
+  StyleBox[
+   DynamicModuleBox[{$CellContext`A$$ = Rational[2, 3] Pi, $CellContext`f$$ = 
+    Tan, $CellContext`P$$ = 150, Typeset`show$$ = True, 
+    Typeset`bookmarkList$$ = {}, Typeset`bookmarkMode$$ = "Menu", 
+    Typeset`animator$$, Typeset`animvar$$ = 1, Typeset`name$$ = 
+    "\"untitled\"", Typeset`specs$$ = {{{
+       Hold[$CellContext`f$$], Tan, 
+       Style[
+        Row[{
+          Style["f", Italic], "(", 
+          Style["x", Italic], ")="}], 12]}, {(#& ) -> 
+       TraditionalForm[$CellContext`z], ((1 - #)/(1 + #)& ) -> 
+       TraditionalForm["1+z"^(-1) (1 - $CellContext`z)], Log -> 
+       TraditionalForm[
+         Log[$CellContext`z]], (#^2& ) -> 
+       TraditionalForm[$CellContext`z^2], (#^(1/2)& ) -> 
+       TraditionalForm[$CellContext`z^Rational[1, 2]], (#/(1 - #)^2& ) -> 
+       TraditionalForm[(1 - $CellContext`z)^(-2) $CellContext`z], (
+        Beta[#, 1, 2]& ) -> TraditionalForm[
+         HoldForm[
+          Beta[$CellContext`z, 1, 2]]], (Beta[#, 1, 3]& ) -> TraditionalForm[
+         HoldForm[
+          Beta[$CellContext`z, 1, 3]]], (Beta[#, 1, 4]& ) -> TraditionalForm[
+         HoldForm[
+          Beta[$CellContext`z, 1, 4]]], Cos -> TraditionalForm[
+         Cos[$CellContext`z]], ArcCos -> TraditionalForm[
+         Sec[$CellContext`z]], Cot -> TraditionalForm[
+         Cot[$CellContext`z]], ArcCot -> TraditionalForm[
+         Tan[$CellContext`z]], Csc -> TraditionalForm[
+         Csc[$CellContext`z]], ArcCsc -> TraditionalForm[
+         Sin[$CellContext`z]], Exp -> 
+       TraditionalForm[E^$CellContext`z], (Exp[1/#]& ) -> 
+       TraditionalForm[E^"1/z"], Gamma -> TraditionalForm[
+         Gamma[$CellContext`z]], (Gamma[2, #]& ) -> TraditionalForm[
+         Gamma[2, $CellContext`z]], (Gamma[3, #]& ) -> TraditionalForm[
+         Gamma[3, $CellContext`z]], (# + 1/#& ) -> 
+       TraditionalForm[$CellContext`z^(-1) + $CellContext`z], (
+        WeierstrassP[#, {1, 2}]& ) -> TraditionalForm[
+         WeierstrassP[$CellContext`z, {1, 2}]], (WeierstrassP[#, {1, I}]& ) -> 
+       TraditionalForm[
+         WeierstrassP[$CellContext`z, {1, 
+           Complex[0, 1]}]], Sec -> TraditionalForm[
+         Sec[$CellContext`z]], Sin -> TraditionalForm[
+         Sin[$CellContext`z]], (Sin[1/#]& ) -> TraditionalForm[
+         Sin[$CellContext`z^(-1)]], ArcSin -> TraditionalForm[
+         Csc[$CellContext`z]], Tan -> TraditionalForm[
+         Tan[$CellContext`z]], ArcTan -> TraditionalForm[
+         Cot[$CellContext`z]], Zeta -> TraditionalForm[
+         Zeta[$CellContext`z]]}}, {{
+       Hold[$CellContext`P$$], 150, 
+       Style["detail", 12]}, {50 -> "low", 100 -> "medium", 150 -> "high"}}, {{
+       Hold[$CellContext`A$$], Rational[2, 3] Pi, 
+       Style["range", 12]}, {
+      Rational[1, 8] Pi -> "\[Pi]/8", Rational[1, 4] Pi -> "\[Pi]/4", 
+       Rational[1, 2] Pi -> "\[Pi]/2", Rational[2, 3] Pi -> "2\[Pi]/3", Pi, 
+       Rational[3, 2] Pi -> "3\[Pi]/2", 2 Pi, 4 Pi, 8 Pi}}, {
+      Hold[
+       Column[{
+         Manipulate`Place[1], 
+         Style["", 5], 
+         Manipulate`Place[2], 
+         Style["", 5], 
+         Manipulate`Place[3]}]], Manipulate`Dump`ThisIsNotAControl}}, 
+    Typeset`size$$ = {400., {197., 202.}}, Typeset`update$$ = 0, 
+    Typeset`initDone$$, Typeset`skipInitDone$$ = 
+    True, $CellContext`f$682162$$ = False, $CellContext`P$682163$$ = 
+    False, $CellContext`A$682164$$ = False}, 
+    DynamicBox[Manipulate`ManipulateBoxes[
+     2, StandardForm, 
+      "Variables" :> {$CellContext`A$$ = Rational[2, 3] Pi, $CellContext`f$$ = 
+        Tan, $CellContext`P$$ = 150}, "ControllerVariables" :> {
+        Hold[$CellContext`f$$, $CellContext`f$682162$$, False], 
+        Hold[$CellContext`P$$, $CellContext`P$682163$$, False], 
+        Hold[$CellContext`A$$, $CellContext`A$682164$$, False]}, 
+      "OtherVariables" :> {
+       Typeset`show$$, Typeset`bookmarkList$$, Typeset`bookmarkMode$$, 
+        Typeset`animator$$, Typeset`animvar$$, Typeset`name$$, 
+        Typeset`specs$$, Typeset`size$$, Typeset`update$$, Typeset`initDone$$,
+         Typeset`skipInitDone$$}, "Body" :> 
+      Module[{$CellContext`x0$ = 0, $CellContext`y0$ = 0}, 
+        ParametricPlot[{
+          Re[$CellContext`x + I $CellContext`y], 
+          
+          Im[$CellContext`x + 
+           I $CellContext`y]}, {$CellContext`x, $CellContext`x0$ - \
+$CellContext`A$$, $CellContext`x0$ + $CellContext`A$$}, {$CellContext`y, \
+$CellContext`x0$ - $CellContext`A$$, $CellContext`x0$ + $CellContext`A$$}, 
+         ColorFunction -> Function[{$CellContext`x$, $CellContext`y$}, 
+           Hue[(Mod[Arg[
+                 $CellContext`f$$[$CellContext`x$ + I $CellContext`y$]] + Pi, 
+               2 Pi] + Pi)/(2 Pi), 1, 1 - (2/Pi) ArcTan[
+              Log[1 + 1/Abs[
+                 $CellContext`f$$[$CellContext`x$ + I $CellContext`y$]]]], 
+            1 - (2/Pi) ArcTan[Log[1 + Abs[
+                  $CellContext`f$$[$CellContext`x$ + I $CellContext`y$]]]/
+              2]]], ColorFunctionScaling -> False, 
+         PlotRange -> {{$CellContext`x0$ - $CellContext`A$$, $CellContext`x0$ + \
+$CellContext`A$$}, {$CellContext`y0$ - $CellContext`A$$, $CellContext`y0$ + \
+$CellContext`A$$}}, PlotPoints -> $CellContext`P$$, Mesh -> None, Axes -> 
+         False, FrameStyle -> Black, ImageSize -> 400]], 
+      "Specifications" :> {{{$CellContext`f$$, Tan, 
+          Style[
+           Row[{
+             Style["f", Italic], "(", 
+             Style["x", Italic], ")="}], 12]}, {(#& ) -> 
+          TraditionalForm[$CellContext`z], ((1 - #)/(1 + #)& ) -> 
+          TraditionalForm["1+z"^(-1) (1 - $CellContext`z)], Log -> 
+          TraditionalForm[
+            Log[$CellContext`z]], (#^2& ) -> 
+          TraditionalForm[$CellContext`z^2], (#^(1/2)& ) -> 
+          TraditionalForm[$CellContext`z^Rational[1, 2]], (#/(1 - #)^2& ) -> 
+          TraditionalForm[(1 - $CellContext`z)^(-2) $CellContext`z], (
+           Beta[#, 1, 2]& ) -> TraditionalForm[
+            HoldForm[
+             Beta[$CellContext`z, 1, 2]]], (Beta[#, 1, 3]& ) -> 
+          TraditionalForm[
+            HoldForm[
+             Beta[$CellContext`z, 1, 3]]], (Beta[#, 1, 4]& ) -> 
+          TraditionalForm[
+            HoldForm[
+             Beta[$CellContext`z, 1, 4]]], Cos -> TraditionalForm[
+            Cos[$CellContext`z]], ArcCos -> TraditionalForm[
+            Sec[$CellContext`z]], Cot -> TraditionalForm[
+            Cot[$CellContext`z]], ArcCot -> TraditionalForm[
+            Tan[$CellContext`z]], Csc -> TraditionalForm[
+            Csc[$CellContext`z]], ArcCsc -> TraditionalForm[
+            Sin[$CellContext`z]], Exp -> 
+          TraditionalForm[E^$CellContext`z], (Exp[1/#]& ) -> 
+          TraditionalForm[E^"1/z"], Gamma -> TraditionalForm[
+            Gamma[$CellContext`z]], (Gamma[2, #]& ) -> TraditionalForm[
+            Gamma[2, $CellContext`z]], (Gamma[3, #]& ) -> TraditionalForm[
+            Gamma[3, $CellContext`z]], (# + 1/#& ) -> 
+          TraditionalForm[$CellContext`z^(-1) + $CellContext`z], (
+           WeierstrassP[#, {1, 2}]& ) -> TraditionalForm[
+            WeierstrassP[$CellContext`z, {1, 2}]], (
+           WeierstrassP[#, {1, I}]& ) -> TraditionalForm[
+            WeierstrassP[$CellContext`z, {1, 
+              Complex[0, 1]}]], Sec -> TraditionalForm[
+            Sec[$CellContext`z]], Sin -> TraditionalForm[
+            Sin[$CellContext`z]], (Sin[1/#]& ) -> TraditionalForm[
+            Sin[$CellContext`z^(-1)]], ArcSin -> TraditionalForm[
+            Csc[$CellContext`z]], Tan -> TraditionalForm[
+            Tan[$CellContext`z]], ArcTan -> TraditionalForm[
+            Cot[$CellContext`z]], Zeta -> TraditionalForm[
+            Zeta[$CellContext`z]]}, 
+         Appearance -> ("Vertical" -> {Automatic, 2}), ControlType -> 
+         SetterBar, ControlPlacement -> 1}, {{$CellContext`P$$, 150, 
+          Style["detail", 12]}, {50 -> "low", 100 -> "medium", 150 -> "high"},
+          ControlPlacement -> 2}, {{$CellContext`A$$, Rational[2, 3] Pi, 
+          Style["range", 12]}, {
+         Rational[1, 8] Pi -> "\[Pi]/8", Rational[1, 4] Pi -> "\[Pi]/4", 
+          Rational[1, 2] Pi -> "\[Pi]/2", Rational[2, 3] Pi -> "2\[Pi]/3", Pi,
+           Rational[3, 2] Pi -> "3\[Pi]/2", 2 Pi, 4 Pi, 8 Pi}, 
+         Appearance -> ("Vertical" -> {Automatic, 3}), ControlType -> 
+         SetterBar, ControlPlacement -> 3}, 
+        Column[{
+          Manipulate`Place[1], 
+          Style["", 5], 
+          Manipulate`Place[2], 
+          Style["", 5], 
+          Manipulate`Place[3]}]}, 
+      "Options" :> {ControlPlacement -> Left, AutorunSequencing -> {1}}, 
+      "DefaultOptions" :> {ControllerLinking -> True}],
+     ImageSizeCache->{591., {236., 242.}},
+     SingleEvaluation->True],
+    Deinitialization:>None,
+    DynamicModuleValues:>{},
+    SynchronousInitialization->True,
+    UndoTrackedVariables:>{Typeset`show$$, Typeset`bookmarkMode$$},
+    UnsavedVariables:>{Typeset`initDone$$},
+    UntrackedVariables:>{Typeset`size$$}], "Manipulate",
+   Deployed->True,
+   StripOnInput->False],
+  Manipulate`InterpretManipulate[1]]], "Output",
+ CellID->693760531]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["", "DetailsSection"],
+
+Cell[TextData[{
+ "The terms ",
+ StyleBox["domain coloring",
+  FontSlant->"Italic"],
+ " or ",
+ StyleBox["phase portrait",
+  FontSlant->"Italic"],
+ " refer to the type of visualization technique for functions of a complex \
+variable used here, or some variation thereof. For a function ",
+ Cell[BoxData[
+  FormBox["f", TraditionalForm]], "InlineMath"],
+ " of a complex variable, each point ",
+ Cell[BoxData[
+  FormBox["z", TraditionalForm]], "InlineMath"],
+ " in the complex plane is colored according to the value of ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{"f", "(", "z", ")"}], TraditionalForm]], "InlineMath"],
+ ". The brightness represents the absolute value (or modulus) of ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{"f", "(", "z", ")"}], TraditionalForm]], "InlineMath"],
+ ", with light representing large absolute value and dark representing small \
+absolute value. The hue represents the argument (or phase) of ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{"f", "(", "z", ")"}], TraditionalForm]], "InlineMath"],
+ ", with red representing positive real numbers, yellow-green representing \
+positive imaginary numbers, cyan representing negative real numbers, and so \
+forth."
+}], "DetailNotes",
+ CellChangeTimes->{{3.6652780893649173`*^9, 3.6652780924373236`*^9}, {
+   3.6652797926461134`*^9, 3.6652798058530483`*^9}, {3.665279898187821*^9, 
+   3.6652799045466475`*^9}, {3.6652799474032607`*^9, 
+   3.6652800422634563`*^9}, {3.6652800730125184`*^9, 
+   3.6652800775455575`*^9}, {3.6652801601217375`*^9, 
+   3.6652801896336727`*^9}, {3.6652803782216816`*^9, 3.665280607699664*^9}, {
+   3.66528158201828*^9, 3.6652816162410555`*^9}, 3.6654320056857066`*^9, {
+   3.665437118525399*^9, 3.665437119953407*^9}, {3.6655074833621893`*^9, 
+   3.665507504960294*^9}},
+ CellID->2015145],
+
+Cell[TextData[{
+ "These plots illustrate various phenomena in complex analysis. A dark spot \
+contains a zero of ",
+ Cell[BoxData[
+  FormBox["f", TraditionalForm]], "InlineMath"],
+ ", while a white spot contains a pole. The order of a zero or pole is given \
+by the number of rays of each color emanating from it. Where a single color \
+forms a saddle-shaped region (such as near the point ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    RowBox[{"\[Pi]", "/", "2"}], "+", 
+    RowBox[{"0", "\[ImaginaryI]"}]}], TraditionalForm]], "InlineMath"],
+ " for the function ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{"sin", "(", "z", ")"}], TraditionalForm]], "InlineMath"],
+ "), the derivative must have a zero. The graphs of ",
+ Cell[BoxData[
+  FormBox[
+   SuperscriptBox["\[ExponentialE]", 
+    RowBox[{"1", "/", "z"}]], TraditionalForm]], "InlineMath",
+  FontSlant->"Italic"],
+ " and ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{"sin", "(", 
+    RowBox[{"1", "/", "z"}], ")"}], TraditionalForm]], "InlineMath"],
+ " contain essential singularities, and in particular illustrate Picard's \
+great theorem that in any neighborhood of an essential singularity ",
+ Cell[BoxData[
+  FormBox["f", TraditionalForm]], "InlineMath"],
+ " must contain every complex value with at most one exception. Observe that \
+functions such as ",
+ Cell[BoxData[
+  FormBox["log", TraditionalForm]], "InlineMath"],
+ " and the inverse trigonometric functions exhibit branch cuts. "
+}], "DetailNotes",
+ CellChangeTimes->{{3.665280653527994*^9, 3.6652806771816325`*^9}, {
+  3.6652807092336082`*^9, 3.665280802435133*^9}, {3.6652808885056515`*^9, 
+  3.665280908140715*^9}, {3.665280944621089*^9, 3.66528105456913*^9}, {
+  3.665281093890526*^9, 3.665281175590765*^9}, {3.665281221062708*^9, 
+  3.6652812468485427`*^9}, {3.66528131765005*^9, 3.6652813455777807`*^9}, {
+  3.6652813960170755`*^9, 3.6652813960369215`*^9}, {3.6652815533279285`*^9, 
+  3.665281573532696*^9}, {3.665281630213396*^9, 3.6652816490041075`*^9}, {
+  3.6654321651629744`*^9, 3.665432192232649*^9}, {3.665507578431733*^9, 
+  3.665507580255137*^9}, {3.665507682038005*^9, 3.6655077003245564`*^9}, {
+  3.665507759354254*^9, 3.665507772315221*^9}, {3.6655078084348593`*^9, 
+  3.665507810946686*^9}},
+ CellID->23719831],
+
+Cell[TextData[{
+ "In addition to the standard polynomial, trigonometric, and exponential \
+functions, we have included: the M\[ODoubleDot]bius transformation ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    RowBox[{"(", 
+     RowBox[{"1", "-", "z"}], ")"}], "/", 
+    RowBox[{"(", 
+     RowBox[{"1", "+", "z"}], ")"}]}], TraditionalForm]], "InlineMath"],
+ ", the Joukowski map ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{"z", "+", 
+    RowBox[{"1", "/", "z"}]}], TraditionalForm]], "InlineMath"],
+ ", the ",
+ "Koebe",
+ " function ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{"z", "/", 
+    SuperscriptBox[
+     RowBox[{"(", 
+      RowBox[{"1", "-", "z"}], ")"}], "2"]}], TraditionalForm]], "InlineMath"],
+ ", a few instances of the beta functions ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    RowBox[{
+     SubscriptBox["\[CapitalBeta]", "z"], "(", 
+     RowBox[{"a", ",", "b"}], ")"}], "\[LongEqual]", 
+    RowBox[{
+     SubsuperscriptBox["\[Integral]", "0", "z"], 
+     RowBox[{
+      SuperscriptBox["t", 
+       RowBox[{"a", "-", "1"}]], 
+      SuperscriptBox[
+       RowBox[{"(", 
+        RowBox[{"1", "-", "t"}], ")"}], 
+       RowBox[{"b", "-", "1"}]], "d", "\[InvisibleSpace]", "t"}]}]}], 
+   TraditionalForm]], "InlineMath"],
+ ", the gamma functions ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    RowBox[{"\[CapitalGamma]", "(", "z", ")"}], "=", 
+    RowBox[{
+     SubsuperscriptBox["\[Integral]", "0", "\[Infinity]"], 
+     RowBox[{
+      SuperscriptBox["t", 
+       RowBox[{"z", "-", "1"}]], 
+      SuperscriptBox["e", 
+       RowBox[{"-", "t"}]], "d", "\[InvisibleSpace]", "t"}]}]}], 
+   TraditionalForm]], "InlineMath"],
+ " and ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    RowBox[{"\[CapitalGamma]", "(", 
+     RowBox[{"a", ",", "z"}], ")"}], "=", 
+    RowBox[{
+     SubsuperscriptBox["\[Integral]", "z", "\[Infinity]"], 
+     RowBox[{
+      SuperscriptBox["t", 
+       RowBox[{"a", "-", "1"}]], 
+      SuperscriptBox["e", 
+       RowBox[{"-", "t"}]], "d", "\[InvisibleSpace]", "t"}]}]}], 
+   TraditionalForm]], "InlineMath"],
+ ", and the Weierstrass \[WeierstrassP] functions ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{"\[WeierstrassP]", "(", 
+    RowBox[{
+     RowBox[{"u", ";", 
+      SubscriptBox["g", "2"]}], ",", 
+     SubscriptBox["g", "3"]}], ")"}], TraditionalForm]], "InlineMath"],
+ " defined by ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    RowBox[{"\[WeierstrassP]", "(", 
+     RowBox[{
+      RowBox[{"z", ";", " ", 
+       SubscriptBox["g", "2"]}], ",", " ", 
+      SubscriptBox["g", "3"]}], ")"}], "=", "x"}], TraditionalForm]], 
+  "InlineMath"],
+ " if ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{"z", "\[LongEqual]", 
+    RowBox[{
+     SubsuperscriptBox["\[Integral]", "\[Infinity]", "x"], 
+     RowBox[{
+      SuperscriptBox[
+       RowBox[{"(", 
+        RowBox[{"4", 
+         SuperscriptBox["t", "3"], "-", 
+         SubscriptBox["g", "2"], "t", "-", 
+         SubscriptBox["g", "3"]}], ")"}], 
+       RowBox[{
+        RowBox[{"-", "1"}], "/", "2"}]], "d", "\[VeryThinSpace]", "t"}]}]}], 
+   TraditionalForm]]],
+ ", and finally the famous Riemann zeta function ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{"\[Zeta]", "(", "z", ")"}], TraditionalForm]], "InlineMath"],
+ ", defined as the analytic continuation of the Dirichlet series ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    UnderoverscriptBox["\[Sum]", 
+     RowBox[{"k", "=", "1"}], "\[Infinity]"], 
+    SuperscriptBox["k", 
+     RowBox[{"-", "z"}]]}], TraditionalForm]]],
+ " for ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    RowBox[{"Re", "(", "z", ")"}], ">", "1"}], TraditionalForm]], 
+  "InlineMath"],
+ "."
+}], "DetailNotes",
+ CellChangeTimes->{{3.665280653527994*^9, 3.6652806771816325`*^9}, {
+   3.6652807092336082`*^9, 3.665280802435133*^9}, {3.6652808885056515`*^9, 
+   3.665280908140715*^9}, {3.665280944621089*^9, 3.66528105456913*^9}, {
+   3.665281093890526*^9, 3.665281175590765*^9}, {3.665281221062708*^9, 
+   3.6652812468485427`*^9}, {3.66528131765005*^9, 3.6652813455777807`*^9}, {
+   3.6652813960170755`*^9, 3.665281493014245*^9}, {3.6652815305907*^9, 
+   3.6652815451360593`*^9}, {3.665281661487582*^9, 3.665281664972254*^9}, {
+   3.665282108344937*^9, 3.665282118557016*^9}, {3.6652821511996145`*^9, 
+   3.665282230593626*^9}, {3.665282267991618*^9, 3.6652822990288696`*^9}, {
+   3.665282360096966*^9, 3.6652824650369024`*^9}, {3.6652825497660465`*^9, 
+   3.665282577636265*^9}, {3.66528261114634*^9, 3.6652826364159927`*^9}, {
+   3.665282809266451*^9, 3.6652828732319584`*^9}, {3.665431369249528*^9, 
+   3.66543136963764*^9}, {3.6654315732016535`*^9, 3.6654315732016535`*^9}, 
+   3.665432023900481*^9, {3.66550785416928*^9, 3.665507858025317*^9}, 
+   3.665765964243499*^9, 3.6657662779149103`*^9, 3.66662353342521*^9},
+ CellID->402221],
+
+Cell["References", "DetailNotes",
+ CellChangeTimes->{{3.665280653527994*^9, 3.6652806771816325`*^9}, {
+   3.6652807092336082`*^9, 3.665280802435133*^9}, {3.6652808885056515`*^9, 
+   3.665280908140715*^9}, {3.665280944621089*^9, 3.66528105456913*^9}, {
+   3.665281093890526*^9, 3.665281175590765*^9}, {3.665281221062708*^9, 
+   3.6652812468485427`*^9}, {3.66528131765005*^9, 3.6652813455777807`*^9}, {
+   3.6652813960170755`*^9, 3.665281493014245*^9}, {3.6652815305907*^9, 
+   3.6652815451360593`*^9}, {3.665281661487582*^9, 3.665281664972254*^9}, {
+   3.665282108344937*^9, 3.665282118557016*^9}, {3.6652821511996145`*^9, 
+   3.665282230593626*^9}, {3.665282267991618*^9, 3.6652822990288696`*^9}, {
+   3.665282360096966*^9, 3.6652824650369024`*^9}, {3.6652825497660465`*^9, 
+   3.665282577636265*^9}, {3.66528261114634*^9, 3.6652826364159927`*^9}, {
+   3.665282809266451*^9, 3.6652828732319584`*^9}, {3.665431369249528*^9, 
+   3.66543136963764*^9}, {3.6654315732016535`*^9, 3.665431576866514*^9}, 
+   3.66543655741716*^9, 3.6655039319777718`*^9},
+ CellID->798121661],
+
+Cell[TextData[{
+ "[1] E. Wegert, ",
+ StyleBox["Visual Complex Functions: An Introduction with Phase Portraits",
+  FontSlant->"Italic"],
+ ", Basel: Birkh\[ADoubleDot]user/Springer Basel AG, 2012."
+}], "DetailNotes",
+ CellChangeTimes->{{3.665280653527994*^9, 3.6652806771816325`*^9}, {
+   3.6652807092336082`*^9, 3.665280802435133*^9}, {3.6652808885056515`*^9, 
+   3.665280908140715*^9}, {3.665280944621089*^9, 3.66528105456913*^9}, {
+   3.665281093890526*^9, 3.665281175590765*^9}, {3.665281221062708*^9, 
+   3.6652812468485427`*^9}, {3.66528131765005*^9, 3.6652813455777807`*^9}, {
+   3.6652813960170755`*^9, 3.665281493014245*^9}, {3.6652815305907*^9, 
+   3.6652815451360593`*^9}, {3.665281661487582*^9, 3.665281664972254*^9}, {
+   3.665282108344937*^9, 3.665282118557016*^9}, {3.6652821511996145`*^9, 
+   3.665282230593626*^9}, {3.665282267991618*^9, 3.6652822990288696`*^9}, {
+   3.665282360096966*^9, 3.6652824650369024`*^9}, {3.6652825497660465`*^9, 
+   3.665282577636265*^9}, {3.66528261114634*^9, 3.6652826364159927`*^9}, {
+   3.665282809266451*^9, 3.6652828732319584`*^9}, {3.665431369249528*^9, 
+   3.6654314066709747`*^9}, {3.665431513575898*^9, 3.665431519143607*^9}, {
+   3.665431579694785*^9, 3.6654315802303963`*^9}, 3.665766379374591*^9},
+ CellID->28243176],
+
+Cell[TextData[{
+ "[2] A. Sandoval-Romero and A. Hern\[AAcute]ndez-Gardu\[NTilde]o, \"Domain \
+Coloring on the Riemann Sphere,\" ",
+ StyleBox["The Mathematica Journal",
+  FontSlant->"Italic"],
+ ", 2015. ",
+ ButtonBox["doi:10.3888/tmj.17-9",
+  BaseStyle->"Hyperlink",
+  ButtonData->{
+    URL["http://dx.doi.org/doi:10.3888/tmj.17-9"], None},
+  ButtonNote->"http://dx.doi.org/doi:10.3888/tmj.17-9"],
+ "."
+}], "DetailNotes",
+ CellChangeTimes->{{3.6655039351671247`*^9, 3.6655039358724957`*^9}, 
+   3.665503989873414*^9, 3.665504072551002*^9, {3.6657664223887167`*^9, 
+   3.6657664541743717`*^9}},
+ CellID->930562457]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["", "ControlSuggestionsSection"],
+
+Cell[BoxData[
+ TooltipBox[
+  RowBox[{
+   CheckboxBox[True], Cell[" Resize Images"]}],
+  "\"Click inside an image to reveal its orange resize frame.\\nDrag any of \
+the orange resize handles to resize the image.\""]], "ControlSuggestions",
+ CellChangeTimes->{3.6654979348783436`*^9},
+ FontFamily->"Verdana",
+ CellTags->"ResizeImages"],
+
+Cell[BoxData[
+ TooltipBox[
+  RowBox[{
+   CheckboxBox[False], Cell[" Rotate and Zoom in 3D"]}],
+  RowBox[{
+   "\"Drag a 3D graphic to rotate it. Starting the drag near the center \
+tumbles\\nthe graphic; starting near a corner turns it parallel to the plane \
+of the screen.\\nHold down \"", 
+    FrameBox[
+    "Ctrl", Background -> GrayLevel[0.9], FrameMargins -> 2, FrameStyle -> 
+     GrayLevel[0.9]], "\" (or \"", 
+    FrameBox[
+    "Cmd", Background -> GrayLevel[0.9], FrameMargins -> 2, FrameStyle -> 
+     GrayLevel[0.9]], 
+    "\" on Mac) and drag up and down to zoom.\""}]]], "ControlSuggestions",
+ FontFamily->"Verdana",
+ CellTags->"RotateAndZoomIn3D"],
+
+Cell[BoxData[
+ TooltipBox[
+  RowBox[{
+   CheckboxBox[False], Cell[" Drag Locators"]}],
+  RowBox[{"\"Drag any locator (\"", 
+    GraphicsBox[
+     LocatorBox[
+      Scaled[{0.5, 0.5}]], ImageSize -> 20], 
+    "\", etc.) to move it around.\""}]]], "ControlSuggestions",
+ FontFamily->"Verdana",
+ CellTags->"DragLocators"],
+
+Cell[BoxData[
+ TooltipBox[
+  RowBox[{
+   CheckboxBox[False], Cell[" Create and Delete Locators"]}],
+  RowBox[{"\"Insert a new locator in the graphic by holding down the \"", 
+    FrameBox[
+    "Alt", Background -> GrayLevel[0.9], FrameMargins -> 2, FrameStyle -> 
+     GrayLevel[0.9]], 
+    "\" key\\nand clicking where you want it to be. Delete a locator by \
+clicking it\\nwhile holding down the \"", 
+    FrameBox[
+    "Alt", Background -> GrayLevel[0.9], FrameMargins -> 2, FrameStyle -> 
+     GrayLevel[0.9]], "\" key.\""}]]], "ControlSuggestions",
+ FontFamily->"Verdana",
+ CellTags->"CreateAndDeleteLocators"],
+
+Cell[BoxData[
+ TooltipBox[
+  RowBox[{
+   CheckboxBox[False], Cell[" Slider Zoom"]}],
+  RowBox[{"\"Hold down the \"", 
+    FrameBox[
+    "Alt", Background -> GrayLevel[0.9], FrameMargins -> 2, FrameStyle -> 
+     GrayLevel[0.9]], 
+    "\" key while moving a slider to make fine adjustments in the slider \
+value.\\nHold \"", 
+    FrameBox[
+    "Ctrl", Background -> GrayLevel[0.9], FrameMargins -> 2, FrameStyle -> 
+     GrayLevel[0.9]], "\" and/or \"", 
+    FrameBox[
+    "Shift", Background -> GrayLevel[0.9], FrameMargins -> 2, FrameStyle -> 
+     GrayLevel[0.9]], "\" at the same time as \"", 
+    FrameBox[
+    "Alt", Background -> GrayLevel[0.9], FrameMargins -> 2, FrameStyle -> 
+     GrayLevel[0.9]], 
+    "\" to make ever finer adjustments.\""}]]], "ControlSuggestions",
+ FontFamily->"Verdana",
+ CellTags->"SliderZoom"],
+
+Cell[BoxData[
+ TooltipBox[
+  RowBox[{
+   CheckboxBox[False], Cell[" Gamepad Controls"]}],
+  "\"Control this Demonstration with a gamepad or other\\nhuman interface \
+device connected to your computer.\""]], "ControlSuggestions",
+ CellChangeTimes->{3.35696210375764*^9, 3.3895522232313623`*^9},
+ FontFamily->"Verdana",
+ CellTags->"GamepadControls"],
+
+Cell[BoxData[
+ TooltipBox[
+  RowBox[{
+   CheckboxBox[False], Cell[" Automatic Animation"]}],
+  RowBox[{"\"Animate a slider in this Demonstration by clicking the\"", 
+    AdjustmentBox[
+     Cell[
+      GraphicsData[
+      "CompressedBitmap", 
+       "eJzzTSzJSM1NLMlMTlRwL0osyMhMLlZwyy8CCjEzMjAwcIKwAgOI/R/IhBKc\n\
+/4EAyGAG0f+nTZsGwgysIJIRKsWKLAXGIHFmEpUgLADxWUAkI24jZs+eTaEt\n\
+IG+wQKRmzJgBlYf5lhEA30OqWA=="], "Graphics", ImageSize -> {9, 9}, ImageMargins -> 
+      0, CellBaseline -> Baseline], BoxBaselineShift -> 0.1839080459770115, 
+     BoxMargins -> {{0., 0.}, {-0.1839080459770115, 0.1839080459770115}}], 
+    "\"button\\nnext to the slider, and then clicking the play button that \
+appears.\\nAnimate all controls by selecting \"", 
+    StyleBox["Autorun", FontWeight -> "Bold"], "\" from the\"", 
+    AdjustmentBox[
+     Cell[
+      GraphicsData[
+      "CompressedBitmap", 
+       "eJyNULENwyAQfEySIlMwTVJlCGRFsosokeNtqBmDBagoaZjAI1C8/8GUUUC6\n\
+57h7cQ8PvU7Pl17nUav7oj/TPH7V7b2QJAUAXBkKmCPRowxICy64bRvGGNF7\n\
+X8CctGoDSN4xhIDGGDhzFXwUh3/ClBKrDQPmnGXtI6u0OOd+tZBVUqy1xSaH\n\
+UqiK6pPe4XdEdAz6563tx/gejuORGMxJaz8mdpJn7hc="], "Graphics", 
+      ImageSize -> {10, 10}, ImageMargins -> 0, CellBaseline -> Baseline], 
+     BoxBaselineShift -> 0.1839080459770115, 
+     BoxMargins -> {{0., 0.}, {-0.1839080459770115, 0.1839080459770115}}], 
+    "\"menu.\""}]]], "ControlSuggestions",
+ FontFamily->"Verdana",
+ CellTags->"AutomaticAnimation"],
+
+Cell[BoxData[
+ TooltipBox[
+  RowBox[{
+   CheckboxBox[False], Cell[" Bookmark Animation"]}],
+  RowBox[{
+   "\"See a prepared animation of this Demonstration by selecting\\n\"", 
+    StyleBox["Animate Bookmarks", FontWeight -> "Bold"], "\" from the\"", 
+    AdjustmentBox[
+     Cell[
+      GraphicsData[
+      "CompressedBitmap", 
+       "eJyNULENwyAQfEySIlMwTVJlCGRFsosokeNtqBmDBagoaZjAI1C8/8GUUUC6\n\
+57h7cQ8PvU7Pl17nUav7oj/TPH7V7b2QJAUAXBkKmCPRowxICy64bRvGGNF7\n\
+X8CctGoDSN4xhIDGGDhzFXwUh3/ClBKrDQPmnGXtI6u0OOd+tZBVUqy1xSaH\n\
+UqiK6pPe4XdEdAz6563tx/gejuORGMxJaz8mdpJn7hc="], "Graphics", 
+      ImageSize -> {10, 10}, ImageMargins -> 0, CellBaseline -> Baseline], 
+     BoxBaselineShift -> 0.1839080459770115, 
+     BoxMargins -> {{0., 0.}, {-0.1839080459770115, 0.1839080459770115}}], 
+    "\"menu.\""}]]], "ControlSuggestions",
+ FontFamily->"Verdana",
+ CellTags->"BookmarkAnimation"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["", "SearchTermsSection"],
+
+Cell["complex analysis", "SearchTerms",
+ CellChangeTimes->{{3.6652779966426897`*^9, 3.6652780005217333`*^9}},
+ CellID->32380896],
+
+Cell["complex functions", "SearchTerms",
+ CellChangeTimes->{{3.6652779966426897`*^9, 3.6652780068686357`*^9}},
+ CellID->262085545],
+
+Cell["complex variables", "SearchTerms",
+ CellChangeTimes->{{3.6652779966426897`*^9, 3.6652780134997787`*^9}},
+ CellID->410149409],
+
+Cell["phase portrait", "SearchTerms",
+ CellChangeTimes->{{3.6652779966426897`*^9, 3.665278020374419*^9}},
+ CellID->173003835],
+
+Cell["domain coloring", "SearchTerms",
+ CellChangeTimes->{{3.6652779966426897`*^9, 3.6652780462893085`*^9}},
+ CellID->328321165],
+
+Cell["graph", "SearchTerms",
+ CellChangeTimes->{{3.6652779966426897`*^9, 3.6652780489497013`*^9}, {
+  3.6654376389826736`*^9, 3.6654376389826736`*^9}},
+ CellID->738380135],
+
+Cell["complex trigonometry", "SearchTerms",
+ CellChangeTimes->{{3.6652779966426897`*^9, 3.6652780489497013`*^9}, {
+  3.6654376389826736`*^9, 3.6654376573164825`*^9}},
+ CellID->845532673],
+
+Cell["complex numbers", "SearchTerms",
+ CellChangeTimes->{{3.6652779966426897`*^9, 3.6652780489497013`*^9}, {
+  3.6654376389826736`*^9, 3.665437659331337*^9}},
+ CellID->80374749]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["", "RelatedLinksSection"],
+
+Cell[TextData[ButtonBox["Phase of a Complex Polynomial",
+ BaseStyle->"Hyperlink",
+ ButtonData->{
+   URL["http://demonstrations.wolfram.com/PhaseOfAComplexPolynomial/"], None},
+ 
+ ButtonNote->
+  "http://demonstrations.wolfram.com/PhaseOfAComplexPolynomial/"]], \
+"RelatedLinks",
+ CellChangeTimes->{{3.6654362112899485`*^9, 3.6654362348614173`*^9}},
+ CellID->125240369]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["", "AuthorSection"],
+
+Cell[TextData[{
+ "Contributed by: ",
+ ButtonBox["Matthew Romney",
+  BaseStyle->"Hyperlink",
+  ButtonData->{
+    URL["http://demonstrations.wolfram.com/author.html?author=Matthew+Romney"]\
+, None},
+  ButtonNote->
+   "http://demonstrations.wolfram.com/author.html?author=Matthew+Romney"]
+}], "Author",
+ CellChangeTimes->{
+  3.35696210375764*^9, {3.432333043774981*^9, 3.432333045441087*^9}, {
+   3.665277974982634*^9, 3.665277977588657*^9}}]
+}, Open  ]]
+}, Open  ]]
+},
+WindowSize->{799, 892},
+WindowMargins->{{Automatic, 288}, {Automatic, 21}},
+FrontEndVersion->"10.2 for Mac OS X x86 (32-bit, 64-bit Kernel) (July 6, \
+2015)",
+StyleDefinitions->FrontEnd`FileName[{"Wolfram"}, "Demonstration.nb", 
+  CharacterEncoding -> "UTF-8"]
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{
+ "ResizeImages"->{
+  Cell[74456, 1630, 333, 8, 29, "ControlSuggestions",
+   CellTags->"ResizeImages"]},
+ "RotateAndZoomIn3D"->{
+  Cell[74792, 1640, 661, 16, 29, "ControlSuggestions",
+   CellTags->"RotateAndZoomIn3D"]},
+ "DragLocators"->{
+  Cell[75456, 1658, 318, 10, 29, "ControlSuggestions",
+   CellTags->"DragLocators"]},
+ "CreateAndDeleteLocators"->{
+  Cell[75777, 1670, 615, 14, 29, "ControlSuggestions",
+   CellTags->"CreateAndDeleteLocators"]},
+ "SliderZoom"->{
+  Cell[76395, 1686, 827, 21, 29, "ControlSuggestions",
+   CellTags->"SliderZoom"]},
+ "GamepadControls"->{
+  Cell[77225, 1709, 347, 8, 29, "ControlSuggestions",
+   CellTags->"GamepadControls"]},
+ "AutomaticAnimation"->{
+  Cell[77575, 1719, 1442, 30, 29, "ControlSuggestions",
+   CellTags->"AutomaticAnimation"]},
+ "BookmarkAnimation"->{
+  Cell[79020, 1751, 886, 20, 29, "ControlSuggestions",
+   CellTags->"BookmarkAnimation"]}
+ }
+*)
+(*CellTagsIndex
+CellTagsIndex->{
+ {"ResizeImages", 82522, 1862},
+ {"RotateAndZoomIn3D", 82631, 1865},
+ {"DragLocators", 82741, 1868},
+ {"CreateAndDeleteLocators", 82857, 1871},
+ {"SliderZoom", 82971, 1874},
+ {"GamepadControls", 83077, 1877},
+ {"AutomaticAnimation", 83190, 1880},
+ {"BookmarkAnimation", 83307, 1883}
+ }
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[585, 22, 294, 3, 108, "DemoTitle"],
+Cell[882, 27, 33, 0, 275, "InitializationSection"],
+Cell[CellGroupData[{
+Cell[940, 31, 29, 0, 201, "ManipulateSection"],
+Cell[CellGroupData[{
+Cell[994, 35, 14325, 355, 420, "Input"],
+Cell[15322, 392, 9089, 177, 490, "Output",
+ CellID->2128561366]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[24460, 575, 36, 0, 181, "ManipulateCaptionSection"],
+Cell[24499, 577, 1554, 29, 103, "ManipulateCaption"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[26090, 611, 28, 0, 179, "ThumbnailSection"],
+Cell[26121, 613, 9114, 176, 490, "Output",
+ CellID->1948286636]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[35272, 794, 28, 0, 149, "SnapshotsSection"],
+Cell[35303, 796, 9150, 177, 490, "Output",
+ CellID->22841796],
+Cell[44456, 975, 9086, 176, 490, "Output",
+ CellID->1649976206],
+Cell[53545, 1153, 9085, 176, 490, "Output",
+ CellID->693760531]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[62667, 1334, 26, 0, 357, "DetailsSection"],
+Cell[62696, 1336, 1772, 40, 103, "DetailNotes",
+ CellID->2015145],
+Cell[64471, 1378, 2237, 49, 120, "DetailNotes",
+ CellID->23719831],
+Cell[66711, 1429, 4709, 137, 108, "DetailNotes",
+ CellID->402221],
+Cell[71423, 1568, 1066, 15, 23, "DetailNotes",
+ CellID->798121661],
+Cell[72492, 1585, 1272, 20, 39, "DetailNotes",
+ CellID->28243176],
+Cell[73767, 1607, 612, 16, 39, "DetailNotes",
+ CellID->930562457]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[74416, 1628, 37, 0, 131, "ControlSuggestionsSection"],
+Cell[74456, 1630, 333, 8, 29, "ControlSuggestions",
+ CellTags->"ResizeImages"],
+Cell[74792, 1640, 661, 16, 29, "ControlSuggestions",
+ CellTags->"RotateAndZoomIn3D"],
+Cell[75456, 1658, 318, 10, 29, "ControlSuggestions",
+ CellTags->"DragLocators"],
+Cell[75777, 1670, 615, 14, 29, "ControlSuggestions",
+ CellTags->"CreateAndDeleteLocators"],
+Cell[76395, 1686, 827, 21, 29, "ControlSuggestions",
+ CellTags->"SliderZoom"],
+Cell[77225, 1709, 347, 8, 29, "ControlSuggestions",
+ CellTags->"GamepadControls"],
+Cell[77575, 1719, 1442, 30, 29, "ControlSuggestions",
+ CellTags->"AutomaticAnimation"],
+Cell[79020, 1751, 886, 20, 29, "ControlSuggestions",
+ CellTags->"BookmarkAnimation"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[79943, 1776, 30, 0, 165, "SearchTermsSection"],
+Cell[79976, 1778, 128, 2, 23, "SearchTerms",
+ CellID->32380896],
+Cell[80107, 1782, 130, 2, 23, "SearchTerms",
+ CellID->262085545],
+Cell[80240, 1786, 130, 2, 23, "SearchTerms",
+ CellID->410149409],
+Cell[80373, 1790, 125, 2, 23, "SearchTerms",
+ CellID->173003835],
+Cell[80501, 1794, 128, 2, 23, "SearchTerms",
+ CellID->328321165],
+Cell[80632, 1798, 171, 3, 23, "SearchTerms",
+ CellID->738380135],
+Cell[80806, 1803, 186, 3, 23, "SearchTerms",
+ CellID->845532673],
+Cell[80995, 1808, 178, 3, 23, "SearchTerms",
+ CellID->80374749]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[81210, 1816, 31, 0, 149, "RelatedLinksSection"],
+Cell[81244, 1818, 367, 9, 23, "RelatedLinks",
+ CellID->125240369]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[81648, 1832, 25, 0, 149, "AuthorSection"],
+Cell[81676, 1834, 439, 12, 23, "Author"]
+}, Open  ]]
+}, Open  ]]
+}
+]
+*)
+
+(* End of internal cache information *)
