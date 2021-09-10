@@ -6,6 +6,30 @@
 The Weierstrass $\wp$ function is defined as follows:
 \[
     \wp(z; \omega) = \frac{1}{z^2} + \sum_{\omega}{'} ( \frac{1}{(z-\omega)^2} - \frac{1}{\omega^2} ) ,
-%    \wp(z; \omega)=\frac{1}{z^2} + \sum_{\omega} \( \frac{1}{(z-\omega)^2} - \frac{1}{\omega^2}\)
 \]
 is an even function and has a double pole at each $\omega \in \Omega$.
+
+
+\subsection{The Laurent expansion of the WeierstrassP function near the origin}
+
+We derive the Laurent expansion as follows:
+
+\begin{align*}
+    \wp(z; \omega) &= \frac{1}{z^2} + \sum_{\omega}{'} ( \frac{1}{(z-\omega)^2} - \frac{1}{\omega^2} )  \\
+    &= \frac{1}{z^2} + \sum_{\omega}{'} ( \frac{1}{\omega^2} \frac{1}{(1-\frac{z}{\omega})^2} - \frac{1}{\omega^2} )  \\
+    &= \frac{1}{z^2} + \sum_{\omega}{'} ( \frac{1}{\omega^2} ( 1 + \sum_{n=1}^{\infty} (n+1)( \frac{z}{\omega} )^n ) - \frac{1}{\omega^2} )  \\
+    &= \frac{1}{z^2} + \sum_{\omega}{'} ( \frac{1}{\omega^2} \sum_{n=1}^{\infty} (n+1)( \frac{z}{\omega} )^n )  \\
+    &= \frac{1}{z^2} + \sum_{\omega}{'} ( \sum_{n=1}^{\infty} \frac{n+1}{\omega^{n+2}}z^n )  \\
+    &= \frac{1}{z^2} + \sum_{n=1}^{\infty} (n+1) \sum_{\omega}{'} \frac{1}{\omega^{n+2}}z^n  \\
+    &= \frac{1}{z^2} + \sum_{n=1}^{\infty} (n+1) G_{n+2} z^n .
+\end{align*}
+
+Because $\wp$ is an even function we can further simplify this as follows:
+
+\begin{align*}
+    \wp(z; \omega) &= \frac{1}{z^2} + \sum_{n=1}^{\infty} (2n+1) G_{2n+2} z^{2n} \\
+    &= \frac{1}{z^2} + 3 G_4 z^2 + 5 G_6 z^4 +7 G_8 z^6 + 9 G_{10}z^8 + \cdots
+\end{align*}
+
+
+\subsection{Deriving the differential equation satisfying the WeierstrassP function}
