@@ -21,15 +21,30 @@ We derive the Laurent expansion as follows:
     &= \frac{1}{z^2} + \sum_{\omega}{'} ( \frac{1}{\omega^2} \sum_{n=1}^{\infty} (n+1)( \frac{z}{\omega} )^n )  \\
     &= \frac{1}{z^2} + \sum_{\omega}{'} ( \sum_{n=1}^{\infty} \frac{n+1}{\omega^{n+2}}z^n )  \\
     &= \frac{1}{z^2} + \sum_{n=1}^{\infty} (n+1) \sum_{\omega}{'} \frac{1}{\omega^{n+2}}z^n  \\
-    &= \frac{1}{z^2} + \sum_{n=1}^{\infty} (n+1) G_{n+2} z^n .
+    &= \frac{1}{z^2} + \sum_{n=1}^{\infty} (n+1) G_{n+2}(\omega) z^n .
 \end{align*}
 
 Because $\wp$ is an even function we can further simplify this as follows:
 
 \begin{align*}
-    \wp(z; \omega) &= \frac{1}{z^2} + \sum_{n=1}^{\infty} (2n+1) G_{2n+2} z^{2n} \\
-    &= \frac{1}{z^2} + 3 G_4 z^2 + 5 G_6 z^4 +7 G_8 z^6 + 9 G_{10}z^8 + \cdots
+    \wp(z; \omega) &= \frac{1}{z^2} + \sum_{n=1}^{\infty} (2n+1) G_{2n+2}(\omega) z^{2n} \\
+    &= \frac{1}{z^2} + 3 G_4(\omega) z^2 + 5 G_6(\omega) z^4 +7 G_8(\omega) z^6 + 9 G_{10}(\omega)z^8 + \cdots
 \end{align*}
 
 
 \subsection{Deriving the differential equation satisfying the WeierstrassP function}
+
+Set $y=\wp(z; \omega)$ and consider the function:
+
+\[
+    f(z) = y'^{2} - 4y^3 - 60G_4 y - 140G_6.
+\]
+
+This function is elliptic and using the Laurent expansion of $\wp$ we can show that f(z) is holomorphic
+and vanishes at z = 0. Since it is elliptic it also vanishes on $\Omega$ and hence it has no poles because its only
+possible poles are those of $y$ and $y'$. Therefore by Liouville's Theorem $f(z)=0$ and can we conclude that
+$\wp(z; \omega)$ satisfies the following differential equation:
+
+\[
+    \wp'(z; \omega)^2 = 4 \wp(z; \omega)^3 - 60G_4(\omega)\wp(z; \omega) - 140G_6(\omega).
+\]
